@@ -6,7 +6,7 @@
     <title>Agency OS // Unified Command Hub</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@400;500;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="agency.css">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
     <style>
         :root {
             --accent-rose: #ff2d55;
@@ -354,10 +354,16 @@
     </footer>
 
     <script>
-        // Supabase Configuration
+        // Supabase — init deferred until after CDN loads
+        let _supabase = null;
         const supabaseUrl = 'https://jglgzxoennxiqwafmujm.supabase.co';
         const supabaseKey = 'sb_publishable_ux7LXt8H3kZRE7pdw1U8Tw_HqPCpOjY';
-        const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+        function initSupabase() {
+            if (window.supabase && !_supabase) {
+                _supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+            }
+        }
 
         // DATA_INJECTION_START
         const leadsData = [
@@ -1307,7 +1313,8 @@
 
         document.getElementById('globalSearch').addEventListener('input', renderAll);
         
-        window.onload = () => {
+        window.onload = async () => {
+            initSupabase();
             checkSession();
             renderAll();
         };
