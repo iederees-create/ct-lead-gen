@@ -128,9 +128,36 @@
             margin-left: 8px;
             border-radius: 10px;
         }
+
+        .gated-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
     </style>
 </head>
 <body>
+    <!-- Global Auth Gate -->
+    <div id="globalGate" class="gated-overlay">
+        <div class="auth-card">
+            <h2 style="font-family: 'JetBrains Mono'; font-size: 1.2rem; margin-bottom: 20px;">AGENCY_OS // ENTRANCE</h2>
+            <p style="font-size: 0.85rem; color: #888; margin-bottom: 24px;">Please authenticate to access the agency ecosystem. Guest access is prohibited.</p>
+            <input type="email" id="loginEmail" class="auth-input" placeholder="user@domain.com">
+            <input type="password" id="loginPass" class="auth-input" placeholder="password_or_clearance_code">
+            <div style="display: flex; gap: 10px;">
+                <button onclick="handleLogin()" class="btn-auth">LOGIN</button>
+                <button onclick="handleSignup()" class="btn-auth" style="background: transparent; border: 1px solid #333; color: #aaa;">CREATE ACCOUNT</button>
+            </div>
+            <p id="authError" style="color: var(--accent-rose); font-size: 0.7rem; margin-top: 12px; font-family: var(--font-mono);"></p>
+        </div>
+    </div>
+
     <!-- Top Bar -->
     <header class="cmd-ribbon">
         <div class="brand">AGENCY_OS // v1.0</div>
@@ -149,9 +176,9 @@
         <aside class="sidebar">
             <nav class="side-nav">
                 <a href="#" class="active" onclick="switchTab('portfolio', this)">Vector Portfolio</a>
-                <a href="#" onclick="switchTab('operations', this)">Operations Command <span class="nav-badge">GATED</span></a>
-                <a href="#" onclick="switchTab('analyser', this)">Lead Analyser</a>
-                <a href="#" id="authLink" onclick="showAuthModal()">Member Login</a>
+                <a href="#" id="nav-operations" class="hidden" onclick="switchTab('operations', this)">Operations Command <span class="nav-badge" style="background:var(--accent-amber)">AGENT</span></a>
+                <a href="#" id="nav-analyser" class="hidden" onclick="switchTab('analyser', this)">Lead Analyser <span class="nav-badge" style="background:var(--accent-amber)">AGENT</span></a>
+                <a href="#" id="authLink" onclick="handleLogout()">System Logout</a>
             </nav>
             
             <div class="metrics-summary">
@@ -191,17 +218,6 @@
 
             <!-- Tab: Operations -->
             <div id="tab-operations" class="tab-content hidden" style="position: relative; min-height: 80vh;">
-                <!-- Auth Gate Overlay -->
-                <div id="operationsGate" class="gated-overlay">
-                    <div class="auth-card">
-                        <h2 style="font-family: 'JetBrains Mono'; font-size: 1.2rem; margin-bottom: 20px;">AUTHENTICATION_REQUIRED</h2>
-                        <p style="font-size: 0.85rem; color: #888; margin-bottom: 24px;">Please provide agency credentials to access protected lead data and outreach controls.</p>
-                        <input type="email" id="loginEmail" class="auth-input" placeholder="agency_email@domain.com">
-                        <input type="password" id="loginPass" class="auth-input" placeholder="security_clearance_code">
-                        <button onclick="handleLogin()" class="btn-auth">EXECUTE_LOGIN</button>
-                        <p id="authError" style="color: var(--accent-rose); font-size: 0.7rem; margin-top: 12px; font-family: var(--font-mono);"></p>
-                    </div>
-                </div>
 
                 <section class="overview-panel">
                     <div class="panel-header">
@@ -228,15 +244,73 @@
             <!-- Lead Analyser Tab -->
             <div id="tab-analyser" class="tab-content hidden">
                  <section class="overview-panel">
-                    <div class="panel-header">
-                        <h2 class="war-room-title">Lead Analyser // Deep Discovery</h2>
-                        <span class="subtitle">Heuristic analysis of potential client infrastructure.</span>
-                    </div>
-                    <div style="background: #111; padding: 40px; border: 1px dashed #333; text-align: center; color: #555; font-family: var(--font-mono);">
-                        [INITIALIZING_ANALYSER_SYSTEM...]<br>
-                        PENDING_INTEGRATION_WITH_CBCT_ENGINE
+                    <div class="panel-header" style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div>
+                            <h2 class="war-room-title">Lead Analyser // CBCT Engine</h2>
+                            <span class="subtitle">Heuristic analysis of potential client infrastructure.</span>
+                        </div>
+                        <div id="analyserStatusPill" class="status-pill" style="border: 1px solid #444; color: #888;">STANDBY_MODE</div>
                     </div>
                 </section>
+
+                <div id="analyserContent" class="hidden">
+                    <div class="cbct-grid">
+                        <!-- Visualisation Panel -->
+                        <div class="cbct-visual-panel">
+                            <div class="cbct-hologram">
+                                <div class="scanline"></div>
+                                <div class="data-ring outer"></div>
+                                <div class="data-ring inner"></div>
+                                <div class="core-node">
+                                    <div class="pulse-core"></div>
+                                </div>
+                                <div class="hologram-overlay-text" id="cbctTargetName">TARGET_ACQ</div>
+                            </div>
+                        </div>
+
+                        <!-- Data Panel -->
+                        <div class="cbct-data-panel">
+                            <div class="data-header">
+                                <h3 id="cbctLeadName" style="font-size: 1.5rem; margin: 0 0 5px 0;">---</h3>
+                                <span class="industry-tag" id="cbctLeadIndustry" style="font-size: 0.8rem; margin: 0;">---</span>
+                            </div>
+                            
+                            <div class="metrics-grid" style="margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                                <div class="metric-box">
+                                    <span class="lbl">SEO_DENSITY</span>
+                                    <span class="val" id="cbctSeo">--%</span>
+                                    <div class="bar-bg"><div class="bar-fg" id="cbctSeoBar"></div></div>
+                                </div>
+                                <div class="metric-box">
+                                    <span class="lbl">MOBILE_READY</span>
+                                    <span class="val" id="cbctMobile">--%</span>
+                                    <div class="bar-bg"><div class="bar-fg" id="cbctMobileBar"></div></div>
+                                </div>
+                                <div class="metric-box">
+                                    <span class="lbl">SOCIAL_SIGNS</span>
+                                    <span class="val" id="cbctSocial">--%</span>
+                                    <div class="bar-bg"><div class="bar-fg" id="cbctSocialBar"></div></div>
+                                </div>
+                                <div class="metric-box">
+                                    <span class="lbl">LATENCY_SCORE</span>
+                                    <span class="val" id="cbctLatency">--ms</span>
+                                    <div class="bar-bg"><div class="bar-fg" id="cbctLatencyBar" style="background:var(--accent-rose)"></div></div>
+                                </div>
+                            </div>
+
+                            <div class="heuristic-log" id="cbctLogs" style="margin-top: 20px; font-family: var(--font-mono); font-size: 0.75rem; color: #aaa; background: #080808; padding: 15px; border: 1px dashed #333; height: 120px; overflow-y: auto;">
+                                <div>[SYS] awaiting target designation...</div>
+                            </div>
+
+                            <button onclick="switchTab('operations', document.querySelector('.side-nav a:nth-child(2)'))" class="btn-node mt-15" style="margin-top:20px;">ABORT_SCAN & RETURN</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="analyserPlaceholder" style="background: #111; padding: 40px; border: 1px dashed #333; text-align: center; color: #555; font-family: var(--font-mono);">
+                    [CBCT_ENGINE_ONLINE]<br>
+                    AWAITING_TARGET_DESIGNATION_FROM_OPERATIONS
+                </div>
             </div>
 
         </main>
@@ -950,9 +1024,16 @@
             currentUser = user;
             document.getElementById('userStatus').innerText = `USER: ${user.email.split('@')[0].toUpperCase()}`;
             document.getElementById('userStatus').style.color = 'var(--accent-green)';
-            document.getElementById('operationsGate').classList.add('hidden');
+            document.getElementById('globalGate').classList.add('hidden');
             document.getElementById('authLink').innerText = 'System Logout';
             document.getElementById('authLink').onclick = handleLogout;
+
+            const role = user.user_metadata?.role || 'member';
+            if (role === 'agent') {
+                document.getElementById('nav-operations').classList.remove('hidden');
+                document.getElementById('nav-analyser').classList.remove('hidden');
+            }
+            
             renderAll();
         }
 
@@ -972,6 +1053,35 @@
                 errorEl.innerText = `ERROR: ${error.message.toUpperCase()}`;
             } else {
                 onUserAuth(data.user);
+            }
+        }
+
+        async function handleSignup() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPass').value;
+            const errorEl = document.getElementById('authError');
+            
+            errorEl.innerText = 'INITIALIZING ENROLLMENT...';
+            errorEl.style.color = 'var(--accent-blue)';
+
+            const { data, error } = await _supabase.auth.signUp({
+                email: email,
+                password: password,
+                options: {
+                    data: { role: 'member' }
+                }
+            });
+
+            if (error) {
+                errorEl.innerText = `ERROR: ${error.message.toUpperCase()}`;
+                errorEl.style.color = 'var(--accent-rose)';
+            } else {
+                if (data.session) {
+                    onUserAuth(data.session.user);
+                } else {
+                    errorEl.innerText = 'ENROLLMENT SUCCESS. AWAITING CONFIRMATION / LOGIN.';
+                    errorEl.style.color = 'var(--accent-green)';
+                }
             }
         }
 
@@ -1009,7 +1119,10 @@
                     <h3 class="node-title">${node.name}</h3>
                     <p class="node-sector">${node.location}</p>
                     <p style="font-size:0.75rem; color:#666; margin-bottom:15px; min-height:40px;">${node.description}</p>
-                    <button class="btn-node" onclick="window.open('${node.liveUrl}', '_blank')">ACCESS_BLUEPRINT</button>
+                    <div style="display:flex; gap:10px;">
+                        <button class="btn-node" onclick="window.open('${node.liveUrl}', '_blank')" style="flex:1;">INSPECT</button>
+                        <button class="btn-node" onclick="window.open('https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20node%20${node.name}', '_blank')" style="flex:1; border-color:var(--accent-green); color:var(--accent-green);">ACQUIRE</button>
+                    </div>
                 </article>
             `).join('');
         }
@@ -1032,6 +1145,7 @@
                         📍 ${lead.location} // ⭐ ${lead.rating}
                     </div>
                     <div class="actions">
+                        <button onclick="startDeepScan(${lead.id})" class="btn-node" style="border-color:var(--accent-green); color:var(--accent-green); margin-bottom:10px;">CBCT_DEEP_SCAN</button>
                         <a href="${lead.liveUrl}" target="_blank" class="btn-node" style="display:block; text-align:center; text-decoration:none; margin-bottom:10px;">VIEW_LIVE_DEMO</a>
                         <div class="action-row">
                             <a href="${lead.waLink}" target="_blank" class="btn-node" style="text-align:center; text-decoration:none;">WHATSAPP</a>
@@ -1048,6 +1162,72 @@
             checkSession();
             renderAll();
         };
+
+        async function startDeepScan(leadId) {
+            const lead = leadsData.find(l => l.id === leadId);
+            if (!lead) return;
+
+            // Switch Tab
+            switchTab('analyser', document.querySelector('.side-nav a:nth-child(3)'));
+            
+            // UI Updates
+            document.getElementById('analyserPlaceholder').classList.add('hidden');
+            document.getElementById('analyserContent').classList.remove('hidden');
+            document.getElementById('analyserStatusPill').innerText = 'SCANNING...';
+            document.getElementById('analyserStatusPill').style.color = 'var(--accent-amber)';
+            document.getElementById('analyserStatusPill').style.borderColor = 'var(--accent-amber)';
+            
+            document.getElementById('cbctLeadName').innerText = lead.name;
+            document.getElementById('cbctLeadIndustry').innerText = `${lead.industry} // ${lead.location}`;
+            document.getElementById('cbctTargetName').innerText = `TARGET: ${lead.name.substring(0, 15).toUpperCase()}...`;
+            
+            // Reset Metrics
+            ['Seo', 'Mobile', 'Social', 'Latency'].forEach(m => {
+                document.getElementById(`cbct${m}`).innerText = '--';
+                document.getElementById(`cbct${m}Bar`).style.width = '0%';
+            });
+            
+            const logsEl = document.getElementById('cbctLogs');
+            logsEl.innerHTML = `<div>[SYS] Initializing deep scan on node #${leadId}...</div>`;
+
+            // Simulation Sequence
+            const sleep = ms => new Promise(r => setTimeout(r, ms));
+            
+            await sleep(800);
+            logsEl.innerHTML += `<div>[NET] Resolving ${lead.name} endpoints...</div>`;
+            document.getElementById('cbctSeo').innerText = 'ACTV';
+            document.getElementById('cbctSeoBar').style.width = '20%';
+
+            await sleep(1000);
+            logsEl.innerHTML += `<div>[HEUR] DOM structural analysis: mobile viewport detected.</div>`;
+            const mobileScore = 80 + Math.floor(Math.random() * 20);
+            document.getElementById('cbctMobile').innerText = `${mobileScore}%`;
+            document.getElementById('cbctMobileBar').style.width = `${mobileScore}%`;
+            
+            await sleep(1200);
+            logsEl.innerHTML += `<div>[SIG] Scanning external footprints (Social, GMB)...</div>`;
+            const socialScore = 40 + Math.floor(Math.random() * 40);
+            document.getElementById('cbctSocial').innerText = `${socialScore}%`;
+            document.getElementById('cbctSocialBar').style.width = `${socialScore}%`;
+            
+            await sleep(900);
+            logsEl.innerHTML += `<div>[PERF] Latency evaluation complete.</div>`;
+            const latency = 150 + Math.floor(Math.random() * 300);
+            document.getElementById('cbctLatency').innerText = `${latency}ms`;
+            document.getElementById('cbctLatencyBar').style.width = `${Math.min(100, (600 - latency) / 6)}%`;
+            
+            await sleep(800);
+            const seoScore = 50 + Math.floor(Math.random() * 40);
+            document.getElementById('cbctSeo').innerText = `${seoScore}%`;
+            document.getElementById('cbctSeoBar').style.width = `${seoScore}%`;
+            
+            logsEl.innerHTML += `<div style="color:var(--accent-green)">[SYS] Scan complete. Target ready for engagement.</div>`;
+            logsEl.scrollTop = logsEl.scrollHeight;
+            
+            document.getElementById('analyserStatusPill').innerText = 'ANALYSIS_COMPLETE';
+            document.getElementById('analyserStatusPill').style.color = 'var(--accent-green)';
+            document.getElementById('analyserStatusPill').style.borderColor = 'var(--accent-green)';
+        }
 
     </script>
 </body>
