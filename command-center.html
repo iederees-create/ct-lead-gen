@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agency OS | iederees-create</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #05070a;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --accent-cyan: #00f2ff;
+            --accent-rose: #ff4d94;
+            --accent-amber: #ffaa00;
+            --accent-green: #00ff88;
+            --text-main: #e0e6ed;
+            --text-dim: #94a3b8;
+            --glass: rgba(15, 23, 42, 0.6);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-cyan) transparent;
+        }
+
+        body {
+            background-color: var(--bg);
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(0, 242, 255, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 77, 148, 0.05) 0%, transparent 40%);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        header {
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 0 20px;
+        }
+
+        .header-left h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+        }
+
+        .view-toggle {
+            display: flex;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 5px;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+        }
+
+        .toggle-btn {
+            padding: 10px 20px;
+            border: none;
+            background: none;
+            color: var(--text-dim);
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .toggle-btn.active {
+            background: var(--accent-cyan);
+            color: #000;
+        }
+
+        .controls {
+            max-width: 1200px;
+            margin: 0 auto 30px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            background: var(--glass);
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--card-border);
+            padding: 12px 20px;
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-box:focus {
+            border-color: var(--accent-cyan);
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            padding: 10px 20px;
+            border-radius: 10px;
+            color: var(--text-dim);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active {
+            background: rgba(0, 242, 255, 0.2);
+            color: var(--accent-cyan);
+            border-color: var(--accent-cyan);
+        }
+
+        .leads-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .lead-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 24px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lead-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .lead-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+        }
+
+        .lead-card[data-industry="Solar"]::before {
+            background: var(--accent-cyan);
+        }
+
+        .lead-card[data-industry="Wellness"]::before {
+            background: var(--accent-rose);
+        }
+
+        .lead-card[data-industry="Maintenance"]::before {
+            background: var(--accent-amber);
+        }
+
+        .lead-card[data-industry="Vector"]::before {
+            background: var(--accent-green);
+        }
+
+        .industry-tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 800;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .lead-card[data-industry="Solar"] .industry-tag {
+            color: var(--accent-cyan);
+        }
+
+        .lead-card[data-industry="Wellness"] .industry-tag {
+            color: var(--accent-rose);
+        }
+
+        .lead-card[data-industry="Maintenance"] .industry-tag {
+            color: var(--accent-amber);
+        }
+
+        .lead-card[data-industry="Vector"] .industry-tag {
+            color: var(--accent-green);
+            font-family: 'JetBrains Mono';
+        }
+
+        .business-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .location-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .rating {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .actions {
+            margin-top: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .action-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .btn-rose {
+            background: var(--accent-rose);
+            color: #fff;
+        }
+
+        .btn {
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 700;
+            text-decoration: none;
+            text-align: center;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .btn-ghost {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            color: white;
+        }
+
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-primary {
+            background: var(--accent-cyan);
+            color: #000;
+        }
+
+        .btn-green {
+            background: var(--accent-green);
+            color: #000;
+        }
+
+        .btn-primary:hover,
+        .btn-green:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        .stats-bar {
+            max-width: 1200px;
+            margin: 0 auto 20px;
+            display: flex;
+            justify-content: flex-start;
+            gap: 20px;
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+
+        .stat-item b {
+            color: #fff;
+        }
+
+        #vectorControls {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .leads-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-left">
+            <h1>Agency Command Center</h1>
+            <div class="subtitle">Cape Town Digital Ecosystem & Vector Portfolio</div>
+        </div>
+        <div class="view-toggle">
+            <button class="toggle-btn active" id="btnLocal">Local Outreach</button>
+            <button class="toggle-btn" id="btnVector">Digital Products</button>
+        </div>
+    </header>
+
+    <div class="stats-bar" id="statsBar"></div>
+
+    <div class="controls" id="localControls">
+        <input type="text" id="searchInput" class="search-box" placeholder="Search businesses by name or location...">
+        <button class="filter-btn active" data-industry="All">All Leads</button>
+        <button class="filter-btn" data-industry="Solar">Solar</button>
+        <button class="filter-btn" data-industry="Wellness">Wellness</button>
+        <button class="filter-btn" data-industry="Maintenance">Maintenance</button>
+    </div>
+
+    <div class="controls" id="vectorControls">
+        <input type="text" id="vectorSearch" class="search-box" placeholder="Search blueprints by name or niche...">
+        <button class="filter-btn active" data-category="All">All Blueprints</button>
+        <button class="filter-btn" data-category="SaaS">SaaS/Tech</button>
+        <button class="filter-btn" data-category="Service">Service/Physical</button>
+    </div>
+
+    <main class="leads-grid" id="leadsGrid">
+        <!-- Cards will be injected here -->
+    </main>
+
+    <script>
+        // DATA_INJECTION_START
+        const leadsData = [
+    {
+        "id": 1,
+        "industry": "Solar",
+        "name": "Glen Ellios Pty LTD",
+        "location": "Goodwood",
+        "rating": "5.0",
+        "liveUrl": "https://iederees-create.github.io/glen-ellios-solar-ct/",
+        "waLink": "https://wa.me/27691039281?text=Hi%20Glen%20Ellios%20Pty%20LTD%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fglen-ellios-solar-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Glen Ellios Pty LTD",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Glen Ellios Pty LTD:\n\nhttps://iederees-create.github.io/glen-ellios-solar-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Goodwood\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 2,
+        "industry": "Solar",
+        "name": "Sunlec Energy Solutions",
+        "location": "Parow",
+        "rating": "4.9",
+        "liveUrl": "https://iederees-create.github.io/sunlec-energy-solutions-ct/",
+        "waLink": "https://wa.me/27678799789?text=Hi%20Sunlec%20Energy%20Solutions%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fsunlec-energy-solutions-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Sunlec Energy Solutions",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Sunlec Energy Solutions:\n\nhttps://iederees-create.github.io/sunlec-energy-solutions-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Parow\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 3,
+        "industry": "Solar",
+        "name": "Eco Direct Solar",
+        "location": "Mitchells Plain",
+        "rating": "5.0",
+        "liveUrl": "https://iederees-create.github.io/eco-direct-solar-ct/",
+        "waLink": "https://wa.me/27812136586?text=Hi%20Eco%20Direct%20Solar%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Feco-direct-solar-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Eco Direct Solar",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Eco Direct Solar:\n\nhttps://iederees-create.github.io/eco-direct-solar-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Mitchells Plain\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 4,
+        "industry": "Solar",
+        "name": "Solar Way Cape Town",
+        "location": "Mitchells Plain",
+        "rating": "4.1",
+        "liveUrl": "https://iederees-create.github.io/solar-way-ct-ct/",
+        "waLink": "https://wa.me/27846664381?text=Hi%20Solar%20Way%20Cape%20Town%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fsolar-way-ct-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Solar Way Cape Town",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Solar Way Cape Town:\n\nhttps://iederees-create.github.io/solar-way-ct-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Mitchells Plain\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 5,
+        "industry": "Solar",
+        "name": "Green Star Solar",
+        "location": "Mitchells Plain",
+        "rating": "5.0",
+        "liveUrl": "https://iederees-create.github.io/green-star-solar-ct/",
+        "waLink": "https://wa.me/27765588679?text=Hi%20Green%20Star%20Solar%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fgreen-star-solar-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Green Star Solar",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Green Star Solar:\n\nhttps://iederees-create.github.io/green-star-solar-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Mitchells Plain\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 6,
+        "industry": "Solar",
+        "name": "Solar Dot Com",
+        "location": "Mitchells Plain",
+        "rating": "4.9",
+        "liveUrl": "https://iederees-create.github.io/solar-dot-com-ct-ct/",
+        "waLink": "https://wa.me/27213916620?text=Hi%20Solar%20Dot%20Com%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fsolar-dot-com-ct-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Solar Dot Com",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Solar Dot Com:\n\nhttps://iederees-create.github.io/solar-dot-com-ct-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Mitchells Plain\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 7,
+        "industry": "Solar",
+        "name": "D.H.S Solar",
+        "location": "Bishop Lavis",
+        "rating": "5.0",
+        "liveUrl": "https://iederees-create.github.io/dhs-solar-ct/",
+        "waLink": "https://wa.me/27817277511?text=Hi%20D.H.S%20Solar%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fdhs-solar-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for D.H.S Solar",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for D.H.S Solar:\n\nhttps://iederees-create.github.io/dhs-solar-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Bishop Lavis\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 8,
+        "industry": "Solar",
+        "name": "R and S Solar Installations",
+        "location": "Belhar",
+        "rating": "5.0",
+        "liveUrl": "https://iederees-create.github.io/rs-solar-installations-ct/",
+        "waLink": "https://wa.me/27736612470?text=Hi%20R%20and%20S%20Solar%20Installations%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Frs-solar-installations-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for R and S Solar Installations",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for R and S Solar Installations:\n\nhttps://iederees-create.github.io/rs-solar-installations-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Belhar\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 9,
+        "industry": "Solar",
+        "name": "A.C Solar Solutions",
+        "location": "Parow",
+        "rating": "4.9",
+        "liveUrl": "https://iederees-create.github.io/ac-solar-solutions-ct/",
+        "waLink": "https://wa.me/27828565642?text=Hi%20A.C%20Solar%20Solutions%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fac-solar-solutions-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for A.C Solar Solutions",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for A.C Solar Solutions:\n\nhttps://iederees-create.github.io/ac-solar-solutions-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Parow\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 10,
+        "industry": "Solar",
+        "name": "Thomas Electrical",
+        "location": "Wynberg",
+        "rating": "5.0",
+        "liveUrl": "https://iederees-create.github.io/thomas-electrical-solar-ct/",
+        "waLink": "https://wa.me/27847222456?text=Hi%20Thomas%20Electrical%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fthomas-electrical-solar-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Thomas Electrical",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Thomas Electrical:\n\nhttps://iederees-create.github.io/thomas-electrical-solar-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Wynberg\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 11,
+        "industry": "Wellness",
+        "name": "Sea Point Skin Clinic",
+        "location": "Sea Point",
+        "rating": "4.8",
+        "liveUrl": "https://iederees-create.github.io/seapoint-skin-clinic-ct/",
+        "waLink": "https://wa.me/27721112200?text=Hi%20Sea%20Point%20Skin%20Clinic%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fseapoint-skin-clinic-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Sea Point Skin Clinic",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Sea Point Skin Clinic:\n\nhttps://iederees-create.github.io/seapoint-skin-clinic-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Sea Point\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 12,
+        "industry": "Wellness",
+        "name": "Azalea Aesthetics",
+        "location": "Claremont",
+        "rating": "4.9",
+        "liveUrl": "https://iederees-create.github.io/azalea-aesthetics-ct-ct/",
+        "waLink": "https://wa.me/27832345678?text=Hi%20Azalea%20Aesthetics%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fazalea-aesthetics-ct-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Azalea Aesthetics",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Azalea Aesthetics:\n\nhttps://iederees-create.github.io/azalea-aesthetics-ct-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Claremont\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 13,
+        "industry": "Wellness",
+        "name": "Vitality Wellness Claremont",
+        "location": "Claremont",
+        "rating": "4.7",
+        "liveUrl": "https://iederees-create.github.io/vitality-wellness-claremont-ct/",
+        "waLink": "https://wa.me/27718765432?text=Hi%20Vitality%20Wellness%20Claremont%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fvitality-wellness-claremont-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Vitality Wellness Claremont",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Vitality Wellness Claremont:\n\nhttps://iederees-create.github.io/vitality-wellness-claremont-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Claremont\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 14,
+        "industry": "Wellness",
+        "name": "Camps Bay Aesthetics",
+        "location": "Camps Bay",
+        "rating": "5.0",
+        "liveUrl": "https://iederees-create.github.io/camps-bay-aesthetics-ct/",
+        "waLink": "https://wa.me/27794567890?text=Hi%20Camps%20Bay%20Aesthetics%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fcamps-bay-aesthetics-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Camps Bay Aesthetics",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Camps Bay Aesthetics:\n\nhttps://iederees-create.github.io/camps-bay-aesthetics-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Camps Bay\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 15,
+        "industry": "Wellness",
+        "name": "Lumina Skin Studio",
+        "location": "Kenilworth",
+        "rating": "4.8",
+        "liveUrl": "https://iederees-create.github.io/lumina-skin-studio-ct/",
+        "waLink": "https://wa.me/27612349876?text=Hi%20Lumina%20Skin%20Studio%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Flumina-skin-studio-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Lumina Skin Studio",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Lumina Skin Studio:\n\nhttps://iederees-create.github.io/lumina-skin-studio-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Kenilworth\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 16,
+        "industry": "Wellness",
+        "name": "Renewal Medi-Spa",
+        "location": "Bellville",
+        "rating": "4.6",
+        "liveUrl": "https://iederees-create.github.io/renewal-med-spa-ct/",
+        "waLink": "https://wa.me/27825678901?text=Hi%20Renewal%20Medi-Spa%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Frenewal-med-spa-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Renewal Medi-Spa",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Renewal Medi-Spa:\n\nhttps://iederees-create.github.io/renewal-med-spa-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Bellville\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 17,
+        "industry": "Wellness",
+        "name": "Glow Republic CT",
+        "location": "Sea Point",
+        "rating": "4.9",
+        "liveUrl": "https://iederees-create.github.io/glow-republic-ct-ct/",
+        "waLink": "https://wa.me/27748901234?text=Hi%20Glow%20Republic%20CT%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fglow-republic-ct-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Glow Republic CT",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Glow Republic CT:\n\nhttps://iederees-create.github.io/glow-republic-ct-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Sea Point\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 18,
+        "industry": "Wellness",
+        "name": "Serenity Body Lab",
+        "location": "Wynberg",
+        "rating": "4.7",
+        "liveUrl": "https://iederees-create.github.io/serenity-body-lab-ct/",
+        "waLink": "https://wa.me/27660123456?text=Hi%20Serenity%20Body%20Lab%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fserenity-body-lab-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Serenity Body Lab",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Serenity Body Lab:\n\nhttps://iederees-create.github.io/serenity-body-lab-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Wynberg\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 19,
+        "industry": "Wellness",
+        "name": "Precision Laser Cape Town",
+        "location": "Durbanville",
+        "rating": "4.8",
+        "liveUrl": "https://iederees-create.github.io/precision-laser-ct-ct/",
+        "waLink": "https://wa.me/27839012345?text=Hi%20Precision%20Laser%20Cape%20Town%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fprecision-laser-ct-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Precision Laser Cape Town",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Precision Laser Cape Town:\n\nhttps://iederees-create.github.io/precision-laser-ct-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Durbanville\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 20,
+        "industry": "Wellness",
+        "name": "Pure Aesthetics Tygervalley",
+        "location": "Tygervalley",
+        "rating": "4.9",
+        "liveUrl": "https://iederees-create.github.io/pure-aesthetics-tygervalley-ct/",
+        "waLink": "https://wa.me/27783456789?text=Hi%20Pure%20Aesthetics%20Tygervalley%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fpure-aesthetics-tygervalley-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Pure Aesthetics Tygervalley",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Pure Aesthetics Tygervalley:\n\nhttps://iederees-create.github.io/pure-aesthetics-tygervalley-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Tygervalley\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 21,
+        "industry": "Wellness",
+        "name": "Form Wellness Studio",
+        "location": "Observatory",
+        "rating": "4.7",
+        "liveUrl": "https://iederees-create.github.io/form-wellness-studio-ct/",
+        "waLink": "https://wa.me/27618901234?text=Hi%20Form%20Wellness%20Studio%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fform-wellness-studio-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Form Wellness Studio",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Form Wellness Studio:\n\nhttps://iederees-create.github.io/form-wellness-studio-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Observatory\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 22,
+        "industry": "Wellness",
+        "name": "Aqua Beauty Studios",
+        "location": "Tableview",
+        "rating": "4.8",
+        "liveUrl": "https://iederees-create.github.io/aqua-beauty-studios-ct/",
+        "waLink": "https://wa.me/27681234567?text=Hi%20Aqua%20Beauty%20Studios%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Faqua-beauty-studios-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Aqua Beauty Studios",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Aqua Beauty Studios:\n\nhttps://iederees-create.github.io/aqua-beauty-studios-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Tableview\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 23,
+        "industry": "Wellness",
+        "name": "Meridian Clinic CT",
+        "location": "Parow",
+        "rating": "4.6",
+        "liveUrl": "https://iederees-create.github.io/meridian-clinic-ct-ct/",
+        "waLink": "https://wa.me/27722345678?text=Hi%20Meridian%20Clinic%20CT%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fmeridian-clinic-ct-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Meridian Clinic CT",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Meridian Clinic CT:\n\nhttps://iederees-create.github.io/meridian-clinic-ct-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Parow\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 24,
+        "industry": "Wellness",
+        "name": "BodySculpt Cape Town",
+        "location": "Century City",
+        "rating": "5.0",
+        "liveUrl": "https://iederees-create.github.io/bodysculpt-cape-town-ct/",
+        "waLink": "https://wa.me/27845678901?text=Hi%20BodySculpt%20Cape%20Town%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fbodysculpt-cape-town-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for BodySculpt Cape Town",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for BodySculpt Cape Town:\n\nhttps://iederees-create.github.io/bodysculpt-cape-town-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Century City\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 25,
+        "industry": "Wellness",
+        "name": "Arc Wellness Sea Point",
+        "location": "Sea Point",
+        "rating": "4.8",
+        "liveUrl": "https://iederees-create.github.io/arc-wellness-seapoint-ct/",
+        "waLink": "https://wa.me/27766789012?text=Hi%20Arc%20Wellness%20Sea%20Point%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Farc-wellness-seapoint-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Arc Wellness Sea Point",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Arc Wellness Sea Point:\n\nhttps://iederees-create.github.io/arc-wellness-seapoint-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Sea Point\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 26,
+        "industry": "Wellness",
+        "name": "Revive Medi-Spa Claremont",
+        "location": "Claremont",
+        "rating": "4.9",
+        "liveUrl": "https://iederees-create.github.io/revive-medispa-claremont-ct/",
+        "waLink": "https://wa.me/27617890123?text=Hi%20Revive%20Medi-Spa%20Claremont%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Frevive-medispa-claremont-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Revive Medi-Spa Claremont",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Revive Medi-Spa Claremont:\n\nhttps://iederees-create.github.io/revive-medispa-claremont-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Claremont\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 27,
+        "industry": "Wellness",
+        "name": "Alpine Aesthetics CT",
+        "location": "Hout Bay",
+        "rating": "4.7",
+        "liveUrl": "https://iederees-create.github.io/alpine-aesthetics-ct-ct/",
+        "waLink": "https://wa.me/27838901234?text=Hi%20Alpine%20Aesthetics%20CT%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Falpine-aesthetics-ct-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Alpine Aesthetics CT",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Alpine Aesthetics CT:\n\nhttps://iederees-create.github.io/alpine-aesthetics-ct-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Hout Bay\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 28,
+        "industry": "Wellness",
+        "name": "Zen Skin Studio Bellville",
+        "location": "Bellville",
+        "rating": "4.8",
+        "liveUrl": "https://iederees-create.github.io/zen-skin-studio-bv-ct/",
+        "waLink": "https://wa.me/27749012345?text=Hi%20Zen%20Skin%20Studio%20Bellville%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fzen-skin-studio-bv-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Zen Skin Studio Bellville",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Zen Skin Studio Bellville:\n\nhttps://iederees-create.github.io/zen-skin-studio-bv-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Bellville\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 29,
+        "industry": "Wellness",
+        "name": "Nova Cosmetic Clinic",
+        "location": "Durbanville",
+        "rating": "4.9",
+        "liveUrl": "https://iederees-create.github.io/nova-cosmetic-clinic-ct/",
+        "waLink": "https://wa.me/27680123456?text=Hi%20Nova%20Cosmetic%20Clinic%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fnova-cosmetic-clinic-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Nova Cosmetic Clinic",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Nova Cosmetic Clinic:\n\nhttps://iederees-create.github.io/nova-cosmetic-clinic-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Durbanville\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 30,
+        "industry": "Wellness",
+        "name": "Elite Wellness CT",
+        "location": "Milnerton",
+        "rating": "4.7",
+        "liveUrl": "https://iederees-create.github.io/elite-wellness-ct-ct/",
+        "waLink": "https://wa.me/27721234567?text=Hi%20Elite%20Wellness%20CT%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Felite-wellness-ct-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Elite Wellness CT",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Elite Wellness CT:\n\nhttps://iederees-create.github.io/elite-wellness-ct-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Milnerton\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 31,
+        "industry": "Maintenance",
+        "name": "Cape Clean Pro",
+        "location": "Goodwood",
+        "rating": "4.8",
+        "liveUrl": "https://iederees-create.github.io/cape-clean-pro-ct/",
+        "waLink": "https://wa.me/27832345678?text=Hi%20Cape%20Clean%20Pro%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fcape-clean-pro-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Cape Clean Pro",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Cape Clean Pro:\n\nhttps://iederees-create.github.io/cape-clean-pro-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Goodwood\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 32,
+        "industry": "Maintenance",
+        "name": "Northern Suburbs Plumbing",
+        "location": "Durbanville",
+        "rating": "4.9",
+        "liveUrl": "https://iederees-create.github.io/northern-subs-plumbing-ct/",
+        "waLink": "https://wa.me/27763456789?text=Hi%20Northern%20Suburbs%20Plumbing%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fnorthern-subs-plumbing-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Northern Suburbs Plumbing",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Northern Suburbs Plumbing:\n\nhttps://iederees-create.github.io/northern-subs-plumbing-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Durbanville\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 33,
+        "industry": "Maintenance",
+        "name": "Westlake Pest Control",
+        "location": "Westlake",
+        "rating": "4.7",
+        "liveUrl": "https://iederees-create.github.io/westlake-pest-control-ct/",
+        "waLink": "https://wa.me/27824567890?text=Hi%20Westlake%20Pest%20Control%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fwestlake-pest-control-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Westlake Pest Control",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Westlake Pest Control:\n\nhttps://iederees-create.github.io/westlake-pest-control-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Westlake\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 34,
+        "industry": "Maintenance",
+        "name": "Paarden Eiland Electrical",
+        "location": "Paarden Eiland",
+        "rating": "5.0",
+        "liveUrl": "https://iederees-create.github.io/paarden-eiland-electric-ct/",
+        "waLink": "https://wa.me/27615678901?text=Hi%20Paarden%20Eiland%20Electrical%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fpaarden-eiland-electric-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Paarden Eiland Electrical",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Paarden Eiland Electrical:\n\nhttps://iederees-create.github.io/paarden-eiland-electric-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Paarden Eiland\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 35,
+        "industry": "Maintenance",
+        "name": "CT Roofing Specialists",
+        "location": "Kuils River",
+        "rating": "4.8",
+        "liveUrl": "https://iederees-create.github.io/ct-roofing-specialists-ct/",
+        "waLink": "https://wa.me/27746789012?text=Hi%20CT%20Roofing%20Specialists%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fct-roofing-specialists-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for CT Roofing Specialists",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for CT Roofing Specialists:\n\nhttps://iederees-create.github.io/ct-roofing-specialists-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Kuils River\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 36,
+        "industry": "Maintenance",
+        "name": "Metro Aircon Cape Town",
+        "location": "Bellville",
+        "rating": "4.6",
+        "liveUrl": "https://iederees-create.github.io/metro-aircon-ct-ct/",
+        "waLink": "https://wa.me/27687890123?text=Hi%20Metro%20Aircon%20Cape%20Town%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fmetro-aircon-ct-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Metro Aircon Cape Town",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Metro Aircon Cape Town:\n\nhttps://iederees-create.github.io/metro-aircon-ct-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Bellville\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 37,
+        "industry": "Maintenance",
+        "name": "Southern Suburbs Builders",
+        "location": "Kenilworth",
+        "rating": "4.9",
+        "liveUrl": "https://iederees-create.github.io/southern-suburbs-builders-ct/",
+        "waLink": "https://wa.me/27728901234?text=Hi%20Southern%20Suburbs%20Builders%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fsouthern-suburbs-builders-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Southern Suburbs Builders",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Southern Suburbs Builders:\n\nhttps://iederees-create.github.io/southern-suburbs-builders-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Kenilworth\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 38,
+        "industry": "Maintenance",
+        "name": "Hydro Clean CT",
+        "location": "Brackenfell",
+        "rating": "4.7",
+        "liveUrl": "https://iederees-create.github.io/hydro-clean-ct-ct/",
+        "waLink": "https://wa.me/27839012345?text=Hi%20Hydro%20Clean%20CT%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fhydro-clean-ct-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Hydro Clean CT",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Hydro Clean CT:\n\nhttps://iederees-create.github.io/hydro-clean-ct-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Brackenfell\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 39,
+        "industry": "Maintenance",
+        "name": "Cape Handyman Services",
+        "location": "Parow",
+        "rating": "4.8",
+        "liveUrl": "https://iederees-create.github.io/cape-handyman-services-ct/",
+        "waLink": "https://wa.me/27760123456?text=Hi%20Cape%20Handyman%20Services%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fcape-handyman-services-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Cape Handyman Services",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Cape Handyman Services:\n\nhttps://iederees-create.github.io/cape-handyman-services-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Parow\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 40,
+        "industry": "Maintenance",
+        "name": "GreenPest CT",
+        "location": "Durbanville",
+        "rating": "4.9",
+        "liveUrl": "https://iederees-create.github.io/greenpest-ct-ct/",
+        "waLink": "https://wa.me/27821234567?text=Hi%20GreenPest%20CT%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fgreenpest-ct-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for GreenPest CT",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for GreenPest CT:\n\nhttps://iederees-create.github.io/greenpest-ct-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Durbanville\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 41,
+        "industry": "Maintenance",
+        "name": "Acme Plumbing Claremont",
+        "location": "Claremont",
+        "rating": "4.7",
+        "liveUrl": "https://iederees-create.github.io/acme-plumbing-claremont-ct/",
+        "waLink": "https://wa.me/27612345678?text=Hi%20Acme%20Plumbing%20Claremont%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Facme-plumbing-claremont-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Acme Plumbing Claremont",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Acme Plumbing Claremont:\n\nhttps://iederees-create.github.io/acme-plumbing-claremont-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Claremont\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 42,
+        "industry": "Maintenance",
+        "name": "All Seasons Aircon CT",
+        "location": "Tygervalley",
+        "rating": "4.8",
+        "liveUrl": "https://iederees-create.github.io/all-seasons-aircon-ct/",
+        "waLink": "https://wa.me/27743456789?text=Hi%20All%20Seasons%20Aircon%20CT%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fall-seasons-aircon-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for All Seasons Aircon CT",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for All Seasons Aircon CT:\n\nhttps://iederees-create.github.io/all-seasons-aircon-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Tygervalley\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 43,
+        "industry": "Maintenance",
+        "name": "Cape Waterproofing Co",
+        "location": "Wetton",
+        "rating": "4.6",
+        "liveUrl": "https://iederees-create.github.io/cape-waterproofing-co-ct/",
+        "waLink": "https://wa.me/27684567890?text=Hi%20Cape%20Waterproofing%20Co%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fcape-waterproofing-co-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Cape Waterproofing Co",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Cape Waterproofing Co:\n\nhttps://iederees-create.github.io/cape-waterproofing-co-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Wetton\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 44,
+        "industry": "Maintenance",
+        "name": "Rapid Response Electrical",
+        "location": "Durbanville",
+        "rating": "5.0",
+        "liveUrl": "https://iederees-create.github.io/rapid-response-electric-ct/",
+        "waLink": "https://wa.me/27725678901?text=Hi%20Rapid%20Response%20Electrical%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Frapid-response-electric-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Rapid Response Electrical",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Rapid Response Electrical:\n\nhttps://iederees-create.github.io/rapid-response-electric-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Durbanville\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 45,
+        "industry": "Maintenance",
+        "name": "Tableview Tiling CT",
+        "location": "Tableview",
+        "rating": "4.7",
+        "liveUrl": "https://iederees-create.github.io/tableview-tiling-ct-ct/",
+        "waLink": "https://wa.me/27836789012?text=Hi%20Tableview%20Tiling%20CT%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Ftableview-tiling-ct-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Tableview Tiling CT",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Tableview Tiling CT:\n\nhttps://iederees-create.github.io/tableview-tiling-ct-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Tableview\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 46,
+        "industry": "Maintenance",
+        "name": "Eco Clean Northern Suburbs",
+        "location": "Kuilsriver",
+        "rating": "4.8",
+        "liveUrl": "https://iederees-create.github.io/eco-clean-northern-subs-ct/",
+        "waLink": "https://wa.me/27767890123?text=Hi%20Eco%20Clean%20Northern%20Suburbs%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Feco-clean-northern-subs-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Eco Clean Northern Suburbs",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Eco Clean Northern Suburbs:\n\nhttps://iederees-create.github.io/eco-clean-northern-subs-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Kuilsriver\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 47,
+        "industry": "Maintenance",
+        "name": "CT Pool Care",
+        "location": "Constantia",
+        "rating": "4.9",
+        "liveUrl": "https://iederees-create.github.io/ct-pool-care-ct/",
+        "waLink": "https://wa.me/27828901234?text=Hi%20CT%20Pool%20Care%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fct-pool-care-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for CT Pool Care",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for CT Pool Care:\n\nhttps://iederees-create.github.io/ct-pool-care-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Constantia\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 48,
+        "industry": "Maintenance",
+        "name": "Summit Painting CT",
+        "location": "Pinelands",
+        "rating": "4.7",
+        "liveUrl": "https://iederees-create.github.io/summit-painting-ct-ct/",
+        "waLink": "https://wa.me/27619012345?text=Hi%20Summit%20Painting%20CT%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fsummit-painting-ct-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Summit Painting CT",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Summit Painting CT:\n\nhttps://iederees-create.github.io/summit-painting-ct-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Pinelands\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 49,
+        "industry": "Maintenance",
+        "name": "Window Wizards CT",
+        "location": "Blouberg",
+        "rating": "4.8",
+        "liveUrl": "https://iederees-create.github.io/window-wizards-ct-ct/",
+        "waLink": "https://wa.me/27740123456?text=Hi%20Window%20Wizards%20CT%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Fwindow-wizards-ct-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for Window Wizards CT",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for Window Wizards CT:\n\nhttps://iederees-create.github.io/window-wizards-ct-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Blouberg\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    },
+    {
+        "id": 50,
+        "industry": "Maintenance",
+        "name": "First Choice Construction",
+        "location": "Bellville",
+        "rating": "4.9",
+        "liveUrl": "https://iederees-create.github.io/first-choice-construction-ct/",
+        "waLink": "https://wa.me/27681234567?text=Hi%20First%20Choice%20Construction%2C%20I'm%20a%20local%20Cape%20Town%20web%20developer.%20I've%20built%20a%20premium%20website%20for%20you%3A%20https%3A%2F%2Fiederees-create.github.io%2Ffirst-choice-construction-ct%2F%20%E2%80%94%20I%20also%20stay%20on%20as%20your%20dedicated%20web%20manager.%20Interested%3F",
+        "emailSubj": "Premium Website Ready for First Choice Construction",
+        "emailBody": "Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for First Choice Construction:\n\nhttps://iederees-create.github.io/first-choice-construction-ct/\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for Bellville\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create"
+    }
+];
+        // DATA_INJECTION_END
+
+        // VECTOR_INJECTION_START
+        const vectorData = [
+    {
+        "id": 1,
+        "industry": "Vector",
+        "category": "Service",
+        "name": "FitnessPro",
+        "location": "Fitness & Biometrics",
+        "rating": "VETTED",
+        "liveUrl": "https://iederees-create.github.io/vector-fitness-pro/",
+        "description": "Elite athlete management & biometric tracking ecosystem."
+    },
+    {
+        "id": 2,
+        "industry": "Vector",
+        "category": "Service",
+        "name": "PropMaster",
+        "location": "Real Estate & Logistics",
+        "rating": "VETTED",
+        "liveUrl": "https://iederees-create.github.io/vector-prop-master/",
+        "description": "Autonomous building logistics & premium property management."
+    },
+    {
+        "id": 3,
+        "industry": "Vector",
+        "category": "SaaS",
+        "name": "ConsultFlow",
+        "location": "Business & Strategy",
+        "rating": "VETTED",
+        "liveUrl": "https://iederees-create.github.io/vector-consult-flow/",
+        "description": "High-level strategic mission control for consultancy firms."
+    },
+    {
+        "id": 4,
+        "industry": "Vector",
+        "category": "SaaS",
+        "name": "OmniShield",
+        "location": "Cybersecurity & IT",
+        "rating": "VETTED",
+        "liveUrl": "https://iederees-create.github.io/vector-omni-shield/",
+        "description": "Enterprise-grade perimeter security & infrastructure management."
+    },
+    {
+        "id": 5,
+        "industry": "Vector",
+        "category": "Service",
+        "name": "LifeScale",
+        "location": "Longevity & Wellness",
+        "rating": "VETTED",
+        "liveUrl": "https://iederees-create.github.io/vector-lifescale/",
+        "description": "Longevity research and laboratory optimization dashboard."
+    },
+    {
+        "id": 6,
+        "industry": "Vector",
+        "category": "SaaS",
+        "name": "LegalVault",
+        "location": "Legal & Compliance",
+        "rating": "VETTED",
+        "liveUrl": "https://iederees-create.github.io/vector-legal-vault/",
+        "description": "Global discovery governance and legal asset archival."
+    },
+    {
+        "id": 7,
+        "industry": "Vector",
+        "category": "SaaS",
+        "name": "AssetAnchor",
+        "location": "Wealth & Finance",
+        "rating": "VETTED",
+        "liveUrl": "https://iederees-create.github.io/vector-asset-anchor/",
+        "description": "Capital strategy & stealth wealth management platform."
+    },
+    {
+        "id": 8,
+        "industry": "Vector",
+        "category": "SaaS",
+        "name": "SignalGrid",
+        "location": "Telecom & Comms",
+        "rating": "VETTED",
+        "liveUrl": "https://iederees-create.github.io/vector-signal-grid/",
+        "description": "Encrypted network hardening and secure communication grid."
+    },
+    {
+        "id": 9,
+        "industry": "Vector",
+        "category": "Service",
+        "name": "JetStream",
+        "location": "Aviation & Logistics",
+        "rating": "VETTED",
+        "liveUrl": "https://iederees-create.github.io/vector-jet-stream/",
+        "description": "Tactical aviation logistics and flight plan coordination."
+    },
+    {
+        "id": 10,
+        "industry": "Vector",
+        "category": "Service",
+        "name": "TerraForm",
+        "location": "Property Development",
+        "rating": "VETTED",
+        "liveUrl": "https://iederees-create.github.io/vector-terra-form/",
+        "description": "Strategic land acquisition and property development OS."
+    },
+    {
+        "id": 11,
+        "industry": "Vector",
+        "category": "SaaS",
+        "name": "DeepState",
+        "location": "Data & Archival",
+        "rating": "VETTED",
+        "liveUrl": "https://iederees-create.github.io/vector-deep-state/",
+        "description": "Sovereignty ledger and secure DNA/Data archival system."
+    },
+    {
+        "id": 12,
+        "industry": "Vector",
+        "category": "SaaS",
+        "name": "CognitiveOps",
+        "location": "HR Tech & Psychology",
+        "rating": "VETTED",
+        "liveUrl": "https://iederees-create.github.io/vector-cognitive-ops/",
+        "description": "Cognitive alpha tracking and social-drift analytics."
+    }
+];
+        // VECTOR_INJECTION_END
+
+        const leadsGrid = document.getElementById('leadsGrid');
+        const searchInput = document.getElementById('searchInput');
+        const vectorSearch = document.getElementById('vectorSearch');
+        const filterBtns = document.querySelectorAll('#localControls .filter-btn');
+        const vectorFilterBtns = document.querySelectorAll('#vectorControls .filter-btn');
+        const statsBar = document.getElementById('statsBar');
+        const btnLocal = document.getElementById('btnLocal');
+        const btnVector = document.getElementById('btnVector');
+        const localControls = document.getElementById('localControls');
+        const vectorControls = document.getElementById('vectorControls');
+
+        let activeFilter = 'All';
+        let activeVectorFilter = 'All';
+        let currentMode = 'local';
+
+        function renderLeads() {
+            if (currentMode === 'local') {
+                renderLocalLeads();
+            } else {
+                renderVectorBlueprints();
+            }
+        }
+
+        function renderLocalLeads() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const filtered = leadsData.filter(lead => {
+                const matchesSearch = lead.name.toLowerCase().includes(searchTerm) || lead.location.toLowerCase().includes(searchTerm);
+                const matchesFilter = activeFilter === 'All' || lead.industry === activeFilter;
+                return matchesSearch && matchesFilter;
+            });
+
+            leadsGrid.innerHTML = filtered.map(lead => `
+                <div class="lead-card" data-industry="${lead.industry}">
+                    <span class="industry-tag">${lead.industry}</span>
+                    <h2 class="business-name">${lead.name}</h2>
+                    <div class="location-info">
+                        <span>📍 ${lead.location}</span>
+                        <span class="rating">⭐ ${lead.rating}</span>
+                    </div>
+                    <div class="actions">
+                        <a href="${lead.liveUrl}" target="_blank" class="btn btn-ghost">View Live Demo</a>
+                        <div class="action-row">
+                            <a href="${lead.waLink}" target="_blank" class="btn btn-primary" style="font-size: 0.7rem;">WhatsApp</a>
+                            <a href="mailto:?subject=${encodeURIComponent(lead.emailSubj)}&body=${encodeURIComponent(lead.emailBody)}" class="btn btn-rose" style="font-size: 0.7rem;">Email Pitch</a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            updateStats(filtered.length);
+        }
+
+        function renderVectorBlueprints() {
+            const searchTerm = vectorSearch.value.toLowerCase();
+            const filtered = vectorData.filter(node => {
+                const matchesSearch = node.name.toLowerCase().includes(searchTerm) || node.location.toLowerCase().includes(searchTerm);
+                const matchesFilter = activeVectorFilter === 'All' || node.category === activeVectorFilter;
+                return matchesSearch && matchesFilter;
+            });
+
+            leadsGrid.innerHTML = filtered.map(node => `
+                <div class="lead-card" data-industry="Vector">
+                    <span class="industry-tag">VECTOR // ${node.category}</span>
+                    <h2 class="business-name">${node.name}</h2>
+                    <div class="location-info">
+                        <span style="color:var(--accent-green)">⚡ ${node.location}</span>
+                        <span class="rating" style="border-color:var(--accent-green);color:var(--accent-green)">${node.rating}</span>
+                    </div>
+                    <p style="font-size:0.85rem; color:var(--text-dim); margin-bottom:20px; line-height:1.4">${node.description}</p>
+                    <div class="actions">
+                        <a href="${node.liveUrl}" target="_blank" class="btn btn-ghost">View Live Demo</a>
+                        <a href="https://www.etsy.com/shop/iedereescreate" target="_blank" class="btn btn-green">Etsy Listing</a>
+                    </div>
+                </div>
+            `).join('');
+
+            updateStats(filtered.length);
+        }
+
+        function updateStats(count) {
+            if (currentMode === 'local') {
+                statsBar.innerHTML = `
+                    <div class="stat-item">Local Leads: <b>${count}</b></div>
+                    <div class="stat-item">Solar: <b>${leadsData.filter(l => l.industry === 'Solar').length}</b></div>
+                    <div class="stat-item">Wellness: <b>${leadsData.filter(l => l.industry === 'Wellness').length}</b></div>
+                `;
+            } else {
+                statsBar.innerHTML = `
+                    <div class="stat-item">Vector Blueprints: <b>${count}</b></div>
+                    <div class="stat-item">SaaS Units: <b>${vectorData.filter(v => v.category === 'SaaS').length}</b></div>
+                    <div class="stat-item">Service Units: <b>${vectorData.filter(v => v.category === 'Service').length}</b></div>
+                `;
+            }
+        }
+
+        searchInput.addEventListener('input', renderLeads);
+        vectorSearch.addEventListener('input', renderLeads);
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                activeFilter = btn.dataset.industry;
+                renderLeads();
+            });
+        });
+
+        vectorFilterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                vectorFilterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                activeVectorFilter = btn.dataset.category;
+                renderLeads();
+            });
+        });
+
+        btnLocal.addEventListener('click', () => {
+            btnLocal.classList.add('active');
+            btnVector.classList.remove('active');
+            localControls.style.display = 'flex';
+            vectorControls.style.display = 'none';
+            currentMode = 'local';
+            renderLeads();
+        });
+
+        btnVector.addEventListener('click', () => {
+            btnVector.classList.add('active');
+            btnLocal.classList.remove('active');
+            localControls.style.display = 'none';
+            vectorControls.style.display = 'flex';
+            currentMode = 'vector';
+            renderLeads();
+        });
+
+        // Initial render
+        renderLeads();
+    </script>
+</body>
+
+</html>

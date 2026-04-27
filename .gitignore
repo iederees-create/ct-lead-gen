@@ -1,6 +1,5 @@
 # Security - never commit this
 GITHUB_TOKEN.txt
 
-# Individual client git repos are already on GitHub separately
-# Exclude their .git folders from being treated as submodules
-clients/**/.git
+# Individual client folders are generated and pushed as separate repos
+clients/

@@ -7,7 +7,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const BASE = "C:/Users/afrancis/Desktop/qm/CT-Lead-Gen";
+const BASE = "/home/iedrees/Workspace/ct-lead-gen";
 const CLIENTS = path.join(BASE, "clients");
 const TEMPLATES = path.join(BASE, "templates");
 
@@ -65,6 +65,21 @@ const leads = [
   { slug:"summit-painting-ct",          name:"Summit Painting CT",                phone:"27619012345", location:"Pinelands",       industry:"Maintenance", rating:4.7, svc:"painting" },
   { slug:"window-wizards-ct",           name:"Window Wizards CT",                 phone:"27740123456", location:"Blouberg",        industry:"Maintenance", rating:4.8, svc:"window"   },
   { slug:"first-choice-construction",   name:"First Choice Construction",         phone:"27681234567", location:"Bellville",       industry:"Maintenance", rating:4.9, svc:"construction"}
+];
+
+const vectorBlueprints = [
+  { id: 1, industry: "Vector", category: "Service", name: "FitnessPro", location: "Fitness & Biometrics", rating: "VETTED", liveUrl: "https://iederees-create.github.io/vector-fitness-pro/", description: "Elite athlete management & biometric tracking ecosystem." },
+  { id: 2, industry: "Vector", category: "Service", name: "PropMaster", location: "Real Estate & Logistics", rating: "VETTED", liveUrl: "https://iederees-create.github.io/vector-prop-master/", description: "Autonomous building logistics & premium property management." },
+  { id: 3, industry: "Vector", category: "SaaS", name: "ConsultFlow", location: "Business & Strategy", rating: "VETTED", liveUrl: "https://iederees-create.github.io/vector-consult-flow/", description: "High-level strategic mission control for consultancy firms." },
+  { id: 4, industry: "Vector", category: "SaaS", name: "OmniShield", location: "Cybersecurity & IT", rating: "VETTED", liveUrl: "https://iederees-create.github.io/vector-omni-shield/", description: "Enterprise-grade perimeter security & infrastructure management." },
+  { id: 5, industry: "Vector", category: "Service", name: "LifeScale", location: "Longevity & Wellness", rating: "VETTED", liveUrl: "https://iederees-create.github.io/vector-lifescale/", description: "Longevity research and laboratory optimization dashboard." },
+  { id: 6, industry: "Vector", category: "SaaS", name: "LegalVault", location: "Legal & Compliance", rating: "VETTED", liveUrl: "https://iederees-create.github.io/vector-legal-vault/", description: "Global discovery governance and legal asset archival." },
+  { id: 7, industry: "Vector", category: "SaaS", name: "AssetAnchor", location: "Wealth & Finance", rating: "VETTED", liveUrl: "https://iederees-create.github.io/vector-asset-anchor/", description: "Capital strategy & stealth wealth management platform." },
+  { id: 8, industry: "Vector", category: "SaaS", name: "SignalGrid", location: "Telecom & Comms", rating: "VETTED", liveUrl: "https://iederees-create.github.io/vector-signal-grid/", description: "Encrypted network hardening and secure communication grid." },
+  { id: 9, industry: "Vector", category: "Service", name: "JetStream", location: "Aviation & Logistics", rating: "VETTED", liveUrl: "https://iederees-create.github.io/vector-jet-stream/", description: "Tactical aviation logistics and flight plan coordination." },
+  { id: 10, industry: "Vector", category: "Service", name: "TerraForm", location: "Property Development", rating: "VETTED", liveUrl: "https://iederees-create.github.io/vector-terra-form/", description: "Strategic land acquisition and property development OS." },
+  { id: 11, industry: "Vector", category: "SaaS", name: "DeepState", location: "Data & Archival", rating: "VETTED", liveUrl: "https://iederees-create.github.io/vector-deep-state/", description: "Sovereignty ledger and secure DNA/Data archival system." },
+  { id: 12, industry: "Vector", category: "SaaS", name: "CognitiveOps", location: "HR Tech & Psychology", rating: "VETTED", liveUrl: "https://iederees-create.github.io/vector-cognitive-ops/", description: "Cognitive alpha tracking and social-drift analytics." }
 ];
 
 const SVC_MAP = {
@@ -325,6 +340,7 @@ const templateCSS = {
 };
 
 const rows = ["Number,Industry,Business Name,Location,Rating,Repo Name,Live Demo URL,WhatsApp Pitch Link,Email Subject,Email Body"];
+const commandCenterLeads = [];
 
 leads.forEach((l, i) => {
   const dir = path.join(CLIENTS, l.slug);
@@ -347,6 +363,18 @@ leads.forEach((l, i) => {
   const csvLine = [i+1, l.industry, `"${l.name}"`, l.location, l.rating, repoName, liveUrl, `"${waPitch}"`, `"${emailSubj}"`, `"${emailBody.replace(/\n/g," | ")}"`].join(",");
   rows.push(csvLine);
 
+  commandCenterLeads.push({
+    id: i + 1,
+    industry: l.industry,
+    name: l.name,
+    location: l.location,
+    rating: l.rating.toFixed(1),
+    liveUrl: liveUrl,
+    waLink: waPitch,
+    emailSubj,
+    emailBody
+  });
+
   console.log(`[${String(i+1).padStart(2,"0")}/50] Built: ${l.name} (${l.industry}) -> ${dir}`);
 });
 
@@ -354,4 +382,27 @@ const csvPath = path.join(BASE, "leads", "CT_50_Outreach_Command_Center.csv");
 fs.writeFileSync(csvPath, rows.join("\n"), "utf8");
 console.log(`\n✅ All 50 sites generated locally.`);
 console.log(`📊 Outreach sheet: ${csvPath}`);
+
+// Sync Command Center dashboard
+const ccPath = path.join(BASE, "command-center.html");
+if (fs.existsSync(ccPath)) {
+  let ccContent = fs.readFileSync(ccPath, "utf8");
+  
+  const leadsJson = JSON.stringify(commandCenterLeads, null, 4);
+  const vectorJson = JSON.stringify(vectorBlueprints, null, 4);
+  
+  ccContent = ccContent.replace(
+    /\/\/ DATA_INJECTION_START[\s\S]*?\/\/ DATA_INJECTION_END/,
+    `// DATA_INJECTION_START\n        const leadsData = ${leadsJson};\n        // DATA_INJECTION_END`
+  );
+  
+  ccContent = ccContent.replace(
+    /\/\/ VECTOR_INJECTION_START[\s\S]*?\/\/ VECTOR_INJECTION_END/,
+    `// VECTOR_INJECTION_START\n        const vectorData = ${vectorJson};\n        // VECTOR_INJECTION_END`
+  );
+  
+  fs.writeFileSync(ccPath, ccContent, "utf8");
+  console.log(`✅ Command Center synced with latest data.`);
+}
+
 console.log(`\nNext: run deploy.ps1 to push all repos to GitHub Pages.`);

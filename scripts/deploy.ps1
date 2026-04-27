@@ -5,14 +5,14 @@
 # ============================================================
 
 $GitHubUser = "iederees-create"
-$ClientBase = "C:\Users\afrancis\Desktop\qm\CT-Lead-Gen\clients"
+$ClientBase = "/home/iedrees/Workspace/ct-lead-gen/clients"
 
 # ---- Verify git is available ----
 $gitPath = (Get-Command git -ErrorAction SilentlyContinue)
 if (-not $gitPath) { Write-Host "ERROR: git not found." -ForegroundColor Red; exit 1 }
 
 # ---- Read stored GitHub PAT from local file (fallback to prompt) ----
-$tokenFile = "C:\Users\afrancis\Desktop\qm\CT-Lead-Gen\GITHUB_TOKEN.txt"
+$tokenFile = "/home/iedrees/Workspace/ct-lead-gen/GITHUB_TOKEN.txt"
 if (Test-Path $tokenFile) {
     $pat = (Get-Content $tokenFile -Raw).Trim()
     Write-Host "Token loaded from file." -ForegroundColor Green
