@@ -383,8 +383,8 @@ fs.writeFileSync(csvPath, rows.join("\n"), "utf8");
 console.log(`\n✅ All 50 sites generated locally.`);
 console.log(`📊 Outreach sheet: ${csvPath}`);
 
-// Sync Command Center dashboard
-const ccPath = path.join(BASE, "command-center.html");
+// Sync Agency OS dashboard
+const ccPath = path.join(BASE, "index.html");
 if (fs.existsSync(ccPath)) {
   let ccContent = fs.readFileSync(ccPath, "utf8");
   
