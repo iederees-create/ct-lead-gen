@@ -129,6 +129,18 @@
             border-radius: 10px;
         }
 
+        .active-filter {
+            background: #fff !important;
+            color: #000 !important;
+            border-color: #fff !important;
+        }
+
+        .portfolio-section-label {
+            padding: 12px 0 8px 0;
+            border-bottom: 1px solid #1a1a1a;
+            margin-bottom: 16px;
+        }
+
         .gated-overlay {
             position: fixed;
             inset: 0;
@@ -204,13 +216,29 @@
             <!-- Tab: Vector Portfolio -->
             <div id="tab-portfolio" class="tab-content">
                 <section class="overview-panel hologram-panel">
-                    <div class="panel-header">
-                        <h2 class="war-room-title">The Vector // Elite Asset Ecosystem</h2>
-                        <span class="subtitle">Confidential Asset Portfolios & SaaS-as-an-Asset Showcase</span>
+                    <div class="panel-header" style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;">
+                        <div>
+                            <h2 class="war-room-title">The Vector // Elite Asset Ecosystem</h2>
+                            <span class="subtitle">White-Label Websites &amp; SaaS Digital Products — Available for Acquisition</span>
+                        </div>
+                        <div style="display:flex; gap:8px; flex-wrap:wrap;" id="portfolioFilters">
+                            <button onclick="filterPortfolio('all', this)" class="btn-node active-filter" style="padding:6px 14px; font-size:0.7rem;">ALL</button>
+                            <button onclick="filterPortfolio('website', this)" class="btn-node" style="padding:6px 14px; font-size:0.7rem;">WEBSITES</button>
+                            <button onclick="filterPortfolio('saas', this)" class="btn-node" style="padding:6px 14px; font-size:0.7rem;">SAAS / DIGITAL</button>
+                        </div>
                     </div>
-                    <p class="summary-text">High-fidelity operating models for concentrated digital assets. Integrating M&A intelligence with zero-trust governance to maximize exit multiples for HNWIs and Family Offices.</p>
                 </section>
 
+                <!-- White Label Websites Section -->
+                <div class="portfolio-section-label" id="section-website">
+                    <span style="font-family:var(--font-mono); font-size:0.7rem; color:#555; letter-spacing:0.1em;">// WHITE_LABEL_WEBSITES</span>
+                </div>
+                <div class="node-grid" id="websiteGrid"></div>
+
+                <!-- Vector Digital Products Section -->
+                <div class="portfolio-section-label" id="section-saas" style="margin-top:32px;">
+                    <span style="font-family:var(--font-mono); font-size:0.7rem; color:#555; letter-spacing:0.1em;">// VECTOR_DIGITAL_PRODUCTS</span>
+                </div>
                 <div class="node-grid" id="blueprintGrid">
                     <!-- Blueprints injected here -->
                 </div>
@@ -1008,8 +1036,80 @@
         "liveUrl": "https://iederees-create.github.io/vector-cognitive-ops/",
         "description": "Cognitive alpha tracking and social-drift analytics."
     }
-];
-        // VECTOR_INJECTION_END
+];\n        // VECTOR_INJECTION_END
+
+        const websiteData = [
+            {
+                id: 'w1',
+                name: 'ConsultFlow',
+                category: 'website',
+                sector: 'Business & Strategy',
+                price: 'R3,500',
+                description: 'Premium executive intelligence & strategy site. Sleek high-security terminal aesthetic for consultancy firms.',
+                liveUrl: 'https://iederees-create.github.io/consult-flow/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20ConsultFlow'
+            },
+            {
+                id: 'w2',
+                name: 'LegalVault',
+                category: 'website',
+                sector: 'Legal & Compliance',
+                price: 'R3,500',
+                description: 'Advanced compliance & risk management site for law firms and legal tech startups.',
+                liveUrl: 'https://iederees-create.github.io/legal-vault/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20LegalVault'
+            },
+            {
+                id: 'w3',
+                name: 'OmniShield',
+                category: 'website',
+                sector: 'Security & Defense',
+                price: 'R3,500',
+                description: 'Elite digital defense & physical security site. Projects authority for corporate protection services.',
+                liveUrl: 'https://iederees-create.github.io/omni-shield/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20OmniShield'
+            },
+            {
+                id: 'w4',
+                name: 'Elite Pro (Human_OS)',
+                category: 'website',
+                sector: 'Fitness & Performance',
+                price: 'R3,500',
+                description: 'Biometric optimization & athlete management site with a futuristic Human_OS interface.',
+                liveUrl: 'https://iederees-create.github.io/fitness-pro/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Elite%20Pro'
+            },
+            {
+                id: 'w5',
+                name: 'LifeScale',
+                category: 'website',
+                sector: 'Longevity & Wellness',
+                price: 'R3,500',
+                description: 'Regenerative science & longevity lab site for bloodwork, genomics, and supplement stacking.',
+                liveUrl: 'https://iederees-create.github.io/lifescale/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20LifeScale'
+            },
+            {
+                id: 'w6',
+                name: 'PropMaster',
+                category: 'website',
+                sector: 'Property & Real Estate',
+                price: 'R3,500',
+                description: 'Autonomous property management & resident intelligence system for landlords and real estate agents.',
+                liveUrl: 'https://iederees-create.github.io/prop-master/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20PropMaster'
+            },
+            {
+                id: 'w7',
+                name: 'The Vector Mainframe',
+                category: 'website',
+                sector: 'Tech Hub & Collective',
+                price: 'R4,500',
+                description: 'Strategic intelligence collective multi-site hub. The ultimate command-center for conglomerates.',
+                liveUrl: 'https://iederees-create.github.io/vector-mainframe/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20The%20Vector%20Mainframe'
+            }
+        ];
 
         let currentUser = null;
 
@@ -1102,9 +1202,10 @@
 
         function renderAll() {
             renderPortfolio();
+            renderWebsites();
             renderOperations();
             
-            document.getElementById('nodeCount').innerText = `${vectorData.length} ACTIVE`;
+            document.getElementById('nodeCount').innerText = `${vectorData.length + websiteData.length} ACTIVE`;
             document.getElementById('leadsCount').innerText = `${leadsData.length} IDENTIFIED`;
         }
 
@@ -1127,6 +1228,54 @@
             `).join('');
         }
 
+        function renderWebsites() {
+            const grid = document.getElementById('websiteGrid');
+            if (!grid) return;
+            grid.innerHTML = websiteData.map(site => `
+                <article class="node-card">
+                    <div class="node-header">
+                        <span class="node-id">WEB_${site.id.toUpperCase()} // WEBSITE</span>
+                        <span class="status-pill healthy" style="background:rgba(245,158,11,0.1); color:var(--accent-amber); border-color:rgba(245,158,11,0.2);">FOR SALE</span>
+                    </div>
+                    <h3 class="node-title">${site.name}</h3>
+                    <p class="node-sector">${site.sector}</p>
+                    <p style="font-size:0.75rem; color:#666; margin-bottom:10px; min-height:40px;">${site.description}</p>
+                    <p style="font-family:var(--font-mono); font-size:0.85rem; color:var(--accent-green); margin-bottom:15px;">${site.price}</p>
+                    <div style="display:flex; gap:10px;">
+                        <button class="btn-node" onclick="window.open('${site.liveUrl}', '_blank')" style="flex:1;">INSPECT</button>
+                        <button class="btn-node" onclick="window.open('${site.acquireUrl}', '_blank')" style="flex:1; border-color:var(--accent-green); color:var(--accent-green);">ACQUIRE</button>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        function filterPortfolio(type, btn) {
+            document.querySelectorAll('#portfolioFilters button').forEach(b => b.classList.remove('active-filter'));
+            btn.classList.add('active-filter');
+
+            const websiteSection = document.getElementById('section-website');
+            const websiteGrid = document.getElementById('websiteGrid');
+            const saasSection = document.getElementById('section-saas');
+            const blueprintGrid = document.getElementById('blueprintGrid');
+
+            if (type === 'all') {
+                websiteSection.classList.remove('hidden');
+                websiteGrid.classList.remove('hidden');
+                saasSection.classList.remove('hidden');
+                blueprintGrid.classList.remove('hidden');
+            } else if (type === 'website') {
+                websiteSection.classList.remove('hidden');
+                websiteGrid.classList.remove('hidden');
+                saasSection.classList.add('hidden');
+                blueprintGrid.classList.add('hidden');
+            } else if (type === 'saas') {
+                websiteSection.classList.add('hidden');
+                websiteGrid.classList.add('hidden');
+                saasSection.classList.remove('hidden');
+                blueprintGrid.classList.remove('hidden');
+            }
+        }
+
         function renderOperations() {
             const grid = document.getElementById('leadsGrid');
             if (!grid) return;
@@ -1146,7 +1295,7 @@
                     </div>
                     <div class="actions">
                         <button onclick="startDeepScan(${lead.id})" class="btn-node" style="border-color:var(--accent-green); color:var(--accent-green); margin-bottom:10px;">CBCT_DEEP_SCAN</button>
-                        <a href="${lead.liveUrl}" target="_blank" class="btn-node" style="display:block; text-align:center; text-decoration:none; margin-bottom:10px;">VIEW_LIVE_DEMO</a>
+                        ${lead.liveUrl ? `<a href="${lead.liveUrl}" target="_blank" class="btn-node" style="display:block; text-align:center; text-decoration:none; margin-bottom:10px;">VIEW_LIVE_DEMO</a>` : `<button disabled class="btn-node" style="display:block; opacity:0.3; margin-bottom:10px; cursor:not-allowed;">DEMO_PENDING_DEPLOY</button>`}
                         <div class="action-row">
                             <a href="${lead.waLink}" target="_blank" class="btn-node" style="text-align:center; text-decoration:none;">WHATSAPP</a>
                             <a href="mailto:?subject=${encodeURIComponent(lead.emailSubj)}&body=${encodeURIComponent(lead.emailBody)}" class="btn-node" style="text-align:center; text-decoration:none; border-color:var(--accent-rose); color:var(--accent-rose)">EMAIL_PITCH</a>
