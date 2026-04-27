@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operational Hub | WEALTH</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/diligence-styles.css">
+</head>
+<body>
+    <header class="top-ribbon">
+        <div class="node-brand">
+            <span>NODE_07</span> WEALTH // DASHBOARD
+        </div>
+        <div class="status-zone">
+            <span class="live-dot"></span> SECURE_SESSION
+        </div>
+    </header>
+
+    <div class="node-layout">
+        <aside class="sidebar">
+            <nav class="side-nav">
+                <a href="../../vector-mainframe.html">← Master Mainframe</a>
+                <a href="../index.html">Asset Overview</a>
+                <a href="dashboard.html" class="active">Performance Hub</a>
+                <a href="#">Capital Ledger</a>
+                <a href="#">Asset Distribution</a>
+            </nav>
+        </aside>
+
+        <main class="main-surface">
+            <h1 class="page-title">Wealth Distribution Hub</h1>
+            <p class="page-subtitle">Managed Entity // Real-time Capital Telemetry & Governance Tracking</p>
+
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <span class="lbl">Aggregate NAV</span>
+                    <span class="val">$422.5M</span><span class="trend positive">↑ 2.4%</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="lbl">Asset Velocity</span>
+                    <span class="val">0.82</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="lbl">Active Portfolios</span>
+                    <span class="val">842</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="lbl">Compliance SLA</span>
+                    <span class="val">100.0%</span>
+                </div>
+            </div>
+
+            <div class="diligence-panel">
+                <h3>Managed Allocation Phases</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Phase ID</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                            <th>Target Yield Alpha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PH-01-WLT</td>
+                            <td>Initial Capital Seeding</td>
+                            <td><span class="status-tag active">COMPLETE</span></td>
+                            <td>+1.2%</td>
+                        </tr>
+                        <tr>
+                            <td>PH-02-WLT</td>
+                            <td>Identity-Gated Ledger Sync</td>
+                            <td><span class="status-tag active">COMPLETE</span></td>
+                            <td>+2.5%</td>
+                        </tr>
+                        <tr>
+                            <td>PH-03-WLT</td>
+                            <td>Recursive Yield Sequence</td>
+                            <td><span class="status-tag pending">ACTIVE_FOCUS</span></td>
+                            <td>+4.8% [Running]</td>
+                        </tr>
+                        <tr>
+                            <td>PH-04-WLT</td>
+                            <td>Final Capital Liquidity</td>
+                            <td><span class="status-tag">LOCKED</span></td>
+                            <td>--</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="diligence-panel" style="margin-top: 24px;">
+                <h3>System Telemetry Logs</h3>
+                <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-secondary); line-height: 1.8;">
+                    [18:14:12] INFO: WEALTH_NODE_SINK updated successfully.<br>
+                    [18:14:08] TRACE: Yield-Alpha drift within nominal tolerance (±0.05%).<br>
+                    [18:13:55] WARN: Ledger latency detected on Node 0xWLT (Nexus District).<br>
+                    [18:12:30] AUDIT: Routine on-chain compliance sweep completed. 0 anomalies detected.
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

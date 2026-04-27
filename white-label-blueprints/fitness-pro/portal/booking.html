@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Allocation Schedule | VITA</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/diligence-styles.css">
+</head>
+<body>
+    <header class="top-ribbon">
+        <div class="node-brand">
+            <span>NODE_01</span> VITA // SCHEDULING
+        </div>
+        <div class="status-zone">
+            <span class="live-dot"></span> SESSION_ACTIVE
+        </div>
+    </header>
+
+    <div class="node-layout">
+        <aside class="sidebar">
+            <nav class="side-nav">
+                <a href="../../vector-mainframe.html">← Master Mainframe</a>
+                <a href="../index.html">Asset Overview</a>
+                <a href="dashboard.html">Performance Hub</a>
+                <a href="booking.html" class="active">Allocation Schedule</a>
+                <a href="staff.html">Resource Management</a>
+            </nav>
+        </aside>
+
+        <main class="main-surface">
+            <h1 class="page-title">Resource Allocation Schedule</h1>
+            <p class="page-subtitle">Managed Hub // Facility & Tier-1 Personnel Booking Registry</p>
+
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <span class="lbl">Asset Utilization</span>
+                    <span class="val">92%</span><span class="trend positive">↑ Optimal</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="lbl">Waitlist Alpha</span>
+                    <span class="val">14d</span><span class="trend">Mean Time</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="lbl">Revenue / Slot</span>
+                    <span class="val">$1.2k</span><span class="trend positive">High Margin</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="lbl">Resource Conflict</span>
+                    <span class="val">ZERO</span><span class="trend positive">Nominal</span>
+                </div>
+            </div>
+
+            <div class="diligence-panel hologram-panel">
+                <h3>Current Utilization Timeline</h3>
+                <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; margin-top: 20px;">
+                    <!-- Simple calendar grid representing institutional booking -->
+                    <div style="background: #111; border: 1px solid #222; padding: 15px; text-align: center; height: 100px;">
+                        <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-secondary);">MON 20</span>
+                        <div style="margin-top: 20px; font-size: 0.7rem; color: var(--accent-green);">FULL</div>
+                    </div>
+                    <div style="background: #111; border: 1px solid #222; padding: 15px; text-align: center; height: 100px;">
+                        <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-secondary);">TUE 21</span>
+                        <div style="margin-top: 20px; font-size: 0.7rem; color: var(--accent-green);">FULL</div>
+                    </div>
+                    <div style="background: #111; border: 1px solid #222; padding: 15px; text-align: center; height: 100px;">
+                        <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-secondary);">WED 22</span>
+                        <div style="margin-top: 20px; font-size: 0.7rem; color: var(--text-primary);">AVAIL (2)</div>
+                    </div>
+                    <div style="background: #111; border: 1px solid #222; padding: 15px; text-align: center; height: 100px;">
+                        <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-secondary);">THU 23</span>
+                        <div style="margin-top: 20px; font-size: 0.7rem; color: var(--accent-green);">FULL</div>
+                    </div>
+                    <div style="background: #111; border: 1px solid #222; padding: 15px; text-align: center; height: 100px;">
+                        <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-secondary);">FRI 24</span>
+                        <div style="margin-top: 20px; font-size: 0.7rem; color: var(--text-primary);">AVAIL (4)</div>
+                    </div>
+                    <div style="background: #111; border: 1px solid #222; padding: 15px; text-align: center; height: 100px;">
+                        <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-secondary);">SAT 25</span>
+                        <div style="margin-top: 20px; font-size: 0.7rem; color: var(--accent-red);">MAINT</div>
+                    </div>
+                    <div style="background: #111; border: 1px solid #222; padding: 15px; text-align: center; height: 100px;">
+                        <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-secondary);">SUN 26</span>
+                        <div style="margin-top: 20px; font-size: 0.7rem; color: var(--accent-red);">MAINT</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="diligence-panel hologram-panel">
+                <h3>Asset Allocation Requests</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Request ID</th>
+                            <th>Asset Type</th>
+                            <th>Duration</th>
+                            <th>Tier Alignment</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>REQ-901</td>
+                            <td>Facility // Performance Lab A</td>
+                            <td>12 Weeks</td>
+                            <td>Gold // Elite</td>
+                            <td><span class="status-tag active">APPROVED</span></td>
+                        </tr>
+                        <tr>
+                            <td>REQ-112</td>
+                            <td>Personnel // Lead Biometrist</td>
+                            <td>6 Weeks</td>
+                            <td>Silver // Standard</td>
+                            <td><span class="status-tag pending">PENDING_REVIEW</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href="#" class="btn-terminal" style="margin-top: 24px;">Provision New Allocation Request</a>
+            </div>
+
+            <!-- Synergy Layer Integration (5-Layer Stack) -->
+            <section class="synergy-panel">
+                <div class="synergy-header">
+                    <span class="synergy-badge">Investor Logic</span>
+                    <h3>Ecosystem Value Creation</h3>
+                </div>
+                <div class="synergy-grid">
+                    <div class="synergy-item">
+                        <span class="label">Shared Identity</span>
+                        <span class="value">Single-Sign-On Portfolio Wallet</span>
+                    </div>
+                    <div class="synergy-item">
+                        <span class="label">Data Leverage</span>
+                        <span class="value">Unified Ontology -> Hub Telemetry</span>
+                    </div>
+                    <div class="synergy-item">
+                        <span class="label">Margin Synergy</span>
+                        <span class="value">Group Procurement / Shared Services</span>
+                    </div>
+                    <div class="synergy-item">
+                        <span class="label">Risk Control</span>
+                        <span class="value">Federated Policy Architecture</span>
+                    </div>
+                    <div class="synergy-item">
+                        <span class="label">Reporting</span>
+                        <span class="value">Board-Ready Quarterly Briefings</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

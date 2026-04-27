@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operational Hub | DATA</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/diligence-styles.css">
+</head>
+<body>
+    <header class="top-ribbon">
+        <div class="node-brand">
+            <span>NODE_11</span> DATA // DASHBOARD
+        </div>
+        <div class="status-zone">
+            <span class="live-dot"></span> SECURE_SESSION
+        </div>
+    </header>
+
+    <div class="node-layout">
+        <aside class="sidebar">
+            <nav class="side-nav">
+                <a href="../../vector-mainframe.html">← Master Mainframe</a>
+                <a href="../index.html">Asset Overview</a>
+                <a href="dashboard.html" class="active">Performance Hub</a>
+                <a href="#">Vault Ledger</a>
+                <a href="#">Integrity Logs</a>
+            </nav>
+        </aside>
+
+        <main class="main-surface">
+            <h1 class="page-title">Data Sovereignty Hub</h1>
+            <p class="page-subtitle">Managed Entity // Real-time Archival Telemetry & Sovereignty Audit</p>
+
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <span class="lbl">Archival Integrity</span>
+                    <span class="val">100.0%</span><span class="trend positive">Nominal</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="lbl">Retrieval Multiplier</span>
+                    <span class="val">1.4x</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="lbl">Active Vaults</span>
+                    <span class="val">42</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="lbl">Compliance SLA</span>
+                    <span class="val">100.0%</span>
+                </div>
+            </div>
+
+            <div class="diligence-panel">
+                <h3>Managed Archival Phases</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Phase ID</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                            <th>Retrieval Est.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PH-01-DAT</td>
+                            <td>Initial Vault Gating</td>
+                            <td><span class="status-tag active">COMPLETE</span></td>
+                            <td>0.05ms</td>
+                        </tr>
+                        <tr>
+                            <td>PH-02-DAT</td>
+                            <td>WORM Replication Sync</td>
+                            <td><span class="status-tag active">COMPLETE</span></td>
+                            <td>0.04ms</td>
+                        </tr>
+                        <tr>
+                            <td>PH-03-DAT</td>
+                            <td>Active Sovereignty Sweep</td>
+                            <td><span class="status-tag pending">ACTIVE_FOCUS</span></td>
+                            <td>0.02ms [Scanning]</td>
+                        </tr>
+                        <tr>
+                            <td>PH-04-DAT</td>
+                            <td>Final Forensic Closure</td>
+                            <td><span class="status-tag">LOCKED</span></td>
+                            <td>--</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="diligence-panel" style="margin-top: 24px;">
+                <h3>System Telemetry Logs</h3>
+                <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-secondary); line-height: 1.8;">
+                    [18:18:12] INFO: DATA_NODE_SINK updated successfully.<br>
+                    [18:18:08] TRACE: WORM-integrity heartbeat verified via Vault Node 0xDAT.<br>
+                    [18:17:55] WARN: High-volume retrieval ingest on Node 0xDAT (Nexus District).<br>
+                    [18:13:30] AUDIT: Routine on-chain archival sweep completed. 0 anomalies detected.
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

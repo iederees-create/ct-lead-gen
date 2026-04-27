@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vector // Elite Asset Ecosystem</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="hub-styles.css">
+</head>
+<body>
+    <!-- Top Event Ribbon & Command Bar -->
+    <header class="cmd-ribbon">
+        <div class="brand">VECTOR // ELITE ASSET ECOSYSTEM</div>
+        <div class="cmd-palette">
+            <span class="prompt-icon">_</span>
+            <input type="text" placeholder="/search nodes, incidents, metrics..." />
+        </div>
+        <div class="status-zone">
+            <span class="live-dot" title="Global Regulatory Health"></span> 
+            <span style="color: var(--accent-amber); margin-right: 16px;">RISK_INDEX: LOW (14.2%)</span>
+            <button onclick="toggleStealth()" class="btn-node" style="padding: 4px 12px; margin: 0;">TOGGLE_STEALTH</button>
+        </div>
+    </header>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <nav class="side-nav">
+                <a href="#" class="active">Portfolio Overview</a>
+                <a href="#" onclick="toggleSimDrawer()">Simulation Engine</a>
+                <a href="#">Operations Command</a>
+                <a href="#">Deal Room (Gated)</a>
+                <a href="#">Risk & Compliance</a>
+                <a href="#">Entity Graph</a>
+            </nav>
+            <div class="metrics-summary stealth-mask">
+                <div class="metric-block">
+                    <span class="label">PORTFOLIO NAV</span>
+                    <span class="value">$2.84B</span>
+                </div>
+                <div class="metric-block">
+                    <span class="label">M&A MULTIPLE ALPHA</span>
+                    <span class="value">12.5x</span><span style="font-size: 0.6rem; color: var(--accent-green); margin-left: 4px;">(+2.5x Operator Uplift)</span>
+                </div>
+                <div class="metric-block">
+                    <span class="label">NET RETENTION</span>
+                    <span class="value">114%</span>
+                </div>
+            </div>
+            <div class="footer-note">
+                // ZERO-TRUST ARCHITECTURE<br>
+                // ESCROW VERIFIED
+            </div>
+        </aside>
+
+        <!-- Main Surface -->
+        <main class="main-surface">
+            <!-- Elite Asset Ecosystem Header -->
+            <section class="overview-panel hologram-panel">
+                <div class="panel-header">
+                    <h2>Situational Awareness // Elite Asset Ecosystem</h2>
+                    <span class="subtitle">Audit-Ready Confidential Asset Portfolios & SaaS-as-an-Asset Intelligence</span>
+                </div>
+                <p class="summary-text">A private, high-fidelity operating model for concentrated digital and tangible assets. Integrating M&A intelligence with zero-trust governance to maximize exit multiples for HNWIs and Family Offices.</p>
+            </section>
+
+            <!-- SITUATIONAL AWARENESS GLOBE (CINEMATIC) -->
+            <div class="globe-container hologram-panel" style="margin-bottom: 32px;">
+                <div class="data-stream" id="particleField"></div>
+                <svg viewBox="0 0 800 400" width="100%" height="100%" style="opacity: 0.8;">
+                    <defs>
+                        <radialGradient id="globeGrad" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="rgba(59, 130, 246, 0.2)" />
+                            <stop offset="100%" stop-color="transparent" />
+                        </radialGradient>
+                    </defs>
+                    <!-- Mock World Paths or Node Connections -->
+                    <circle cx="400" cy="200" r="160" fill="url(#globeGrad)" class="pulse-ring" style="animation-duration: 4s; opacity: 0.1;" />
+                    <circle cx="400" cy="200" r="140" stroke="var(--hologram-border)" fill="none" stroke-width="0.5" />
+                    <!-- Geographic Node Points -->
+                    <circle cx="320" cy="140" r="3" fill="var(--accent-green)" /> <!-- Node 01 -->
+                    <circle cx="480" cy="180" r="3" fill="var(--accent-green)" /> <!-- Node 02 -->
+                    <circle cx="380" cy="260" r="3" fill="var(--accent-green)" /> <!-- Node 05 -->
+                    <circle cx="550" cy="120" r="3" fill="var(--accent-green)" /> <!-- Node 09 -->
+                    <!-- Connection Arcs -->
+                    <path d="M320 140 Q400 100 480 180" stroke="var(--accent)" stroke-width="0.5" fill="none" opacity="0.4" />
+                    <path d="M480 180 Q430 220 380 260" stroke="var(--accent)" stroke-width="0.5" fill="none" opacity="0.4" />
+                </svg>
+                <div style="position: absolute; bottom: 12px; left: 16px; font-family: var(--font-mono); font-size: 0.6rem; color: var(--smoke-gray);">
+                    [SYSTEM_HEALTH]: 100% // [AUM_VELOCITY]: NOMINAL
+                </div>
+            </div>
+
+            <!-- CORE OPERATIONAL SURFACES -->
+            <div style="display: grid; grid-template-columns: 1fr 300px; gap: 24px; margin-bottom: 32px;">
+                <div class="panel-card no-padding" style="background: var(--panel-bg); border: 1px solid var(--panel-border); border-radius: 4px;">
+                    <div class="panel-header-sub" style="padding: 16px; border-bottom: 1px solid var(--panel-border);">
+                        <h3 style="margin: 0; font-size: 0.9rem; font-family: var(--font-mono); color: #fff;">ACTIVE_MISSION_NODES</h3>
+                    </div>
+                    <div class="node-grid" style="padding: 16px; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;">
+                        <!-- Node cards moved here -->
+
+            <!-- Node Grid (Table-like or dense cards) -->
+            <div class="node-grid">
+                <!-- NODE 01: FITNESS PRO -->
+                <article class="node-card">
+                    <div class="node-header">
+                        <span class="node-id">NODE_01 // VITA</span>
+                        <div style="display: flex; gap: 8px;">
+                            <span class="status-pill healthy" style="background: rgba(59, 130, 246, 0.1); color: var(--accent); border-color: var(--accent);">VETTED</span>
+                            <span class="status-pill healthy">NOMINAL</span>
+                        </div>
+                    </div>
+                    <h3 class="node-title">FitnessPro</h3>
+                    <p class="node-sector">Athlete Management & Biometrics</p>
+                    <div class="node-metrics">
+                        <div class="nm"><span class="lbl">ARR BRIDGE</span><span class="val">$4.2M</span></div>
+                        <div class="nm"><span class="lbl">NRR</span><span class="val">112%</span></div>
+                    </div>
+                    <button class="btn-node" onclick="window.location.href='fitness-pro/index.html'">DRILL_DOWN</button>
+                </article>
+
+                <!-- NODE 02: PROP MASTER -->
+                <article class="node-card">
+                    <div class="node-header">
+                        <span class="node-id">NODE_02 // RES</span>
+                        <div style="display: flex; gap: 8px;">
+                            <span class="status-pill healthy" style="background: rgba(59, 130, 246, 0.1); color: var(--accent); border-color: var(--accent);">VETTED</span>
+                            <span class="status-pill healthy">NOMINAL</span>
+                        </div>
+                    </div>
+                    <h3 class="node-title">PropMaster</h3>
+                    <p class="node-sector">Autonomous Building Logistics</p>
+                    <div class="node-metrics">
+                        <div class="nm"><span class="lbl">EBITDA MARGIN</span><span class="val">32%</span></div>
+                        <div class="nm"><span class="lbl">NRR</span><span class="val">119%</span></div>
+                    </div>
+                    <button class="btn-node" onclick="window.location.href='prop-master/index.html'">DRILL_DOWN</button>
+                </article>
+
+                <!-- NODE 03: CONSULT FLOW -->
+                <article class="node-card">
+                    <div class="node-header">
+                        <span class="node-id">NODE_03 // STRAT</span>
+                        <span class="status-pill healthy">NOMINAL</span>
+                    </div>
+                    <h3 class="node-title">ConsultFlow</h3>
+                    <p class="node-sector">War-Room Mission Control</p>
+                    <div class="node-metrics">
+                        <div class="nm"><span class="lbl">ARR BRIDGE</span><span class="val">$3.8M</span></div>
+                        <div class="nm"><span class="lbl">MARGIN</span><span class="val">91%</span></div>
+                    </div>
+                    <button class="btn-node" onclick="window.location.href='consult-flow/index.html'">DRILL_DOWN</button>
+                </article>
+
+                <!-- NODE 04: OMNI SHIELD -->
+                <article class="node-card">
+                    <div class="node-header">
+                        <span class="node-id">NODE_04 // SEC</span>
+                        <span class="status-pill healthy">NOMINAL</span>
+                    </div>
+                    <h3 class="node-title">OmniShield</h3>
+                    <p class="node-sector">Perimeter Security & Infra</p>
+                    <div class="node-metrics">
+                        <div class="nm"><span class="lbl">ARR BRIDGE</span><span class="val">$12.1M</span></div>
+                        <div class="nm"><span class="lbl">NRR</span><span class="val">138%</span></div>
+                    </div>
+                    <button class="btn-node" onclick="window.location.href='omni-shield/index.html'">DRILL_DOWN</button>
+                </article>
+
+                <!-- NODE 05: LifeScale -->
+                <article class="node-card">
+                    <div class="node-header">
+                        <span class="node-id">NODE_05 // LAB</span>
+                        <span class="status-pill healthy">NOMINAL</span>
+                    </div>
+                    <h3 class="node-title">LifeScale</h3>
+                    <p class="node-sector">Longevity & Lab Optimization</p>
+                    <div class="node-metrics">
+                        <div class="nm"><span class="lbl">ARR BRIDGE</span><span class="val">$2.4M</span></div>
+                        <div class="nm"><span class="lbl">NRR</span><span class="val">124%</span></div>
+                    </div>
+                    <button class="btn-node" onclick="window.location.href='lifescale/index.html'">DRILL_DOWN</button>
+                </article>
+
+                <!-- NODE 06: LEGAL VAULT -->
+                <article class="node-card">
+                    <div class="node-header">
+                        <span class="node-id">NODE_06 // LAW</span>
+                        <span class="status-pill healthy">NOMINAL</span>
+                    </div>
+                    <h3 class="node-title">LegalVault</h3>
+                    <p class="node-sector">Global Discovery Governance</p>
+                    <div class="node-metrics">
+                        <div class="nm"><span class="lbl">ARR BRIDGE</span><span class="val">$9.2M</span></div>
+                        <div class="nm"><span class="lbl">NRR</span><span class="val">122%</span></div>
+                    </div>
+                    <button class="btn-node" onclick="window.location.href='legal-vault/index.html'">DRILL_DOWN</button>
+                </article>
+
+                <!-- NODE 07: ASSET ANCHOR -->
+                <article class="node-card">
+                    <div class="node-header">
+                        <span class="node-id">NODE_07 // WEALTH</span>
+                        <span class="status-pill healthy">NOMINAL</span>
+                    </div>
+                    <h3 class="node-title">AssetAnchor</h3>
+                    <p class="node-sector">Capital Strategy & Stealth Wealth</p>
+                    <div class="node-metrics">
+                        <div class="nm"><span class="lbl">AUM BRIDGE</span><span class="val">$245M</span></div>
+                        <div class="nm"><span class="lbl">YIELD</span><span class="val">8.4%</span></div>
+                    </div>
+                    <button class="btn-node" onclick="window.location.href='asset-anchor/index.html'">DRILL_DOWN</button>
+                </article>
+
+                <!-- NODE 08: SIGNAL GRID -->
+                <article class="node-card">
+                    <div class="node-header">
+                        <span class="node-id">NODE_08 // COMMS</span>
+                        <span class="status-pill healthy">NOMINAL</span>
+                    </div>
+                    <h3 class="node-title">SignalGrid</h3>
+                    <p class="node-sector">Encrypted Network Hardening</p>
+                    <div class="node-metrics">
+                        <div class="nm"><span class="lbl">ARR BRIDGE</span><span class="val">$6.5M</span></div>
+                        <div class="nm"><span class="lbl">LATENCY</span><span class="val">14ms</span></div>
+                    </div>
+                    <button class="btn-node" onclick="window.location.href='signal-grid/index.html'">DRILL_DOWN</button>
+                </article>
+                
+                <!-- NODE 09: JET STREAM -->
+                <article class="node-card">
+                    <div class="node-header">
+                        <span class="node-id">NODE_09 // TRANS</span>
+                        <span class="status-pill healthy">NOMINAL</span>
+                    </div>
+                    <h3 class="node-title">JetStream</h3>
+                    <p class="node-sector">Tactical Aviation Logistics</p>
+                    <div class="node-metrics">
+                        <div class="nm"><span class="lbl">EBITDA BRIDGE</span><span class="val">$1.2M</span></div>
+                        <div class="nm"><span class="lbl">NRR</span><span class="val">119%</span></div>
+                    </div>
+                    <button class="btn-node" onclick="window.location.href='jet-stream/index.html'">DRILL_DOWN</button>
+                </article>
+
+                <!-- NODE 10: TERRA FORM -->
+                <article class="node-card">
+                    <div class="node-header">
+                        <span class="node-id">NODE_10 // GEO</span>
+                        <span class="status-pill healthy">NOMINAL</span>
+                    </div>
+                    <h3 class="node-title">TerraForm</h3>
+                    <p class="node-sector">Strategic Land Acquisition</p>
+                    <div class="node-metrics">
+                        <div class="nm"><span class="lbl">NAV BRIDGE</span><span class="val">$1.42B</span></div>
+                        <div class="nm"><span class="lbl">NRR</span><span class="val">132%</span></div>
+                    </div>
+                    <button class="btn-node" onclick="window.location.href='terra-form/index.html'">DRILL_DOWN</button>
+                </article>
+
+                <!-- NODE 11: DEEP STATE -->
+                <article class="node-card">
+                    <div class="node-header">
+                        <span class="node-id">NODE_11 // DATA</span>
+                        <span class="status-pill healthy">NOMINAL</span>
+                    </div>
+                    <h3 class="node-title">DeepState</h3>
+                    <p class="node-sector">Sovereignty Ledger & DNA Archival</p>
+                    <div class="node-metrics">
+                        <div class="nm"><span class="lbl">ARR BRIDGE</span><span class="val">$14.5M</span></div>
+                        <div class="nm"><span class="lbl">NRR</span><span class="val">128%</span></div>
+                    </div>
+                    <button class="btn-node" onclick="window.location.href='deep-state/index.html'">DRILL_DOWN</button>
+                </article>
+
+                <!-- NODE 12: COGNITIVE OPS -->
+                <article class="node-card">
+                    <div class="node-header">
+                        <span class="node-id">NODE_12 // PSYC</span>
+                        <span class="status-pill healthy">NOMINAL</span>
+                    </div>
+                    <h3 class="node-title">CognitiveOps</h3>
+                    <p class="node-sector">Cognitive Alpha & Social-Drift</p>
+                    <div class="node-metrics">
+                        <div class="nm"><span class="lbl">ARR BRIDGE</span><span class="val">$2.1M</span></div>
+                        <div class="nm"><span class="lbl">PRECISION</span><span class="val">94.2%</span></div>
+                    </div>
+                    <button class="btn-node" onclick="window.location.href='cognitive-ops/index.html'">DRILL_DOWN</button>
+                </article>
+                    </div>
+                </div>
+                <div class="event-spine">
+                    <div class="spine-item high-sig">
+                        <span class="time">16:12:04</span>
+                        NODE_11 // DEEP_STATE: ACCESS_REVALIDATION_REQUIRED
+                    </div>
+                    <div class="spine-item">
+                        <span class="time">15:58:33</span>
+                        NODE_09 // JET_STREAM: FLIGHT_PLAN_FILED_KTEB_EGGW
+                    </div>
+                    <div class="spine-item">
+                        <span class="time">15:44:10</span>
+                        NODE_01 // VITA: RMSSD_BASELINE_DRIFT_DETECTED
+                    </div>
+                    <div class="spine-item">
+                        <span class="time">14:20:01</span>
+                        NODE_07 // ASSET_ANCHOR: DIVIDEND_SWEEP_CONFIRMED
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- THE REPLAY SCRUBBER -->
+    <footer class="replay-scrubber">
+        <div class="cmd-icon" style="color: var(--smoke-gray); font-family: var(--font-mono); font-size: 0.7rem;">REPLAY_CONTROL</div>
+        <div class="rev-seek">
+            <div class="playhead" style="left: 85%;"></div>
+        </div>
+        <div class="status" style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent-green);">LIVE // T-0</div>
+    </footer>
+
+    <!-- THE SIMULATION DRAWER (What-if Engine) -->
+    <div id="simDrawer" class="sim-drawer">
+        <div class="sim-header">
+            <h3>SIMULATION_ENGINE // ALPHA_V4</h3>
+            <button onclick="toggleSimDrawer()" style="background:none; border:none; color:var(--text-secondary); cursor:pointer; font-family:var(--font-mono);">[CLOSE]</button>
+        </div>
+        <div class="sim-content">
+            <div class="sim-control-group">
+                <span class="sim-label">Scenario Model</span>
+                <select style="width:100%; background:#1a1a1a; border:1px solid #333; color:#fff; padding:8px; font-family:var(--font-mono); font-size:0.7rem;">
+                    <option>SaaS-as-an-Asset M&A Valuation</option>
+                    <option>Exit with Operator (12m Earn-out)</option>
+                    <option>Exit Multiple Stress Test (10-15x)</option>
+                    <option>Family Office Liquidity Scenario</option>
+                    <option>Asset Repositioning Alpha</option>
+                </select>
+            </div>
+            <div class="sim-control-group">
+                <span class="sim-label">Confidence Interval</span>
+                <input type="range" style="width:100%; accent-color:var(--accent);">
+            </div>
+            <div class="sim-output">
+                <span class="sim-label">Projected Outcome</span>
+                <div style="font-family:var(--font-mono); font-size:1.2rem; color:var(--accent-green); margin-top:8px;">+14.2% YIELD</div>
+                <p style="font-size:0.65rem; color:var(--text-secondary); margin-top:8px;">Confidence: 92% // Based on 8-day revisit NDWI data and current empty-leg availability.</p>
+            </div>
+            <button class="btn-node" style="margin-top:24px;">EXECUTE_SIMULATION</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleSimDrawer() {
+            const drawer = document.getElementById('simDrawer');
+            drawer.classList.toggle('active');
+        }
+
+        function toggleStealth() {
+            document.body.classList.toggle('stealth-active');
+        }
+
+        // Particle Stream Initiation
+        function createParticles() {
+            const field = document.getElementById('particleField');
+            if(!field) return;
+            for(let i=0; i<20; i++) {
+                const p = document.createElement('div');
+                p.className = 'data-particle';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.top = Math.random() * 100 + '%';
+                p.style.animationDuration = (Math.random() * 2 + 1) + 's';
+                p.style.animationDelay = Math.random() * 5 + 's';
+                field.appendChild(p);
+            }
+        }
+        window.onload = createParticles;
+    </script>
+    <script src='assets/vector-core.js'></script>
+</body>
+</html>

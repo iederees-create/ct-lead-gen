@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Profile | WEALTH</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/diligence-styles.css">
+</head>
+<body>
+    <header class="top-ribbon">
+        <div class="node-brand">
+            <span>NODE_07</span> WEALTH
+        </div>
+        <div class="status-zone">
+            <span class="live-dot"></span> <span id="statusText">NOMINAL // STEALTH_READY</span>
+            <button onclick="toggleStealth()" class="btn-node" style="padding: 2px 8px; font-size: 0.6rem; margin-left: 12px;">TOGGLE_STEALTH</button>
+        </div>
+    </header>
+
+    <div class="node-layout">
+        <aside class="sidebar">
+            <nav class="side-nav">
+                <a href="../vector-mainframe.html">← Master Mainframe</a>
+                <a href="index.html" class="active">Asset Overview</a>
+                <a href="about.html">Entity Governance</a>
+                <a href="shop.html">Asset Procurement</a>
+                <a href="research.html">Strategic R&D</a>
+                <a href="portal/dashboard.html">Operational Hub</a>
+            </nav>
+        </aside>
+
+        <main class="main-surface">
+            <h1 class="page-title">WLTH // Capital Strategy</h1>
+            <p class="page-subtitle">Managed Liquidity & Alpha Generation</p>
+
+            <div class="kpi-grid">
+                <div class="kpi-card hologram-panel stealth-mask">
+                    <span class="lbl">NAV Exposed</span>
+                    <span class="val">$245.8M</span><span class="trend positive">↑ 14% QOQ</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="lbl">Liquidity / Leverage Balancer</span>
+                    <div class="radial-gauge" style="margin-top: 10px;">
+                        <div class="pulse-ring"></div>
+                        <span style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700;">1.4x</span>
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <span class="lbl">Capital-Flight Risk</span>
+                    <span class="val" style="color: var(--accent-green)">LOW (0.04)</span><span class="trend positive">Stable</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="lbl">Stealth Logic</span>
+                    <span class="val">ACTIVE</span><span class="trend positive">Masking Gated</span>
+                </div>
+            </div>
+
+            <!-- CROSS-ASSET CORRELATION RADAR -->
+            <div class="diligence-panel hologram-panel" style="margin-bottom: 24px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                    <h3 style="margin: 0;">Cross-Asset Correlation Radar // Concentration Risk</h3>
+                    <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent-amber);">DETECTED: REAL_ESTATE / PRIVATE_EQUITY SKEW</span>
+                </div>
+                <div style="height: 200px; background: #000; border: 1px solid var(--panel-border); border-radius: 4px; overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center;">
+                    <svg viewBox="0 0 400 200" width="100%" height="100%">
+                        <!-- Radar Circles -->
+                        <circle cx="200" cy="100" r="40" stroke="rgba(255,255,255,0.1)" fill="none" />
+                        <circle cx="200" cy="100" r="80" stroke="rgba(255,255,255,0.05)" fill="none" />
+                        <!-- Asset Nodes -->
+                        <circle cx="160" cy="70" r="4" fill="var(--accent)" class="stealth-mask"><title>Public Equities</title></circle>
+                        <circle cx="240" cy="130" r="4" fill="var(--accent-red)" class="stealth-mask"><title>Private Equity (Illiquid)</title></circle>
+                        <circle cx="210" cy="60" r="4" fill="var(--accent-green)" class="stealth-mask"><title>Crypto Reserves</title></circle>
+                        <!-- Heat Zone -->
+                        <path d="M160 70 L240 130" stroke="var(--accent-red)" stroke-width="1" opacity="0.4" />
+                    </svg>
+                    <div style="position: absolute; top: 12px; left: 12px; font-family: var(--font-mono); font-size: 0.6rem; color: var(--smoke-gray);">STEALTH_VIEW: ON</div>
+                </div>
+            </div>
+
+            <div class="diligence-panel">
+                <h3>Off-Book Ledger & Stealth Governance</h3>
+                <ul class="data-list">
+                    <li>
+                        <span class="data-term">Account Masking</span>
+                        <span class="data-value">Zero-Knowledge Proof (ZKP) Verification</span>
+                    </li>
+                    <li>
+                        <span class="data-term">Capital Flight Alerts</span>
+                        <span class="data-value" style="color: var(--accent-amber)">Geo-Political Triggers Active</span>
+                    </li>
+                    <li>
+                        <span class="data-term">Multi-Sig Custody</span>
+                        <span class="data-value">2-of-3 Hardware Threshold Locked</span>
+                    </li>
+                    <li>
+                        <span class="data-term">Liquidity Balancing</span>
+                        <span class="data-value">Real-time Margin/Leverage Guardrails</span>
+                    </li>
+                </ul>
+                <a href="#" class="btn-terminal">Open Private Stealth Terminal</a>
+            </div>
+
+            <!-- CAPITAL STRATEGY COMMAND MATRIX: TRANSPARENCY & YIELD -->
+            <section class="diligence-panel hologram-panel">
+                <h3>WEALTH_CORE // Beneficial Ownership & Capital Strategy</h3>
+                <div class="command-matrix">
+                    <div class="matrix-cell">
+                        <span class="meta">OWNERSHIP_GRAPH</span>
+                        <span class="data">Beneficial Transparency v2</span>
+                        <p style="font-size: 0.7rem; color: var(--text-secondary); margin-top: 8px;">Real-time UBO verification // Compliant with global disclosure standards</p>
+                    </div>
+                    <div class="matrix-cell">
+                        <span class="meta">YIELD_LOGIC</span>
+                        <span class="data">Autonomous Treasury Sweep</span>
+                        <p style="font-size: 0.7rem; color: var(--text-secondary); margin-top: 8px;">Capital deployment optimized for T+0 settlement & liquidity access</p>
+                    </div>
+                    <div class="matrix-cell">
+                        <span class="meta">LEDGER_STABILITY</span>
+                        <span class="data">Immutable Fiscal Audit</span>
+                        <p style="font-size: 0.7rem; color: var(--text-secondary); margin-top: 8px;">All transaction streams signed with hardware-isolated keys</p>
+                    </div>
+                    <div class="matrix-cell">
+                        <span class="meta">REGULATORY_POSTURE</span>
+                        <span class="data">OECD / FATF Verified</span>
+                        <p style="font-size: 0.7rem; color: var(--text-secondary); margin-top: 8px;">Transfer-pricing integrity & cross-border compliance locked</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Synergy Layer Integration (5-Layer Stack) -->
+            <section class="synergy-panel">
+                <div class="synergy-header">
+                    <span class="synergy-badge">Investor Logic</span>
+                    <h3>Capital Synergy Stack</h3>
+                </div>
+                <div class="synergy-grid">
+                    <div class="synergy-item">
+                        <span class="label">Shared Identity</span>
+                        <span class="value">Principal-to-Entity Auth Wallet</span>
+                    </div>
+                    <div class="synergy-item">
+                        <span class="label">Data Model</span>
+                        <span class="value">WLTH Ontology -> Hub Ledger Sink</span>
+                    </div>
+                    <div class="synergy-item">
+                        <span class="label">Margin Synergy</span>
+                        <span class="value">Group Banking & Treasury Service Pool</span>
+                    </div>
+                    <div class="synergy-item">
+                        <span class="label">Compliance</span>
+                        <span class="value">OECD/FATF Auditable Policy Matrix</span>
+                    </div>
+                    <div class="synergy-item">
+                        <span class="label">Reporting</span>
+                        <span class="value">Board-Ready Fiscal Performance Briefings</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script>
+        function toggleStealth() {
+            document.body.classList.toggle('stealth-active');
+            const statusText = document.getElementById('statusText');
+            if (document.body.classList.contains('stealth-active')) {
+                statusText.innerText = "NOMINAL // STEALTH_DEACTIVATED";
+            } else {
+                statusText.innerText = "NOMINAL // STEALTH_ACTIVE";
+            }
+        }
+    </script>
+</body>
+</html>

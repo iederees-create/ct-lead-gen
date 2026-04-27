@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operational Hub | SEC</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/diligence-styles.css">
+</head>
+<body>
+    <header class="top-ribbon">
+        <div class="node-brand">
+            <span>NODE_04</span> SEC // DASHBOARD
+        </div>
+        <div class="status-zone">
+            <span class="live-dot"></span> SECURE_SESSION
+        </div>
+    </header>
+
+    <div class="node-layout">
+        <aside class="sidebar">
+            <nav class="side-nav">
+                <a href="../../vector-mainframe.html">← Master Mainframe</a>
+                <a href="../index.html">Asset Overview</a>
+                <a href="dashboard.html" class="active">Performance Hub</a>
+                <a href="#">Security Logs</a>
+                <a href="#">Tactical Assets</a>
+            </nav>
+        </aside>
+
+        <main class="main-surface">
+            <h1 class="page-title">Perimeter Security Hub</h1>
+            <p class="page-subtitle">Managed Entity // Real-time Threat Mitigation & Hardening Telemetry</p>
+
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <span class="lbl">Threat Mitigation Rate</span>
+                    <span class="val">100%</span><span class="trend positive">Target Met</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="lbl">Perimeter Integrity</span>
+                    <span class="val">99.9%</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="lbl">Incident Triage</span>
+                    <span class="val">0.4s</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="lbl">Active Scanners</span>
+                    <span class="val">4,201</span>
+                </div>
+            </div>
+
+            <div class="diligence-panel">
+                <h3>Managed Security Phases</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Phase ID</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                            <th>Vulnerability Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PH-01-SEC</td>
+                            <td>Initial Infrastructure Hardening</td>
+                            <td><span class="status-tag active">COMPLETE</span></td>
+                            <td>0.01</td>
+                        </tr>
+                        <tr>
+                            <td>PH-02-SEC</td>
+                            <td>Zero-Trust Authentication Mapping</td>
+                            <td><span class="status-tag active">COMPLETE</span></td>
+                            <td>0.00</td>
+                        </tr>
+                        <tr>
+                            <td>PH-03-SEC</td>
+                            <td>Autonomous Mitigation Sequence</td>
+                            <td><span class="status-tag pending">ACTIVE_FOCUS</span></td>
+                            <td>0.02 [Scanning]</td>
+                        </tr>
+                        <tr>
+                            <td>PH-04-SEC</td>
+                            <td>Full Perimeter Sovereignty</td>
+                            <td><span class="status-tag">LOCKED</span></td>
+                            <td>--</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="diligence-panel" style="margin-top: 24px;">
+                <h3>System Telemetry Logs</h3>
+                <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-secondary); line-height: 1.8;">
+                    [19:52:12] INFO: SEC_NODE_SINK updated successfully.<br>
+                    [19:52:08] TRACE: Threat vector ALRT-402 mitigated via Node_Injection patch.<br>
+                    [19:51:55] WARN: Reconnaissance scan detected on Gateway Hub-H.<br>
+                    [19:50:30] AUDIT: Routine firmware integrity sweep completed. 0 anomalies detected.
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

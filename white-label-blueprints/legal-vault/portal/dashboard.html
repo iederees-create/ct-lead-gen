@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operational Hub | LAW</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/diligence-styles.css">
+</head>
+<body>
+    <header class="top-ribbon">
+        <div class="node-brand">
+            <span>NODE_06</span> LAW // DASHBOARD
+        </div>
+        <div class="status-zone">
+            <span class="live-dot"></span> SECURE_SESSION
+        </div>
+    </header>
+
+    <div class="node-layout">
+        <aside class="sidebar">
+            <nav class="side-nav">
+                <a href="../../vector-mainframe.html">← Master Mainframe</a>
+                <a href="../index.html">Asset Overview</a>
+                <a href="dashboard.html" class="active">Performance Hub</a>
+                <a href="#">eDiscovery Queue</a>
+                <a href="#">Privilege Logs</a>
+            </nav>
+        </aside>
+
+        <main class="main-surface">
+            <h1 class="page-title">Litigation Performance Hub</h1>
+            <p class="page-subtitle">Managed Entity // Real-time Discovery Telemetry & Compliance Audit</p>
+
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <span class="lbl">Discovery Velocity</span>
+                    <span class="val">98.2%</span><span class="trend positive">↑ 3.1%</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="lbl">Privilege Integrity</span>
+                    <span class="val">100.0%</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="lbl">SLA Compliance</span>
+                    <span class="val">99.99%</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="lbl">Active Cases</span>
+                    <span class="val">14</span>
+                </div>
+            </div>
+
+            <div class="diligence-panel">
+                <h3>Managed Case Phases</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Phase ID</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                            <th>Discovery Est.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PH-01-LAW</td>
+                            <td>Initial Intake & Data Gating</td>
+                            <td><span class="status-tag active">COMPLETE</span></td>
+                            <td>100%</td>
+                        </tr>
+                        <tr>
+                            <td>PH-02-LAW</td>
+                            <td>Identity-Gated Privilege Audit</td>
+                            <td><span class="status-tag active">COMPLETE</span></td>
+                            <td>100%</td>
+                        </tr>
+                        <tr>
+                            <td>PH-03-LAW</td>
+                            <td>Active Discovery Sequence</td>
+                            <td><span class="status-tag pending">ACTIVE_FOCUS</span></td>
+                            <td>88% [Scanning]</td>
+                        </tr>
+                        <tr>
+                            <td>PH-04-LAW</td>
+                            <td>Final Forensic Closure</td>
+                            <td><span class="status-tag">LOCKED</span></td>
+                            <td>--</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="diligence-panel" style="margin-top: 24px;">
+                <h3>System Telemetry Logs</h3>
+                <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-secondary); line-height: 1.8;">
+                    [19:54:12] INFO: LAW_NODE_SINK updated successfully.<br>
+                    [19:54:08] TRACE: Privilege-isolation heartbeat verified via HSM Node.<br>
+                    [19:53:55] WARN: High-volume discovery ingest on Node 0xLAW (Nexus District).<br>
+                    [19:52:30] AUDIT: Routine on-chain chain-of-custody sweep completed. 0 anomalies detected.
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

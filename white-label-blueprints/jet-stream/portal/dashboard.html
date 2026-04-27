@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operational Hub | TRANS</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/diligence-styles.css">
+</head>
+<body>
+    <header class="top-ribbon">
+        <div class="node-brand">
+            <span>NODE_09</span> TRANS // DASHBOARD
+        </div>
+        <div class="status-zone">
+            <span class="live-dot"></span> SECURE_SESSION
+        </div>
+    </header>
+
+    <div class="node-layout">
+        <aside class="sidebar">
+            <nav class="side-nav">
+                <a href="../../vector-mainframe.html">← Master Mainframe</a>
+                <a href="../index.html">Asset Overview</a>
+                <a href="dashboard.html" class="active">Performance Hub</a>
+                <a href="#">Fleet Status</a>
+                <a href="#">Flight Logs</a>
+            </nav>
+        </aside>
+
+        <main class="main-surface">
+            <h1 class="page-title">Aviation Performance Hub</h1>
+            <p class="page-subtitle">Managed Entity // Real-time Fleet Telemetry & Logistical Audit</p>
+
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <span class="lbl">Readiness Rate</span>
+                    <span class="val">92.4%</span><span class="trend positive">↑ 2.1%</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="lbl">Asset Utilization</span>
+                    <span class="val">78.5%</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="lbl">Active Flight Hours</span>
+                    <span class="val">4,201</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="lbl">Safety SLA</span>
+                    <span class="val">100.0%</span>
+                </div>
+            </div>
+
+            <div class="diligence-panel">
+                <h3>Managed Fleet Phases</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Phase ID</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                            <th>Efficiency Delta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PH-01-TRS</td>
+                            <td>Initial Fleet Induction</td>
+                            <td><span class="status-tag active">COMPLETE</span></td>
+                            <td>+5%</td>
+                        </tr>
+                        <tr>
+                            <td>PH-02-TRS</td>
+                            <td>Telemetry Integration Hub</td>
+                            <td><span class="status-tag active">COMPLETE</span></td>
+                            <td>+12%</td>
+                        </tr>
+                        <tr>
+                            <td>PH-03-TRS</td>
+                            <td>Autonomous Optimization Loop</td>
+                            <td><span class="status-tag pending">ACTIVE_FOCUS</span></td>
+                            <td>+8% [Running]</td>
+                        </tr>
+                        <tr>
+                            <td>PH-04-TRS</td>
+                            <td>Full Fleet Maturity</td>
+                            <td><span class="status-tag">LOCKED</span></td>
+                            <td>--</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="diligence-panel" style="margin-top: 24px;">
+                <h3>System Telemetry Logs</h3>
+                <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-secondary); line-height: 1.8;">
+                    [18:16:12] INFO: TRANS_NODE_SINK updated successfully.<br>
+                    [18:16:08] TRACE: Flight-path optimization verified via Node_Injection patch.<br>
+                    [18:15:55] WARN: Jitter spike detected on Fleet Unit 0xTRS (Nexus District).<br>
+                    [18:13:30] AUDIT: Routine aviation compliance sweep completed. 0 anomalies detected.
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

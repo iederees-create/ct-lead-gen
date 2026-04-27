@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operational Hub | COMMS</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/diligence-styles.css">
+</head>
+<body>
+    <header class="top-ribbon">
+        <div class="node-brand">
+            <span>NODE_08</span> COMMS // DASHBOARD
+        </div>
+        <div class="status-zone">
+            <span class="live-dot"></span> SECURE_SESSION
+        </div>
+    </header>
+
+    <div class="node-layout">
+        <aside class="sidebar">
+            <nav class="side-nav">
+                <a href="../../vector-mainframe.html">← Master Mainframe</a>
+                <a href="../index.html">Asset Overview</a>
+                <a href="dashboard.html" class="active">Performance Hub</a>
+                <a href="#">Network Logs</a>
+                <a href="#">Encryption Status</a>
+            </nav>
+        </aside>
+
+        <main class="main-surface">
+            <h1 class="page-title">Network Assurance Hub</h1>
+            <p class="page-subtitle">Managed Entity // Real-time Transport Telemetry & Security Audit</p>
+
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <span class="lbl">Mesh Availability</span>
+                    <span class="val">99.99%</span><span class="trend positive">Target Met</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="lbl">Packet Throughput</span>
+                    <span class="val">14 TB/s</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="lbl">Encryption Health</span>
+                    <span class="val">NOMINAL</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="lbl">Active Gateways</span>
+                    <span class="val">421</span>
+                </div>
+            </div>
+
+            <div class="diligence-panel">
+                <h3>Managed Network Phases</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Phase ID</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                            <th>Latency Delta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PH-01-CMS</td>
+                            <td>Initial Grid Hardening</td>
+                            <td><span class="status-tag active">COMPLETE</span></td>
+                            <td>-4ms</td>
+                        </tr>
+                        <tr>
+                            <td>PH-02-CMS</td>
+                            <td>Zero-Knowledge Routing Sync</td>
+                            <td><span class="status-tag active">COMPLETE</span></td>
+                            <td>-2ms</td>
+                        </tr>
+                        <tr>
+                            <td>PH-03-CMS</td>
+                            <td>Post-Quantum Key Rotation</td>
+                            <td><span class="status-tag pending">ACTIVE_FOCUS</span></td>
+                            <td>+1ms [Scanning]</td>
+                        </tr>
+                        <tr>
+                            <td>PH-04-CMS</td>
+                            <td>Full Mesh Sovereignty</td>
+                            <td><span class="status-tag">LOCKED</span></td>
+                            <td>--</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="diligence-panel" style="margin-top: 24px;">
+                <h3>System Telemetry Logs</h3>
+                <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-secondary); line-height: 1.8;">
+                    [18:15:12] INFO: COMMS_NODE_SINK updated successfully.<br>
+                    [18:15:08] TRACE: Multi-hop routing verified via Node_Injection patch.<br>
+                    [18:14:55] WARN: Jitter spike detected on Gateway 0xCS (Nexus District).<br>
+                    [18:12:30] AUDIT: Routine firmware integrity sweep completed. 0 anomalies detected.
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
