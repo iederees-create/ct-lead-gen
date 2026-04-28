@@ -339,10 +339,49 @@ const templateCSS = {
   Maintenance: fs.readFileSync(path.join(TEMPLATES,"maintenance-premium-v1","style.css"),"utf8")
 };
 
-const rows = ["Number,Industry,Business Name,Location,Rating,Repo Name,Live Demo URL,WhatsApp Pitch Link,Email Subject,Email Body"];
+const rows = ["Number,Industry,Business Name,Location,Rating,Repo Name,Website URL,WhatsApp Pitch Link,Email Subject,Email Body"];
 const commandCenterLeads = [];
 
-leads.forEach((l, i) => {
+const GROK_KEY = (fs.existsSync("GROK_TOKEN.txt") ? fs.readFileSync("GROK_TOKEN.txt", "utf8").trim() : "");
+
+async function getUniqueCSS(clientName, industry, baseCSS) {
+  try {
+    const prompt = `You are following the Dynamic Brand Adaptation blueprint. The client is "${clientName}" in the "${industry}" sector.
+Rewrite the following base CSS to make it unique to their brand vibe. Change the CSS variables in the :root (colors, accents), modify the font-family strings (use modern Google Fonts like Inter, Outfit, Space Grotesk, Playfair, etc.), and adjust border-radiuses or backgrounds slightly. Do NOT change class names or structural CSS logic.
+IMPORTANT: Return ONLY the raw CSS code. No markdown formatting, no backticks, no explanations. Just the raw CSS string.
+
+BASE CSS:
+${baseCSS}`;
+
+    const res = await fetch("https://api.x.ai/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${GROK_KEY}`
+      },
+      body: JSON.stringify({
+        model: "grok-4.20-reasoning",
+        messages: [{ role: "user", content: prompt }]
+      })
+    });
+    const data = await res.json();
+    if (data.choices && data.choices[0].message) {
+      let finalCSS = data.choices[0].message.content.trim();
+      finalCSS = finalCSS.replace(/^```css/i, "").replace(/```$/i, "").trim();
+      return finalCSS;
+    }
+  } catch(e) {
+    console.error("Grok API failed for " + clientName + ", falling back to template.");
+  }
+  return baseCSS;
+}
+
+(async function main() {
+  for (let i = 0; i < leads.length; i++) {
+    const l = leads[i];
+    
+    // Synthesize an email if not explicitly provided
+    const synthesizedEmail = l.email || `info@${l.slug}.co.za`;
   const dir = path.join(CLIENTS, l.slug);
   fs.mkdirSync(dir, { recursive: true });
 
@@ -350,59 +389,65 @@ leads.forEach((l, i) => {
              : l.industry === "Wellness" ? wellnessHTML(l)
              : maintenanceHTML(l);
 
-  fs.writeFileSync(path.join(dir, "index.html"), html, "utf8");
-  fs.writeFileSync(path.join(dir, "style.css"), templateCSS[l.industry], "utf8");
+    const repoName = `${l.slug}-ct`;
+    const liveUrl  = `https://iederees-create.github.io/${repoName}/`;
+    const waMsg    = encodeURIComponent(`Hi ${l.name}, I'm a local Cape Town web developer. I've built a premium website for you: ${liveUrl} — I also stay on as your dedicated web manager. Interested?`);
+    const waPitch  = `https://wa.me/${l.phone}?text=${waMsg}`;
+    const emailSubj = `Premium Website Ready for ${l.name}`;
+    const emailBody = `Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for ${l.name}:\n\n${liveUrl}\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for ${l.location}\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create`;
 
-  const repoName = `${l.slug}-ct`;
-  const liveUrl  = `https://iederees-create.github.io/${repoName}/`;
-  const waMsg    = encodeURIComponent(`Hi ${l.name}, I'm a local Cape Town web developer. I've built a premium website for you: ${liveUrl} — I also stay on as your dedicated web manager. Interested?`);
-  const waPitch  = `https://wa.me/${l.phone}?text=${waMsg}`;
-  const emailSubj = `Premium Website Ready for ${l.name}`;
-  const emailBody = `Hi there,\n\nI'm a web developer based in Cape Town. I built a premium, mobile-first demo for ${l.name}:\n\n${liveUrl}\n\nFeatures:\n- Mobile-optimised design\n- WhatsApp integration\n- SEO optimised for ${l.location}\n- Hosted on GitHub global infrastructure\n\nI offer ongoing management included in the package.\n\nWould you like to take it live?\n\nBest,\n[Your Name] - iederees-create`;
+    // Process AI styling for uniqueness
+    const baseCSS = templateCSS[l.industry];
+    const uniqueCSS = await getUniqueCSS(l.name, l.industry, baseCSS);
 
-  const csvLine = [i+1, l.industry, `"${l.name}"`, l.location, l.rating, repoName, liveUrl, `"${waPitch}"`, `"${emailSubj}"`, `"${emailBody.replace(/\n/g," | ")}"`].join(",");
-  rows.push(csvLine);
+    fs.writeFileSync(path.join(dir, "index.html"), html, "utf8");
+    fs.writeFileSync(path.join(dir, "style.css"), uniqueCSS, "utf8");
 
-  commandCenterLeads.push({
-    id: i + 1,
-    industry: l.industry,
-    name: l.name,
-    location: l.location,
-    rating: l.rating.toFixed(1),
-    liveUrl: liveUrl,
-    waLink: waPitch,
-    emailSubj,
-    emailBody
-  });
+    const csvLine = [i+1, l.industry, `"${l.name}"`, l.location, l.rating, repoName, liveUrl, `"${waPitch}"`, `"${emailSubj}"`, `"${emailBody.replace(/\n/g," | ")}"`].join(",");
+    rows.push(csvLine);
 
-  console.log(`[${String(i+1).padStart(2,"0")}/50] Built: ${l.name} (${l.industry}) -> ${dir}`);
-});
+    commandCenterLeads.push({
+      id: i + 1,
+      industry: l.industry,
+      name: l.name,
+      location: l.location,
+      rating: l.rating.toFixed(1),
+      liveUrl: liveUrl,
+      waLink: waPitch,
+      email: synthesizedEmail,
+      emailSubj,
+      emailBody
+    });
 
-const csvPath = path.join(BASE, "leads", "CT_50_Outreach_Command_Center.csv");
-fs.writeFileSync(csvPath, rows.join("\n"), "utf8");
-console.log(`\n✅ All 50 sites generated locally.`);
-console.log(`📊 Outreach sheet: ${csvPath}`);
+    console.log(`[${String(i+1).padStart(2,"0")}/50] Built uniqueness for: ${l.name} (${l.industry})`);
+  }
 
-// Sync Agency OS dashboard
-const ccPath = path.join(BASE, "index.html");
-if (fs.existsSync(ccPath)) {
-  let ccContent = fs.readFileSync(ccPath, "utf8");
-  
-  const leadsJson = JSON.stringify(commandCenterLeads, null, 4);
-  const vectorJson = JSON.stringify(vectorBlueprints, null, 4);
-  
-  ccContent = ccContent.replace(
-    /\/\/ DATA_INJECTION_START[\s\S]*?\/\/ DATA_INJECTION_END/,
-    `// DATA_INJECTION_START\n        const leadsData = ${leadsJson};\n        // DATA_INJECTION_END`
-  );
-  
-  ccContent = ccContent.replace(
-    /\/\/ VECTOR_INJECTION_START[\s\S]*?\/\/ VECTOR_INJECTION_END/,
-    `// VECTOR_INJECTION_START\n        const vectorData = ${vectorJson};\n        // VECTOR_INJECTION_END`
-  );
-  
-  fs.writeFileSync(ccPath, ccContent, "utf8");
-  console.log(`✅ Command Center synced with latest data.`);
-}
+  const csvPath = path.join(BASE, "leads", "CT_50_Outreach_Command_Center.csv");
+  fs.writeFileSync(csvPath, rows.join("\n"), "utf8");
+  console.log(`\n✅ All 50 sites generated locally with AI styles.`);
+  console.log(`📊 Outreach sheet: ${csvPath}`);
 
-console.log(`\nNext: run deploy.ps1 to push all repos to GitHub Pages.`);
+  // Sync Agency OS dashboard
+  const ccPath = path.join(BASE, "index.html");
+  if (fs.existsSync(ccPath)) {
+    let ccContent = fs.readFileSync(ccPath, "utf8");
+    
+    const leadsJson = JSON.stringify(commandCenterLeads, null, 4);
+    const vectorJson = JSON.stringify(vectorBlueprints, null, 4);
+    
+    ccContent = ccContent.replace(
+      /\/\/ DATA_INJECTION_START[\s\S]*?\/\/ DATA_INJECTION_END/,
+      `// DATA_INJECTION_START\n        const leadsData = ${leadsJson};\n        // DATA_INJECTION_END`
+    );
+    
+    ccContent = ccContent.replace(
+      /\/\/ VECTOR_INJECTION_START[\s\S]*?\/\/ VECTOR_INJECTION_END/,
+      `// VECTOR_INJECTION_START\n        const vectorData = ${vectorJson};\n        // VECTOR_INJECTION_END`
+    );
+    
+    fs.writeFileSync(ccPath, ccContent, "utf8");
+    console.log(`✅ Command Center synced with latest data.`);
+  }
+
+  console.log(`\nNext: run deploy.ps1 to push all repos to GitHub Pages.`);
+})();

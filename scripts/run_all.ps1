@@ -18,6 +18,46 @@ if (Test-Path $tokenFile) {
     $PAT | Out-File $tokenFile -Encoding ASCII
 }
 $HDRS = @{ Authorization = "token $PAT"; Accept = "application/vnd.github+json" }
+$grokFile = "$BASE\GROK_TOKEN.txt"
+if (Test-Path $grokFile) {
+    $GROK_KEY = (Get-Content $grokFile -Raw).Trim()
+} else {
+    Write-Host "Paste your Grok API Key:" -ForegroundColor Yellow
+    $GROK_KEY = Read-Host
+    $GROK_KEY | Out-File $grokFile -Encoding ASCII
+}
+function Get-UniqueCSS($clientName, $industry, $baseCSSPath) {
+    if (-not (Test-Path $baseCSSPath)) { return "" }
+    $baseCSS = Get-Content $baseCSSPath -Raw
+    $prompt = @"
+You are following the Dynamic Brand Adaptation blueprint. The client is "$clientName" in the "$industry" sector.
+Rewrite the following base CSS to make it unique to their brand vibe. Change the CSS variables in the :root (colors, accents), modify the font-family strings (use modern Google Fonts like Inter, Outfit, Space Grotesk, Playfair, etc.), and adjust border-radiuses or backgrounds slightly. Do NOT change class names or structural CSS logic.
+IMPORTANT: Return ONLY the raw CSS code. No markdown formatting, no backticks, no explanations. Just the raw CSS string.
+
+BASE CSS:
+$baseCSS
+"@
+
+    $body = @{
+        model = "grok-4.20-reasoning"
+        messages = @( @{ role = "user"; content = $prompt } )
+    } | ConvertTo-Json -Depth 10
+
+    try {
+        $resp = Invoke-RestMethod -Uri "https://api.x.ai/v1/chat/completions" -Method Post -Headers @{
+            "Authorization" = "Bearer $GROK_KEY"
+            "Content-Type" = "application/json"
+        } -Body $body
+
+        $finalCSS = $resp.choices[0].message.content.Trim()
+        $finalCSS = $finalCSS -replace "(?i)^```css", ""
+        $finalCSS = $finalCSS -replace "(?i)```$", ""
+        return $finalCSS.Trim()
+    } catch {
+        Write-Host " [!] Grok API Failed. Using base CSS." -ForegroundColor Yellow
+        return $baseCSS
+    }
+}
 
 try {
     $me = Invoke-RestMethod "https://api.github.com/user" -Headers $HDRS
@@ -308,7 +348,7 @@ $LEADS = @(
 # ============================================================
 #  MAIN LOOP
 # ============================================================
-$csvRows = @("Num,Industry,Business Name,Location,Rating,Repo,Live URL,WhatsApp Pitch,Email Subject")
+$csvRows = @("Num,Industry,Business Name,Location,Rating,Repo,Website URL,WhatsApp Pitch,Email Subject,Email To")
 $built  = 0; $pushed = 0; $errors = 0
 
 foreach ($L in $LEADS) {
@@ -356,10 +396,13 @@ foreach ($L in $LEADS) {
         "Wellness"    { "$TMPL\wellness-premium-v1\style.css" }
         "Maintenance" { "$TMPL\maintenance-premium-v1\style.css" }
     }
-    Copy-Item $cssSource "$dir\style.css" -Force
+    
+    # AI Styling
+    $uniqueCSS = Get-UniqueCSS $L.name $L.ind $cssSource
+    [System.IO.File]::WriteAllText("$dir\style.css", $uniqueCSS, [System.Text.Encoding]::UTF8)
 
     $built++
-    Write-Host "[$num/50] Built: $($L.name)" -ForegroundColor Cyan
+    Write-Host "[$num/50] Built uniqueness for: $($L.name)" -ForegroundColor Cyan
 
     # ---- GitHub Deploy ----
     $repoBody = @{ name=$repoName; description="Cape Town Ecosystem - $($L.name)"; private=$false; auto_init=$false } | ConvertTo-Json
@@ -395,7 +438,8 @@ foreach ($L in $LEADS) {
 
     # Build CSV row
     $emailSubj = "I Built a Premium Website for $($L.name)"
-    $csvRows  += "$num,$($L.ind),`"$($L.name)`",$($L.loc),$($L.rating),$repoName,$liveUrl,`"$waLink`",`"$emailSubj`""
+    $emailTo = "info@$($L.slug).co.za"
+    $csvRows  += "$num,$($L.ind),`"$($L.name)`",$($L.loc),$($L.rating),$repoName,$liveUrl,`"$waLink`",`"$emailSubj`",`"$emailTo`""
 }
 
 # Write outreach CSV

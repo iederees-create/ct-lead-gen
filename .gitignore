@@ -3,3 +3,4 @@ GITHUB_TOKEN.txt
 
 # Individual client folders are generated and pushed as separate repos
 clients/
+GROK_TOKEN.txt
