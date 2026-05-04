@@ -26,8 +26,9 @@
         <!-- Sidebar Navigation -->
         <aside class="sidebar">
             <nav class="side-nav">
-                <a href="#" class="active">Portfolio Overview</a>
+                <a href="#" class="active" onclick="switchTab('portfolio')">Portfolio Overview</a>
                 <a href="#" onclick="toggleSimDrawer()">Simulation Engine</a>
+                <a href="#" onclick="switchTab('etsy-intel')">Etsy Intel (Admin)</a>
                 <a href="#">Operations Command</a>
                 <a href="#">Deal Room (Gated)</a>
                 <a href="#">Risk & Compliance</a>
@@ -55,7 +56,9 @@
 
         <!-- Main Surface -->
         <main class="main-surface">
-            <!-- Elite Asset Ecosystem Header -->
+            <!-- PORTFOLIO TAB -->
+            <div id="portfolio-tab" class="tab-content active">
+                <!-- Elite Asset Ecosystem Header -->
             <section class="overview-panel hologram-panel">
                 <div class="panel-header">
                     <h2>Situational Awareness // Elite Asset Ecosystem</h2>
@@ -308,6 +311,42 @@
                     </div>
                 </div>
             </div>
+
+            <!-- ETSY INTEL TAB -->
+            <div id="etsy-intel-tab" class="tab-content">
+                <section class="overview-panel hologram-panel">
+                    <div class="panel-header">
+                        <h2>Etsy Intel // Product Research Hub</h2>
+                        <span class="subtitle">Autonomous Scraper for High-Multiple Digital & Physical Goods</span>
+                    </div>
+                    <div class="intel-controls" style="margin-top:24px; display:flex; gap:12px;">
+                        <input type="text" id="etsyQuery" placeholder="Enter keyword (e.g. vintage posters)" style="flex:1; background:#111; border:1px solid #333; color:#fff; padding:12px; font-family:var(--font-mono); font-size:0.8rem;">
+                        <button class="btn-node" onclick="startEtsyScrape()" style="width:200px; margin:0;">INITIATE_SCRAPE</button>
+                        <button class="btn-node" onclick="exportEtsyIntel()" style="width:120px; margin:0; border-color:var(--accent-green); color:var(--accent-green);">EXPORT_CSV</button>
+                    </div>
+                    <div id="etsyStatus" style="margin-top:12px; font-family:var(--font-mono); font-size:0.7rem; color:var(--smoke-gray);">[SYSTEM]: READY_FOR_INPUT</div>
+                </section>
+
+                <div class="panel-card hologram-panel" style="padding:0;">
+                    <table style="width:100%; border-collapse:collapse; font-family:var(--font-mono); font-size:0.7rem; color:#fff;">
+                        <thead>
+                            <tr style="background:#1a1a1a; text-align:left;">
+                                <th style="padding:12px; border-bottom:1px solid #333;">#</th>
+                                <th style="padding:12px; border-bottom:1px solid #333;">ID</th>
+                                <th style="padding:12px; border-bottom:1px solid #333;">TITLE</th>
+                                <th style="padding:12px; border-bottom:1px solid #333;">SHOP</th>
+                                <th style="padding:12px; border-bottom:1px solid #333;">PRICE</th>
+                                <th style="padding:12px; border-bottom:1px solid #333;">ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody id="etsyResultsBody">
+                            <tr>
+                                <td colspan="6" style="padding:40px; text-align:center; color:var(--text-secondary);">NO_DATA_AVAILABLE // INITIATE_SCAN_TO_POPULATE</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </main>
     </div>
 
@@ -351,6 +390,20 @@
     </div>
 
     <script>
+        function switchTab(tabId) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            // Show target tab
+            const target = document.getElementById(tabId + '-tab');
+            if (target) target.classList.add('active');
+            
+            // Update sidebar links
+            document.querySelectorAll('.side-nav a').forEach(link => link.classList.remove('active'));
+            if (window.event && window.event.currentTarget) {
+                window.event.currentTarget.classList.add('active');
+            }
+        }
+
         function toggleSimDrawer() {
             const drawer = document.getElementById('simDrawer');
             drawer.classList.toggle('active');
@@ -376,6 +429,15 @@
         }
         window.onload = createParticles;
     </script>
+    <style>
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        
+        /* Table overrides */
+        table th { letter-spacing: 0.1em; color: var(--smoke-gray); }
+        table td { border-bottom: 1px solid #1a1a1a; padding: 12px; }
+    </style>
+    <script src="assets/etsy-intel.js"></script>
     <script src='assets/vector-core.js'></script>
 </body>
 </html>
