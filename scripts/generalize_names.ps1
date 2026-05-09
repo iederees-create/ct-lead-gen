@@ -3,40 +3,41 @@ $files = Get-ChildItem -Path $targetDir -Filter "index.html" -Recurse
 
 foreach ($file in $files) {
     $content = Get-Content $file.FullName -Raw
-    $originalName = ""
-    if ($content -match '<title>(.*?)<\/title>') {
-        $originalName = $matches[1].Split('|')[0].Trim()
-    }
+    $folderName = $file.Directory.Name
     
-    if ($originalName -eq "" -or $originalName -eq "this digital asset") { continue }
-    
-    $newName = $originalName
-    
-    # Industry Detection & Generic Name Assignment
-    if ($originalName -match "Solar") { $newName = "Elite Solar Infrastructure" }
-    elseif ($originalName -match "Plumb") { $newName = "Precision Plumbing Systems" }
-    elseif ($originalName -match "Aircon|Air Conditioning") { $newName = "Climate Logic Aircon" }
-    elseif ($originalName -match "Aesthetics|Wellness|Skin|Spa|Beauty|Clinic|Body|Laser|Medispa") { $newName = "Lumina Wellness Hub" }
-    elseif ($originalName -match "Clean") { $newName = "Hygienic Clean Pro" }
-    elseif ($originalName -match "Construct|Build|Paint|Handyman|Waterproof|Tiling|Roof") { $newName = "Civic Core Construction" }
-    elseif ($originalName -match "Electric") { $newName = "Rapid Response Electric" }
-    elseif ($originalName -match "Pest") { $newName = "EcoShield Pest Control" }
-    elseif ($originalName -match "Tutoring") { $newName = "Cognitive Excellence Tutoring" }
-    elseif ($originalName -match "Pool") { $newName = "Crystal Clear Pool Care" }
+    $newName = ""
+    # More specific detection based on folder name
+    if ($folderName -match "solar") { $newName = "Photon Flux Energy" }
+    elseif ($folderName -match "plumb") { $newName = "Hydro Logic Systems" }
+    elseif ($folderName -match "aircon") { $newName = "Climate Forge Systems" }
+    elseif ($folderName -match "aesthetics|skin|wellness|spa|laser") { $newName = "Aura Skin Sanctuary" }
+    elseif ($folderName -match "electric") { $newName = "Volt Vault Systems" }
+    elseif ($folderName -match "clean") { $newName = "Sparkle Logic Clean" }
+    elseif ($folderName -match "construct|build|paint|tiling|roof|waterproof|handyman") { $newName = "Apex Structural" }
+    elseif ($folderName -match "pest") { $newName = "Vermin Guard Pro" }
+    elseif ($folderName -match "tutoring") { $newName = "Cognitive Bridge Academics" }
+    elseif ($folderName -match "pool") { $newName = "Blue Lagoon Pools" }
+    else { $newName = "Premium Asset Hub" }
 
-    # Append Location if found
-    if ($originalName -match "(Claremont|Tygervalley|Sea Point|Wynberg|Durbanville|Camps Bay|Cape Town|CT|Southern Suburbs|Northern Suburbs|Paarden Eiland|Westlake|Tableview)") {
+    # Append Location if found in folder name
+    if ($folderName -match "(claremont|tygervalley|seapoint|wynberg|durbanville|campsbay|goodwood|parow|mitchells|bellville|milnerton)") {
         $location = $matches[1]
         $newName = "$newName ($location)"
+    } else {
+        # Random suffix to ensure uniqueness if no location
+        $hash = $folderName.GetHashCode() % 100
+        $newName = "$newName (Node-$hash)"
     }
 
-    if ($newName -ne $originalName) {
-        Write-Host "Renaming: $originalName -> $newName"
-        # Escape for regex replace
-        $escapedOrig = [regex]::Escape($originalName)
-        $content = $content -replace $escapedOrig, $newName
-        Set-Content $file.FullName $content
+    # Identify current name
+    if ($content -match '<title>(.*?)<\/title>') {
+        $oldName = $matches[1].Split('|')[0].Trim()
+        if ($oldName -ne "" -and $newName -ne $oldName) {
+            Write-Host "Renaming: $oldName -> $newName ($folderName)"
+            $escapedOld = [regex]::Escape($oldName)
+            $content = $content -replace $escapedOld, $newName
+            Set-Content $file.FullName $content
+        }
     }
 }
-
-Write-Host "Generic Renaming Complete."
+Write-Host "Creative Naming V2 Complete."
