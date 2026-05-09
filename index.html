@@ -3,13 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agency OS // Unified Command Hub</title>
+    <title>Web Portfolio // Premium Digital Collection</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@400;500;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="agency.css">
+    <link rel="stylesheet" href="portfolio.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <link rel="stylesheet" href="https://iederees-create.github.io/ct-lead-gen/templates/agent-chat-floating.css">
-    <script src="https://iederees-create.github.io/ct-lead-gen/scripts/agent-chat-floating.js"></script>
-    <style>
         :root {
             --accent-rose: #ff2d55;
             --accent-blue: #007aff;
@@ -313,12 +310,12 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        .node-card.purchased {
+        .Site-card.purchased {
             border-color: var(--accent-green);
             box-shadow: 0 0 20px rgba(34, 197, 94, 0.1);
         }
 
-        .node-card.purchased .node-title {
+        .Site-card.purchased .Site-title {
             color: var(--accent-green);
         }
     </style>
@@ -355,11 +352,15 @@
     <div class="dashboard-layout">
         <!-- Sidebar -->
         <aside class="sidebar">
-            <nav class="side-nav">
-                <a href="#" class="active" onclick="switchTab('portfolio', this)">Vector Portfolio</a>
-                <!-- Outreach decommissioned as per user pivot -->
-                <a href="#" id="authLink" onclick="handleLogout()">System Logout</a>
+            <div class="sidebar-brand">
+                PORTFOLIO // V1.0
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" onclick="filterCategory('all')">View All Websites</a>
+                <a href="#" class="nav-item" onclick="filterCategory('blueprint')">Service Blueprints</a>
+                <a href="#" class="nav-item" onclick="filterCategory('website')">Client Showcases</a>
             </nav>
+            <a href="#" id="authLink" onclick="handleLogout()">System Logout</a>
             
             <div class="metrics-summary">
                 <div class="metric-block">
@@ -367,8 +368,8 @@
                     <span class="value">NOMINAL</span>
                 </div>
                 <div class="metric-block">
-                    <span class="label">NODES_ONLINE</span>
-                    <span class="value" id="nodeCount">...</span>
+                    <span class="label">SiteS_ONLINE</span>
+                    <span class="value" id="SiteCount">...</span>
                 </div>
             </div>
 
@@ -383,16 +384,15 @@
             
             <!-- Tab: Vector Portfolio -->
             <div id="tab-portfolio" class="tab-content">
-                <section class="overview-panel hologram-panel">
-                    <div class="panel-header" style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;">
-                        <div>
-                            <h2 class="war-room-title">The Vector // Institutional Asset Exchange</h2>
-                            <span class="subtitle">58 Premium Digital Assets Integrated with Agent v2.0 AI Concierge</span>
-                        </div>
+                <section class="overview-panel">
+                    <div class="terminal-header">
+                        <h1>PREMIUM WEBSITE COLLECTION</h1>
+                        <p>High-performance websites for businesses that value quality. Ready to launch and fully managed.</p>
+                    </div>
                         <div style="display:flex; gap:8px; flex-wrap:wrap;" id="portfolioFilters">
-                            <button onclick="filterPortfolio('all', this)" class="btn-node active-filter" style="padding:6px 14px; font-size:0.7rem;">ALL</button>
-                            <button onclick="filterPortfolio('website', this)" class="btn-node" style="padding:6px 14px; font-size:0.7rem;">WEBSITES</button>
-                            <button onclick="filterPortfolio('saas', this)" class="btn-node" style="padding:6px 14px; font-size:0.7rem;">SAAS / DIGITAL</button>
+                            <button onclick="filterPortfolio('all', this)" class="btn-Site active-filter" style="padding:6px 14px; font-size:0.7rem;">ALL</button>
+                            <button onclick="filterPortfolio('website', this)" class="btn-Site" style="padding:6px 14px; font-size:0.7rem;">WEBSITES</button>
+                            <button onclick="filterPortfolio('saas', this)" class="btn-Site" style="padding:6px 14px; font-size:0.7rem;">SAAS / DIGITAL</button>
                         </div>
                     </div>
                 </section>
@@ -401,13 +401,13 @@
                 <div class="portfolio-section-label" id="section-website">
                     <span style="font-family:var(--font-mono); font-size:0.7rem; color:#555; letter-spacing:0.1em;">// WHITE_LABEL_WEBSITES</span>
                 </div>
-                <div class="node-grid" id="websiteGrid"></div>
+                <div class="Site-grid" id="websiteGrid"></div>
 
                 <!-- Vector Digital Products Section -->
                 <div class="portfolio-section-label" id="section-saas" style="margin-top:32px;">
                     <span style="font-family:var(--font-mono); font-size:0.7rem; color:#555; letter-spacing:0.1em;">// VECTOR_DIGITAL_PRODUCTS</span>
                 </div>
-                <div class="node-grid" id="blueprintGrid">
+                <div class="Site-grid" id="blueprintGrid">
                     <!-- Blueprints injected here -->
                 </div>
             </div>
@@ -432,7 +432,7 @@
                     </div>
                 </section>
 
-                <div class="node-grid" id="leadsGrid">
+                <div class="Site-grid" id="leadsGrid">
                     <!-- Leads injected here -->
                 </div>
             </div>
@@ -457,7 +457,7 @@
                                 <div class="scanline"></div>
                                 <div class="data-ring outer"></div>
                                 <div class="data-ring inner"></div>
-                                <div class="core-node">
+                                <div class="core-Site">
                                     <div class="pulse-core"></div>
                                 </div>
                                 <div class="hologram-overlay-text" id="cbctTargetName">TARGET_ACQ</div>
@@ -498,7 +498,7 @@
                                 <div>[SYS] awaiting target designation...</div>
                             </div>
 
-                            <button onclick="switchTab('operations', document.querySelector('.side-nav a:nth-child(2)'))" class="btn-node mt-15" style="margin-top:20px;">ABORT_SCAN & RETURN</button>
+                            <button onclick="switchTab('operations', document.querySelector('.side-nav a:nth-child(2)'))" class="btn-Site mt-15" style="margin-top:20px;">ABORT_SCAN & RETURN</button>
                         </div>
                     </div>
                 </div>
@@ -1347,9 +1347,9 @@
                 category: 'website',
                 sector: 'Business & Strategy',
                 price: 'R3,500',
-                description: 'Premium executive intelligence & strategy site. Sleek high-security terminal aesthetic for consultancy firms.',
+                description: 'High-end website for consultants. Modern, clean, and professional design to build client trust.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/white-label-blueprints/consult-flow/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20ConsultFlow'
             },
             {
                 id: 'w2',
@@ -1357,9 +1357,9 @@
                 category: 'website',
                 sector: 'Legal & Compliance',
                 price: 'R3,500',
-                description: 'Advanced compliance & risk management site for law firms and legal tech startups.',
+                description: 'Professional legal website for law firms. Secure, polished, and built for client onboarding.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/white-label-blueprints/legal-vault/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20LegalVault'
             },
             {
                 id: 'w3',
@@ -1367,9 +1367,9 @@
                 category: 'website',
                 sector: 'Security & Defense',
                 price: 'R3,500',
-                description: 'Elite digital defense & physical security site. Projects authority for corporate protection services.',
+                description: 'Modern security services website. Clean layout designed to project authority and reliability.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/white-label-blueprints/omni-shield/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20OmniShield'
             },
             {
                 id: 'w4',
@@ -1377,9 +1377,9 @@
                 category: 'website',
                 sector: 'Fitness & Performance',
                 price: 'R3,500',
-                description: 'Biometric optimization & athlete management site with a futuristic Human_OS interface.',
+                description: 'Fitness & Performance coaching site. Dynamic interface for modern health and wellness businesses.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/white-label-blueprints/fitness-pro/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Elite%20Pro%20(Human_OS)'
             },
             {
                 id: 'w5',
@@ -1387,9 +1387,9 @@
                 category: 'website',
                 sector: 'Longevity & Wellness',
                 price: 'R3,500',
-                description: 'Regenerative science & longevity lab site for bloodwork, genomics, and supplement stacking.',
+                description: 'Wellness & Health lab website. Perfect for clinics focusing on longevity and premium care.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/white-label-blueprints/lifescale/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20LifeScale'
             },
             {
                 id: 'w6',
@@ -1397,9 +1397,9 @@
                 category: 'website',
                 sector: 'Property & Real Estate',
                 price: 'R3,500',
-                description: 'Autonomous property management & resident intelligence system for landlords and real estate agents.',
+                description: 'Professional Real Estate & Property site. Streamlined design for management and sales.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/white-label-blueprints/prop-master/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20PropMaster'
             },
             {
                 id: 'w7',
@@ -1407,9 +1407,9 @@
                 category: 'website',
                 sector: 'Tech Hub & Collective',
                 price: 'R4,500',
-                description: 'Strategic intelligence collective multi-site hub. The ultimate command-center for conglomerates.',
+                description: 'Strategic Business Hub. A clean, high-performance portal for managing multiple business Sites.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/white-label-blueprints/vector-mainframe.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20The%20Vector%20Mainframe'
             },
             {
                 id: 'e1',
@@ -1417,9 +1417,9 @@
                 category: 'website',
                 sector: 'English Tutoring (Global)',
                 price: 'R3,500',
-                description: 'Premium educational vertical site. Institutional Navy aesthetic with academic-grade typography and lead capture.',
+                description: 'Premium educational vertical site. Professional Navy aesthetic with academic-grade typography and lead capture.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/english-tutoring/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Academic%20Excellence'
             },
             {
                 id: 'ct1',
@@ -1427,9 +1427,9 @@
                 category: 'website',
                 sector: 'Solar (Goodwood)',
                 price: 'R3,500',
-                description: 'Premium Solar digital asset for the Goodwood sector. Managed high-performance UI.',
+                description: 'Premium Solar Professional Website for the Goodwood sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/glen-ellios-solar/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Glen%20Ellios%20Pty%20LTD'
             },
             {
                 id: 'ct2',
@@ -1437,9 +1437,9 @@
                 category: 'website',
                 sector: 'Solar (Parow)',
                 price: 'R3,500',
-                description: 'Premium Solar digital asset for the Parow sector. Managed high-performance UI.',
+                description: 'Premium Solar Professional Website for the Parow sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/sunlec-energy-solutions/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Sunlec%20Energy%20Solutions'
             },
             {
                 id: 'ct3',
@@ -1447,9 +1447,9 @@
                 category: 'website',
                 sector: 'Solar (Mitchells Plain)',
                 price: 'R3,500',
-                description: 'Premium Solar digital asset for the Mitchells Plain sector. Managed high-performance UI.',
+                description: 'Premium Solar Professional Website for the Mitchells Plain sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/eco-direct-solar/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Eco%20Direct%20Solar'
             },
             {
                 id: 'ct4',
@@ -1457,9 +1457,9 @@
                 category: 'website',
                 sector: 'Solar (Mitchells Plain)',
                 price: 'R3,500',
-                description: 'Premium Solar digital asset for the Mitchells Plain sector. Managed high-performance UI.',
+                description: 'Premium Solar Professional Website for the Mitchells Plain sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/solar-way-ct/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Solar%20Way%20Cape%20Town'
             },
             {
                 id: 'ct5',
@@ -1467,9 +1467,9 @@
                 category: 'website',
                 sector: 'Solar (Mitchells Plain)',
                 price: 'R3,500',
-                description: 'Premium Solar digital asset for the Mitchells Plain sector. Managed high-performance UI.',
+                description: 'Premium Solar Professional Website for the Mitchells Plain sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/green-star-solar/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Green%20Star%20Solar'
             },
             {
                 id: 'ct6',
@@ -1477,9 +1477,9 @@
                 category: 'website',
                 sector: 'Solar (Mitchells Plain)',
                 price: 'R3,500',
-                description: 'Premium Solar digital asset for the Mitchells Plain sector. Managed high-performance UI.',
+                description: 'Premium Solar Professional Website for the Mitchells Plain sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/solar-dot-com-ct/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Solar%20Dot%20Com'
             },
             {
                 id: 'ct7',
@@ -1487,9 +1487,9 @@
                 category: 'website',
                 sector: 'Solar (Bishop Lavis)',
                 price: 'R3,500',
-                description: 'Premium Solar digital asset for the Bishop Lavis sector. Managed high-performance UI.',
+                description: 'Premium Solar Professional Website for the Bishop Lavis sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/dhs-solar/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20D.H.S%20Solar'
             },
             {
                 id: 'ct8',
@@ -1497,9 +1497,9 @@
                 category: 'website',
                 sector: 'Solar (Belhar)',
                 price: 'R3,500',
-                description: 'Premium Solar digital asset for the Belhar sector. Managed high-performance UI.',
+                description: 'Premium Solar Professional Website for the Belhar sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/rs-solar-installations/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20R%20and%20S%20Solar%20Installations'
             },
             {
                 id: 'ct9',
@@ -1507,9 +1507,9 @@
                 category: 'website',
                 sector: 'Solar (Parow)',
                 price: 'R3,500',
-                description: 'Premium Solar digital asset for the Parow sector. Managed high-performance UI.',
+                description: 'Premium Solar Professional Website for the Parow sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/ac-solar-solutions/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20A.C%20Solar%20Solutions'
             },
             {
                 id: 'ct10',
@@ -1517,9 +1517,9 @@
                 category: 'website',
                 sector: 'Solar (Wynberg)',
                 price: 'R3,500',
-                description: 'Premium Solar digital asset for the Wynberg sector. Managed high-performance UI.',
+                description: 'Premium Solar Professional Website for the Wynberg sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/thomas-electrical-solar/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Thomas%20Electrical'
             },
             {
                 id: 'ct11',
@@ -1527,9 +1527,9 @@
                 category: 'website',
                 sector: 'Wellness (Sea Point)',
                 price: 'R3,500',
-                description: 'Premium Wellness digital asset for the Sea Point sector. Managed high-performance UI.',
+                description: 'Premium Wellness Professional Website for the Sea Point sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/seapoint-skin-clinic/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Sea%20Point%20Skin%20Clinic'
             },
             {
                 id: 'ct12',
@@ -1537,9 +1537,9 @@
                 category: 'website',
                 sector: 'Wellness (Claremont)',
                 price: 'R3,500',
-                description: 'Premium Wellness digital asset for the Claremont sector. Managed high-performance UI.',
+                description: 'Premium Wellness Professional Website for the Claremont sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/azalea-aesthetics-ct/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Azalea%20Aesthetics'
             },
             {
                 id: 'ct13',
@@ -1547,9 +1547,9 @@
                 category: 'website',
                 sector: 'Wellness (Claremont)',
                 price: 'R3,500',
-                description: 'Premium Wellness digital asset for the Claremont sector. Managed high-performance UI.',
+                description: 'Premium Wellness Professional Website for the Claremont sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/vitality-wellness-claremont/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Vitality%20Wellness%20Claremont'
             },
             {
                 id: 'ct14',
@@ -1557,9 +1557,9 @@
                 category: 'website',
                 sector: 'Wellness (Camps Bay)',
                 price: 'R3,500',
-                description: 'Premium Wellness digital asset for the Camps Bay sector. Managed high-performance UI.',
+                description: 'Premium Wellness Professional Website for the Camps Bay sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/camps-bay-aesthetics/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Camps%20Bay%20Aesthetics'
             },
             {
                 id: 'ct15',
@@ -1567,9 +1567,9 @@
                 category: 'website',
                 sector: 'Wellness (Kenilworth)',
                 price: 'R3,500',
-                description: 'Premium Wellness digital asset for the Kenilworth sector. Managed high-performance UI.',
+                description: 'Premium Wellness Professional Website for the Kenilworth sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/lumina-skin-studio/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Lumina%20Skin%20Studio'
             },
             {
                 id: 'ct16',
@@ -1577,9 +1577,9 @@
                 category: 'website',
                 sector: 'Wellness (Bellville)',
                 price: 'R3,500',
-                description: 'Premium Wellness digital asset for the Bellville sector. Managed high-performance UI.',
+                description: 'Premium Wellness Professional Website for the Bellville sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/renewal-med-spa/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Renewal%20Medi-Spa'
             },
             {
                 id: 'ct17',
@@ -1587,9 +1587,9 @@
                 category: 'website',
                 sector: 'Wellness (Sea Point)',
                 price: 'R3,500',
-                description: 'Premium Wellness digital asset for the Sea Point sector. Managed high-performance UI.',
+                description: 'Premium Wellness Professional Website for the Sea Point sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/glow-republic-ct/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Glow%20Republic%20CT'
             },
             {
                 id: 'ct18',
@@ -1597,9 +1597,9 @@
                 category: 'website',
                 sector: 'Wellness (Wynberg)',
                 price: 'R3,500',
-                description: 'Premium Wellness digital asset for the Wynberg sector. Managed high-performance UI.',
+                description: 'Premium Wellness Professional Website for the Wynberg sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/serenity-body-lab/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Serenity%20Body%20Lab'
             },
             {
                 id: 'ct19',
@@ -1607,9 +1607,9 @@
                 category: 'website',
                 sector: 'Wellness (Durbanville)',
                 price: 'R3,500',
-                description: 'Premium Wellness digital asset for the Durbanville sector. Managed high-performance UI.',
+                description: 'Premium Wellness Professional Website for the Durbanville sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/precision-laser-ct/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Precision%20Laser%20Cape%20Town'
             },
             {
                 id: 'ct20',
@@ -1617,9 +1617,9 @@
                 category: 'website',
                 sector: 'Wellness (Tygervalley)',
                 price: 'R3,500',
-                description: 'Premium Wellness digital asset for the Tygervalley sector. Managed high-performance UI.',
+                description: 'Premium Wellness Professional Website for the Tygervalley sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/pure-aesthetics-tygervalley/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Pure%20Aesthetics%20Tygervalley'
             },
             {
                 id: 'ct21',
@@ -1627,9 +1627,9 @@
                 category: 'website',
                 sector: 'Wellness (Observatory)',
                 price: 'R3,500',
-                description: 'Premium Wellness digital asset for the Observatory sector. Managed high-performance UI.',
+                description: 'Premium Wellness Professional Website for the Observatory sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/form-wellness-studio/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Form%20Wellness%20Studio'
             },
             {
                 id: 'ct22',
@@ -1637,9 +1637,9 @@
                 category: 'website',
                 sector: 'Wellness (Tableview)',
                 price: 'R3,500',
-                description: 'Premium Wellness digital asset for the Tableview sector. Managed high-performance UI.',
+                description: 'Premium Wellness Professional Website for the Tableview sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/aqua-beauty-studios/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Aqua%20Beauty%20Studios'
             },
             {
                 id: 'ct23',
@@ -1647,9 +1647,9 @@
                 category: 'website',
                 sector: 'Wellness (Parow)',
                 price: 'R3,500',
-                description: 'Premium Wellness digital asset for the Parow sector. Managed high-performance UI.',
+                description: 'Premium Wellness Professional Website for the Parow sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/meridian-clinic-ct/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Meridian%20Clinic%20CT'
             },
             {
                 id: 'ct24',
@@ -1657,9 +1657,9 @@
                 category: 'website',
                 sector: 'Wellness (Century City)',
                 price: 'R3,500',
-                description: 'Premium Wellness digital asset for the Century City sector. Managed high-performance UI.',
+                description: 'Premium Wellness Professional Website for the Century City sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/bodysculpt-cape-town/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20BodySculpt%20Cape%20Town'
             },
             {
                 id: 'ct25',
@@ -1667,9 +1667,9 @@
                 category: 'website',
                 sector: 'Wellness (Sea Point)',
                 price: 'R3,500',
-                description: 'Premium Wellness digital asset for the Sea Point sector. Managed high-performance UI.',
+                description: 'Premium Wellness Professional Website for the Sea Point sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/arc-wellness-seapoint/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Arc%20Wellness%20Sea%20Point'
             },
             {
                 id: 'ct26',
@@ -1677,9 +1677,9 @@
                 category: 'website',
                 sector: 'Wellness (Claremont)',
                 price: 'R3,500',
-                description: 'Premium Wellness digital asset for the Claremont sector. Managed high-performance UI.',
+                description: 'Premium Wellness Professional Website for the Claremont sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/revive-medispa-claremont/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Revive%20Medi-Spa%20Claremont'
             },
             {
                 id: 'ct27',
@@ -1687,9 +1687,9 @@
                 category: 'website',
                 sector: 'Wellness (Hout Bay)',
                 price: 'R3,500',
-                description: 'Premium Wellness digital asset for the Hout Bay sector. Managed high-performance UI.',
+                description: 'Premium Wellness Professional Website for the Hout Bay sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/alpine-aesthetics-ct/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Alpine%20Aesthetics%20CT'
             },
             {
                 id: 'ct28',
@@ -1697,9 +1697,9 @@
                 category: 'website',
                 sector: 'Wellness (Bellville)',
                 price: 'R3,500',
-                description: 'Premium Wellness digital asset for the Bellville sector. Managed high-performance UI.',
+                description: 'Premium Wellness Professional Website for the Bellville sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/zen-skin-studio-bv/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Zen%20Skin%20Studio%20Bellville'
             },
             {
                 id: 'ct29',
@@ -1707,9 +1707,9 @@
                 category: 'website',
                 sector: 'Wellness (Durbanville)',
                 price: 'R3,500',
-                description: 'Premium Wellness digital asset for the Durbanville sector. Managed high-performance UI.',
+                description: 'Premium Wellness Professional Website for the Durbanville sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/nova-cosmetic-clinic/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Nova%20Cosmetic%20Clinic'
             },
             {
                 id: 'ct30',
@@ -1717,9 +1717,9 @@
                 category: 'website',
                 sector: 'Wellness (Milnerton)',
                 price: 'R3,500',
-                description: 'Premium Wellness digital asset for the Milnerton sector. Managed high-performance UI.',
+                description: 'Premium Wellness Professional Website for the Milnerton sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/elite-wellness-ct/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Elite%20Wellness%20CT'
             },
             {
                 id: 'ct31',
@@ -1727,9 +1727,9 @@
                 category: 'website',
                 sector: 'Maintenance (Goodwood)',
                 price: 'R3,500',
-                description: 'Premium Maintenance digital asset for the Goodwood sector. Managed high-performance UI.',
+                description: 'Premium Maintenance Professional Website for the Goodwood sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/cape-clean-pro/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Cape%20Clean%20Pro'
             },
             {
                 id: 'ct32',
@@ -1737,9 +1737,9 @@
                 category: 'website',
                 sector: 'Maintenance (Durbanville)',
                 price: 'R3,500',
-                description: 'Premium Maintenance digital asset for the Durbanville sector. Managed high-performance UI.',
+                description: 'Premium Maintenance Professional Website for the Durbanville sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/northern-subs-plumbing/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Northern%20Suburbs%20Plumbing'
             },
             {
                 id: 'ct33',
@@ -1747,9 +1747,9 @@
                 category: 'website',
                 sector: 'Maintenance (Westlake)',
                 price: 'R3,500',
-                description: 'Premium Maintenance digital asset for the Westlake sector. Managed high-performance UI.',
+                description: 'Premium Maintenance Professional Website for the Westlake sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/westlake-pest-control/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Westlake%20Pest%20Control'
             },
             {
                 id: 'ct34',
@@ -1757,9 +1757,9 @@
                 category: 'website',
                 sector: 'Maintenance (Paarden Eiland)',
                 price: 'R3,500',
-                description: 'Premium Maintenance digital asset for the Paarden Eiland sector. Managed high-performance UI.',
+                description: 'Premium Maintenance Professional Website for the Paarden Eiland sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/paarden-eiland-electric/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Paarden%20Eiland%20Electrical'
             },
             {
                 id: 'ct35',
@@ -1767,9 +1767,9 @@
                 category: 'website',
                 sector: 'Maintenance (Kuils River)',
                 price: 'R3,500',
-                description: 'Premium Maintenance digital asset for the Kuils River sector. Managed high-performance UI.',
+                description: 'Premium Maintenance Professional Website for the Kuils River sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/ct-roofing-specialists/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20CT%20Roofing%20Specialists'
             },
             {
                 id: 'ct36',
@@ -1777,9 +1777,9 @@
                 category: 'website',
                 sector: 'Maintenance (Bellville)',
                 price: 'R3,500',
-                description: 'Premium Maintenance digital asset for the Bellville sector. Managed high-performance UI.',
+                description: 'Premium Maintenance Professional Website for the Bellville sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/metro-aircon-ct/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Metro%20Aircon%20Cape%20Town'
             },
             {
                 id: 'ct37',
@@ -1787,9 +1787,9 @@
                 category: 'website',
                 sector: 'Maintenance (Kenilworth)',
                 price: 'R3,500',
-                description: 'Premium Maintenance digital asset for the Kenilworth sector. Managed high-performance UI.',
+                description: 'Premium Maintenance Professional Website for the Kenilworth sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/southern-suburbs-builders/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Southern%20Suburbs%20Builders'
             },
             {
                 id: 'ct38',
@@ -1797,9 +1797,9 @@
                 category: 'website',
                 sector: 'Maintenance (Brackenfell)',
                 price: 'R3,500',
-                description: 'Premium Maintenance digital asset for the Brackenfell sector. Managed high-performance UI.',
+                description: 'Premium Maintenance Professional Website for the Brackenfell sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/hydro-clean-ct/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Hydro%20Clean%20CT'
             },
             {
                 id: 'ct39',
@@ -1807,9 +1807,9 @@
                 category: 'website',
                 sector: 'Maintenance (Parow)',
                 price: 'R3,500',
-                description: 'Premium Maintenance digital asset for the Parow sector. Managed high-performance UI.',
+                description: 'Premium Maintenance Professional Website for the Parow sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/cape-handyman-services/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Cape%20Handyman%20Services'
             },
             {
                 id: 'ct40',
@@ -1817,9 +1817,9 @@
                 category: 'website',
                 sector: 'Maintenance (Durbanville)',
                 price: 'R3,500',
-                description: 'Premium Maintenance digital asset for the Durbanville sector. Managed high-performance UI.',
+                description: 'Premium Maintenance Professional Website for the Durbanville sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/greenpest-ct/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20GreenPest%20CT'
             },
             {
                 id: 'ct41',
@@ -1827,9 +1827,9 @@
                 category: 'website',
                 sector: 'Maintenance (Claremont)',
                 price: 'R3,500',
-                description: 'Premium Maintenance digital asset for the Claremont sector. Managed high-performance UI.',
+                description: 'Premium Maintenance Professional Website for the Claremont sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/acme-plumbing-claremont/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Acme%20Plumbing%20Claremont'
             },
             {
                 id: 'ct42',
@@ -1837,9 +1837,9 @@
                 category: 'website',
                 sector: 'Maintenance (Tygervalley)',
                 price: 'R3,500',
-                description: 'Premium Maintenance digital asset for the Tygervalley sector. Managed high-performance UI.',
+                description: 'Premium Maintenance Professional Website for the Tygervalley sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/all-seasons-aircon/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20All%20Seasons%20Aircon%20CT'
             },
             {
                 id: 'ct43',
@@ -1847,9 +1847,9 @@
                 category: 'website',
                 sector: 'Maintenance (Wetton)',
                 price: 'R3,500',
-                description: 'Premium Maintenance digital asset for the Wetton sector. Managed high-performance UI.',
+                description: 'Premium Maintenance Professional Website for the Wetton sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/cape-waterproofing-co/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Cape%20Waterproofing%20Co'
             },
             {
                 id: 'ct44',
@@ -1857,9 +1857,9 @@
                 category: 'website',
                 sector: 'Maintenance (Durbanville)',
                 price: 'R3,500',
-                description: 'Premium Maintenance digital asset for the Durbanville sector. Managed high-performance UI.',
+                description: 'Premium Maintenance Professional Website for the Durbanville sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/rapid-response-electric/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Rapid%20Response%20Electrical'
             },
             {
                 id: 'ct45',
@@ -1867,9 +1867,9 @@
                 category: 'website',
                 sector: 'Maintenance (Tableview)',
                 price: 'R3,500',
-                description: 'Premium Maintenance digital asset for the Tableview sector. Managed high-performance UI.',
+                description: 'Premium Maintenance Professional Website for the Tableview sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/tableview-tiling-ct/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Tableview%20Tiling%20CT'
             },
             {
                 id: 'ct46',
@@ -1877,9 +1877,9 @@
                 category: 'website',
                 sector: 'Maintenance (Kuilsriver)',
                 price: 'R3,500',
-                description: 'Premium Maintenance digital asset for the Kuilsriver sector. Managed high-performance UI.',
+                description: 'Premium Maintenance Professional Website for the Kuilsriver sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/eco-clean-northern-subs/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Eco%20Clean%20Northern%20Suburbs'
             },
             {
                 id: 'ct47',
@@ -1887,9 +1887,9 @@
                 category: 'website',
                 sector: 'Maintenance (Constantia)',
                 price: 'R3,500',
-                description: 'Premium Maintenance digital asset for the Constantia sector. Managed high-performance UI.',
+                description: 'Premium Maintenance Professional Website for the Constantia sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/ct-pool-care/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20CT%20Pool%20Care'
             },
             {
                 id: 'ct48',
@@ -1897,9 +1897,9 @@
                 category: 'website',
                 sector: 'Maintenance (Pinelands)',
                 price: 'R3,500',
-                description: 'Premium Maintenance digital asset for the Pinelands sector. Managed high-performance UI.',
+                description: 'Premium Maintenance Professional Website for the Pinelands sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/summit-painting-ct/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Summit%20Painting%20CT'
             },
             {
                 id: 'ct49',
@@ -1907,9 +1907,9 @@
                 category: 'website',
                 sector: 'Maintenance (Blouberg)',
                 price: 'R3,500',
-                description: 'Premium Maintenance digital asset for the Blouberg sector. Managed high-performance UI.',
+                description: 'Premium Maintenance Professional Website for the Blouberg sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/window-wizards-ct/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Window%20Wizards%20CT'
             },
             {
                 id: 'ct50',
@@ -1917,9 +1917,9 @@
                 category: 'website',
                 sector: 'Maintenance (Bellville)',
                 price: 'R3,500',
-                description: 'Premium Maintenance digital asset for the Bellville sector. Managed high-performance UI.',
+                description: 'Premium Maintenance Professional Website for the Bellville sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/first-choice-construction/index.html',
-                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Agency%20OS'
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20First%20Choice%20Construction'
             }
 
 
@@ -2020,32 +2020,29 @@
             renderWebsites();
             renderOperations();
             
-            document.getElementById('nodeCount').innerText = `${vectorData.length + websiteData.length} ACTIVE`;
+            document.getElementById('SiteCount').innerText = `${vectorData.length + websiteData.length} ACTIVE`;
             document.getElementById('leadsCount').innerText = `${leadsData.length} IDENTIFIED`;
         }
 
         function renderPortfolio() {
             const grid = document.getElementById('blueprintGrid');
-            grid.innerHTML = vectorData.map(node => {
-                const isPurchased = purchasedAssets.includes(`node-${node.id}`);
+            grid.innerHTML = vectorData.map(site => {
+                const isPurchased = purchasedAssets.includes(`Site-${site.id}`);
                 return `
-                <article class="node-card ${isPurchased ? 'purchased' : ''}">
-                    <div class="node-header">
-                        <span class="node-id">NODE_${String(node.id).padStart(2,'0')} // ${node.industry.toUpperCase()}</span>
-                        <div style="display:flex; gap:6px;">
-                            <span class="status-pill" style="background:rgba(0,122,255,0.1); color:var(--accent-blue); border-color:rgba(0,122,255,0.2);">AGENT_INTEGRATED</span>
-                            <span class="status-pill ${isPurchased ? 'healthy' : 'amber'}" style="${isPurchased ? 'background:rgba(34,197,94,0.1); color:var(--accent-green);' : ''}">${isPurchased ? 'ACQUIRED' : 'VETTED'}</span>
-                        </div>
+                <article class="lead-card ${isPurchased ? 'purchased' : ''}">
+                    <span class="industry-tag">${site.industry} // Premium Blueprint</span>
+                    <h3 class="node-title">${site.name}</h3>
+                    <p class="node-sector">${site.location}</p>
+                    <p class="description-text">${site.description}</p>
+                    <div class="price-row">
+                        <span class="price-tag">R4,500</span>
+                        <span class="maintenance-tag">Maintenance Included</span>
                     </div>
-                    <h3 class="node-title">${node.name}</h3>
-                    <p class="node-sector">${node.location}</p>
-                    <p style="font-size:0.75rem; color:#666; margin-bottom:15px; min-height:40px;">${node.description} <br><strong style="color:var(--accent-blue);">Embedded: Institutional AI Concierge (Agent v2.0)</strong></p>
-                    <div style="font-family:var(--font-mono); font-size:0.7rem; color:#444; margin-bottom:15px;">SERVICE_FEE: R3,000/mo (AFTER 30 DAYS)</div>
-                    <div style="display:flex; gap:10px;">
-                        <button class="btn-node" onclick="window.open('${node.liveUrl}', '_blank')" style="flex:1;">INSPECT</button>
+                    <div class="action-row">
+                        <a href="${site.liveUrl}" target="_blank" class="btn-sm btn-inspect">Preview Site</a>
                         ${isPurchased 
-                            ? `<button class="btn-node" onclick="alert('Downloading source package for ${node.name}...') " style="flex:1; background:var(--accent-green); color:#000; border:none;">DOWNLOAD_ZIP</button>`
-                            : `<button class="btn-node" onclick="openCheckout('node-${node.id}')" style="flex:1; border-color:var(--accent-green); color:var(--accent-green);">PURCHASE</button>`
+                            ? `<button class="btn-sm btn-purchase" onclick="alert('Downloading source package for ${site.name}...')">Download Files</button>`
+                            : `<button class="btn-sm btn-purchase" onclick="openCheckout('Site-${site.id}')">Purchase & Launch</button>`
                         }
                     </div>
                 </article>
@@ -2059,26 +2056,20 @@
             grid.innerHTML = websiteData.map(site => {
                 const isPurchased = purchasedAssets.includes(site.id);
                 return `
-                <article class="node-card ${isPurchased ? 'purchased' : ''}">
-                    <div class="node-header">
-                        <span class="node-id">WEB_${site.id.toUpperCase()} // WEBSITE</span>
-                        <div style="display:flex; gap:6px;">
-                            <span class="status-pill" style="background:rgba(0,122,255,0.1); color:var(--accent-blue); border-color:rgba(0,122,255,0.2);">AGENT_READY</span>
-                            <span class="status-pill" style="${isPurchased ? 'background:rgba(34,197,94,0.1); color:var(--accent-green); border-color:var(--accent-green);' : 'background:rgba(245,158,11,0.1); color:var(--accent-amber); border-color:rgba(245,158,11,0.2);'}">${isPurchased ? 'OWNED' : 'FOR SALE'}</span>
-                        </div>
-                    </div>
+                <article class="lead-card ${isPurchased ? 'purchased' : ''}">
+                    <span class="industry-tag">${site.category} // Live Asset</span>
                     <h3 class="node-title">${site.name}</h3>
                     <p class="node-sector">${site.sector}</p>
-                    <p style="font-size:0.75rem; color:#666; margin-bottom:10px; min-height:40px;">${site.description} <br><strong style="color:var(--accent-blue);">Integrated: Agent v2.0 AI Assistant.</strong></p>
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
-                        <span style="font-family:var(--font-mono); font-size:0.85rem; color:var(--accent-green);">${isPurchased ? 'PAID' : site.price}</span>
-                        <span style="font-family:var(--font-mono); font-size:0.65rem; color:#444;">R3,000/mo SVCS</span>
+                    <p class="description-text">${site.description}</p>
+                    <div class="price-row">
+                        <span class="price-tag">${isPurchased ? 'Purchased' : site.price}</span>
+                        <span class="maintenance-tag">Managed Service</span>
                     </div>
-                    <div style="display:flex; gap:10px;">
-                        <button class="btn-node" onclick="window.open('${site.liveUrl}', '_blank')" style="flex:1;">INSPECT</button>
+                    <div class="action-row">
+                        <a href="${site.liveUrl}" target="_blank" class="btn-sm btn-inspect">Preview Site</a>
                         ${isPurchased 
-                            ? `<button class="btn-node" onclick="alert('Downloading source package for ${site.name}...') " style="flex:1; background:var(--accent-green); color:#000; border:none;">DOWNLOAD_ZIP</button>`
-                            : `<button class="btn-node" onclick="openCheckout('${site.id}')" style="flex:1; border-color:var(--accent-green); color:var(--accent-green);">PURCHASE</button>`
+                            ? `<button class="btn-sm btn-purchase" onclick="alert('Downloading source package for ${site.name}...')">Download Files</button>`
+                            : `<button class="btn-sm btn-purchase" onclick="openCheckout('${site.id}')">Purchase & Launch</button>`
                         }
                     </div>
                 </article>
@@ -2124,20 +2115,20 @@
             );
 
             grid.innerHTML = filtered.map(lead => `
-                <div class="lead-card node-card">
+                <div class="lead-card Site-card">
                     <span class="industry-tag">${lead.industry}</span>
-                    <h3 class="node-title" style="font-size:1.1rem">${lead.name}</h3>
+                    <h3 class="Site-title" style="font-size:1.1rem">${lead.name}</h3>
                     <div style="font-family:var(--font-mono); font-size:0.7rem; color:#555; margin-bottom:15px;">
                         ðŸ“ ${lead.location} // â­ ${lead.rating}
                     </div>
                     <div class="actions">
-                        <button onclick="startDeepScan(${lead.id})" class="btn-node" style="border-color:var(--accent-green); color:var(--accent-green); margin-bottom:10px;">CBCT_DEEP_SCAN</button>
-                        ${lead.liveUrl ? `<a href="${lead.liveUrl}" target="_blank" class="btn-node" style="display:block; text-align:center; text-decoration:none; margin-bottom:10px;">VIEW_WEBSITE</a>` : `<button disabled class="btn-node" style="display:block; opacity:0.3; margin-bottom:10px; cursor:not-allowed;">WEBSITE_PENDING_DEPLOY</button>`}
+                        <button onclick="startDeepScan(${lead.id})" class="btn-Site" style="border-color:var(--accent-green); color:var(--accent-green); margin-bottom:10px;">CBCT_DEEP_SCAN</button>
+                        ${lead.liveUrl ? `<a href="${lead.liveUrl}" target="_blank" class="btn-Site" style="display:block; text-align:center; text-decoration:none; margin-bottom:10px;">VIEW_WEBSITE</a>` : `<button disabled class="btn-Site" style="display:block; opacity:0.3; margin-bottom:10px; cursor:not-allowed;">WEBSITE_PENDING_DEPLOY</button>`}
                         <div class="action-row" style="grid-template-columns: 1fr 1fr 1fr 1fr; margin-bottom: 10px;">
-                            <a href="tel:+${lead.waLink.split('wa.me/')[1]?.split('?')[0] || ''}" class="btn-node" style="text-align:center; text-decoration:none;" title="Call Client">ðŸ“ž</a>
-                            <a href="sms:+${lead.waLink.split('wa.me/')[1]?.split('?')[0] || ''}?body=${encodeURIComponent('Hi, I built a premium website for you...')}" class="btn-node" style="text-align:center; text-decoration:none;" title="SMS Pitch">ðŸ’¬</a>
-                            <a href="${lead.waLink}" target="_blank" class="btn-node" style="text-align:center; text-decoration:none; color:var(--accent-green); border-color:var(--accent-green);" title="WhatsApp Pitch">ðŸ“±</a>
-                            <a href="mailto:${lead.email || ''}?subject=${encodeURIComponent(lead.emailSubj)}&body=${encodeURIComponent(lead.emailBody)}" class="btn-node" style="text-align:center; text-decoration:none; border-color:var(--accent-rose); color:var(--accent-rose);" title="Email Pitch">ðŸ“§</a>
+                            <a href="tel:+${lead.waLink.split('wa.me/')[1]?.split('?')[0] || ''}" class="btn-Site" style="text-align:center; text-decoration:none;" title="Call Client">ðŸ“ž</a>
+                            <a href="sms:+${lead.waLink.split('wa.me/')[1]?.split('?')[0] || ''}?body=${encodeURIComponent('Hi, I built a premium website for you...')}" class="btn-Site" style="text-align:center; text-decoration:none;" title="SMS Pitch">ðŸ’¬</a>
+                            <a href="${lead.waLink}" target="_blank" class="btn-Site" style="text-align:center; text-decoration:none; color:var(--accent-green); border-color:var(--accent-green);" title="WhatsApp Pitch">ðŸ“±</a>
+                            <a href="mailto:${lead.email || ''}?subject=${encodeURIComponent(lead.emailSubj)}&body=${encodeURIComponent(lead.emailBody)}" class="btn-Site" style="text-align:center; text-decoration:none; border-color:var(--accent-rose); color:var(--accent-rose);" title="Email Pitch">ðŸ“§</a>
                         </div>
                     </div>
                 </div>
@@ -2176,7 +2167,7 @@
             });
             
             const logsEl = document.getElementById('cbctLogs');
-            logsEl.innerHTML = `<div>[SYS] Initializing deep scan on node #${leadId}...</div>`;
+            logsEl.innerHTML = `<div>[SYS] Initializing deep scan on Site #${leadId}...</div>`;
 
             // Simulation Sequence
             const sleep = ms => new Promise(r => setTimeout(r, ms));
@@ -2223,9 +2214,9 @@
             activeCheckoutId = siteId;
             let item = null;
             
-            if (siteId.startsWith('node-')) {
-                item = vectorData.find(n => `node-${n.id}` === siteId);
-                item.price = 'R4,500'; // Default price for premium nodes
+            if (siteId.startsWith('Site-')) {
+                item = vectorData.find(n => `Site-${n.id}` === siteId);
+                item.price = 'R4,500'; // Default price for premium Sites
             } else {
                 item = websiteData.find(s => s.id === siteId);
             }
@@ -2250,12 +2241,12 @@
             overlay.classList.add('active');
 
             const steps = [
-                'CONTACTING_STRIPE_GATEWAY...',
-                'VALIDATING_CREDIT_FACILITY...',
-                'SECURING_LICENSE_KEY...',
-                'ACTIVATING_AI_AGENTS...',
-                'PROVISIONING_DEDICATED_WEBDEV...',
-                'FINALIZING_ACQUISITION...'
+                'SECURELY CONNECTING TO PAYMENT GATEWAY...',
+                'VERIFYING WEBSITE AVAILABILITY...',
+                'PREPARING YOUR PROJECT DASHBOARD...',
+                'ACTIVATING YOUR AI ASSISTANT...',
+                'ASSIGNING YOUR DEDICATED WEB DEVELOPER...',
+                'PREPARING YOUR LAUNCH PACKAGE...'
             ];
 
             for (const step of steps) {
@@ -2277,6 +2268,8 @@
     </script>
 </body>
 </html>
+
+
 
 
 

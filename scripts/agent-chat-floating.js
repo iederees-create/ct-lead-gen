@@ -60,7 +60,12 @@
 
         // Welcome Message
         setTimeout(() => {
-            appendMessage("bot", `Connection established. I am the high-performance Sales Specialist for **${siteName}**. <br><br>As an expert in **${industry}**, I can confirm this asset has been audit-cleared and is ready for immediate institutional acquisition. <br><br>Are you looking to secure this cash-flowing node for your portfolio?`);
+            const initialMessage = `Connection established. I am your **Professional Web Consultant** for **${siteName}**. 
+
+I can help you understand the features of this website and how it can help grow your business. 
+
+Are you looking to launch this website for your own brand?`;
+            appendMessage("bot", initialMessage);
         }, 1000);
 
         document.getElementById('ai-form').onsubmit = async (e) => {

@@ -1,0 +1,204 @@
+/* Professional Web Portfolio Design System */
+:root {
+    --accent-primary: #007aff;
+    --accent-secondary: #5856d6;
+    --accent-success: #34c759;
+    --bg-base: #050505;
+    --bg-card: rgba(255, 255, 255, 0.03);
+    --border-card: rgba(255, 255, 255, 0.08);
+    --text-main: #ffffff;
+    --text-dim: #a0a0a0;
+    --font-sans: 'Outfit', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+}
+
+body {
+    background: var(--bg-base);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+.dashboard-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Inviting Sidebar */
+.sidebar {
+    width: 280px;
+    background: #000;
+    border-right: 1px solid var(--border-card);
+    padding: 40px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.sidebar-brand {
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #fff;
+    padding-left: 12px;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-item {
+    padding: 12px 16px;
+    border-radius: 10px;
+    color: var(--text-dim);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover, .nav-item.active {
+    background: var(--bg-card);
+    color: #fff;
+}
+
+/* Main Surface Overhaul */
+.main-surface {
+    flex: 1;
+    padding: 60px;
+    background: radial-gradient(circle at 50% -20%, #111 0%, #050505 100%);
+    overflow-y: auto;
+}
+
+.terminal-header {
+    margin-bottom: 60px;
+}
+
+.terminal-header h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    margin: 0 0 16px 0;
+    background: linear-gradient(135deg, #fff 0%, #888 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.terminal-header p {
+    font-size: 1.2rem;
+    color: var(--text-dim);
+    max-width: 600px;
+    line-height: 1.5;
+}
+
+/* Friendly Website Cards */
+.node-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+.lead-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: 20px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    backdrop-filter: blur(20px);
+}
+
+.lead-card:hover {
+    border-color: var(--accent-primary);
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.industry-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.node-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.node-sector {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    margin-top: -12px;
+}
+
+.description-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #ccc;
+    flex-grow: 1;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-card);
+}
+
+.price-tag {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.maintenance-tag {
+    font-size: 0.75rem;
+    color: var(--accent-success);
+    font-weight: 600;
+}
+
+.action-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.btn-sm {
+    padding: 12px;
+    border-radius: 12px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.btn-inspect {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    border: 1px solid var(--border-card);
+}
+
+.btn-purchase {
+    background: var(--accent-primary);
+    color: #fff;
+}
+
+.btn-sm:hover {
+    transform: scale(1.02);
+    opacity: 0.9;
+}
+
+/* Hide Technical Panels */
+.orbital-board, .hologram-panel, .war-room-title, .status-zone, .cmd-ribbon {
+    display: none !important;
+}
