@@ -19,10 +19,7 @@
             </div>
             <div id="agency-ai-container">
                 <div class="ai-header">
-                    <div>
-                        <h3>Asset Agent // v2.0</h3>
-                        <div class="ai-status">STRATEGIC_DIVESTMENT_MODE</div>
-                    </div>
+                    <h3>Asset Agent // v2.0</h3>
                     <div id="ai-close" style="cursor:pointer; opacity:0.5;">✕</div>
                 </div>
                 <div class="ai-chat-log" id="ai-log"></div>

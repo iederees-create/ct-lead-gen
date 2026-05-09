@@ -9,7 +9,7 @@
 #agency-ai-trigger {
     position: fixed;
     bottom: 20px;
-    right: 20px;
+    right: 90px;
     width: 60px;
     height: 60px;
     background: var(--agent-accent);
@@ -36,7 +36,7 @@
 #agency-ai-container {
     position: fixed;
     bottom: 90px;
-    right: 20px;
+    right: 90px;
     width: 380px;
     height: 600px;
     max-height: calc(100vh - 120px);
@@ -79,22 +79,6 @@
     text-transform: uppercase;
 }
 
-.ai-status {
-    font-size: 0.6rem;
-    color: #34c759;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.ai-status::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    background: #34c759;
-    border-radius: 50%;
-    box-shadow: 0 0 8px #34c759;
-}
 
 .ai-chat-log {
     flex: 1;
