@@ -540,7 +540,15 @@
                 </div>
                 <div class="summary-row">
                     <span>LICENSE</span>
-                    <span style="color: #888;">UNLIMITED_COMMERCIAL</span>
+                    <span style="color: #888;">MANAGED_ASSET_v1.0</span>
+                </div>
+                <div class="summary-row">
+                    <span>MAINTENANCE</span>
+                    <span style="color: var(--accent-green);">1ST_MONTH_INCLUDED</span>
+                </div>
+                <div class="summary-row">
+                    <span>RECURRING</span>
+                    <span style="color: #888;">R3,000/mo</span>
                 </div>
                 <div class="summary-row summary-total">
                     <span>TOTAL_DUE</span>
@@ -2022,11 +2030,15 @@
                 <article class="node-card ${isPurchased ? 'purchased' : ''}">
                     <div class="node-header">
                         <span class="node-id">NODE_${String(node.id).padStart(2,'0')} // ${node.industry.toUpperCase()}</span>
-                        <span class="status-pill ${isPurchased ? 'healthy' : 'amber'}" style="${isPurchased ? 'background:rgba(34,197,94,0.1); color:var(--accent-green);' : ''}">${isPurchased ? 'ACQUIRED' : 'VETTED'}</span>
+                        <div style="display:flex; gap:6px;">
+                            <span class="status-pill" style="background:rgba(0,122,255,0.1); color:var(--accent-blue); border-color:rgba(0,122,255,0.2);">AGENT_INTEGRATED</span>
+                            <span class="status-pill ${isPurchased ? 'healthy' : 'amber'}" style="${isPurchased ? 'background:rgba(34,197,94,0.1); color:var(--accent-green);' : ''}">${isPurchased ? 'ACQUIRED' : 'VETTED'}</span>
+                        </div>
                     </div>
                     <h3 class="node-title">${node.name}</h3>
                     <p class="node-sector">${node.location}</p>
-                    <p style="font-size:0.75rem; color:#666; margin-bottom:15px; min-height:40px;">${node.description}</p>
+                    <p style="font-size:0.75rem; color:#666; margin-bottom:15px; min-height:40px;">${node.description} <br><strong style="color:#aaa;">Includes managed rebranding & first month maintenance.</strong></p>
+                    <div style="font-family:var(--font-mono); font-size:0.7rem; color:#444; margin-bottom:15px;">SERVICE_FEE: R3,000/mo (AFTER 30 DAYS)</div>
                     <div style="display:flex; gap:10px;">
                         <button class="btn-node" onclick="window.open('${node.liveUrl}', '_blank')" style="flex:1;">INSPECT</button>
                         ${isPurchased 
@@ -2048,12 +2060,18 @@
                 <article class="node-card ${isPurchased ? 'purchased' : ''}">
                     <div class="node-header">
                         <span class="node-id">WEB_${site.id.toUpperCase()} // WEBSITE</span>
-                        <span class="status-pill" style="${isPurchased ? 'background:rgba(34,197,94,0.1); color:var(--accent-green); border-color:var(--accent-green);' : 'background:rgba(245,158,11,0.1); color:var(--accent-amber); border-color:rgba(245,158,11,0.2);'}">${isPurchased ? 'OWNED' : 'FOR SALE'}</span>
+                        <div style="display:flex; gap:6px;">
+                            <span class="status-pill" style="background:rgba(0,122,255,0.1); color:var(--accent-blue); border-color:rgba(0,122,255,0.2);">AGENT_READY</span>
+                            <span class="status-pill" style="${isPurchased ? 'background:rgba(34,197,94,0.1); color:var(--accent-green); border-color:var(--accent-green);' : 'background:rgba(245,158,11,0.1); color:var(--accent-amber); border-color:rgba(245,158,11,0.2);'}">${isPurchased ? 'OWNED' : 'FOR SALE'}</span>
+                        </div>
                     </div>
                     <h3 class="node-title">${site.name}</h3>
                     <p class="node-sector">${site.sector}</p>
-                    <p style="font-size:0.75rem; color:#666; margin-bottom:10px; min-height:40px;">${site.description}</p>
-                    <p style="font-family:var(--font-mono); font-size:0.85rem; color:var(--accent-green); margin-bottom:15px;">${isPurchased ? 'PAID' : site.price}</p>
+                    <p style="font-size:0.75rem; color:#666; margin-bottom:10px; min-height:40px;">${site.description} <br><strong style="color:#aaa;">Managed: Rebranding + Maintenance Included.</strong></p>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                        <span style="font-family:var(--font-mono); font-size:0.85rem; color:var(--accent-green);">${isPurchased ? 'PAID' : site.price}</span>
+                        <span style="font-family:var(--font-mono); font-size:0.65rem; color:#444;">R3,000/mo SVCS</span>
+                    </div>
                     <div style="display:flex; gap:10px;">
                         <button class="btn-node" onclick="window.open('${site.liveUrl}', '_blank')" style="flex:1;">INSPECT</button>
                         ${isPurchased 
@@ -2232,8 +2250,9 @@
             const steps = [
                 'CONTACTING_STRIPE_GATEWAY...',
                 'VALIDATING_CREDIT_FACILITY...',
-                'AUTHORIZING_TRANSACTION...',
                 'SECURING_LICENSE_KEY...',
+                'ACTIVATING_AI_AGENTS...',
+                'PROVISIONING_DEDICATED_WEBDEV...',
                 'FINALIZING_ACQUISITION...'
             ];
 
