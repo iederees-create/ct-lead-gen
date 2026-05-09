@@ -7,6 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@400;500;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="agency.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="stylesheet" href="https://iederees-create.github.io/ct-lead-gen/templates/agent-chat-floating.css">
+    <script src="https://iederees-create.github.io/ct-lead-gen/scripts/agent-chat-floating.js"></script>
     <style>
         :root {
             --accent-rose: #ff2d55;
@@ -385,7 +387,7 @@
                     <div class="panel-header" style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;">
                         <div>
                             <h2 class="war-room-title">The Vector // Institutional Asset Exchange</h2>
-                            <span class="subtitle">58 Premium Digital Assets Available for Immediate Acquisition</span>
+                            <span class="subtitle">58 Premium Digital Assets Integrated with Agent v2.0 AI Concierge</span>
                         </div>
                         <div style="display:flex; gap:8px; flex-wrap:wrap;" id="portfolioFilters">
                             <button onclick="filterPortfolio('all', this)" class="btn-node active-filter" style="padding:6px 14px; font-size:0.7rem;">ALL</button>
@@ -2037,7 +2039,7 @@
                     </div>
                     <h3 class="node-title">${node.name}</h3>
                     <p class="node-sector">${node.location}</p>
-                    <p style="font-size:0.75rem; color:#666; margin-bottom:15px; min-height:40px;">${node.description} <br><strong style="color:#aaa;">Includes managed rebranding & first month maintenance.</strong></p>
+                    <p style="font-size:0.75rem; color:#666; margin-bottom:15px; min-height:40px;">${node.description} <br><strong style="color:var(--accent-blue);">Embedded: Institutional AI Concierge (Agent v2.0)</strong></p>
                     <div style="font-family:var(--font-mono); font-size:0.7rem; color:#444; margin-bottom:15px;">SERVICE_FEE: R3,000/mo (AFTER 30 DAYS)</div>
                     <div style="display:flex; gap:10px;">
                         <button class="btn-node" onclick="window.open('${node.liveUrl}', '_blank')" style="flex:1;">INSPECT</button>
@@ -2067,7 +2069,7 @@
                     </div>
                     <h3 class="node-title">${site.name}</h3>
                     <p class="node-sector">${site.sector}</p>
-                    <p style="font-size:0.75rem; color:#666; margin-bottom:10px; min-height:40px;">${site.description} <br><strong style="color:#aaa;">Managed: Rebranding + Maintenance Included.</strong></p>
+                    <p style="font-size:0.75rem; color:#666; margin-bottom:10px; min-height:40px;">${site.description} <br><strong style="color:var(--accent-blue);">Integrated: Agent v2.0 AI Assistant.</strong></p>
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
                         <span style="font-family:var(--font-mono); font-size:0.85rem; color:var(--accent-green);">${isPurchased ? 'PAID' : site.price}</span>
                         <span style="font-family:var(--font-mono); font-size:0.65rem; color:#444;">R3,000/mo SVCS</span>
