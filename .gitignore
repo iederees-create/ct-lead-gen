@@ -1,6 +1,6 @@
 # Security - never commit this
 GITHUB_TOKEN.txt
 
-# Individual client folders are generated and pushed as separate repos
-clients/
+# Individual client folders are now hosted in this unified repository
+# clients/
 GROK_TOKEN.txt
