@@ -50,10 +50,14 @@
                 <a href="#" class="nav-item active" onclick="filterCategory('all')">View All Websites</a>
                 <a href="#" class="nav-item" onclick="filterCategory('blueprint')">Service Blueprints</a>
                 <a href="#" class="nav-item" onclick="filterCategory('website')">Client Showcases</a>
+                <a href="#" class="nav-item" id="cashierNavItem" onclick="switchTab('cashier', this)">Banking & Cashier</a>
             </nav>
-            <a href="#" id="authLink" onclick="handleLogout()">System Logout</a>
             
             <div class="metrics-summary">
+                <div class="metric-block" style="background: rgba(52, 199, 89, 0.1); border: 1px solid rgba(52, 199, 89, 0.2);">
+                    <span class="label">WALLET_BALANCE</span>
+                    <span class="value wallet-balance-display" style="color: var(--accent-success);">R0</span>
+                </div>
                 <div class="metric-block">
                     <span class="label">ECOSYSTEM LOAD</span>
                     <span class="value">NOMINAL</span>
@@ -79,14 +83,16 @@
                     <div class="terminal-header">
                         <h1>PREMIUM WEBSITE COLLECTION</h1>
                         <p>High-performance websites for businesses that value quality. Ready to launch and fully managed.</p>
-                    </div>
-                        <div style="display:flex; gap:8px; flex-wrap:wrap;" id="portfolioFilters">
+                        
+                        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top: 20px;" id="portfolioFilters">
                             <button onclick="filterPortfolio('all', this)" class="btn-Site active-filter" style="padding:6px 14px; font-size:0.7rem;">ALL</button>
                             <button onclick="filterPortfolio('website', this)" class="btn-Site" style="padding:6px 14px; font-size:0.7rem;">WEBSITES</button>
                             <button onclick="filterPortfolio('saas', this)" class="btn-Site" style="padding:6px 14px; font-size:0.7rem;">SAAS / DIGITAL</button>
                         </div>
                     </div>
                 </section>
+
+                <!-- White Label Websites Section -->
 
                 <!-- White Label Websites Section -->
                 <div class="portfolio-section-label" id="section-website">
@@ -101,6 +107,48 @@
                 <div class="Site-grid" id="blueprintGrid">
                     <!-- Blueprints injected here -->
                 </div>
+            </div>
+
+            <!-- Tab: Cashier -->
+            <div id="tab-cashier" class="tab-content hidden">
+                <section class="overview-panel">
+                    <div class="terminal-header">
+                        <h1>BANKING & CASHIER</h1>
+                        <p>Manage your funds for website acquisitions and service subscriptions.</p>
+                    </div>
+
+                    <div class="node-grid">
+                        <div class="lead-card" style="grid-column: span 2;">
+                            <div class="industry-tag">Personal Wallet</div>
+                            <h2 class="node-title wallet-balance-display" style="font-size: 3rem; color: var(--accent-success);">R0</h2>
+                            <p class="description-text">Your funds are stored securely in ZAR. Use these funds to instantly acquire any website or service from the portfolio.</p>
+                            
+                            <div class="action-row">
+                                <button onclick="depositFunds()" class="btn-sm btn-purchase" style="background: var(--accent-success);">MAKE A DEPOSIT</button>
+                                <button onclick="alert('Withdrawal request submitted to admin.')" class="btn-sm btn-inspect">REQUEST PAYOUT</button>
+                            </div>
+                        </div>
+
+                        <div class="lead-card">
+                            <div class="industry-tag">Deposit Methods</div>
+                            <h3 class="node-title">Local Bank Transfer</h3>
+                            <p class="description-text">
+                                <strong>Bank:</strong> Nedbank<br>
+                                <strong>Account:</strong> 1236268857<br>
+                                <strong>Ref:</strong> [Your Name]
+                            </p>
+                        </div>
+
+                        <div class="lead-card">
+                            <div class="industry-tag">Crypto</div>
+                            <h3 class="node-title">XRP Ripple</h3>
+                            <p class="description-text">
+                                <strong>Address:</strong> rsRy14...fKMM<br>
+                                <strong>Tag:</strong> 1574868947
+                            </p>
+                        </div>
+                    </div>
+                </section>
             </div>
 
             <!-- Tab: Operations -->
@@ -237,39 +285,24 @@
                 </div>
                 <div class="summary-row">
                     <span>MAINTENANCE</span>
-                    <span style="color: var(--accent-green);">1ST_MONTH_INCLUDED</span>
+                    <span>Asset Price</span>
+                    <span id="checkoutPrice">--</span>
                 </div>
                 <div class="summary-row">
-                    <span>RECURRING</span>
-                    <span style="color: #888;">R3,000/mo</span>
+                    <span>Wallet Balance</span>
+                    <span class="wallet-balance-display">R0</span>
                 </div>
                 <div class="summary-row summary-total">
-                    <span>TOTAL_DUE</span>
-                    <span id="checkoutPrice">R0,00</span>
+                    <span>Grand Total</span>
+                    <span id="checkoutPriceTotal">--</span>
                 </div>
             </div>
 
-            <div class="payment-input-group">
-                <label class="payment-label">CARD_NUMBER</label>
-                <input type="text" class="payment-input" placeholder="4242 4242 4242 4242" id="cardNumber">
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                <div class="payment-input-group">
-                    <label class="payment-label">EXPIRY</label>
-                    <input type="text" class="payment-input" placeholder="MM/YY">
-                </div>
-                <div class="payment-input-group">
-                    <label class="payment-label">CVC</label>
-                    <input type="text" class="payment-input" placeholder="***">
-                </div>
-            </div>
-
-            <button onclick="processPurchase()" class="btn-pay">AUTHORIZE & ACQUIRE</button>
+            <button onclick="processPurchase()" class="btn-pay">CONFIRM WALLET PURCHASE</button>
             
             <div style="margin-top: 20px; text-align: center; font-size: 0.6rem; color: #444; font-family: var(--font-mono);">
-                // SECURE_TERMINAL_E2EE_ACTIVE<br>
-                // STRIPE_NETWORK_READY
+                // SECURE_WALLET_TRANSACTION_ACTIVE<br>
+                // ACCOUNT_BALANCE_VERIFIED
             </div>
         </div>
     </div>
@@ -1611,6 +1644,16 @@
                 description: 'Premium Maintenance Professional Website for the Bellville sector. Managed high-performance UI.',
                 liveUrl: 'https://iederees-create.github.io/ct-lead-gen/clients/first-choice-construction/index.html',
                 acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20First%20Choice%20Construction'
+            },
+            {
+                id: 'ct51',
+                name: 'Deriv Syndicates',
+                category: 'website',
+                sector: 'Fintech & Trading',
+                price: 'R4,500',
+                description: 'Elite investment & trading portal. Advanced wallet system, weekly syndicates, and MT5 bot integration.',
+                liveUrl: 'https://iederees-create.github.io/deriv.com/index.html',
+                acquireUrl: 'https://wa.me/27845272182?text=im%20interested%20inthe%20website%20Deriv%20Syndicates'
             }
 
 
@@ -1640,6 +1683,7 @@
 
             // Outreach tabs deactivated as per pivot to 100% Asset Sales
             
+            updateWalletUI();
             renderAll();
         }
 
@@ -1955,11 +1999,27 @@
         async function processPurchase() {
             const overlay = document.getElementById('processingOverlay');
             const procText = document.getElementById('processingText');
+            
+            // Wallet Logic
+            const item = activeCheckoutId.startsWith('Site-') 
+                ? vectorData.find(n => `Site-${n.id}` === activeCheckoutId)
+                : websiteData.find(s => s.id === activeCheckoutId);
+            
+            const price = parseInt(item.price.replace('R', '').replace(',', ''));
+            const balance = await getUserBalance();
+
+            if (balance < price) {
+                alert(`Insufficient funds in your Wallet. This asset costs R${price.toLocaleString()}, but your balance is R${balance.toLocaleString()}. Please make a deposit.`);
+                switchTab('cashier', document.getElementById('cashierNavItem'));
+                closeCheckout();
+                return;
+            }
+
             overlay.classList.add('active');
 
             const steps = [
-                'SECURELY CONNECTING TO PAYMENT GATEWAY...',
-                'VERIFYING WEBSITE AVAILABILITY...',
+                'VALIDATING WALLET BALANCE...',
+                'SECURING FUNDS...',
                 'PREPARING YOUR PROJECT DASHBOARD...',
                 'ACTIVATING YOUR AI ASSISTANT...',
                 'ASSIGNING YOUR DEDICATED WEB DEVELOPER...',
@@ -1971,6 +2031,9 @@
                 await new Promise(r => setTimeout(r, 600));
             }
 
+            // Deduct from balance
+            await updateUserBalance(balance - price);
+
             purchasedAssets.push(activeCheckoutId);
             localStorage.setItem('purchasedAssets', JSON.stringify(purchasedAssets));
 
@@ -1980,6 +2043,32 @@
                 closeCheckout();
                 renderAll();
             }, 2500);
+        }
+
+        async function getUserBalance() {
+            // Demo implementation using localStorage to match user's flow
+            return parseInt(localStorage.getItem('userWalletBalance') || '0');
+        }
+
+        async function updateUserBalance(newBalance) {
+            localStorage.setItem('userWalletBalance', newBalance.toString());
+            updateWalletUI();
+        }
+
+        function updateWalletUI() {
+            const balance = localStorage.getItem('userWalletBalance') || '0';
+            document.querySelectorAll('.wallet-balance-display').forEach(el => {
+                el.innerText = `R${parseInt(balance).toLocaleString()}`;
+            });
+        }
+
+        function depositFunds() {
+            const amount = prompt("Enter amount to deposit (ZAR):", "5000");
+            if (amount && !isNaN(amount)) {
+                const current = parseInt(localStorage.getItem('userWalletBalance') || '0');
+                updateUserBalance(current + parseInt(amount));
+                alert(`Deposit of R${parseInt(amount).toLocaleString()} successful.`);
+            }
         }
 
     </script>
