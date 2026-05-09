@@ -22,6 +22,7 @@
                 <button onclick="handleLogin()" class="btn-auth">LOGIN</button>
                 <button onclick="handleSignup()" class="btn-auth" style="background: transparent; border: 1px solid #333; color: #aaa;">CREATE ACCOUNT</button>
             </div>
+            <p onclick="handleResetPassword()" style="color: #666; font-size: 0.7rem; margin-top: 16px; cursor: pointer; text-decoration: underline;">Forgot your password?</p>
             <p id="authError" style="color: var(--accent-rose); font-size: 0.7rem; margin-top: 12px; font-family: var(--font-mono);"></p>
         </div>
     </div>
@@ -1687,6 +1688,32 @@
                     errorEl.innerText = 'ENROLLMENT SUCCESS. AWAITING CONFIRMATION / LOGIN.';
                     errorEl.style.color = 'var(--accent-green)';
                 }
+            }
+        }
+
+        async function handleResetPassword() {
+            const email = document.getElementById('loginEmail').value;
+            const errorEl = document.getElementById('authError');
+            
+            if (!email) {
+                errorEl.innerText = 'PLEASE ENTER YOUR EMAIL FIRST.';
+                errorEl.style.color = 'var(--accent-rose)';
+                return;
+            }
+
+            errorEl.innerText = 'SENDING RESET LINK...';
+            errorEl.style.color = 'var(--accent-blue)';
+
+            const { error } = await _supabase.auth.resetPasswordForEmail(email, {
+                redirectTo: window.location.href,
+            });
+
+            if (error) {
+                errorEl.innerText = `ERROR: ${error.message.toUpperCase()}`;
+                errorEl.style.color = 'var(--accent-rose)';
+            } else {
+                errorEl.innerText = 'PASSWORD RESET LINK SENT TO YOUR EMAIL.';
+                errorEl.style.color = 'var(--accent-green)';
             }
         }
 
