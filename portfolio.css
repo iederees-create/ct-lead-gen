@@ -202,3 +202,85 @@ body {
 .orbital-board, .hologram-panel, .war-room-title, .status-zone, .cmd-ribbon {
     display: none !important;
 }
+
+/* Auth & Gated Overlay Styles */
+.gated-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(20px);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+}
+
+.auth-card {
+    background: #111;
+    border: 1px solid #333;
+    padding: 40px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+.auth-input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 20px;
+    background: #000;
+    border: 1px solid #333;
+    color: #fff;
+    border-radius: 12px;
+    font-family: inherit;
+}
+
+.btn-auth {
+    width: 100%;
+    padding: 14px;
+    background: var(--accent-primary);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-auth:hover {
+    transform: scale(1.02);
+    opacity: 0.9;
+}
+
+.checkout-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(15px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s ease;
+}
+
+.checkout-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.checkout-card {
+    background: #0a0a0a;
+    border: 1px solid #222;
+    width: 100%;
+    max-width: 450px;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+}
