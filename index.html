@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -152,6 +152,173 @@
             align-items: center;
             justify-content: center;
         }
+        /* Checkout Modal */
+        .checkout-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(15px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .checkout-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .checkout-card {
+            background: #0a0a0a;
+            border: 1px solid #222;
+            width: 100%;
+            max-width: 450px;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+            transform: scale(0.95);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .checkout-modal.active .checkout-card {
+            transform: scale(1);
+        }
+
+        .checkout-header {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .checkout-title {
+            font-family: 'JetBrains Mono';
+            font-size: 1.1rem;
+            letter-spacing: 0.2em;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .checkout-subtitle {
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        .payment-input-group {
+            margin-bottom: 20px;
+        }
+
+        .payment-label {
+            display: block;
+            font-size: 0.65rem;
+            font-family: var(--font-mono);
+            color: #888;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .payment-input {
+            width: 100%;
+            background: #000;
+            border: 1px solid #333;
+            padding: 14px;
+            color: #fff;
+            font-family: var(--font-mono);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: border-color 0.3s;
+        }
+
+        .payment-input:focus {
+            border-color: var(--accent-blue);
+            outline: none;
+        }
+
+        .checkout-summary {
+            background: #0f0f0f;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+            border: 1px solid #1a1a1a;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+        }
+
+        .summary-total {
+            border-top: 1px solid #222;
+            padding-top: 12px;
+            margin-top: 12px;
+            font-weight: 700;
+            color: var(--accent-green);
+        }
+
+        .btn-pay {
+            width: 100%;
+            padding: 16px;
+            background: var(--accent-green);
+            color: #000;
+            border: none;
+            border-radius: 4px;
+            font-weight: 800;
+            font-family: 'JetBrains Mono';
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-pay:hover {
+            background: #fff;
+            transform: translateY(-2px);
+        }
+
+        .processing-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .processing-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .loader-ring {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #222;
+            border-top: 2px solid var(--accent-green);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .node-card.purchased {
+            border-color: var(--accent-green);
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.1);
+        }
+
+        .node-card.purchased .node-title {
+            color: var(--accent-green);
+        }
     </style>
 </head>
 <body>
@@ -188,8 +355,7 @@
         <aside class="sidebar">
             <nav class="side-nav">
                 <a href="#" class="active" onclick="switchTab('portfolio', this)">Vector Portfolio</a>
-                <a href="#" id="nav-operations" class="hidden" onclick="switchTab('operations', this)">Operations Command <span class="nav-badge" style="background:var(--accent-amber)">AGENT</span></a>
-                <a href="#" id="nav-analyser" class="hidden" onclick="switchTab('analyser', this)">Lead Analyser <span class="nav-badge" style="background:var(--accent-amber)">AGENT</span></a>
+                <!-- Outreach decommissioned as per user pivot -->
                 <a href="#" id="authLink" onclick="handleLogout()">System Logout</a>
             </nav>
             
@@ -218,8 +384,8 @@
                 <section class="overview-panel hologram-panel">
                     <div class="panel-header" style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;">
                         <div>
-                            <h2 class="war-room-title">The Vector // Elite Asset Ecosystem</h2>
-                            <span class="subtitle">White-Label Websites &amp; SaaS Digital Products â€” Available for Acquisition</span>
+                            <h2 class="war-room-title">The Vector // Institutional Asset Exchange</h2>
+                            <span class="subtitle">58 Premium Digital Assets Available for Immediate Acquisition</span>
                         </div>
                         <div style="display:flex; gap:8px; flex-wrap:wrap;" id="portfolioFilters">
                             <button onclick="filterPortfolio('all', this)" class="btn-node active-filter" style="padding:6px 14px; font-size:0.7rem;">ALL</button>
@@ -342,6 +508,69 @@
             </div>
 
         </main>
+    </div>
+
+    <!-- Checkout Modal Container -->
+    <div id="checkoutModal" class="checkout-modal">
+        <div class="checkout-card" style="position: relative; overflow: hidden;">
+            <!-- Processing Overlay -->
+            <div id="processingOverlay" class="processing-overlay">
+                <div class="loader-ring"></div>
+                <div id="processingText" style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent-green);">AUTHENTICATING_PAYMENT...</div>
+            </div>
+
+            <!-- Success Overlay -->
+            <div id="successOverlay" class="processing-overlay" style="background: var(--accent-green); color: #000;">
+                <div style="font-size: 2rem; margin-bottom: 10px;">âœ…</div>
+                <div style="font-family: 'JetBrains Mono'; font-weight: 800; font-size: 1.1rem;">ASSET_ACQUIRED</div>
+                <div style="font-size: 0.75rem; margin-top: 5px; opacity: 0.8;">INITIALIZING_DOWNLOAD_SEQUENCE...</div>
+            </div>
+
+            <button onclick="closeCheckout()" style="position: absolute; top: 20px; right: 20px; background: none; border: none; color: #444; cursor: pointer; font-family: var(--font-mono);">[X]</button>
+            
+            <div class="checkout-header">
+                <div class="checkout-title">ASSET_CHECKOUT</div>
+                <div class="checkout-subtitle" id="checkoutItemName">Elite Digital Blueprint</div>
+            </div>
+
+            <div class="checkout-summary">
+                <div class="summary-row">
+                    <span>ASSET_ID</span>
+                    <span id="checkoutItemId" style="color: #888;">---</span>
+                </div>
+                <div class="summary-row">
+                    <span>LICENSE</span>
+                    <span style="color: #888;">UNLIMITED_COMMERCIAL</span>
+                </div>
+                <div class="summary-row summary-total">
+                    <span>TOTAL_DUE</span>
+                    <span id="checkoutPrice">R0,00</span>
+                </div>
+            </div>
+
+            <div class="payment-input-group">
+                <label class="payment-label">CARD_NUMBER</label>
+                <input type="text" class="payment-input" placeholder="4242 4242 4242 4242" id="cardNumber">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="payment-input-group">
+                    <label class="payment-label">EXPIRY</label>
+                    <input type="text" class="payment-input" placeholder="MM/YY">
+                </div>
+                <div class="payment-input-group">
+                    <label class="payment-label">CVC</label>
+                    <input type="text" class="payment-input" placeholder="***">
+                </div>
+            </div>
+
+            <button onclick="processPurchase()" class="btn-pay">AUTHORIZE & ACQUIRE</button>
+            
+            <div style="margin-top: 20px; text-align: center; font-size: 0.6rem; color: #444; font-family: var(--font-mono);">
+                // SECURE_TERMINAL_E2EE_ACTIVE<br>
+                // STRIPE_NETWORK_READY
+            </div>
+        </div>
     </div>
 
     <!-- Replay Scrubber Footer -->
@@ -1171,8 +1400,525 @@
                 description: 'Strategic intelligence collective multi-site hub. The ultimate command-center for conglomerates.',
                 liveUrl: 'https://iederees-create.github.io/vector-mainframe/',
                 acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20The%20Vector%20Mainframe'
+            },
+            {
+                id: 'e1',
+                name: 'Academic Excellence',
+                category: 'website',
+                sector: 'English Tutoring (Global)',
+                price: 'R3,500',
+                description: 'Premium educational vertical site. Institutional Navy aesthetic with academic-grade typography and lead capture.',
+                liveUrl: 'https://iederees-create.github.io/academic-excellence-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Academic%20Excellence'
+            },
+            {
+                id: 'ct1',
+                name: 'Glen Ellios Pty LTD',
+                category: 'website',
+                sector: 'Solar (Goodwood)',
+                price: 'R3,500',
+                description: 'Premium Solar digital asset for the Goodwood sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/glen-ellios-solar-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Glen%20Ellios%20Pty%20LTD'
+            },
+            {
+                id: 'ct2',
+                name: 'Sunlec Energy Solutions',
+                category: 'website',
+                sector: 'Solar (Parow)',
+                price: 'R3,500',
+                description: 'Premium Solar digital asset for the Parow sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/sunlec-energy-solutions-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Sunlec%20Energy%20Solutions'
+            },
+            {
+                id: 'ct3',
+                name: 'Eco Direct Solar',
+                category: 'website',
+                sector: 'Solar (Mitchells Plain)',
+                price: 'R3,500',
+                description: 'Premium Solar digital asset for the Mitchells Plain sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/eco-direct-solar-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Eco%20Direct%20Solar'
+            },
+            {
+                id: 'ct4',
+                name: 'Solar Way Cape Town',
+                category: 'website',
+                sector: 'Solar (Mitchells Plain)',
+                price: 'R3,500',
+                description: 'Premium Solar digital asset for the Mitchells Plain sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/solar-way-ct-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Solar%20Way%20Cape%20Town'
+            },
+            {
+                id: 'ct5',
+                name: 'Green Star Solar',
+                category: 'website',
+                sector: 'Solar (Mitchells Plain)',
+                price: 'R3,500',
+                description: 'Premium Solar digital asset for the Mitchells Plain sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/green-star-solar-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Green%20Star%20Solar'
+            },
+            {
+                id: 'ct6',
+                name: 'Solar Dot Com',
+                category: 'website',
+                sector: 'Solar (Mitchells Plain)',
+                price: 'R3,500',
+                description: 'Premium Solar digital asset for the Mitchells Plain sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/solar-dot-com-ct-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Solar%20Dot%20Com'
+            },
+            {
+                id: 'ct7',
+                name: 'D.H.S Solar',
+                category: 'website',
+                sector: 'Solar (Bishop Lavis)',
+                price: 'R3,500',
+                description: 'Premium Solar digital asset for the Bishop Lavis sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/dhs-solar-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20D.H.S%20Solar'
+            },
+            {
+                id: 'ct8',
+                name: 'R and S Solar Installations',
+                category: 'website',
+                sector: 'Solar (Belhar)',
+                price: 'R3,500',
+                description: 'Premium Solar digital asset for the Belhar sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/rs-solar-installations-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20R%20and%20S%20Solar%20Installations'
+            },
+            {
+                id: 'ct9',
+                name: 'A.C Solar Solutions',
+                category: 'website',
+                sector: 'Solar (Parow)',
+                price: 'R3,500',
+                description: 'Premium Solar digital asset for the Parow sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/ac-solar-solutions-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20A.C%20Solar%20Solutions'
+            },
+            {
+                id: 'ct10',
+                name: 'Thomas Electrical',
+                category: 'website',
+                sector: 'Solar (Wynberg)',
+                price: 'R3,500',
+                description: 'Premium Solar digital asset for the Wynberg sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/thomas-electrical-solar-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Thomas%20Electrical'
+            },
+            {
+                id: 'ct11',
+                name: 'Sea Point Skin Clinic',
+                category: 'website',
+                sector: 'Wellness (Sea Point)',
+                price: 'R3,500',
+                description: 'Premium Wellness digital asset for the Sea Point sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/seapoint-skin-clinic-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Sea%20Point%20Skin%20Clinic'
+            },
+            {
+                id: 'ct12',
+                name: 'Azalea Aesthetics',
+                category: 'website',
+                sector: 'Wellness (Claremont)',
+                price: 'R3,500',
+                description: 'Premium Wellness digital asset for the Claremont sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/azalea-aesthetics-ct-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Azalea%20Aesthetics'
+            },
+            {
+                id: 'ct13',
+                name: 'Vitality Wellness Claremont',
+                category: 'website',
+                sector: 'Wellness (Claremont)',
+                price: 'R3,500',
+                description: 'Premium Wellness digital asset for the Claremont sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/vitality-wellness-claremont-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Vitality%20Wellness%20Claremont'
+            },
+            {
+                id: 'ct14',
+                name: 'Camps Bay Aesthetics',
+                category: 'website',
+                sector: 'Wellness (Camps Bay)',
+                price: 'R3,500',
+                description: 'Premium Wellness digital asset for the Camps Bay sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/camps-bay-aesthetics-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Camps%20Bay%20Aesthetics'
+            },
+            {
+                id: 'ct15',
+                name: 'Lumina Skin Studio',
+                category: 'website',
+                sector: 'Wellness (Kenilworth)',
+                price: 'R3,500',
+                description: 'Premium Wellness digital asset for the Kenilworth sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/lumina-skin-studio-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Lumina%20Skin%20Studio'
+            },
+            {
+                id: 'ct16',
+                name: 'Renewal Medi-Spa',
+                category: 'website',
+                sector: 'Wellness (Bellville)',
+                price: 'R3,500',
+                description: 'Premium Wellness digital asset for the Bellville sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/renewal-med-spa-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Renewal%20Medi-Spa'
+            },
+            {
+                id: 'ct17',
+                name: 'Glow Republic CT',
+                category: 'website',
+                sector: 'Wellness (Sea Point)',
+                price: 'R3,500',
+                description: 'Premium Wellness digital asset for the Sea Point sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/glow-republic-ct-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Glow%20Republic%20CT'
+            },
+            {
+                id: 'ct18',
+                name: 'Serenity Body Lab',
+                category: 'website',
+                sector: 'Wellness (Wynberg)',
+                price: 'R3,500',
+                description: 'Premium Wellness digital asset for the Wynberg sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/serenity-body-lab-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Serenity%20Body%20Lab'
+            },
+            {
+                id: 'ct19',
+                name: 'Precision Laser Cape Town',
+                category: 'website',
+                sector: 'Wellness (Durbanville)',
+                price: 'R3,500',
+                description: 'Premium Wellness digital asset for the Durbanville sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/precision-laser-ct-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Precision%20Laser%20Cape%20Town'
+            },
+            {
+                id: 'ct20',
+                name: 'Pure Aesthetics Tygervalley',
+                category: 'website',
+                sector: 'Wellness (Tygervalley)',
+                price: 'R3,500',
+                description: 'Premium Wellness digital asset for the Tygervalley sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/pure-aesthetics-tygervalley-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Pure%20Aesthetics%20Tygervalley'
+            },
+            {
+                id: 'ct21',
+                name: 'Form Wellness Studio',
+                category: 'website',
+                sector: 'Wellness (Observatory)',
+                price: 'R3,500',
+                description: 'Premium Wellness digital asset for the Observatory sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/form-wellness-studio-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Form%20Wellness%20Studio'
+            },
+            {
+                id: 'ct22',
+                name: 'Aqua Beauty Studios',
+                category: 'website',
+                sector: 'Wellness (Tableview)',
+                price: 'R3,500',
+                description: 'Premium Wellness digital asset for the Tableview sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/aqua-beauty-studios-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Aqua%20Beauty%20Studios'
+            },
+            {
+                id: 'ct23',
+                name: 'Meridian Clinic CT',
+                category: 'website',
+                sector: 'Wellness (Parow)',
+                price: 'R3,500',
+                description: 'Premium Wellness digital asset for the Parow sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/meridian-clinic-ct-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Meridian%20Clinic%20CT'
+            },
+            {
+                id: 'ct24',
+                name: 'BodySculpt Cape Town',
+                category: 'website',
+                sector: 'Wellness (Century City)',
+                price: 'R3,500',
+                description: 'Premium Wellness digital asset for the Century City sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/bodysculpt-cape-town-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20BodySculpt%20Cape%20Town'
+            },
+            {
+                id: 'ct25',
+                name: 'Arc Wellness Sea Point',
+                category: 'website',
+                sector: 'Wellness (Sea Point)',
+                price: 'R3,500',
+                description: 'Premium Wellness digital asset for the Sea Point sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/arc-wellness-seapoint-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Arc%20Wellness%20Sea%20Point'
+            },
+            {
+                id: 'ct26',
+                name: 'Revive Medi-Spa Claremont',
+                category: 'website',
+                sector: 'Wellness (Claremont)',
+                price: 'R3,500',
+                description: 'Premium Wellness digital asset for the Claremont sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/revive-medispa-claremont-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Revive%20Medi-Spa%20Claremont'
+            },
+            {
+                id: 'ct27',
+                name: 'Alpine Aesthetics CT',
+                category: 'website',
+                sector: 'Wellness (Hout Bay)',
+                price: 'R3,500',
+                description: 'Premium Wellness digital asset for the Hout Bay sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/alpine-aesthetics-ct-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Alpine%20Aesthetics%20CT'
+            },
+            {
+                id: 'ct28',
+                name: 'Zen Skin Studio Bellville',
+                category: 'website',
+                sector: 'Wellness (Bellville)',
+                price: 'R3,500',
+                description: 'Premium Wellness digital asset for the Bellville sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/zen-skin-studio-bv-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Zen%20Skin%20Studio%20Bellville'
+            },
+            {
+                id: 'ct29',
+                name: 'Nova Cosmetic Clinic',
+                category: 'website',
+                sector: 'Wellness (Durbanville)',
+                price: 'R3,500',
+                description: 'Premium Wellness digital asset for the Durbanville sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/nova-cosmetic-clinic-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Nova%20Cosmetic%20Clinic'
+            },
+            {
+                id: 'ct30',
+                name: 'Elite Wellness CT',
+                category: 'website',
+                sector: 'Wellness (Milnerton)',
+                price: 'R3,500',
+                description: 'Premium Wellness digital asset for the Milnerton sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/elite-wellness-ct-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Elite%20Wellness%20CT'
+            },
+            {
+                id: 'ct31',
+                name: 'Cape Clean Pro',
+                category: 'website',
+                sector: 'Maintenance (Goodwood)',
+                price: 'R3,500',
+                description: 'Premium Maintenance digital asset for the Goodwood sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/cape-clean-pro-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Cape%20Clean%20Pro'
+            },
+            {
+                id: 'ct32',
+                name: 'Northern Suburbs Plumbing',
+                category: 'website',
+                sector: 'Maintenance (Durbanville)',
+                price: 'R3,500',
+                description: 'Premium Maintenance digital asset for the Durbanville sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/northern-subs-plumbing-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Northern%20Suburbs%20Plumbing'
+            },
+            {
+                id: 'ct33',
+                name: 'Westlake Pest Control',
+                category: 'website',
+                sector: 'Maintenance (Westlake)',
+                price: 'R3,500',
+                description: 'Premium Maintenance digital asset for the Westlake sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/westlake-pest-control-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Westlake%20Pest%20Control'
+            },
+            {
+                id: 'ct34',
+                name: 'Paarden Eiland Electrical',
+                category: 'website',
+                sector: 'Maintenance (Paarden Eiland)',
+                price: 'R3,500',
+                description: 'Premium Maintenance digital asset for the Paarden Eiland sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/paarden-eiland-electric-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Paarden%20Eiland%20Electrical'
+            },
+            {
+                id: 'ct35',
+                name: 'CT Roofing Specialists',
+                category: 'website',
+                sector: 'Maintenance (Kuils River)',
+                price: 'R3,500',
+                description: 'Premium Maintenance digital asset for the Kuils River sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/ct-roofing-specialists-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20CT%20Roofing%20Specialists'
+            },
+            {
+                id: 'ct36',
+                name: 'Metro Aircon Cape Town',
+                category: 'website',
+                sector: 'Maintenance (Bellville)',
+                price: 'R3,500',
+                description: 'Premium Maintenance digital asset for the Bellville sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/metro-aircon-ct-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Metro%20Aircon%20Cape%20Town'
+            },
+            {
+                id: 'ct37',
+                name: 'Southern Suburbs Builders',
+                category: 'website',
+                sector: 'Maintenance (Kenilworth)',
+                price: 'R3,500',
+                description: 'Premium Maintenance digital asset for the Kenilworth sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/southern-suburbs-builders-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Southern%20Suburbs%20Builders'
+            },
+            {
+                id: 'ct38',
+                name: 'Hydro Clean CT',
+                category: 'website',
+                sector: 'Maintenance (Brackenfell)',
+                price: 'R3,500',
+                description: 'Premium Maintenance digital asset for the Brackenfell sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/hydro-clean-ct-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Hydro%20Clean%20CT'
+            },
+            {
+                id: 'ct39',
+                name: 'Cape Handyman Services',
+                category: 'website',
+                sector: 'Maintenance (Parow)',
+                price: 'R3,500',
+                description: 'Premium Maintenance digital asset for the Parow sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/cape-handyman-services-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Cape%20Handyman%20Services'
+            },
+            {
+                id: 'ct40',
+                name: 'GreenPest CT',
+                category: 'website',
+                sector: 'Maintenance (Durbanville)',
+                price: 'R3,500',
+                description: 'Premium Maintenance digital asset for the Durbanville sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/greenpest-ct-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20GreenPest%20CT'
+            },
+            {
+                id: 'ct41',
+                name: 'Acme Plumbing Claremont',
+                category: 'website',
+                sector: 'Maintenance (Claremont)',
+                price: 'R3,500',
+                description: 'Premium Maintenance digital asset for the Claremont sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/acme-plumbing-claremont-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Acme%20Plumbing%20Claremont'
+            },
+            {
+                id: 'ct42',
+                name: 'All Seasons Aircon CT',
+                category: 'website',
+                sector: 'Maintenance (Tygervalley)',
+                price: 'R3,500',
+                description: 'Premium Maintenance digital asset for the Tygervalley sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/all-seasons-aircon-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20All%20Seasons%20Aircon%20CT'
+            },
+            {
+                id: 'ct43',
+                name: 'Cape Waterproofing Co',
+                category: 'website',
+                sector: 'Maintenance (Wetton)',
+                price: 'R3,500',
+                description: 'Premium Maintenance digital asset for the Wetton sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/cape-waterproofing-co-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Cape%20Waterproofing%20Co'
+            },
+            {
+                id: 'ct44',
+                name: 'Rapid Response Electrical',
+                category: 'website',
+                sector: 'Maintenance (Durbanville)',
+                price: 'R3,500',
+                description: 'Premium Maintenance digital asset for the Durbanville sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/rapid-response-electric-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Rapid%20Response%20Electrical'
+            },
+            {
+                id: 'ct45',
+                name: 'Tableview Tiling CT',
+                category: 'website',
+                sector: 'Maintenance (Tableview)',
+                price: 'R3,500',
+                description: 'Premium Maintenance digital asset for the Tableview sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/tableview-tiling-ct-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Tableview%20Tiling%20CT'
+            },
+            {
+                id: 'ct46',
+                name: 'Eco Clean Northern Suburbs',
+                category: 'website',
+                sector: 'Maintenance (Kuilsriver)',
+                price: 'R3,500',
+                description: 'Premium Maintenance digital asset for the Kuilsriver sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/eco-clean-northern-subs-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Eco%20Clean%20Northern%20Suburbs'
+            },
+            {
+                id: 'ct47',
+                name: 'CT Pool Care',
+                category: 'website',
+                sector: 'Maintenance (Constantia)',
+                price: 'R3,500',
+                description: 'Premium Maintenance digital asset for the Constantia sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/ct-pool-care-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20CT%20Pool%20Care'
+            },
+            {
+                id: 'ct48',
+                name: 'Summit Painting CT',
+                category: 'website',
+                sector: 'Maintenance (Pinelands)',
+                price: 'R3,500',
+                description: 'Premium Maintenance digital asset for the Pinelands sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/summit-painting-ct-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Summit%20Painting%20CT'
+            },
+            {
+                id: 'ct49',
+                name: 'Window Wizards CT',
+                category: 'website',
+                sector: 'Maintenance (Blouberg)',
+                price: 'R3,500',
+                description: 'Premium Maintenance digital asset for the Blouberg sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/window-wizards-ct-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20Window%20Wizards%20CT'
+            },
+            {
+                id: 'ct50',
+                name: 'First Choice Construction',
+                category: 'website',
+                sector: 'Maintenance (Bellville)',
+                price: 'R3,500',
+                description: 'Premium Maintenance digital asset for the Bellville sector. Managed high-performance UI.',
+                liveUrl: 'https://iederees-create.github.io/first-choice-construction-ct/',
+                acquireUrl: 'https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20First%20Choice%20Construction'
             }
+
+
+
+
+
         ];
+
+        let purchasedAssets = JSON.parse(localStorage.getItem('purchasedAssets') || '[]');
 
         let currentUser = null;
 
@@ -1191,11 +1937,7 @@
             document.getElementById('authLink').innerText = 'System Logout';
             document.getElementById('authLink').onclick = handleLogout;
 
-            const role = user.user_metadata?.role || 'member';
-            if (role === 'agent') {
-                document.getElementById('nav-operations').classList.remove('hidden');
-                document.getElementById('nav-analyser').classList.remove('hidden');
-            }
+            // Outreach tabs deactivated as per pivot to 100% Asset Sales
             
             renderAll();
         }
@@ -1274,42 +2016,54 @@
 
         function renderPortfolio() {
             const grid = document.getElementById('blueprintGrid');
-            grid.innerHTML = vectorData.map(node => `
-                <article class="node-card">
+            grid.innerHTML = vectorData.map(node => {
+                const isPurchased = purchasedAssets.includes(`node-${node.id}`);
+                return `
+                <article class="node-card ${isPurchased ? 'purchased' : ''}">
                     <div class="node-header">
                         <span class="node-id">NODE_${String(node.id).padStart(2,'0')} // ${node.industry.toUpperCase()}</span>
-                        <span class="status-pill healthy">${node.rating}</span>
+                        <span class="status-pill ${isPurchased ? 'healthy' : 'amber'}" style="${isPurchased ? 'background:rgba(34,197,94,0.1); color:var(--accent-green);' : ''}">${isPurchased ? 'ACQUIRED' : 'VETTED'}</span>
                     </div>
                     <h3 class="node-title">${node.name}</h3>
                     <p class="node-sector">${node.location}</p>
                     <p style="font-size:0.75rem; color:#666; margin-bottom:15px; min-height:40px;">${node.description}</p>
                     <div style="display:flex; gap:10px;">
                         <button class="btn-node" onclick="window.open('${node.liveUrl}', '_blank')" style="flex:1;">INSPECT</button>
-                        <button class="btn-node" onclick="window.open('https://wa.me/27731234567?text=I%20am%20interested%20in%20acquiring%20node%20${node.name}', '_blank')" style="flex:1; border-color:var(--accent-green); color:var(--accent-green);">ACQUIRE</button>
+                        ${isPurchased 
+                            ? `<button class="btn-node" onclick="alert('Downloading source package for ${node.name}...') " style="flex:1; background:var(--accent-green); color:#000; border:none;">DOWNLOAD_ZIP</button>`
+                            : `<button class="btn-node" onclick="openCheckout('node-${node.id}')" style="flex:1; border-color:var(--accent-green); color:var(--accent-green);">PURCHASE</button>`
+                        }
                     </div>
                 </article>
-            `).join('');
+                `;
+            }).join('');
         }
 
         function renderWebsites() {
             const grid = document.getElementById('websiteGrid');
             if (!grid) return;
-            grid.innerHTML = websiteData.map(site => `
-                <article class="node-card">
+            grid.innerHTML = websiteData.map(site => {
+                const isPurchased = purchasedAssets.includes(site.id);
+                return `
+                <article class="node-card ${isPurchased ? 'purchased' : ''}">
                     <div class="node-header">
                         <span class="node-id">WEB_${site.id.toUpperCase()} // WEBSITE</span>
-                        <span class="status-pill healthy" style="background:rgba(245,158,11,0.1); color:var(--accent-amber); border-color:rgba(245,158,11,0.2);">FOR SALE</span>
+                        <span class="status-pill" style="${isPurchased ? 'background:rgba(34,197,94,0.1); color:var(--accent-green); border-color:var(--accent-green);' : 'background:rgba(245,158,11,0.1); color:var(--accent-amber); border-color:rgba(245,158,11,0.2);'}">${isPurchased ? 'OWNED' : 'FOR SALE'}</span>
                     </div>
                     <h3 class="node-title">${site.name}</h3>
                     <p class="node-sector">${site.sector}</p>
                     <p style="font-size:0.75rem; color:#666; margin-bottom:10px; min-height:40px;">${site.description}</p>
-                    <p style="font-family:var(--font-mono); font-size:0.85rem; color:var(--accent-green); margin-bottom:15px;">${site.price}</p>
+                    <p style="font-family:var(--font-mono); font-size:0.85rem; color:var(--accent-green); margin-bottom:15px;">${isPurchased ? 'PAID' : site.price}</p>
                     <div style="display:flex; gap:10px;">
                         <button class="btn-node" onclick="window.open('${site.liveUrl}', '_blank')" style="flex:1;">INSPECT</button>
-                        <button class="btn-node" onclick="window.open('${site.acquireUrl}', '_blank')" style="flex:1; border-color:var(--accent-green); color:var(--accent-green);">ACQUIRE</button>
+                        ${isPurchased 
+                            ? `<button class="btn-node" onclick="alert('Downloading source package for ${site.name}...') " style="flex:1; background:var(--accent-green); color:#000; border:none;">DOWNLOAD_ZIP</button>`
+                            : `<button class="btn-node" onclick="openCheckout('${site.id}')" style="flex:1; border-color:var(--accent-green); color:var(--accent-green);">PURCHASE</button>`
+                        }
                     </div>
                 </article>
-            `).join('');
+                `;
+            }).join('');
         }
 
         function filterPortfolio(type, btn) {
@@ -1441,6 +2195,62 @@
             document.getElementById('analyserStatusPill').innerText = 'ANALYSIS_COMPLETE';
             document.getElementById('analyserStatusPill').style.color = 'var(--accent-green)';
             document.getElementById('analyserStatusPill').style.borderColor = 'var(--accent-green)';
+        }
+
+        let activeCheckoutId = null;
+
+        function openCheckout(siteId) {
+            activeCheckoutId = siteId;
+            let item = null;
+            
+            if (siteId.startsWith('node-')) {
+                item = vectorData.find(n => `node-${n.id}` === siteId);
+                item.price = 'R4,500'; // Default price for premium nodes
+            } else {
+                item = websiteData.find(s => s.id === siteId);
+            }
+
+            if (!item) return;
+
+            document.getElementById('checkoutItemName').innerText = item.name.toUpperCase();
+            document.getElementById('checkoutItemId').innerText = siteId.toUpperCase();
+            document.getElementById('checkoutPrice').innerText = item.price;
+            document.getElementById('checkoutModal').classList.add('active');
+        }
+
+        function closeCheckout() {
+            document.getElementById('checkoutModal').classList.remove('active');
+            document.getElementById('processingOverlay').classList.remove('active');
+            document.getElementById('successOverlay').classList.remove('active');
+        }
+
+        async function processPurchase() {
+            const overlay = document.getElementById('processingOverlay');
+            const procText = document.getElementById('processingText');
+            overlay.classList.add('active');
+
+            const steps = [
+                'CONTACTING_STRIPE_GATEWAY...',
+                'VALIDATING_CREDIT_FACILITY...',
+                'AUTHORIZING_TRANSACTION...',
+                'SECURING_LICENSE_KEY...',
+                'FINALIZING_ACQUISITION...'
+            ];
+
+            for (const step of steps) {
+                procText.innerText = step;
+                await new Promise(r => setTimeout(r, 600));
+            }
+
+            purchasedAssets.push(activeCheckoutId);
+            localStorage.setItem('purchasedAssets', JSON.stringify(purchasedAssets));
+
+            document.getElementById('successOverlay').classList.add('active');
+            
+            setTimeout(() => {
+                closeCheckout();
+                renderAll();
+            }, 2500);
         }
 
     </script>
