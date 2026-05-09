@@ -51,7 +51,9 @@
                 <a href="#" class="nav-item" onclick="filterCategory('blueprint')">Service Blueprints</a>
                 <a href="#" class="nav-item" onclick="filterCategory('website')">Client Showcases</a>
                 <a href="#" class="nav-item" id="cashierNavItem" onclick="switchTab('cashier', this)">Banking & Cashier</a>
+                <a href="#" class="nav-item hidden" id="adminNavItem" onclick="switchTab('admin', this)" style="color: var(--accent-primary);">Admin Dashboard</a>
             </nav>
+            <a href="#" id="authLink" onclick="handleLogout()" style="margin-top: auto; font-size: 0.75rem; color: #555; text-decoration: none;">System Logout</a>
             
             <div class="metrics-summary">
                 <div class="metric-block" style="background: rgba(52, 199, 89, 0.1); border: 1px solid rgba(52, 199, 89, 0.2);">
@@ -146,6 +148,36 @@
                                 <strong>Address:</strong> rsRy14...fKMM<br>
                                 <strong>Tag:</strong> 1574868947
                             </p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Tab: Admin -->
+            <div id="tab-admin" class="tab-content hidden">
+                <section class="overview-panel">
+                    <div class="terminal-header">
+                        <h1>ADMIN COMMAND CENTER</h1>
+                        <p>Manage pending deposits, approve transactions, and monitor system-wide acquisitions.</p>
+                    </div>
+
+                    <div class="node-grid">
+                        <div class="lead-card" style="grid-column: span 2;">
+                            <div class="industry-tag">Pending Operations</div>
+                            <h3 class="node-title">Deposit Verification Queue</h3>
+                            <div style="margin-top: 15px; background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; border: 1px dashed #333;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.8rem;">
+                                    <span>USER: GUEST_0921</span>
+                                    <span>ZAR 15,000.00</span>
+                                    <span style="color: var(--accent-success); cursor: pointer;" onclick="alert('Transaction approved. Balance updated.')">[APPROVE]</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lead-card">
+                            <div class="industry-tag">System Metrics</div>
+                            <h3 class="node-title">Total Portfolio Value</h3>
+                            <p class="description-text" style="font-size: 2rem; font-weight: 800; color: #fff;">R250,000</p>
                         </div>
                     </div>
                 </section>
@@ -1665,6 +1697,7 @@
         let purchasedAssets = JSON.parse(localStorage.getItem('purchasedAssets') || '[]');
 
         let currentUser = null;
+        const ADMIN_EMAILS = ['iedereesfranci@gmail.com', 'iedereesfrancis@gmail.com'];
 
         async function checkSession() {
             const { data: { session } } = await _supabase.auth.getSession();
@@ -1683,6 +1716,13 @@
 
             // Outreach tabs deactivated as per pivot to 100% Asset Sales
             
+            // Admin Check
+            if (ADMIN_EMAILS.includes(user.email)) {
+                document.getElementById('adminNavItem').classList.remove('hidden');
+                document.getElementById('userStatus').innerText = `ADMIN: ${user.email.split('@')[0].toUpperCase()}`;
+                document.getElementById('userStatus').style.color = 'var(--accent-primary)';
+            }
+
             updateWalletUI();
             renderAll();
         }
