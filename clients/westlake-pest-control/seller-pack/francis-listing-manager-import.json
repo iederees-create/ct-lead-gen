@@ -1,0 +1,87 @@
+{
+  "internal_product_name": "Westlake Pest Control Website Template",
+  "internal_name": "Westlake Pest Control Website Template",
+  "product_type": "digital",
+  "target_customer": "Pest-control companies, exterminators, termite specialists, rodent-control companies and local home-service businesses",
+  "category": "Website Templates",
+  "subcategory": "Templates > Website Templates",
+  "sku": "PEST-WEB-001",
+  "quantity": 999,
+  "target_price": 49,
+  "price": 49,
+  "live_demo_url": "https://iederees-create.github.io/westlake-pest-control-template/",
+  "materials": "HTML5, CSS3, JavaScript",
+  "style": "Professional, Local Service, Responsive, Conversion Focused",
+  "ai_tools_used": "Claude Code (Anthropic)",
+  "renewal_setting": "manual",
+  "notes": "Digital download; no physical item ships. Demo business (\"Westlake Pest Control\") and all contact details, ratings, statistics and testimonials are fictional sample content. Refunds subject to Etsy's digital-item policies and applicable consumer-protection law. Confirm target price of 49 against the shop's actual default currency before publishing.",
+
+  "main_features": "Mobile-first responsive layout with a functional hamburger navigation menu, Hero section with request-a-quote/click-to-call/WhatsApp CTAs, Service cards for residential, commercial, termite, rodent, cockroach & ant, bed bug, fumigation and prevention/maintenance services with expandable detail panels, Pest categories, service process timeline and service-area coverage list, About/team section and why-choose-us section, Sample statistics clearly labelled as editable placeholders, Fictional sample testimonials clearly labelled as demo content, Accessible keyboard-operable FAQ accordion, Client-side quote-form validation with automatic WhatsApp message construction and a print-friendly summary, Three switchable colour theme presets (Amber Shield, Green Guard, Red Response), Privacy Policy/Terms of Service/Pest Treatment Disclaimer pages plus a custom 404 page, Local SEO metadata/Open Graph tags/ProfessionalService structured data, robots.txt/sitemap.xml/favicon/Open Graph image, No external CSS/JS/image dependencies, Central site-config.js file for rebranding without editing HTML/CSS/JS, Visible keyboard focus states and prefers-reduced-motion support",
+  "whats_included": "westlake-pest-control-template.zip, START-HERE.html, COMPLETE-BUYER-GUIDE.html, LICENSE.txt, AI-DISCLOSURE.txt",
+  "how_it_works": "Buyer downloads the files after purchase, Buyer unzips the downloaded folder, Buyer opens START-HERE.html for a guided orientation, Buyer edits site-config.js with their own business name, contact details, services, prices, colours and testimonials, Buyer previews changes locally by opening index.html in a browser, Buyer deploys the finished site to GitHub Pages or another static host",
+  "customer_benefits": "No coding experience required for a standard rebrand, Launch a professional pest-control business website in hours not weeks, Free hosting options available (GitHub Pages, Netlify, Vercel), Fully documented with a start-here guide and complete buyer guide, Accessible, SEO-ready and mobile-responsive out of the box, Reusable for a single client project under the included commercial licence",
+
+  "title_options": [
+    "Pest Control Website Template, Exterminator & Termite Service Site, Responsive HTML CSS Local Business Digital Download",
+    "Pest Control Website Template | Exterminator, Termite & Rodent Control Business Website | HTML CSS JS Digital Download",
+    "Responsive Pest Control Website Template for Exterminators, Termite & Fumigation Businesses | Editable HTML Digital Download"
+  ],
+  "title_option_1": "Pest Control Website Template, Exterminator & Termite Service Site, Responsive HTML CSS Local Business Digital Download",
+  "title_option_2": "Pest Control Website Template | Exterminator, Termite & Rodent Control Business Website | HTML CSS JS Digital Download",
+  "title_option_3": "Responsive Pest Control Website Template for Exterminators, Termite & Fumigation Businesses | Editable HTML Digital Download",
+  "recommended_title_index": 0,
+
+  "description": "Westlake Pest Control is a responsive, conversion-focused website template built for pest control companies, exterminators, termite specialists, rodent-control businesses, and fumigation providers. This is a DIGITAL DOWNLOAD delivered as files — NO PHYSICAL ITEM IS SHIPPED. All business information shown in the live demo (business name, contact details, ratings, statistics, and testimonials) is FICTIONAL SAMPLE CONTENT created to showcase the template's layout and features; buyers replace it with their own real business details via a single site-config.js configuration file before publishing. This product's code and copy were developed with the assistance of Claude Code (Anthropic), an AI coding tool (see AI-DISCLOSURE.txt). As a non-returnable digital product delivered instantly on purchase, refunds are handled subject to Etsy's digital-item policies and applicable consumer-protection law, and are generally only considered for a genuine defect in the template itself. Live demo: https://iederees-create.github.io/westlake-pest-control-template/",
+  "short_summary": "A responsive, conversion-focused HTML/CSS/JS website template for pest control companies, exterminators, termite specialists and rodent-control businesses — no coding required to rebrand, just edit one configuration file and deploy.",
+
+  "keywords": "pest control site, exterminator site, termite website, rodent control site, fumigation website, bed bug website, website template, html css template, responsive website, small business site, local service site, digital download, quote form website",
+  "tags": [
+    "pest control site",
+    "exterminator site",
+    "termite website",
+    "rodent control site",
+    "fumigation website",
+    "bed bug website",
+    "website template",
+    "html css template",
+    "responsive website",
+    "small business site",
+    "local service site",
+    "digital download",
+    "quote form website"
+  ],
+
+  "listing_image_paths": [
+    "images/01-cover.png",
+    "images/02-desktop.png",
+    "images/03-mobile.png",
+    "images/04-services.png",
+    "images/05-quote-whatsapp.png",
+    "images/06-site-config.png",
+    "images/07-theme-presets.png",
+    "images/08-included-files.png",
+    "images/09-responsive-a11y.png",
+    "images/10-buyer-guide.png"
+  ],
+  "cover_image_path": "images/01-cover.png",
+  "image_alt_texts": [
+    "Westlake Pest Control website template cover image showing responsive design, digital download, and easy customisation",
+    "Desktop homepage view of the pest control website template with hero, quote CTA, and service sections",
+    "Mobile homepage view of the pest control website template showing the hamburger navigation menu",
+    "Pest control services grid showing residential, commercial, termite, and rodent control service cards",
+    "Quote request form and WhatsApp contact button for lead generation on the pest control website template",
+    "site-config.js configuration file used to rebrand the template without editing HTML",
+    "Three colour theme presets: Amber Shield, Green Guard, and Red Response",
+    "List of included pages and files in the pest control website template package",
+    "Responsive layout and accessibility features including keyboard focus states and FAQ accordion",
+    "Buyer guide and support information included with the pest control website template"
+  ],
+
+  "buyer_file_paths": [
+    "buyer-files/westlake-pest-control-template.zip",
+    "buyer-files/START-HERE.html",
+    "buyer-files/COMPLETE-BUYER-GUIDE.html",
+    "buyer-files/LICENSE.txt",
+    "buyer-files/AI-DISCLOSURE.txt"
+  ]
+}

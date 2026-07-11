@@ -1,0 +1,49 @@
+WESTLAKE PEST CONTROL WEBSITE TEMPLATE — LICENSE
+==================================================
+
+This digital product ("the Template") is licensed, not sold, subject to the
+following terms.
+
+1. GRANT OF LICENSE
+   Upon purchase, you are granted a non-exclusive, non-transferable licence
+   to use, modify, and rebrand this Template for ONE (1) end-business
+   website, whether for yourself or for a single client project.
+
+2. PERMITTED USE
+   - Modify all text, images, colours, and configuration values.
+   - Deploy the modified site to any hosting provider or domain.
+   - Use the Template to build a website for a client, provided the licence
+     is for that one client's single resulting website.
+
+3. NOT PERMITTED
+   - Reselling, redistributing, or sublicensing the Template itself (as a
+     template, theme, or starter kit) to third parties.
+   - Uploading the Template (modified or unmodified) to any other
+     marketplace, template store, or free/paid resource site.
+   - Claiming authorship of the underlying template code/design itself
+     (you may, of course, claim ownership of your finished branded website).
+
+4. MULTIPLE PROJECTS
+   A separate licence (i.e. a separate purchase) is required for each
+   additional end-business website built from this Template.
+
+5. NO WARRANTY
+   This Template is provided "as is" without warranty of any kind, express
+   or implied. This is a digital download; no physical item is shipped.
+
+6. FICTIONAL DEMO CONTENT
+   All business names, contact details, ratings, statistics, testimonials,
+   and licence/insurance statements included in the demo content are
+   fictional placeholders. You are solely responsible for replacing them
+   with accurate information and for your website's legal and regulatory
+   compliance before publishing.
+
+7. REFUNDS
+   As a digital product delivered instantly upon purchase, refund requests
+   are handled subject to Etsy's digital-item policies and applicable
+   consumer-protection law. See SUPPORT-POLICY for details.
+
+8. AI DISCLOSURE
+   See AI-DISCLOSURE.txt / the AI Disclosure section of the buyer guide.
+
+By downloading or using this Template you agree to the terms above.

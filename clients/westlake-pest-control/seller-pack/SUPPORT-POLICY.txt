@@ -1,0 +1,33 @@
+SUPPORT POLICY — WESTLAKE PEST CONTROL WEBSITE TEMPLATE
+=========================================================
+
+WHAT'S INCLUDED
+- Help understanding how to edit site-config.js to rebrand the template
+- Help identifying a bug in the template's own code (HTML/CSS/JS) if one
+  is found
+- Clarification questions about deploying the static files to GitHub
+  Pages or another static host
+
+WHAT'S NOT INCLUDED
+- Custom development, custom design changes, or new features
+- Hosting, domain registration/DNS, or server configuration
+- Legal review of the Privacy Policy, Terms of Service, or Disclaimer pages
+- Business licensing, insurance, or regulatory compliance guidance
+- Content writing (business descriptions, pricing, testimonials) beyond
+  the sample placeholders already provided
+- Integration with third-party booking systems, CRMs, or payment processors
+  not already part of the template
+
+HOW TO GET SUPPORT
+Contact the seller through Etsy Messages with your order number and a
+clear description of the issue. Reasonable effort will be made to respond
+within a few business days.
+
+REFUNDS
+This is a digital, non-returnable product delivered instantly on purchase.
+Refund requests are handled subject to Etsy's digital-item refund policies
+and applicable consumer-protection law in your jurisdiction. Because the
+files are downloadable immediately, refunds are generally only considered
+for a genuine defect in the template itself (e.g., the site fails to load
+at all), not for change-of-mind or for dissatisfaction with the fictional
+sample content, which is designed to be replaced.

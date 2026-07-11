@@ -1,0 +1,44 @@
+WESTLAKE PEST CONTROL WEBSITE TEMPLATE — ASSET LICENSES
+=========================================================
+
+This file records the origin and licence of every non-code asset used
+in this template, as required for commercial resale.
+
+1. FONTS
+   - "Inter" (variable weights) — Google Fonts
+     Licence: SIL Open Font License 1.1
+     Source: https://fonts.google.com/specimen/Inter
+     Loaded via Google Fonts CDN link in index.html / legal pages.
+
+2. ICONS / GRAPHICS
+   - favicon.svg — originally created for this template using basic SVG
+     shapes (no external asset). Free to use/modify/resell as part of
+     this template.
+   - og-image.svg — originally created for this template using basic SVG
+     shapes and gradients (no external asset). Free to use/modify/resell.
+   - Emoji glyphs used as service icons (e.g. house, ant, shield) are
+     rendered via the end-user's operating system / browser emoji font
+     and are not bundled image files.
+
+3. IMAGES
+   - No third-party photographs are bundled with this template.
+   - Etsy listing screenshots (in seller-pack/images/) are original
+     screenshots of this template's own rendered pages, captured for
+     this listing. No competitor or stock photography is included.
+
+4. REMOVED DEPENDENCIES
+   - This template previously referenced an externally hosted
+     "agent-chat-floating" CSS/JS pair and a Wikimedia-hosted WhatsApp
+     logo image from a separate repository. Both have been removed.
+     The template now uses only local, original CSS/JS and native
+     browser tel:/mailto:/wa.me link handling — no external chat widget
+     or externally hosted logo image is used.
+
+5. THIRD-PARTY RUNTIME LINKS (not bundled assets)
+   - wa.me (WhatsApp) — used only as an outbound link target when a
+     visitor clicks the WhatsApp button; no WhatsApp code or image is
+     bundled in this template.
+
+If you replace any placeholder content (e.g. team photos, real logo)
+with your own images, you are responsible for ensuring you hold the
+appropriate rights or licence for those replacement assets.
