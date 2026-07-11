@@ -58,29 +58,35 @@ Production service: `https://product-listing-server.onrender.com` (an existing a
    - Etsy connection: **Live**, connected to **NextGenWebs**. "Test Connection" run and succeeded ("Etsy connection is working"), token status **Valid**.
    - Product checklist now reads: *"Everything required is filled in. Review the Preview page before publishing."*
 
-## STOPPED HERE — Blocker: Etsy Taxonomy ID
+## UPDATE — Etsy Draft Created
 
-The product-edit page's "Etsy taxonomy ID" field is **empty** and is explicitly labeled *"Required before creating an Etsy draft. Look up the numeric id for your category in Etsy's seller taxonomy reference."* This is a manual-entry field — Francis Listing Manager does **not** auto-resolve a numeric Etsy taxonomy ID from the plain-English category/subcategory text at this stage.
+Following explicit user instruction to proceed, the Etsy taxonomy ID blocker was resolved using **evidence, not a guess**: the existing "Zen Skin Studio Website Template" product in this same Francis Listing Manager instance was already successfully resolved to Etsy taxonomy ID **2818** for the identical category path ("Website Templates" / "...Digital Prints & Templates > Website Templates"). That confirmed value was reused for this product (same category/subcategory), saved to product ID 8, and verified via the API.
 
-Per explicit instruction, **no numeric taxonomy ID was invented or guessed.** The "Create Complete Etsy Draft" action was **not** clicked, and no Etsy draft has been created.
+**"Create Complete Etsy Draft" was then run and succeeded:**
+- `etsy_deploy_step`: `ready_for_review`, `etsy_deploy_status`: `ok`, `etsy_last_error`: (none)
+- **Etsy listing ID: 4536200319**
+- **Etsy listing state: `draft`**
+- "Open Draft in Etsy" link generated: `https://www.etsy.com/your/shops/me/tools/listings/4536200319`
 
-## Confirmed Shop Currency: UNCONFIRMED
+**Direct in-Etsy visual verification was not possible in this session:** opening the Etsy draft link redirected to an Etsy sign-in page — there is no browser-level Etsy session in this environment, only Francis Listing Manager's server-side OAuth token (which is what actually created the draft via Etsy's live API). Per the security rules, no login was attempted and no credentials were requested or entered. The draft's existence and state are confirmed via Francis Listing Manager's own authenticated API responses, not fabricated.
 
-The Settings page shows Etsy connection details (shop name, shop ID 57611249, connection status) but does **not** expose a currency field, and no shop-currency API endpoint was discoverable through the tool's own interface. The product-edit form labels the price field "Price (USD)" as the tool's own display convention, but this is not confirmation of the connected Etsy shop's actual billing/listing currency. **This must be verified independently before publishing** — do not assume the $49 price will list in USD.
+**The listing was NOT published.** No publish action or publish confirmation payload was sent at any point.
 
-## Warnings
+## Shop Currency: Still Unconfirmed
 
-- Etsy taxonomy ID not resolved (blocker, above).
-- Shop currency not independently confirmed (above).
-- Two non-blocking "unusual extension (.html)" warnings on the buyer guide files (expected/accepted).
+Could not be independently verified in this session (no currency field exposed in Settings, no discoverable API endpoint). The $49 price was applied as entered. **Verify the actual Etsy listing currency directly in Etsy before publishing.**
+
+## Social / Promo Assets (added this session)
+
+- **Instagram Reel:** `seller-pack/westlake-pest-control-reel.mp4` — 1080x1920, exactly 15.0s, silent, built from the real listing screenshots (cover, desktop, mobile, services, theme presets) plus an end card. Wording says "Coming Soon" / "Follow for the Launch" — deliberately does **not** claim the listing is live for purchase, since it is still a draft.
+- **Caption:** `seller-pack/instagram-reel-caption.md`.
 
 ## Remaining Human Action
 
-1. Look up the correct numeric Etsy taxonomy ID for "Website Templates" (digital templates category) using [Etsy's seller taxonomy reference](https://www.etsy.com/seller-handbook), and enter it in the **Etsy taxonomy ID** field on the Product Details tab for product ID 8 at `https://product-listing-server.onrender.com/product-edit.html?id=8`.
-2. Confirm the NextGenWebs Etsy shop's actual billing/listing currency and adjust the $49 price field if it is not already in the intended currency.
-3. Click **"Create Complete Etsy Draft"** on the Etsy Listing tab (this validates, creates/syncs the draft, uploads images/files, and applies all listing details — it stops at draft status and never publishes).
-4. Open the resulting draft in Etsy and verify title, description, price/currency, tags, images, buyer files, and category before doing anything further.
-5. **Review the Etsy draft and publish it manually when satisfied.** (The listing must never be published automatically.)
-6. Once published, add the real Etsy listing URL to the 3D Portfolio entry (`etsyUrl` field for "Pest Control Website Template" in `src/App.tsx`).
+1. Log into Etsy directly and open the draft: `https://www.etsy.com/your/shops/me/tools/listings/4536200319`. Verify title, description, price/currency, tags, images, buyer files, and category.
+2. Confirm the NextGenWebs shop's actual currency and adjust price if needed.
+3. **Review the Etsy draft and publish it manually when satisfied.** (Never published automatically, per rule.)
+4. Once published, add the real Etsy listing URL to the 3D Portfolio entry (`etsyUrl` field for "Pest Control Website Template" in `src/App.tsx`) and update the Reel caption's final line to point directly at the live listing.
+5. Add a trending audio track to the Reel in Instagram before posting (none was added here to avoid licensing issues).
 
-No Etsy listing was published. No numeric taxonomy ID was invented. All claims above reflect what was directly observed and verified in this session, not assumed.
+No Etsy listing was published. All claims above reflect what was directly observed and verified in this session, not assumed.
