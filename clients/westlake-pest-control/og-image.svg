@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#12161c"/>
+  <defs>
+    <radialGradient id="g" cx="80%" cy="20%" r="60%">
+      <stop offset="0%" stop-color="#f5a623" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#12161c" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <path d="M120 190 L220 150 V270 C220 340 175 385 120 405 C65 385 20 340 20 270 V150 Z" fill="none" stroke="#f5a623" stroke-width="8" transform="translate(60,60)"/>
+  <circle cx="240" cy="360" r="26" fill="#f5a623" transform="translate(-60,-60)"/>
+  <text x="380" y="300" font-family="Arial, sans-serif" font-size="56" font-weight="800" fill="#f3f1ec">Westlake Pest Control</text>
+  <text x="380" y="350" font-family="Arial, sans-serif" font-size="28" fill="#a9b0ba">Pest Control Website Template — Digital Download</text>
+  <text x="380" y="400" font-family="Arial, sans-serif" font-size="22" fill="#f5a623">Responsive &#8226; Configurable &#8226; Conversion-Focused</text>
+</svg>

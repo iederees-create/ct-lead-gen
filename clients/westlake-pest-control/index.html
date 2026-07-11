@@ -1,87 +1,343 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Vermin Guard Pro (Node-43) | Pest Control Westlake Cape Town</title>
-<meta name="description" content="Vermin Guard Pro (Node-43) - Reliable Pest Control in Westlake, Cape Town. 4.7-star rated. Free quotes available.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Westlake Pest Control | Residential &amp; Commercial Pest Control Template</title>
+<meta name="description" content="Westlake Pest Control — a fictional demo pest control company showcasing a responsive, conversion-focused website template for exterminators, termite specialists and pest management businesses.">
+<link rel="canonical" href="https://iederees-create.github.io/westlake-pest-control-template/">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Westlake Pest Control | Pest Control Website Template">
+<meta property="og:description" content="A responsive, conversion-focused website template for pest control, exterminator and termite service businesses.">
+<meta property="og:image" content="og-image.svg">
+<meta property="og:url" content="https://iederees-create.github.io/westlake-pest-control-template/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="favicon.svg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://iederees-create.github.io/ct-lead-gen/templates/agent-chat-floating.css">
-    <script src="https://iederees-create.github.io/ct-lead-gen/scripts/agent-chat-floating.js"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Westlake Pest Control",
+  "description": "Fictional demonstration pest control business used to showcase a website template. Not a real company.",
+  "areaServed": ["Westlake", "Riverside District", "Oak Hill", "Maple Grove", "Harbor Point", "Cedar Ridge", "North Fairview", "Downtown Metro"],
+  "telephone": "+1-555-010-0142",
+  "email": "hello@example.com",
+  "url": "https://iederees-create.github.io/westlake-pest-control-template/",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "123 Example Avenue",
+    "addressLocality": "Westlake",
+    "addressRegion": "ST",
+    "postalCode": "00000",
+    "addressCountry": "US"
+  },
+  "disclaimer": "All business details in this structured data are fictional sample content for template demonstration purposes only."
+}
+</script>
 </head>
 <body>
-<div class="glow-bg"></div>
-<header class="glass-nav">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<div class="announcement-bar" id="announcement-bar">
+  <span id="emergency-label">24/7 Emergency Callout Line (sample placeholder)</span> &middot;
+  <a data-tel-link href="tel:">Call now</a>
+</div>
+
+<header class="site-nav">
   <div class="container">
-    <div class="logo"><span class="logo-accent">[Pest]</span> Vermin Guard Pro (Node-43)</div>
-    <nav>
-      <a href="#services">Services</a>
-      <a href="#about">About</a>
-      <a href="https://wa.me/27845272182?text=im%20interested%20inthe%20website%20EcoShield%20Pest%20Control%20(Westlake)" class="btn-primary">Free Quote</a>
-    </nav>
+    <a href="#top" class="logo"><span class="logo-mark">[Pest]</span> <span data-bind="business.logoText">Westlake Pest Control</span></a>
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+    </button>
+    <ul class="nav-menu" id="nav-menu">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#areas">Service Areas</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li class="theme-picker"><label for="theme-selector" class="visually-hidden">Colour theme</label><select id="theme-selector"></select></li>
+      <li><a href="#quote" class="nav-cta">Get a Quote</a></li>
+    </ul>
   </div>
 </header>
-<main>
-  <section class="hero">
+
+<main id="main-content">
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="container hero-grid">
+      <div>
+        <span class="hero-eyebrow">Demo Website Template</span>
+        <h1>Straightforward pest control, <span class="accent-text">handled properly.</span></h1>
+        <p class="hero-subtitle" data-bind="business.tagline">Straightforward pest control for homes and businesses.</p>
+        <div class="hero-ctas">
+          <a href="#quote" class="btn-hero">Request a Quote</a>
+          <a data-tel-link href="tel:" class="btn-secondary">Call <span data-bind="contact.phoneDisplay">(555) 010-0142</span></a>
+          <a data-whatsapp-link href="#" class="btn-whatsapp">WhatsApp Us</a>
+        </div>
+        <p class="hero-note">Serving <span data-bind="contact.addressLine2">Westlake, ST</span> and surrounding areas.</p>
+      </div>
+      <div class="hero-trust-card">
+        <h2>Why customers choose us (sample)</h2>
+        <ul class="trust-list">
+          <li><span class="trust-icon" aria-hidden="true">&#10003;</span> Written quotes before any work begins</li>
+          <li><span class="trust-icon" aria-hidden="true">&#10003;</span> Residential &amp; commercial programs</li>
+          <li><span class="trust-icon" aria-hidden="true">&#10003;</span> Scheduled follow-up visits</li>
+        </ul>
+        <p class="demo-flag">This card, and all ratings/claims on this page, are editable sample demo content — see site-config.js.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PESTS TREATED -->
+  <section class="section" aria-labelledby="pests-heading">
     <div class="container">
-      <div class="hero-inner">
+      <div class="section-header">
+        <span class="section-eyebrow">Pest Categories</span>
+        <h2 id="pests-heading">Pests We Treat (Sample List)</h2>
+        <p>Edit the pestsTreated list in site-config.js to match your real services.</p>
+      </div>
+      <div class="pests-list" id="pests-list"></div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="section section-alt" aria-labelledby="services-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Services</span>
+        <h2 id="services-heading">Residential, Commercial &amp; Specialist Pest Services</h2>
+        <p>Covers residential and commercial pest control, termite treatment, rodent control, cockroach &amp; ant control, bed bug treatment, fumigation, and prevention plans.</p>
+      </div>
+      <div class="services-grid" id="services-grid"></div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process" class="section" aria-labelledby="process-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">How It Works</span>
+        <h2 id="process-heading">Our Service Process</h2>
+      </div>
+      <div class="process-steps" id="process-steps"></div>
+    </div>
+  </section>
+
+  <!-- SERVICE AREAS -->
+  <section id="areas" class="section section-alt" aria-labelledby="areas-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Coverage</span>
+        <h2 id="areas-heading">Service Area Coverage</h2>
+        <p>Sample coverage list — edit serviceAreas in site-config.js.</p>
+      </div>
+      <ul class="areas-list" id="service-areas-list"></ul>
+      <iframe class="map-frame" id="map-embed" title="Service area map placeholder" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+  <!-- ABOUT + TEAM -->
+  <section id="about" class="section" aria-labelledby="about-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">About Us</span>
+        <h2 id="about-heading">About <span data-bind="business.name">Westlake Pest Control</span></h2>
+      </div>
+      <div class="about-grid">
         <div>
-          <div class="badge">Westlake &middot; Cape Town &middot; 4.7 Stars</div>
-          <h1>Westlake&apos;s Trusted <span class="text-gradient">Pest Control Experts.</span></h1>
-          <p class="subtitle">Professional Pest Control in Westlake and surrounding areas. Fast response. Guaranteed workmanship.</p>
-          <div class="hero-actions">
-            <a href="https://wa.me/27845272182?text=im%20interested%20inthe%20website%20EcoShield%20Pest%20Control%20(Westlake)" class="btn-hero">WhatsApp for Quote</a>
-            <a href="#services" class="btn-secondary">Our Services</a>
-          </div>
+          <p data-bind="business.description">Fictional demo description.</p>
+          <p>Founded: <span data-bind="business.foundedYear">2015 (sample)</span></p>
+          <p class="demo-flag" data-bind="legal.disclaimerSummary"></p>
         </div>
-        <div class="hero-trust">
-          <div class="trust-card"><div class="trust-icon">[Stars]</div><div><h4>4.7 / 5 Rating</h4><p>Consistently rated by Cape Town customers</p></div></div>
-          <div class="trust-card"><div class="trust-icon">[Fast]</div><div><h4>Fast Response</h4><p>Same-day service available in Westlake</p></div></div>
-          <div class="trust-card"><div class="trust-icon">[Shield]</div><div><h4>Fully Insured</h4><p>All work guaranteed and fully covered</p></div></div>
+        <div>
+          <h3>Our Technicians (sample profiles)</h3>
+          <div class="team-grid" id="team-grid"></div>
         </div>
       </div>
     </div>
   </section>
-  <section id="services" class="features">
+
+  <!-- WHY CHOOSE US -->
+  <section class="section section-alt" aria-labelledby="why-heading">
     <div class="container">
-      <div class="features-header">
-        <h2><span class="text-gradient">Pest Control</span> in Westlake</h2>
-        <p>Everything you need, handled by certified professionals.</p>
+      <div class="section-header">
+        <span class="section-eyebrow">Why Choose Us</span>
+        <h2 id="why-heading">What Sets Us Apart (Sample Copy)</h2>
       </div>
-      <div class="grid-3"><div class="glass-card"><h3>Termite Treatment</h3><p>Professional termite treatment for residential and commercial clients in Westlake.</p></div>
-        <div class="glass-card"><h3>Rodent Control</h3><p>Professional rodent control for residential and commercial clients in Westlake.</p></div>
-        <div class="glass-card"><h3>Fumigation</h3><p>Professional fumigation for residential and commercial clients in Westlake.</p></div>
-        <div class="glass-card"><h3>Prevention Plans</h3><p>Professional prevention plans for residential and commercial clients in Westlake.</p></div>
-        <div class="glass-card"><h3>Bed Bug Treatment</h3><p>Professional bed bug treatment for residential and commercial clients in Westlake.</p></div>
-        <div class="glass-card"><h3>Cockroach Control</h3><p>Professional cockroach control for residential and commercial clients in Westlake.</p></div></div>
+      <div class="why-us-grid" id="why-us-grid"></div>
     </div>
   </section>
-  <div class="stats-bar"><div class="container"><div class="stats-grid">
-    <div class="stat-item"><h3>200+</h3><p>Jobs Completed</p></div>
-    <div class="stat-item"><h3>4.7</h3><p>Average Rating</p></div>
-    <div class="stat-item"><h3>24hr</h3><p>Response Time</p></div>
-    <div class="stat-item"><h3>100%</h3><p>Satisfaction Rate</p></div>
-  </div></div></div>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stats-grid" id="stats-grid"></div>
+      <p class="stats-disclaimer">All statistics above are fictional sample placeholders for template demonstration — replace or remove them with verified figures before publishing.</p>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <section class="section" aria-labelledby="testimonials-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Testimonials</span>
+        <h2 id="testimonials-heading">What Customers Say (Fictional Demo Content)</h2>
+      </div>
+      <div class="testimonials-grid" id="testimonials-grid"></div>
+      <p class="testimonials-disclaimer">These testimonials are fictional and included for demonstration purposes only. Replace with real, permission-cleared reviews.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section section-alt" aria-labelledby="faq-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">FAQ</span>
+        <h2 id="faq-heading">Frequently Asked Questions</h2>
+      </div>
+      <div class="faq-list" id="faq-list"></div>
+    </div>
+  </section>
+
+  <!-- QUOTE FORM -->
+  <section id="quote" class="section" aria-labelledby="quote-heading">
+    <div class="container quote-grid">
+      <div>
+        <span class="section-eyebrow">Request a Quote</span>
+        <h2 id="quote-heading">Get a Free Quote</h2>
+        <p>Fill out the form and we'll get back to you, or reach us directly using the details below.</p>
+        <ul class="quote-info-list">
+          <li>Call: <a data-tel-link href="tel:" data-bind="contact.phoneDisplay">(555) 010-0142</a></li>
+          <li>WhatsApp: <a data-whatsapp-link href="#" data-bind="contact.whatsappDisplay">(555) 010-0199</a></li>
+          <li>Email: <a data-email-link href="mailto:" data-bind="contact.email">hello@example.com</a></li>
+        </ul>
+      </div>
+      <form class="quote-form" id="quote-form" novalidate>
+        <div class="form-row">
+          <label for="quote-name">Full name</label>
+          <input type="text" id="quote-name" name="name" autocomplete="name" aria-describedby="quote-name-error">
+          <p class="field-error" id="quote-name-error"></p>
+        </div>
+        <div class="form-row">
+          <label for="quote-contact">Phone or email</label>
+          <input type="text" id="quote-contact" name="contact" autocomplete="tel" aria-describedby="quote-contact-error">
+          <p class="field-error" id="quote-contact-error"></p>
+        </div>
+        <div class="form-row">
+          <label for="quote-pest">Service needed</label>
+          <select id="quote-pest" name="pest" aria-describedby="quote-pest-error">
+            <option value="">Select a service&hellip;</option>
+            <option>Residential Pest Control</option>
+            <option>Commercial Pest Control</option>
+            <option>Termite Treatment</option>
+            <option>Rodent Control</option>
+            <option>Cockroach &amp; Ant Control</option>
+            <option>Bed Bug Treatment</option>
+            <option>Fumigation</option>
+            <option>Prevention &amp; Maintenance Plan</option>
+          </select>
+          <p class="field-error" id="quote-pest-error"></p>
+        </div>
+        <div class="form-row">
+          <label for="quote-notes">Additional details (optional)</label>
+          <textarea id="quote-notes" name="notes" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn-primary">Submit Quote Request</button>
+        <button type="button" id="quote-print" class="btn-link" style="margin-left:1rem;">Print this quote summary</button>
+        <p class="form-status" id="quote-form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- CONTACT / HOURS -->
+  <section id="contact" class="section section-alt" aria-labelledby="contact-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Contact</span>
+        <h2 id="contact-heading">Contact &amp; Business Hours</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Contact Details</h3>
+          <p><span data-bind="contact.addressLine1">123 Example Avenue</span><br><span data-bind="contact.addressLine2">Westlake, ST 00000</span></p>
+          <p>Phone: <a data-tel-link href="tel:" data-bind="contact.phoneDisplay"></a></p>
+          <p>WhatsApp: <a data-whatsapp-link href="#" data-bind="contact.whatsappDisplay"></a></p>
+          <p>Email: <a data-email-link href="mailto:" data-bind="contact.email"></a></p>
+        </div>
+        <div class="contact-card">
+          <h3>Business Hours</h3>
+          <div id="hours-list"></div>
+        </div>
+        <div class="contact-card">
+          <h3>Licence &amp; Insurance (Sample)</h3>
+          <p data-bind="legal.licenceStatement"></p>
+          <p data-bind="legal.insuranceStatement"></p>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
-<footer><div class="container flex-row">
-  <p>&copy; 2026 Vermin Guard Pro (Node-43). Westlake, Cape Town, ZA.</p>
-  <p>Website Managed by <span class="managed-accent">iederees-create</span></p>
-</div></footer>
-<a href="https://wa.me/27845272182?text=im%20interested%20inthe%20website%20EcoShield%20Pest%20Control%20(Westlake)" class="wa-float" target="_blank">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-</a>
-</body></html>
 
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#top" class="logo"><span class="logo-mark">[Pest]</span> <span data-bind="business.logoText"></span></a>
+        <p style="margin-top:0.75rem;color:var(--text-secondary);font-size:0.85rem;" data-bind="business.tagline"></p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="disclaimer.html">Treatment Disclaimer</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <ul>
+          <li><a data-bind-href="social.facebook" href="#">Facebook</a></li>
+          <li><a data-bind-href="social.instagram" href="#">Instagram</a></li>
+          <li><a data-bind-href="social.x" href="#">X</a></li>
+          <li><a data-bind-href="social.linkedin" href="#">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="current-year"></span> <span data-bind="business.name"></span>. Fictional demo business.</span>
+      <span>Website template by iederees-create</span>
+    </div>
+    <p class="footer-disclaimer">This is a demonstration website template. All business names, contact details, ratings, statistics, testimonials, licence and insurance statements shown are fictional sample content and must be replaced with accurate information before this site is used for a real business.</p>
+  </div>
+</footer>
 
+<div class="emergency-mobile-cta">
+  <span>Need help now?</span>
+  <a data-tel-link href="tel:">Call <span data-bind="contact.phoneDisplay"></span></a>
+</div>
 
-
-
-
-
-
-
-
-
-
-
+<script src="site-config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
