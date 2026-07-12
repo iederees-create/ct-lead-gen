@@ -8,10 +8,21 @@ template. It was first established during the Westlake Pest Control release.
 
 For every website template intended for sale, complete the whole workflow:
 
+0. Discover installed Claude Code skills relevant to the work (design,
+   accessibility, security, testing, video/image generation, packaging) and
+   use the ones that materially improve the result. Check for additional
+   trusted skills (e.g. via find-skills) before building from scratch. Do
+   not invoke skills merely to inflate a count, and only install skills from
+   trusted sources.
 1. Improve and test the website (fix branding conflicts, remove external
    dependencies, remove unsupported claims, add missing sections, add a
    buyer-facing `site-config.js`, test responsive breakpoints/console
-   errors/broken links).
+   errors/broken links). Where the product category supports it, build an
+   original interactive value-added tool (a calculator, planner, or similar)
+   rather than a static page — verify it live in a real browser (not just
+   unit tests), since UI-wiring bugs (e.g. a handler that re-renders a panel
+   without re-attaching its own navigation buttons) will not show up in
+   calculation-only unit tests.
 2. Create or update its public demo repository and deploy the GitHub Pages
    demo (`https://<owner>.github.io/<repo>/`).
 3. Build the buyer package: a clean ZIP of the site source (no `.git`, no
@@ -26,6 +37,12 @@ For every website template intended for sale, complete the whole workflow:
 5. Generate 8–10 original listing images (2000×2000 PNG preferred) using
    real screenshots of the finished site only — no competitor or stock
    imagery. `01-cover.png` is always the cover image.
+5b. Generate an original Etsy listing video (silent, ≤15s, MP4/H.264,
+   square or vertical, under 100MB — verify current Etsy video
+   requirements before encoding; if Etsy's own help pages are unreachable,
+   cross-check multiple independent published guides rather than a single
+   source) built from real screenshots/footage of the finished site only.
+   Produce a portfolio-ready copy (MP4 + WebM + poster image) alongside it.
 6. Create a Francis Listing Manager Complete Product Pack ZIP: a manifest
    (`francis-listing-manager-import.json`) at the ZIP root (or at most one
    folder deep) plus `images/` (≤10, one cover) and `buyer-files/` (≤5).
@@ -34,7 +51,12 @@ For every website template intended for sale, complete the whole workflow:
 7. Add the live demo to the 3D Portfolio (`src/App.tsx` in the
    `3D-Portfolio` repo): title, category, description, tags, `featured:
    true`, and `liveUrl` — but no `etsyUrl` yet, since the listing starts as
-   an unpublished draft. Build and smoke-test the portfolio before
+   an unpublished draft. Use ALL of the listing images and the preview
+   video in the portfolio showcase, not just a single thumbnail — check
+   whether a gallery/showcase component already exists (a `galleryImages`
+   field may already be declared on the `Project` type without being wired
+   to any UI) before building a new one. Build and smoke-test the portfolio
+   (including opening the showcase and testing keyboard navigation) before
    committing; rebase (never force-push) if the remote has moved on.
 8. Import the Complete Product Pack into the production Francis Listing
    Manager, verify every imported field (price/currency, category,
@@ -67,6 +89,22 @@ is not available in the current environment:
 
 - Never publish an Etsy listing automatically. Publishing is always a
   manual, human-approved action.
+- Never automate etsy.com directly or call undocumented Etsy endpoints.
+  All Etsy draft creation goes through Francis Listing Manager's own UI/API
+  (which uses its own server-side OAuth token). Before using any Francis
+  Listing Manager action that talks to Etsy's API (e.g. video upload),
+  confirm the underlying capability is part of Etsy's officially documented
+  Open API — do not assume, and do not invent an endpoint yourself.
+- If no authenticated Francis Listing Manager session exists, do not
+  request or enter credentials — pause and ask the human owner to log in,
+  then continue.
+- After a Complete Product Pack import, verify the actual field values via
+  the tool's own read-back (edit page, deploy-status/deploy-preview APIs),
+  not just the import success message — check listing content, image alt
+  text, and price/currency, since target prices are entered in a nominal
+  currency (e.g. USD) that may not match the shop's actual default currency
+  (e.g. ZAR). Flag any mismatch prominently as a required human action
+  rather than silently leaving an incorrect price live.
 - Never fabricate a successful import, validation, or draft-creation result.
 - Never include `.git`, `.env`, API keys, credentials, `node_modules`,
   screenshots from other projects, or unrelated files in a buyer ZIP or
