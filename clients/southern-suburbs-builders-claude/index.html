@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Southern Suburbs Builders | Renovation, Extension &amp; New Build Website Template</title>
+<meta name="description" content="Southern Suburbs Builders — a fictional demo construction company showcasing a premium, conversion-focused website template with a working Renovation Scope &amp; Budget Planner for builders, renovators and contractors.">
+<link rel="canonical" href="https://iederees-create.github.io/southern-suburbs-builders-template/">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Southern Suburbs Builders | Construction Website Template">
+<meta property="og:description" content="A premium, conversion-focused website template for building contractors, renovators and extension specialists, with a working Renovation Scope &amp; Budget Planner.">
+<meta property="og:image" content="og-image.svg">
+<meta property="og:url" content="https://iederees-create.github.io/southern-suburbs-builders-template/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "GeneralContractor",
+  "name": "Southern Suburbs Builders",
+  "description": "Fictional demonstration construction business used to showcase a website template. Not a real company.",
+  "areaServed": ["Claremont", "Kenilworth", "Wynberg", "Plumstead", "Diep River", "Tokai", "Constantia", "Bishopscourt", "Newlands", "Rondebosch"],
+  "telephone": "+27-21-555-0142",
+  "email": "hello@example.com",
+  "url": "https://iederees-create.github.io/southern-suburbs-builders-template/",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "12 Example Road, Kenilworth",
+    "addressLocality": "Cape Town",
+    "addressRegion": "Western Cape",
+    "postalCode": "7708",
+    "addressCountry": "ZA"
+  },
+  "disclaimer": "All business details in this structured data are fictional sample content for template demonstration purposes only."
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<div class="announcement-bar" id="announcement-bar">
+  <span id="announcement-label">Try our free Renovation Scope &amp; Budget Planner</span>
+  <a href="#planner" id="announcement-cta">Open the Planner</a>
+</div>
+
+<header class="site-nav">
+  <div class="container">
+    <a href="#top" class="logo"><span class="logo-mark">[SSB]</span> <span data-bind="business.logoText">Southern Suburbs Builders</span></a>
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+    </button>
+    <ul class="nav-menu" id="nav-menu">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#planner">Planner</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li class="theme-picker"><label for="theme-selector" class="visually-hidden">Colour theme</label><select id="theme-selector"></select></li>
+      <li><a href="#quote" class="nav-cta">Get a Quote</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="main-content">
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="blueprint-overlay" aria-hidden="true"></div>
+    <div class="container hero-grid">
+      <div>
+        <span class="hero-eyebrow">Demo Website Template</span>
+        <h1>Built properly, <span class="accent-text">on schedule.</span></h1>
+        <p class="hero-subtitle" data-bind="business.tagline">Renovations, extensions and new builds for Cape Town's Southern Suburbs.</p>
+        <div class="hero-ctas">
+          <a href="#quote" class="btn-hero">Request a Quote</a>
+          <a data-tel-link href="tel:" class="btn-secondary">Call <span data-bind="contact.phoneDisplay">(021) 555 0142</span></a>
+          <a data-whatsapp-link data-whatsapp-default href="#" class="btn-whatsapp">WhatsApp Us</a>
+        </div>
+        <p class="hero-note">Serving <span data-bind="contact.addressLine2">Cape Town, 7708</span> and the Southern Suburbs.</p>
+      </div>
+      <div class="hero-trust-card">
+        <h2>Why clients choose us (sample)</h2>
+        <ul class="trust-list">
+          <li><span class="trust-icon" aria-hidden="true">&#10003;</span> Written quotes before any work begins</li>
+          <li><span class="trust-icon" aria-hidden="true">&#10003;</span> Free preliminary budget planner tool</li>
+          <li><span class="trust-icon" aria-hidden="true">&#10003;</span> Dedicated project management</li>
+        </ul>
+        <p class="demo-flag">This card, and all ratings/claims on this page, are editable sample demo content — see site-config.js.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST INDICATORS -->
+  <div class="trust-bar">
+    <div class="container">
+      <div class="trust-bar-grid" id="trust-indicators-grid"></div>
+    </div>
+  </div>
+
+  <!-- SERVICES: Renovations / Extensions / New Builds / Paving / Boundary Walls / Project Management -->
+  <section id="services" class="section" aria-labelledby="services-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Services</span>
+        <h2 id="services-heading">Renovations, Extensions, New Builds &amp; More</h2>
+        <p>Covers renovations, extensions, new builds, paving, boundary walls and full project management.</p>
+      </div>
+      <div class="services-jump" id="services-jump"></div>
+      <div class="services-grid" id="services-grid"></div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process" class="section section-alt" aria-labelledby="process-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">How It Works</span>
+        <h2 id="process-heading">Our Project Process</h2>
+      </div>
+      <div class="process-steps" id="process-steps"></div>
+    </div>
+  </section>
+
+  <!-- PROJECT GALLERY -->
+  <section id="gallery" class="section" aria-labelledby="gallery-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Project Gallery</span>
+        <h2 id="gallery-heading">Recent Work (Replaceable Demo Media)</h2>
+        <p>These are placeholder cards, not real project photography — replace the <code>gallery</code> array in site-config.js with your own photos once available.</p>
+      </div>
+      <div class="gallery-grid" id="gallery-grid"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT + TEAM -->
+  <section id="about" class="section section-alt" aria-labelledby="about-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">About Us</span>
+        <h2 id="about-heading">About <span data-bind="business.name">Southern Suburbs Builders</span></h2>
+      </div>
+      <div class="about-grid">
+        <div>
+          <p data-bind="business.description">Fictional demo description.</p>
+          <p>Founded: <span data-bind="business.foundedYear">[Year] (sample)</span></p>
+          <p class="demo-flag" data-bind="legal.disclaimerSummary"></p>
+        </div>
+        <div>
+          <h3>Our Team (sample profiles)</h3>
+          <div class="team-grid" id="team-grid"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE AREAS -->
+  <section id="areas" class="section" aria-labelledby="areas-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Coverage</span>
+        <h2 id="areas-heading">Service Area Coverage</h2>
+        <p>Sample coverage list — edit serviceAreas in site-config.js.</p>
+      </div>
+      <ul class="areas-list" id="service-areas-list"></ul>
+      <iframe class="map-frame" id="map-embed" title="Service area map placeholder" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="section section-alt" aria-labelledby="why-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Why Choose Us</span>
+        <h2 id="why-heading">What Sets Us Apart (Sample Copy)</h2>
+      </div>
+      <div class="why-us-grid" id="why-us-grid"></div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stats-grid" id="stats-grid"></div>
+      <p class="stats-disclaimer">All statistics above are fictional sample placeholders for template demonstration — replace or remove them with verified figures before publishing.</p>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <section class="section" aria-labelledby="testimonials-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Testimonials</span>
+        <h2 id="testimonials-heading">What Clients Say (Fictional Demo Content)</h2>
+      </div>
+      <div class="testimonials-grid" id="testimonials-grid"></div>
+      <p class="testimonials-disclaimer">These testimonials are fictional and included for demonstration purposes only. Replace with real, permission-cleared reviews.</p>
+    </div>
+  </section>
+
+  <!-- RENOVATION SCOPE & BUDGET PLANNER -->
+  <section id="planner" class="section section-alt planner-section" aria-labelledby="planner-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Interactive Tool</span>
+        <h2 id="planner-heading">Renovation Scope &amp; Budget Planner</h2>
+        <p>Answer a few questions about your project for a preliminary scope, trade checklist and configurable budget range. This is not a binding quotation — see the <a href="disclaimer.html">Estimate Disclaimer</a>.</p>
+      </div>
+
+      <form class="planner-form" id="planner-form" novalidate>
+        <div class="planner-grid">
+
+          <fieldset class="planner-fieldset">
+            <legend>Project Basics</legend>
+            <div class="form-row">
+              <label for="planner-project-name">Project name</label>
+              <input type="text" id="planner-project-name" name="projectName" autocomplete="off" placeholder="e.g. Claremont Kitchen Revamp">
+            </div>
+            <div class="form-row">
+              <label for="planner-project-type">Project type</label>
+              <select id="planner-project-type" name="projectType" aria-describedby="planner-project-type-error">
+                <option value="">Select a project type&hellip;</option>
+              </select>
+              <p class="field-error" id="planner-project-type-error"></p>
+            </div>
+            <div class="form-row form-row-split">
+              <div>
+                <label for="planner-length">Length (m)</label>
+                <input type="number" id="planner-length" name="lengthM" min="0" step="0.1" inputmode="decimal">
+              </div>
+              <div>
+                <label for="planner-width">Width (m)</label>
+                <input type="number" id="planner-width" name="widthM" min="0" step="0.1" inputmode="decimal">
+              </div>
+            </div>
+            <div class="form-row">
+              <label for="planner-floor-area">Total floor area (m²) — optional, overrides length &times; width</label>
+              <input type="number" id="planner-floor-area" name="totalFloorArea" min="0" step="0.1" inputmode="decimal">
+            </div>
+            <div class="form-row form-row-split">
+              <div>
+                <label for="planner-rooms">Number of rooms</label>
+                <input type="number" id="planner-rooms" name="numberOfRooms" min="0" step="1" inputmode="numeric">
+              </div>
+              <div>
+                <label for="planner-storeys">Number of storeys</label>
+                <select id="planner-storeys" name="numberOfStoreys">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3 or more</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <label for="planner-finish">Finish level</label>
+              <select id="planner-finish" name="finishLevel">
+                <option value="">Select a finish level&hellip;</option>
+                <option value="Essential">Essential</option>
+                <option value="Standard">Standard</option>
+                <option value="Premium">Premium</option>
+                <option value="Custom">Custom (requires consultation)</option>
+              </select>
+            </div>
+          </fieldset>
+
+          <fieldset class="planner-fieldset">
+            <legend>Scope of Work</legend>
+            <p class="fieldset-hint">Select everything that applies to this project.</p>
+            <div class="planner-checkbox-grid">
+              <label class="planner-checkbox"><input type="checkbox" name="demolition"> Demolition</label>
+              <label class="planner-checkbox"><input type="checkbox" name="structuralAlterations"> Structural alterations</label>
+              <label class="planner-checkbox"><input type="checkbox" name="plumbing"> Plumbing</label>
+              <label class="planner-checkbox"><input type="checkbox" name="electrical"> Electrical work</label>
+              <label class="planner-checkbox"><input type="checkbox" name="waterproofing"> Waterproofing</label>
+              <label class="planner-checkbox"><input type="checkbox" name="roofing"> Roofing</label>
+              <label class="planner-checkbox"><input type="checkbox" name="painting"> Painting</label>
+              <label class="planner-checkbox"><input type="checkbox" name="flooring"> Flooring</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="planner-fieldset">
+            <legend>Site &amp; Timing</legend>
+            <div class="form-row">
+              <label for="planner-site-access">Site access</label>
+              <select id="planner-site-access" name="siteAccess">
+                <option value="">Select site access&hellip;</option>
+                <option value="easy">Easy — direct vehicle access</option>
+                <option value="moderate">Moderate — some restrictions</option>
+                <option value="difficult">Difficult — limited or no vehicle access</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="planner-occupancy">Is the property occupied or vacant during works?</label>
+              <select id="planner-occupancy" name="occupancy">
+                <option value="">Select occupancy&hellip;</option>
+                <option value="occupied">Occupied</option>
+                <option value="vacant">Vacant</option>
+              </select>
+            </div>
+            <div class="form-row form-row-split">
+              <div>
+                <label for="planner-start-date">Preferred start date</label>
+                <input type="date" id="planner-start-date" name="preferredStartDate">
+              </div>
+              <div>
+                <label for="planner-target-budget">Target budget (optional)</label>
+                <input type="number" id="planner-target-budget" name="targetBudget" min="0" step="100" inputmode="decimal">
+              </div>
+            </div>
+            <div class="form-row">
+              <label for="planner-suburb">Suburb</label>
+              <input type="text" id="planner-suburb" name="suburb" list="planner-suburb-list" autocomplete="off">
+              <datalist id="planner-suburb-list"></datalist>
+            </div>
+          </fieldset>
+
+          <fieldset class="planner-fieldset">
+            <legend>Your Contact Details</legend>
+            <div class="form-row">
+              <label for="planner-customer-name">Your name</label>
+              <input type="text" id="planner-customer-name" name="customerName" autocomplete="name">
+            </div>
+            <div class="form-row">
+              <label for="planner-customer-contact">Phone or email</label>
+              <input type="text" id="planner-customer-contact" name="customerContact" autocomplete="tel">
+            </div>
+            <div class="form-row">
+              <label for="planner-notes">Additional notes (optional)</label>
+              <textarea id="planner-notes" name="additionalNotes" rows="3"></textarea>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="planner-actions-row">
+          <button type="submit" class="btn-primary">Calculate Scope &amp; Budget</button>
+          <button type="button" class="btn-secondary" id="planner-reset">Reset</button>
+        </div>
+        <p class="form-status" id="planner-form-status" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="planner-results" id="planner-results" hidden aria-live="polite">
+        <h3>Your Preliminary Project Summary</h3>
+
+        <div class="planner-result-grid">
+          <div class="planner-result-card">
+            <h4>Measured Project Area</h4>
+            <p id="result-area">—</p>
+          </div>
+          <div class="planner-result-card">
+            <h4>Complexity Indicator</h4>
+            <p id="result-complexity">—</p>
+          </div>
+          <div class="planner-result-card planner-result-card-budget">
+            <h4>Configurable Budget Range</h4>
+            <p id="result-budget">—</p>
+            <p class="planner-result-note">Preliminary estimate only — not a binding quotation.</p>
+          </div>
+          <div class="planner-result-card">
+            <h4>Suggested Site Inspection</h4>
+            <p id="result-inspection">—</p>
+          </div>
+        </div>
+
+        <div class="planner-result-lists">
+          <div>
+            <h4>Preliminary Scope</h4>
+            <p id="result-scope">—</p>
+          </div>
+          <div>
+            <h4>Trade Checklist</h4>
+            <ul id="result-trades"></ul>
+          </div>
+          <div>
+            <h4>Assumptions</h4>
+            <ul id="result-assumptions"></ul>
+          </div>
+          <div>
+            <h4>Missing Information</h4>
+            <ul id="result-missing"></ul>
+          </div>
+          <div>
+            <h4>Photo Checklist for Your Site Visit</h4>
+            <ul id="result-photos"></ul>
+          </div>
+        </div>
+
+        <div class="planner-summary-block">
+          <h4>Project Summary</h4>
+          <textarea id="result-summary-text" readonly rows="12"></textarea>
+        </div>
+
+        <div class="planner-actions-row planner-actions-final">
+          <button type="button" class="btn-secondary" id="action-copy">Copy Summary</button>
+          <button type="button" class="btn-secondary" id="action-print">Print Summary</button>
+          <button type="button" class="btn-secondary" id="action-download">Download Summary</button>
+          <button type="button" class="btn-whatsapp" id="action-whatsapp">WhatsApp Quote Request</button>
+          <button type="button" class="btn-secondary" id="action-email">Email Quote Request</button>
+          <button type="button" class="btn-primary" id="action-site-visit">Request Site Visit</button>
+        </div>
+        <p class="form-status" id="planner-action-status" role="status" aria-live="polite"></p>
+      </div>
+
+      <!-- Explicit-confirmation panel — no message is ever sent without this -->
+      <div class="planner-confirm-panel" id="planner-confirm-panel" hidden role="dialog" aria-modal="true" aria-labelledby="planner-confirm-heading">
+        <div class="planner-confirm-inner">
+          <h4 id="planner-confirm-heading">Review before sending</h4>
+          <p>Nothing is sent until you confirm. Review the exact message below.</p>
+          <textarea id="planner-confirm-message" readonly rows="8"></textarea>
+          <div class="planner-actions-row">
+            <button type="button" class="btn-primary" id="planner-confirm-send">Confirm &amp; Send</button>
+            <button type="button" class="btn-secondary" id="planner-confirm-cancel">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE FORM -->
+  <section id="quote" class="section" aria-labelledby="quote-heading">
+    <div class="container quote-grid">
+      <div>
+        <span class="section-eyebrow">Request a Quote</span>
+        <h2 id="quote-heading">Get a Free Quote</h2>
+        <p>Fill out the form and we'll get back to you, use the <a href="#planner">Renovation Scope &amp; Budget Planner</a> for an instant estimate, or reach us directly using the details below.</p>
+        <ul class="quote-info-list">
+          <li>Call: <a data-tel-link href="tel:" data-bind="contact.phoneDisplay">(021) 555 0142</a></li>
+          <li>WhatsApp: <a data-whatsapp-link data-whatsapp-default href="#" data-bind="contact.whatsappDisplay">082 555 0199</a></li>
+          <li>Email: <a data-email-link href="mailto:" data-bind="contact.email">hello@example.com</a></li>
+        </ul>
+      </div>
+      <form class="quote-form" id="quote-form" novalidate>
+        <div class="form-row">
+          <label for="quote-name">Full name</label>
+          <input type="text" id="quote-name" name="name" autocomplete="name" aria-describedby="quote-name-error">
+          <p class="field-error" id="quote-name-error"></p>
+        </div>
+        <div class="form-row">
+          <label for="quote-contact">Phone or email</label>
+          <input type="text" id="quote-contact" name="contact" autocomplete="tel" aria-describedby="quote-contact-error">
+          <p class="field-error" id="quote-contact-error"></p>
+        </div>
+        <div class="form-row">
+          <label for="quote-project-type">Project type</label>
+          <select id="quote-project-type" name="projectType" aria-describedby="quote-project-type-error">
+            <option value="">Select a project type&hellip;</option>
+          </select>
+          <p class="field-error" id="quote-project-type-error"></p>
+        </div>
+        <div class="form-row">
+          <label for="quote-notes">Additional details (optional)</label>
+          <textarea id="quote-notes" name="notes" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn-primary">Review Quote Request</button>
+        <p class="form-status" id="quote-form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section section-alt" aria-labelledby="faq-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">FAQ</span>
+        <h2 id="faq-heading">Frequently Asked Questions</h2>
+      </div>
+      <div class="faq-list" id="faq-list"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT / HOURS -->
+  <section id="contact" class="section" aria-labelledby="contact-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Contact</span>
+        <h2 id="contact-heading">Contact &amp; Business Hours</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Contact Details</h3>
+          <p><span data-bind="contact.addressLine1">12 Example Road, Kenilworth</span><br><span data-bind="contact.addressLine2">Cape Town, 7708</span></p>
+          <p>Phone: <a data-tel-link href="tel:" data-bind="contact.phoneDisplay"></a></p>
+          <p>WhatsApp: <a data-whatsapp-link data-whatsapp-default href="#" data-bind="contact.whatsappDisplay"></a></p>
+          <p>Email: <a data-email-link href="mailto:" data-bind="contact.email"></a></p>
+        </div>
+        <div class="contact-card">
+          <h3>Business Hours</h3>
+          <div id="hours-list"></div>
+        </div>
+        <div class="contact-card">
+          <h3>Licence &amp; Insurance (Sample)</h3>
+          <p data-bind="legal.licenceStatement"></p>
+          <p data-bind="legal.insuranceStatement"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#top" class="logo"><span class="logo-mark">[SSB]</span> <span data-bind="business.logoText"></span></a>
+        <p style="margin-top:0.75rem;color:var(--text-secondary);font-size:0.85rem;" data-bind="business.tagline"></p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#planner">Planner</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="disclaimer.html">Estimate Disclaimer</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <ul>
+          <li><a data-bind-href="social.facebook" href="#">Facebook</a></li>
+          <li><a data-bind-href="social.instagram" href="#">Instagram</a></li>
+          <li><a data-bind-href="social.x" href="#">X</a></li>
+          <li><a data-bind-href="social.linkedin" href="#">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="current-year"></span> <span data-bind="business.name"></span>. Fictional demo business.</span>
+      <span>Website template by iederees-create</span>
+    </div>
+    <p class="footer-disclaimer">This is a demonstration website template. All business names, contact details, ratings, statistics, testimonials, team profiles, licence and insurance statements shown are fictional sample content and must be replaced with accurate information before this site is used for a real business. The Renovation Scope &amp; Budget Planner produces preliminary, non-binding estimates only — see the <a href="disclaimer.html">Estimate Disclaimer</a>.</p>
+  </div>
+</footer>
+
+<div class="mobile-cta-bar">
+  <a data-tel-link href="tel:">Call <span data-bind="contact.phoneDisplay"></span></a>
+  <a href="#planner">Get an Estimate</a>
+</div>
+
+<script src="site-config.js"></script>
+<script src="planner.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

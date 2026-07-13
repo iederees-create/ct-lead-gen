@@ -1,0 +1,9 @@
+{
+  "name": "southern-suburbs-builders-template",
+  "version": "1.0.0",
+  "description": "Southern Suburbs Builders — construction website template with a Renovation Scope & Budget Planner. Static HTML/CSS/JS, no build step.",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/planner.test.js"
+  }
+}
