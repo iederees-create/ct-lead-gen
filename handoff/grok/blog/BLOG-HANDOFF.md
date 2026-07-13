@@ -127,7 +127,7 @@ Master checklist: `../BUILD-FACTS-TO-VERIFY.md` (extend with trades + photo chec
 
 ## Listing ↔ blog reconciliation
 
-Aligned messaging (listing updated to match blog product spine):
+Reviewed against `handoff/grok/etsy-listing-copy.md` and `seller-pack/drafts/listing-copy-ready.txt` on 2026-07-13. Aligned messaging (listing updated to match blog product spine):
 
 - Renovation Scope & Budget Planner  
 - Preliminary budget ranges (never binding)  
@@ -145,6 +145,8 @@ Honesty rules repeated in both surfaces:
 - Real quotations depend on inspection, drawings, specifications, materials, labour, approvals and site conditions  
 - Fictional demo info must be replaced  
 - Do not publish “fully insured,” “certified,” “guaranteed…” unless true  
+
+Items still gated pending Claude’s final build confirmation remain marked `VERIFY_AFTER_BUILD` in the listing, article, media plan and metadata. Do not remove those gates until the finished product proves the shipped UI and package support the claim.
 
 ---
 
