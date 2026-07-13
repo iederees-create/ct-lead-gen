@@ -24,13 +24,16 @@
 | ID | Fact claimed in commerce | Evidence to collect | Status |
 |---|---|---|---|
 | A1 | Interactive Renovation Scope & Budget Planner exists | URL/section + UI screenshot | PENDING |
-| A2 | Visitor can specify or select **project area** | Planner step/field | PENDING |
+| A2 | Visitor can **define the project** (type/area/constraints) | Planner step/field | PENDING |
 | A3 | Visitor can specify or select **scope** | Planner step/field | PENDING |
 | A4 | Planner provides **complexity** guidance | Visible output | PENDING |
-| A5 | Planner provides **preliminary budget guidance** | Visible output | PENDING |
-| A6 | Planner produces a **structured quote request** | Summary payload fields listed | PENDING |
+| A5 | Planner provides **preliminary budget ranges** | Visible output | PENDING |
+| A6 | Planner produces a **structured quote request / summary** | Summary payload fields listed | PENDING |
 | A7 | UI states planner is **not a binding quotation** | Visible disclaimer copy | PENDING |
 | A8 | Budget view surfaces **assumptions** or equivalent caution | Screenshot | PENDING |
+| A9 | Planner helps **identify required trades** | Visible trades step/output | PENDING |
+| A10 | Planner includes a **photo checklist** | Visible checklist UI | PENDING |
+| A11 | Calculator assumptions are **buyer-configurable** | Config keys / admin fields | PENDING |
 
 ---
 
@@ -40,7 +43,7 @@
 |---|---|---|---|
 | B1 | WhatsApp handoff from quote summary | Working `wa.me` or equivalent with structured text | PENDING |
 | B2 | Click-to-call works with config phone | Mobile test | PENDING |
-| B3 | Email CTA works with config email | Click test | PENDING |
+| B3 | Email handoff / CTA with structured summary or mailto | Click test | PENDING |
 | B4 | Quote form validation (if present) | Invalid submit blocked | PENDING |
 | B5 | Print-friendly summary (if claimed) | Print preview | PENDING |
 
@@ -67,9 +70,9 @@
 |---|---|---|---|
 | D1 | Buyer-facing `site-config.js` (or documented equivalent) | File + fields | PENDING |
 | D2 | Ordinary rebrand without HTML edits | Documented fields cover name/contact/services | PENDING |
-| D3 | Multiple colour themes | Theme keys + visual proof | PENDING |
+| D3 | **Three visual themes** | Theme keys + visual proof | PENDING |
 | D4 | Theme names documented for listing | Exact names for copy | PENDING |
-| D5 | Planner assumptions/rates editable in config (if claimed) | Config keys | PENDING |
+| D5 | Planner assumptions/rates editable in config | Config keys | PENDING |
 
 ---
 

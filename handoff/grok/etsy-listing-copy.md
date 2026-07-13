@@ -41,7 +41,7 @@ Construction Website Template with Renovation Cost Planner, Builder and Contract
 
 ## Short Summary
 
-A responsive construction website template for builders, renovation contractors, and remodelers. Includes an interactive **Renovation Scope & Budget Planner** that helps visitors outline project area, scope, complexity, and preliminary budget guidance, then submit a structured quote request. Instant digital download — rebrand with your business details. Planner guidance is preliminary only and not a binding quotation. (`VERIFY_AFTER_BUILD` for final planner steps, config surface, and included pages.)
+A responsive construction website template for builders, renovation contractors, and remodelers. Includes an interactive **Renovation Scope & Budget Planner** that helps visitors define their project, estimate preliminary scope and budget ranges, identify required trades, prepare a photo checklist, and create a structured quote request. Instant digital download — rebrand via central business configuration. Planner guidance is preliminary only and not a binding quotation. (`VERIFY_AFTER_BUILD` for final planner steps, themes, config surface, and included pages.)
 
 ---
 
@@ -55,14 +55,16 @@ A conversion-focused website template built for builders, renovation contractors
 THIS IS A DIGITAL DOWNLOAD. No physical item ships. Files are delivered instantly after purchase.
 
 CORE DIFFERENTIATOR
-An interactive Renovation Scope & Budget Planner that helps website visitors create preliminary guidance on:
-• Project area
-• Scope of work
-• Complexity signals
-• Preliminary budget guidance
-…then produce a structured quote request your team can act on.
+An interactive Renovation Scope & Budget Planner that helps website visitors:
+• Define their renovation or construction project
+• Estimate preliminary scope and budget ranges
+• Identify required trades (educational guidance)
+• Prepare a photo checklist for quote readiness
+• Create a structured quote request / summary your team can act on
 
-IMPORTANT: The planner is preliminary guidance only. It is NOT a binding quotation, fixed price, professional cost estimate, or legal/financial advice.
+Configurable calculator assumptions are intended so the business owner can align guidance with their market (VERIFY_AFTER_BUILD).
+
+IMPORTANT: The planner is preliminary guidance only. It is NOT a binding quotation, fixed price, professional cost estimate, or legal/financial advice. Real quotations depend on site inspection, drawings, specifications, materials, labour, approvals and site conditions.
 
 WHO IT’S FOR
 • Builders and general contractors
@@ -76,13 +78,16 @@ WHO IT’S NOT FOR
 
 WHAT YOU GET (PACKAGE INTENT — VERIFY_AFTER_BUILD)
 • Complete static website source (HTML / CSS / JavaScript — no build tools required for ordinary use)
-• Buyer-facing configuration file for business name, contact details, services, copy, and related settings (expected: site-config.js)
-• Interactive Renovation Scope & Budget Planner + structured quote-request handoff
-• WhatsApp and/or click-to-contact lead paths (exact channels VERIFY_AFTER_BUILD)
+• Central business configuration file for name, contact details, services, copy, and related settings (expected: site-config.js)
+• Interactive Renovation Scope & Budget Planner (project definition, preliminary scope/budget ranges, trades guidance, photo checklist, structured quote summary)
+• Configurable calculator assumptions for the business owner
+• WhatsApp and email handoff paths for structured quote requests (exact channels VERIFY_AFTER_BUILD)
+• Three visual themes (VERIFY_AFTER_BUILD for exact theme names)
 • Services, gallery/project showcase placeholders, and supporting sections (VERIFY_AFTER_BUILD)
-• Mobile-first responsive layout (VERIFY_AFTER_BUILD)
+• Mobile-first responsive construction layout (VERIFY_AFTER_BUILD)
 • Start-Here + Complete Buyer Guide, licence, and AI disclosure files (VERIFY_AFTER_BUILD)
 • Starting-point legal pages such as Privacy / Terms / disclaimer (generic starters — not legal advice) (VERIFY_AFTER_BUILD)
+• Digital download only — no physical product
 
 HOW IT WORKS
 1. Purchase and download the ZIP.
@@ -131,18 +136,21 @@ Questions? Message the shop before purchase — happy to clarify what’s includ
 
 **Confirmed product intent (from brief):**
 - Interactive Renovation Scope & Budget Planner  
-- Preliminary area, scope, complexity, and budget guidance  
-- Structured quote request output  
+- Define project; preliminary scope and budget ranges  
+- Identify required trades; photo checklist  
+- Structured quote request / summary  
 - Explicit non-binding estimate positioning  
+- Digital download; no physical product  
 
 **Expected template features — all `VERIFY_AFTER_BUILD` unless confirmed in final build:**
-- Responsive mobile-first layout  
-- Central buyer configuration file (`site-config.js` expected)  
-- Switchable colour themes  
+- Responsive mobile-first construction layout  
+- Central business configuration file (`site-config.js` expected)  
+- Three visual themes  
+- Configurable calculator assumptions  
 - Services section tailored to construction / renovations  
 - Project gallery or portfolio placeholders (no fake “real project” photography claims)  
-- WhatsApp quote handoff with structured message payload  
-- Click-to-call / email CTAs  
+- WhatsApp and email handoff with structured message payload  
+- Click-to-call CTAs  
 - FAQ accordion  
 - SEO metadata, Open Graph tags, structured data  
 - Privacy, Terms, disclaimer, 404 pages  
@@ -151,6 +159,7 @@ Questions? Message the shop before purchase — happy to clarify what’s includ
 - START-HERE + Complete Buyer Guide  
 - Keyboard focus / reduced-motion accessibility basics  
 - No external paid API keys required for core planner  
+- SEO blog package for portfolio promotion (`handoff/grok/blog/`) — not a buyer file
 
 ---
 

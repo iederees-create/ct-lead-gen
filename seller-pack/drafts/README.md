@@ -24,6 +24,18 @@ Do not publish to Etsy from this folder automatically. Human review required.
 - `listing-copy-ready.txt` — paste-friendly condensed listing body  
 - `tags-13.txt` — one tag per line  
 
+## SEO blog package
+
+Canonical files: `handoff/grok/blog/`
+
+- Article: `construction-website-quote-planner.md`  
+- Metadata / JSON-LD: `construction-website-quote-planner-metadata.json`  
+- Media plan: `blog-media-plan.md`  
+- Promotion: `blog-promotion-pack.md`  
+- Integration instructions: `BLOG-HANDOFF.md`  
+
+Etsy purchase links in the blog stay `ETSY_PRODUCT_URL_PENDING_PUBLICATION` until the exact product URL is public.
+
 ## After Claude build
 
 1. Run `BUILD-FACTS-TO-VERIFY.md`  
@@ -31,3 +43,6 @@ Do not publish to Etsy from this folder automatically. Human review required.
 3. Capture images/video from real UI  
 4. Build buyer ZIP + Francis Complete Product Pack (release agent)  
 5. Human creates Etsy draft; human publishes later  
+6. Portfolio agent integrates blog per `BLOG-HANDOFF.md`  
+7. Only after Etsy publication: replace purchase CTA with exact product URL  
+

@@ -2,7 +2,7 @@ TITLE (recommended)
 Construction Website Template with Renovation Cost Planner, Builder and Contractor Quote Website, Responsive Digital Download
 
 SHORT SUMMARY
-A responsive construction website template for builders, renovation contractors, and remodelers. Includes an interactive Renovation Scope & Budget Planner that helps visitors outline project area, scope, complexity, and preliminary budget guidance, then submit a structured quote request. Instant digital download. Planner guidance is preliminary only and not a binding quotation. (Final feature list: verify after build.)
+A responsive construction website template for builders, renovation contractors, and remodelers. Includes an interactive Renovation Scope & Budget Planner that helps visitors define their project, estimate preliminary scope and budget ranges, identify required trades, prepare a photo checklist, and create a structured quote request. Instant digital download — rebrand via central business configuration. Planner guidance is preliminary only and not a binding quotation. (Final feature list: verify after build.)
 
 FULL DESCRIPTION
 CONSTRUCTION WEBSITE TEMPLATE WITH RENOVATION SCOPE & BUDGET PLANNER
@@ -12,9 +12,16 @@ A conversion-focused website template built for builders, renovation contractors
 THIS IS A DIGITAL DOWNLOAD. No physical item ships. Files are delivered instantly after purchase.
 
 CORE DIFFERENTIATOR
-An interactive Renovation Scope & Budget Planner that helps website visitors create preliminary guidance on project area, scope of work, complexity signals, and preliminary budget guidance — then produce a structured quote request your team can act on.
+An interactive Renovation Scope & Budget Planner that helps website visitors:
+• Define their renovation or construction project
+• Estimate preliminary scope and budget ranges
+• Identify required trades (educational guidance)
+• Prepare a photo checklist for quote readiness
+• Create a structured quote request / summary your team can act on
 
-IMPORTANT: The planner is preliminary guidance only. It is NOT a binding quotation, fixed price, professional cost estimate, or legal/financial advice.
+Configurable calculator assumptions are intended so the business owner can align guidance with their market (verify after build).
+
+IMPORTANT: The planner is preliminary guidance only. It is NOT a binding quotation, fixed price, professional cost estimate, or legal/financial advice. Real quotations depend on site inspection, drawings, specifications, materials, labour, approvals and site conditions.
 
 WHO IT’S FOR
 • Builders and general contractors
@@ -24,9 +31,10 @@ WHO IT’S FOR
 
 WHAT YOU GET (confirm against final package)
 • Complete static website source (HTML / CSS / JavaScript)
-• Buyer-facing configuration file for rebranding
+• Central business configuration file for rebranding
 • Interactive Renovation Scope & Budget Planner + structured quote-request handoff
-• Contact / WhatsApp lead paths (as shipped)
+• WhatsApp and email handoff paths (as shipped)
+• Three visual themes (as shipped)
 • Services and gallery/project showcase sections (as shipped)
 • Mobile-first responsive layout
 • Buyer guides, licence, and AI disclosure files
@@ -42,7 +50,7 @@ CUSTOMISATION
 Ordinary rebranding is intended via one configuration surface. Advanced design or planner logic changes may require HTML/CSS/JS edits.
 
 FICTIONAL DEMO CONTENT
-Demo business names, contact details, ratings, statistics, testimonials, and project examples are SAMPLE / FICTIONAL content. Replace them before publishing.
+Demo business names, contact details, ratings, statistics, testimonials, and project examples are SAMPLE / FICTIONAL content. Replace them before publishing. Do not publish “fully insured,” “certified,” or “guaranteed” claims unless true for your business.
 
 ESTIMATE DISCLAIMER
 Any budget ranges, complexity scores, or scope summaries from the planner are illustrative preliminary guidance only. Actual costs depend on site conditions, materials, labour, permits, structural requirements, finish level, location, and other factors. Always provide your own professional assessment before quoting.
@@ -60,4 +68,8 @@ REFUNDS (SUBJECT TO APPLICABLE LAW)
 Instantly delivered digital item. Refunds handled subject to Etsy’s digital-item policies and applicable consumer-protection law. Generally considered only for a genuine defect in the template files, not change-of-mind or dissatisfaction with fictional sample content designed to be replaced.
 
 LIVE DEMO
-[VERIFY_AFTER_BUILD — insert GitHub Pages URL]
+https://iederees-create.github.io/southern-suburbs-builders-ct/
+
+SEO BLOG (portfolio — not a buyer file)
+/blog/construction-website-quote-planner/
+Purchase CTA on blog remains ETSY_PRODUCT_URL_PENDING_PUBLICATION until public listing exists.
