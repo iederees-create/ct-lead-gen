@@ -1,61 +1,65 @@
 # Final QA Instructions
 
-Date: 2026-07-13
-Product: Southern Suburbs Builders commercial template
+## Merge Sequence
 
-## Stop Conditions
+1. Confirm `agent/codex-release` contains only release docs/scripts/tests.
+2. Merge product UI branch into the integration branch.
+3. Merge commerce/listing branch only after product files are stable.
+4. Do not merge to `main` until release checks and manual blockers are documented.
 
-- Do not publish anything.
-- Do not automate `etsy.com`.
-- Do not add portfolio `etsyUrl` values until exact active listing URLs are verified after manual publication.
-- Do not proceed if validators report errors.
+## App Tests
 
-## Required Local QA Sequence
+- Run the app's normal install/build/test commands after the final stack is known.
+- Run browser smoke tests for desktop and mobile.
+- Manually verify quote planner behavior against `RELEASE-TEST-MATRIX.md`.
 
-1. Build the final product pack directory.
-2. Run secret scan:
-
-```bash
-node scripts/release/scan-secrets.js <final-pack-dir>
-```
-
-3. Run media validation:
+## Release Scripts
 
 ```bash
-node scripts/release/validate-media.js <final-pack-dir>
+node scripts/release/validate-tags.mjs tests/release/product-pack-fixture.json
+node scripts/release/validate-product-pack.mjs path/to/product-pack
+node scripts/release/scan-secrets.mjs path/to/product-pack
+node scripts/release/validate-media.mjs path/to/product-pack
+node scripts/release/validate-links.mjs path/to/product-pack
+node scripts/release/validate-build-output.mjs path/to/build-output
 ```
 
-4. Run product pack validation:
+## Product Pack Validation
 
-```bash
-node scripts/release/validate-product-pack.js <final-pack-dir>
-```
+- Confirm manifest matches current Francis Listing Manager schema.
+- Confirm all referenced files exist.
+- Confirm buyer files contain no local-only paths.
+- Confirm no symlinks, `.git`, `.env`, `node_modules`, or credentials are included.
 
-5. Create the complete product pack ZIP from the validated directory.
-6. Run ZIP validation:
+## Media Validation
 
-```bash
-node scripts/release/validate-zip-content.js <final-product-pack.zip>
-```
+- Validate image/video/PDF signatures.
+- Use ffprobe checks when available.
+- Confirm all product screenshots match the final UI.
+- Confirm no oversized media ships.
 
-7. Run validator smoke tests:
+## Listing Copy Validation
 
-```bash
-node tests/release/test-release-validators.js
-```
+- Remove fake ratings, reviews, project counts, certifications, and machine claims.
+- Keep quote language non-binding.
+- Use demo wording where implementation-specific evidence is missing.
+- Confirm Etsy tags are exactly 13 and <=20 characters.
 
-8. Manually inspect listing content for digital-download, no-physical-item, AI disclosure, refund terms, fictional/sample content, and buyer-editable claims.
-9. Manually inspect screenshots/images to confirm they show the final product only.
-10. Import into Francis Listing Manager only through the approved workflow and verify fields inside the tool.
-11. Stop before Etsy publication.
+## Portfolio Update Validation
 
-## Required Evidence To Record In Release Report
+- Do not edit portfolio until the integration phase.
+- Use `PORTFOLIO-INTEGRATION-PLAN.md`.
+- Keep Etsy CTA hidden while URL equals `EXACT_ETSY_PRODUCT_URL_PENDING_PUBLICATION`.
+- Add project/blog sitemap and RSS entries only after final URLs are known.
 
-- Source commit SHA.
-- Demo URL.
-- Product pack directory path.
-- Product pack ZIP path.
-- Validator command outputs.
-- Listing Manager import/read-back status.
-- Known blockers and human actions.
-- Portfolio update status.
+## Etsy Draft Validation
+
+- Create draft only.
+- Do not publish.
+- Confirm digital product settings and no physical shipping.
+- Confirm no duplicate draft.
+- Confirm no generic shop URL is used as product URL.
+
+## Manual Blockers
+
+Document any blocker in `CODEX-HANDOFF.md`, including missing quote planner behavior, missing product pack files, failed scripts, unknown Francis schema fields, or missing live demo URL.

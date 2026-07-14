@@ -1,74 +1,64 @@
 # Product Pack Schema
 
-Date: 2026-07-13
-Target: Francis Listing Manager complete product pack ZIP.
+The final integration agent must inspect the current Francis Listing Manager schema directly before packaging. This document defines release validation expectations, not a substitute for the live Francis schema.
 
-## Required Layout
+## Required Manifest Expectations
 
-The ZIP root may contain the product pack directly, or one top-level folder containing it:
+Recommended manifest filename for release checks:
 
-```text
-francis-listing-manager-import.json
-images/
-  01-cover.png
-  02-desktop.png
-  ... up to 10 total listing images
-buyer-files/
-  START-HERE.html
-  COMPLETE-BUYER-GUIDE.html
-  LICENSE.txt
-  AI-DISCLOSURE.txt
-  southern-suburbs-builders-template.zip
-```
+`francis-listing-manager-import.json`
 
-Maximum buyer files: 5.
-Maximum listing images: 10.
-Exactly one cover image is required.
+Expected fields:
 
-## Manifest Requirements
+- `sku`: stable product SKU.
+- `title`: Etsy-safe listing title.
+- `description`: listing description with no unsupported claims.
+- `price`: numeric draft price if supported by Francis schema.
+- `currency`: ISO-style currency code if supported by Francis schema.
+- `taxonomy` or `category`: Etsy taxonomy/category mapping if supported.
+- `tags`: exactly 13 unique Etsy tags, each 20 characters or fewer.
+- `images`: at most 10 listing images, safe relative paths only.
+- `buyerFiles` or `buyer_files`: buyer-download files, safe relative paths only.
+- `productUrl`: must not be a generic Etsy shop URL.
+- `demoUrl`: final live demo URL, not a local file path.
 
-`francis-listing-manager-import.json` must be valid JSON and include, at minimum:
+## File Safety Requirements
 
-```json
-{
-  "sku": "southern-suburbs-builders-template",
-  "title": "Southern Suburbs Builders Website Template",
-  "description": "...",
-  "price": 0,
-  "currency": "USD",
-  "tags": ["tag one", "tag two"],
-  "images": [
-    { "path": "images/01-cover.png", "role": "cover", "alt": "Cover image alt text" }
-  ],
-  "buyerFiles": [
-    { "path": "buyer-files/START-HERE.html", "label": "Start Here" }
-  ]
-}
-```
+- No `.git`.
+- No `.env` or `.env.*`.
+- No `node_modules`.
+- No cookies, API keys, private keys, OAuth tokens, or credentials.
+- No absolute local file paths.
+- No path traversal such as `../`.
+- No symlinks.
+- No missing referenced manifest files.
+- No malformed media.
+- No oversized media.
 
-Field aliases accepted by the validator:
+## Buyer File Expectations
 
-- SKU: `sku`, `productSku`, `product_sku`
-- Images: `images`, `listingImages`, `listing_images`
-- Buyer files: `buyerFiles`, `buyer_files`, `files`
-- File path on each item: `path`, `file`, `src`, `url`, `filename`
+Final file names depend on Francis and Etsy requirements, but the pack should include:
 
-## Validation Rules
+- Start-here guide.
+- Buyer implementation guide.
+- License.
+- AI disclosure if AI-generated media/copy is used.
+- Template ZIP or final buyer package.
 
-- `tags` must contain exactly 13 values.
-- Tags must be unique case-insensitively.
-- Every tag must be <=20 characters.
-- `images` must contain <=10 entries.
-- Exactly one image must be marked as cover, or string-based images must use `01-cover.*` as the first image.
-- `buyerFiles` must contain <=5 entries.
-- Every referenced path must be relative to the manifest directory.
-- No absolute paths, path traversal, null bytes, symlinks, `.env`, `.git`, `node_modules`, oversized files, or unsupported executable content.
-- Text files are scanned for common secret patterns.
-- Media files are checked separately with `validate-media.js`.
+## Listing Image Expectations
 
-## Commands
+- Maximum 10 images.
+- One clear cover image.
+- Product UI screenshots must match the final shipped template.
+- No fake customer reviews, fake ratings, or unsupported claims in images.
+
+## Validation Commands
 
 ```bash
-node scripts/release/validate-product-pack.js <pack-directory>
-node scripts/release/validate-zip-content.js <complete-product-pack.zip>
+node scripts/release/validate-product-pack.mjs path/to/product-pack
+node scripts/release/scan-secrets.mjs path/to/product-pack
+node scripts/release/validate-media.mjs path/to/product-pack
+node scripts/release/validate-tags.mjs path/to/francis-listing-manager-import.json
+node scripts/release/validate-links.mjs path/to/product-pack
+node scripts/release/validate-build-output.mjs path/to/build-output
 ```

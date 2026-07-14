@@ -1,45 +1,18 @@
 # Security Review
 
-Date: 2026-07-13
-Scope: final product package controls for the Southern Suburbs Builders commercial template.
+Scope: release packaging, quote planner handoff, and current baseline audit.
 
-## Required Security Gates
-
-- No `.env` or `.env.*` files.
-- No `.git` directory or Git metadata.
-- No `node_modules` directory.
-- No private credentials, API keys, tokens, private keys, or password assignments.
-- No absolute paths, path traversal, or unsafe ZIP entries.
-- No symlinks.
-- No unsupported executable content (`.exe`, `.dll`, `.bat`, `.cmd`, `.com`, `.scr`, `.ps1`, `.sh`, `.app`, `.jar`, `.msi`).
-- No oversized files. Default validator cap: 100 MB per file, override with `PRODUCT_PACK_MAX_FILE_BYTES` or `MEDIA_MAX_BYTES` if the policy changes.
-- No malformed image/video/PDF/SVG media.
-- No missing referenced manifest files.
-- No duplicate SKU.
-
-## Current Template Risks
-
-- The existing source references external runtime assets: Google Fonts, GitHub Pages agent chat files, and a remote WhatsApp SVG.
-- The page includes claims that are risky unless clearly marked as fictional placeholders or backed by evidence.
-- The existing ZIP is too minimal to prove buyer documentation, licensing, support, AI disclosure, and release metadata.
-
-## Validation Scripts
-
-Run these before any product pack import or upload:
-
-```bash
-node scripts/release/scan-secrets.js <pack-directory>
-node scripts/release/validate-media.js <pack-directory>
-node scripts/release/validate-product-pack.js <pack-directory>
-node scripts/release/validate-zip-content.js <complete-product-pack.zip>
-```
-
-`validate-media.js` uses `ffprobe` when available. Without `ffprobe`, it still checks file signatures for supported media types.
-
-## Human Review Checklist
-
-- Confirm all demo business names, contact details, testimonials, stats, and certifications are fictional/sample or buyer-editable.
-- Confirm listing copy states digital download, no physical item, AI disclosure, refund terms, and buyer customization responsibility.
-- Confirm no live credentials or private contact data are included in screenshots, buyer docs, or ZIP content.
-- Confirm any BYOK/API-key instructions tell buyers not to share or commit credentials.
-- Confirm the final ZIP is generated from a clean release folder, not directly from a development repo.
+| Risk | Status | Review Notes | Required Action |
+| --- | --- | --- | --- |
+| Script injection from form inputs | needs verification | Quote planner is absent from baseline. Future summary rendering must not use raw `innerHTML` with user input. | Verify after UI merge. Prefer `textContent` and safe templates. |
+| Unsafe URL construction | needs verification | WhatsApp and email handoff must encode planner fields. | Validate with `validate-links.mjs` and manual handoff tests. |
+| Path traversal in product pack | allowed | Allowed only as a validation target. Product pack must reject `../`, absolute paths, and null bytes. | Run `validate-product-pack.mjs`. |
+| Exposed credentials | needs verification | No credentials observed in current client files. Full pack still needs scanning. | Run `scan-secrets.mjs` on pack root before distribution. |
+| Unsafe external links | needs verification | Current WhatsApp floating link uses `target="_blank"` without `rel="noopener"`. | Fix in product UI branch before release. |
+| File-upload wording | needs verification | No upload exists. Copy must not imply backend upload or secure storage unless implemented. | Use "file readiness checklist" wording. |
+| Malformed WhatsApp links | needs verification | Current baseline uses static WhatsApp links. Planner links must be generated safely. | Test encoded output with special characters. |
+| Malformed email links | needs verification | Email handoff absent. | Test encoded `mailto:` subject/body. |
+| Local paths in public assets | needs verification | Current client has no local media assets. Product pack scripts reject absolute local paths. | Run product pack and build-output validators. |
+| Remote script dependency | needs verification | Baseline loads remote chat script from GitHub Pages. | Decide whether the final product pack allows remote agency chat code. |
+| Symlink inclusion | allowed | Only allowed as a validator check. | Product pack must reject symlinks. |
+| `.git`, `.env`, `node_modules` inclusion | allowed | Only allowed as a validator check. | Product pack must reject these paths. |
