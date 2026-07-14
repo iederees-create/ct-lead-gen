@@ -1,0 +1,77 @@
+upload_order,status,video_file,product,title,description,hashtags,tags,thumbnail_text,pinned_comment,visibility,destination_url,notes
+1,WAITING_FOR_VIDEO,nextgenwebs-talking-head-youtube-v1.mp4 (PENDING),NextGenWebs,NextGenWebs Intro — Practical Websites and Tools for Operators,"What NextGenWebs actually builds: website templates and digital tools for operators who need clearer enquiries—not louder marketing claims.
+
+We work on quote planners, booking-style flows, local service sites, dashboards and lead-generation systems for small businesses.
+
+This is an intro, not a promise of traffic or revenue.
+
+Demo: LIVE_DEMO_URL_PENDING
+Portfolio: PORTFOLIO_PROJECT_URL_PENDING
+Shop products (exact URLs only when public): EXACT_ETSY_PRODUCT_URL_PENDING_PUBLICATION",#NextGenWebs #websitetemplates #smallbusiness #webdesign,"website templates, small business website, quote planner, lead generation, NextGenWebs, digital tools, dashboards",CLEARER ENQUIRIES,"Start with a demo, not a pitch deck. Links: LIVE_DEMO_URL_PENDING · PORTFOLIO_PROJECT_URL_PENDING",public once checked,LIVE_DEMO_URL_PENDING | PORTFOLIO_PROJECT_URL_PENDING,Audio exists (nextgenwebs-homepage-intro-v1.mp3 + brand segments); no MP4
+2,READY,construction-talking-head-youtube-v1.mp4,Construction Website Template,Construction Website Template Walkthrough — Renovation Quote Planner,"Full talking-head walkthrough of the Construction Website Template from NextGenWebs.
+
+Built for builders and renovation contractors who get incomplete enquiries. The renovation quote planner helps structure scope before quoting. Any budget-style guidance is preliminary—not a binding cost estimate.
+
+Digital download product intent. Fictional demo branding must be replaced before go-live.
+
+Demo: LIVE_DEMO_URL_PENDING
+Portfolio: PORTFOLIO_PROJECT_URL_PENDING
+Etsy exact listing when public: EXACT_ETSY_PRODUCT_URL_PENDING_PUBLICATION
+
+No guaranteed leads or rankings.",#constructionwebsite #builderwebsite #quoteplanner #NextGenWebs,"construction website template, builder website, contractor website, renovation quote planner, website template, digital download, NextGenWebs",SCOPE FIRST,Planner guidance is preliminary only. Demo: LIVE_DEMO_URL_PENDING,public once checked,LIVE_DEMO_URL_PENDING | PORTFOLIO_PROJECT_URL_PENDING,Path: /home/iedrees/Workspace/nextgenwebs-video/youtube-talking-heads/construction-talking-head-youtube-v1.mp4 | 37.8s
+3,READY,tiling-talking-head-youtube-v1.mp4,Tiling Contractor Website Template,Tiling Contractor Website Template — Tile Calculator Walkthrough,"Talking-head walkthrough of the Tiling Contractor Website Template.
+
+For flooring and tiling businesses that need more than a gallery. Includes a tile project planner for measurements and wastage guidance. Outputs are preliminary planning estimates—not binding quotes.
+
+Demo: LIVE_DEMO_URL_PENDING
+Portfolio: PORTFOLIO_PROJECT_URL_PENDING
+Etsy exact URL when public: EXACT_ETSY_PRODUCT_URL_PENDING_PUBLICATION",#tilingwebsite #tilecalculator #NextGenWebs,"tiling website template, tile calculator, flooring contractor website, renovation website, digital download, NextGenWebs",MEASURE FIRST,Estimates are preliminary. Demo: LIVE_DEMO_URL_PENDING,public once checked,LIVE_DEMO_URL_PENDING | PORTFOLIO_PROJECT_URL_PENDING,File currently in nextgenwebs-audio root (WRONG_FOLDER) | 34.0s | relocate preferred
+4,READY,insightforge-talking-head-youtube-v1.mp4,InsightForge Business Analytics Dashboard,InsightForge Dashboard Walkthrough — CSV Charts for Small Business,"Walkthrough of the InsightForge-style small business analytics dashboard.
+
+Bring spreadsheet exports into interactive charts without assuming an enterprise BI stack. Privacy-minded, download-oriented positioning—not guaranteed business insights.
+
+Demo: LIVE_DEMO_URL_PENDING
+Portfolio: PORTFOLIO_PROJECT_URL_PENDING
+Etsy exact URL when public: EXACT_ETSY_PRODUCT_URL_PENDING_PUBLICATION",#analyticsdashboard #csv #smallbusiness #NextGenWebs,"business analytics dashboard, CSV analytics, sales dashboard, small business dashboard, data visualisation, NextGenWebs",CSV TO CHARTS,Not enterprise BI. Demo: LIVE_DEMO_URL_PENDING,public once checked,LIVE_DEMO_URL_PENDING | PORTFOLIO_PROJECT_URL_PENDING,File currently in nextgenwebs-audio root (WRONG_FOLDER) | 30.3s
+5,WAITING_FOR_VIDEO,precision-laser-talking-head-youtube-v1.mp4 (PENDING),Precision Laser Website Template,Precision Laser Template — Quote Planner for Cutting and Engraving,"Website template for laser cutting, engraving, signage and fabrication shops. Core feature: Laser Cut and Engraving Quote Planner for production-ready briefs.
+
+Not for medical or cosmetic lasers. Planner output is preliminary guidance only.
+
+Demo: LIVE_DEMO_URL_PENDING
+Portfolio: PORTFOLIO_PROJECT_URL_PENDING
+Etsy: EXACT_ETSY_PRODUCT_URL_PENDING_PUBLICATION (listing is draft only — do not claim public URL)",#lasercutting #websitetemplate #NextGenWebs,"laser cutting website, engraving website template, signage website, quote planner, fabrication website, NextGenWebs",NOT A QUOTE YET,Cutting and engraving only—not medical lasers. Demo: LIVE_DEMO_URL_PENDING,unlisted for first test then public,LIVE_DEMO_URL_PENDING,No MP4 in inventory | Etsy draft ID 4537642227 draft state
+6,WAITING_FOR_VIDEO,bank-desert-talking-head-youtube-v1.mp4 (PENDING),Bank Desert Analysis Project,Bank Desert Analysis Student Lab — Python Geospatial Walkthrough,"Educational walkthrough of the Bank Desert Analysis student lab: Python and geospatial financial-access style analysis with transparent methods.
+
+Not a commercial banking product. Not investment or financial advice.
+
+Demo: LIVE_DEMO_URL_PENDING
+Portfolio: PORTFOLIO_PROJECT_URL_PENDING
+Etsy: EXACT_ETSY_PRODUCT_URL_PENDING_PUBLICATION",#python #dataanalysis #studentlab #NextGenWebs,"python data project, student lab, geospatial analysis, pandas project, data visualisation, education, NextGenWebs",METHODS OVER HYPE,Education only—not financial advice. Demo: LIVE_DEMO_URL_PENDING,public once checked,LIVE_DEMO_URL_PENDING,Etsy VO audio exists only; no talking-head MP4
+7,NEEDS_RENAME,wellnes_talkinghead.mp4,Wellness Website Template,Wellness Website Template — Spa and Salon Site Walkthrough,"Walkthrough of a wellness and spa website template for beauty and wellness marketing sites.
+
+Not medical software. No treatment results claimed. Demo content is fictional sample material.
+
+Demo: LIVE_DEMO_URL_PENDING
+Portfolio: PORTFOLIO_PROJECT_URL_PENDING
+Etsy: EXACT_ETSY_PRODUCT_URL_PENDING_PUBLICATION",#wellnesswebsite #spawebsite #NextGenWebs,"wellness website template, spa website, beauty salon website, skincare website, digital download, NextGenWebs",SPA SITE NOT EMR,Marketing site only—not medical. Demo: LIVE_DEMO_URL_PENDING,public once checked,LIVE_DEMO_URL_PENDING,Rename to wellness-talking-head-youtube-v1.mp4 | path nextgenwebs-audio/wellnes_talkinghead.mp4 | 23.7s
+8,WAITING_FOR_VIDEO,pest-control-talking-head-youtube-v1.mp4 (PENDING),Pest Control Website Template,Pest Control Website Template — Local Service Site Walkthrough,"Walkthrough of a pest control website template for exterminators and related local services.
+
+Clear services, mobile enquiry paths, honest demo content policy. No guaranteed bookings or rankings.
+
+Demo: LIVE_DEMO_URL_PENDING
+Portfolio: PORTFOLIO_PROJECT_URL_PENDING
+Etsy: EXACT_ETSY_PRODUCT_URL_PENDING_PUBLICATION",#pestcontrol #localbusiness #NextGenWebs,"pest control website, exterminator website, local business website, website template, digital download, NextGenWebs",OWN YOUR SITE,Replace demo claims with real facts. Demo: LIVE_DEMO_URL_PENDING,public once checked,LIVE_DEMO_URL_PENDING,No media found
+9,WAITING_FOR_VIDEO,zen-skin-talking-head-youtube-v1.mp4 (PENDING),Zen Skin Studio Website Template,Zen Skin Studio Template — Skincare Marketing Site Walkthrough,"Walkthrough of a static skincare studio website template for beauty marketing sites.
+
+Not an EMR. No medical treatment claims. Demo content is fictional.
+
+Demo: LIVE_DEMO_URL_PENDING
+Portfolio: PORTFOLIO_PROJECT_URL_PENDING
+Etsy: EXACT_ETSY_PRODUCT_URL_PENDING_PUBLICATION",#skincarewebsite #beautysalon #NextGenWebs,"skincare website template, beauty salon website, aesthetic marketing site, static HTML template, NextGenWebs",STATIC STUDIO SITE,Marketing only—not EMR. Demo: LIVE_DEMO_URL_PENDING,public once checked,LIVE_DEMO_URL_PENDING,No media found
+10,WAITING_FOR_VIDEO,solar-talking-head-youtube-v1.mp4 (PENDING),Solar Website Template,Solar Installer Website Template — Contractor Site Walkthrough,"Walkthrough of a solar installer website template for renewable energy contractors.
+
+Lead capture and educational savings-style guidance only—not utility quotes or financing offers. No guaranteed leads.
+
+Demo: LIVE_DEMO_URL_PENDING
+Portfolio: PORTFOLIO_PROJECT_URL_PENDING
+Etsy: EXACT_ETSY_PRODUCT_URL_PENDING_PUBLICATION",#solarinstaller #websitetemplate #NextGenWebs,"solar website template, solar installer website, renewable energy website, contractor website, NextGenWebs",INSTALLER SITE,Calculator guidance is educational only. Demo: LIVE_DEMO_URL_PENDING,public once checked,LIVE_DEMO_URL_PENDING,No media found

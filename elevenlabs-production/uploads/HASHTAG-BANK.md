@@ -8,18 +8,18 @@ Use 3–8 tags per platform. Prefer relevance over volume. No trademark stuffing
 
 ## By product
 
-| Product | Hashtags |
-|---|---|
-| Construction | `#ConstructionWebsite` `#BuilderWebsite` `#ContractorWebsite` `#QuotePlanner` `#Renovation` |
-| Tiling | `#TilingWebsite` `#TileCalculator` `#FlooringContractor` `#Renovation` |
-| InsightForge | `#BusinessDashboard` `#CSVAnalytics` `#DataDashboard` `#SmallBusinessTools` |
-| Precision Laser | `#LaserCutting` `#LaserEngraving` `#Signage` `#Fabrication` `#QuotePlanner` |
-| Bank Desert | `#PythonProject` `#DataAnalysis` `#Geospatial` `#StudentLab` `#Pandas` |
-| Wellness | `#WellnessWebsite` `#SpaWebsite` `#SalonWebsite` `#BeautyBusiness` |
-| Pest Control | `#PestControl` `#Exterminator` `#LocalBusiness` `#ServiceBusiness` |
-| Zen Skin | `#SkincareWebsite` `#BeautySalon` `#StaticWebsite` `#AestheticMarketing` |
-| Solar | `#SolarWebsite` `#SolarInstaller` `#RenewableEnergy` `#ContractorWebsite` |
-| Brand intro | `#LeadGeneration` `#QuotePlanner` `#BookingFlow` `#BusinessWebsite` |
+| Product | Hashtags | Media ready for upload? |
+|---|---|---|
+| Construction | `#ConstructionWebsite` `#BuilderWebsite` `#ContractorWebsite` `#QuotePlanner` `#Renovation` | Yes |
+| Tiling | `#TilingWebsite` `#TileCalculator` `#FlooringContractor` `#Renovation` | Yes (talking-head) |
+| InsightForge | `#BusinessDashboard` `#CSVAnalytics` `#DataDashboard` `#SmallBusinessTools` | Yes (talking-head) |
+| Precision Laser | `#LaserCutting` `#LaserEngraving` `#Signage` `#Fabrication` `#QuotePlanner` | No |
+| Bank Desert | `#PythonProject` `#DataAnalysis` `#Geospatial` `#StudentLab` `#Pandas` | Audio only |
+| Wellness | `#WellnessWebsite` `#SpaWebsite` `#SalonWebsite` `#BeautyBusiness` | Yes (rename talking-head) |
+| Pest Control | `#PestControl` `#Exterminator` `#LocalBusiness` `#ServiceBusiness` | No |
+| Zen Skin | `#SkincareWebsite` `#BeautySalon` `#StaticWebsite` `#AestheticMarketing` | No |
+| Solar | `#SolarWebsite` `#SolarInstaller` `#RenewableEnergy` `#ContractorWebsite` | No |
+| Brand intro | `#LeadGeneration` `#QuotePlanner` `#BookingFlow` `#BusinessWebsite` | Audio only |
 
 ## Platform notes
 
@@ -31,8 +31,10 @@ Use 3–8 tags per platform. Prefer relevance over volume. No trademark stuffing
 | X | 1–3 max |
 | Pinterest | Keywords in description matter more than # spam |
 | Facebook | 3–6 |
+| Etsy | Tags/SEO fields — not Instagram-style hashtag walls |
 
 ## Avoid
 
 - `#guaranteedleads` `#passiveincome` `#getrich` medical treatment tags for wellness/skin  
 - Competitor brand stuffing  
+- Fake urgency tags (`#lastchance` style) for evergreen digital downloads  

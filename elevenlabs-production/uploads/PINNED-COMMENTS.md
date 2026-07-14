@@ -17,7 +17,7 @@ Tile calculator outputs are preliminary planning estimates—not a binding quote
 CSV analytics dashboard—not enterprise BI and not a promise of automatic revenue insight. Demo: LIVE_DEMO_URL_PENDING · Portfolio: PORTFOLIO_PROJECT_URL_PENDING
 
 **Precision Laser**  
-For cutting and engraving shops—not medical lasers. Planner is preliminary only. Demo: LIVE_DEMO_URL_PENDING · Portfolio: PORTFOLIO_PROJECT_URL_PENDING
+For cutting and engraving shops—not medical lasers. Planner is preliminary only. Demo: LIVE_DEMO_URL_PENDING · Portfolio: PORTFOLIO_PROJECT_URL_PENDING · Etsy listing is draft only (ID 4537642227)—no public product URL until published.
 
 **Bank Desert**  
 Educational student lab only—not banking advice or a fintech product. Demo: LIVE_DEMO_URL_PENDING · Portfolio: PORTFOLIO_PROJECT_URL_PENDING
@@ -33,3 +33,14 @@ Skincare marketing site—not an EMR. Demo: LIVE_DEMO_URL_PENDING
 
 **Solar**  
 Savings-style figures are educational guidance—not a utility bill or finance offer. Demo: LIVE_DEMO_URL_PENDING
+
+---
+
+## Ready videos only — pin immediately after upload
+
+| Product | Pin first line |
+|---|---|
+| Construction | Planner guidance is preliminary only. Demo: LIVE_DEMO_URL_PENDING |
+| Tiling | Estimates are preliminary. Demo: LIVE_DEMO_URL_PENDING |
+| InsightForge | Not enterprise BI. Demo: LIVE_DEMO_URL_PENDING |
+| Wellness | Marketing site only—not medical. Demo: LIVE_DEMO_URL_PENDING |
