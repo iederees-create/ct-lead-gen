@@ -1,0 +1,117 @@
+{
+  "product_name": "Precision Laser Website Template",
+  "demo_business_name": "Precision Laser Works (fictional demo business)",
+  "sku": "PRECISION-LASER-WEB-001",
+  "product_type": "Static HTML/CSS/JS website template, digital download, no build step required for ordinary buyer use",
+  "core_feature": "Laser Cut & Engraving Quote Planner",
+  "target_customer": [
+    "Laser cutting businesses",
+    "Laser engraving studios",
+    "Signage shops",
+    "Trophy and awards shops",
+    "Acrylic fabricators",
+    "Wood engraving and branded-gift makers",
+    "Small manufacturing workshops with a laser cell",
+    "Web designers serving fabrication/maker clients"
+  ],
+  "not_the_buyer": [
+    "Medical, cosmetic, dermatology, hair-removal, surgical or eye/treatment laser businesses",
+    "Buyers expecting a full ERP, CRM, payments, inventory or nesting software",
+    "Buyers expecting guaranteed leads, exact automated pricing, or a physical product"
+  ],
+  "stack": {
+    "type": "Static HTML/CSS/JS",
+    "build_step_required_for_ordinary_use": false,
+    "config_file": "site-config.js (window.SITE_CONFIG)",
+    "planner_engine": "planner.js — pure functions, zero DOM access, UMD module usable in-browser and under Node's built-in test runner",
+    "ui_wiring": "app.js — the only file that touches document/window beyond reading SITE_CONFIG",
+    "fonts": "Google Fonts: Space Grotesk (display), Inter (body), JetBrains Mono (planner numeric values) — loaded via <link>, standard Google Fonts terms apply",
+    "third_party_runtime_dependencies": "None required for the core planner to function (verified: planner.js and app.js contain no network calls; Google Fonts and a Google Maps embed iframe are the only external requests on page load)"
+  },
+  "page_list": {
+    "architecture": "Single-page site with anchorable sections, plus four standalone pages",
+    "home_sections": [
+      "Announcement bar", "Responsive navigation with mobile hamburger menu", "Hero",
+      "Trust indicators", "Services overview (7 services: Laser Cutting, Laser Engraving, Signage, Acrylic Fabrication, Wood Engraving, Metal Marking, Corporate Gifts & Branded Products)",
+      "Materials (9 materials)", "Project gallery (placeholder cards, not real photography)",
+      "Process (6 steps)", "File preparation guidance", "About",
+      "Service area coverage (12 sample Cape Town areas)", "Laser Cut & Engraving Quote Planner",
+      "Quote form", "FAQ (12 entries)", "Contact & workshop hours"
+    ],
+    "standalone_pages": ["privacy.html", "terms.html", "disclaimer.html (Quote Disclaimer)", "404.html"]
+  },
+  "theme_system": {
+    "count": 3,
+    "names": ["Graphite Laser", "Cyan Blueprint", "Amber Workshop"],
+    "mechanism": "Runtime CSS custom-property swap via a nav theme selector; selection persisted in localStorage under key 'plw-theme'"
+  },
+  "planner_inputs": [
+    "Customer name, email, phone, suburb/city, project name",
+    "Service type (9 options: cutting, engraving, cutting & engraving, signage, acrylic fabrication, trophy/award, branded gift, prototype, other)",
+    "Material (9 options: acrylic, plywood, MDF, paper/card, leather, glass (engraving only), anodised aluminium (marking), stainless steel (marking), other)",
+    "Material thickness in mm",
+    "Width, height, and a unit selector (mm/cm/m/inches)",
+    "Quantity",
+    "Optional engraving area (same unit² as width/height)",
+    "Cut complexity (4 levels: simple outline, moderate detail, intricate detail, nested parts)",
+    "File readiness (4 levels: vector file ready, image file only, design help needed, no file yet)",
+    "File types available (7 checkboxes: SVG, DXF, AI, PDF, PNG, JPG, none yet)",
+    "Finish (5 options: raw edge, polished edge, painted, assembled, packaged)",
+    "Deadline (date), delivery preference (workshop collection / delivery), notes"
+  ],
+  "planner_outputs": [
+    "Project summary (full plain-text quote summary)",
+    "Approximate material area, unit-converted to cm²/m², per piece",
+    "Quantity summary",
+    "Service checklist (per selected service type)",
+    "File-preparation checklist (per selected file-readiness level)",
+    "Missing-information list",
+    "Complexity indicator (Low/Medium/High, with contributing reasons shown)",
+    "Design-support warning whenever file readiness is anything other than 'vector file ready'",
+    "Preliminary budget range, only shown when planner.budgetEnabled is true in config",
+    "Assumptions list",
+    "Next-step recommendation",
+    "Copy / Print / Download Summary actions",
+    "WhatsApp Quote Request and Email Quote Request actions"
+  ],
+  "unit_conversion_behaviour": "Width/height are converted to a common centimetre basis before area calculation: 1mm = 0.1cm, 1cm = 1cm, 1m = 100cm, 1 inch = 2.54cm. Area = (width in cm) x (height in cm), reported in cm² and m². Verified in code (planner.js unitFactor()) and by unit test (tests/planner.test.js: mm/cm/m/inches conversion cases, including a 10in x 10in -> 645.16cm² boundary check) and live in the browser.",
+  "budget_behaviour": "Preliminary budget range = area(cm²) x material-rate-per-cm² (min and max) x thickness-band multiplier x cut-complexity multiplier x finish multiplier, plus a per-piece engraving surcharge (engraving area x material engrave-rate-per-cm²) added when the service type involves engraving or an explicit engraving area was given, multiplied by quantity, with a contingency percentage applied to the upper figure only, then rounded to the configured increment. All rates/multipliers/thresholds live in site-config.js under `planner` — none are hardcoded in planner.js. Verified live: 20cm x 10cm x 5mm acrylic, cutting & engraving, moderate detail, polished edge, qty 3 produced R1,050-R2,100, matching a hand-computed check exactly.",
+  "disabled_budget_behaviour": "Setting planner.budgetEnabled to false in site-config.js hides the numeric budget range and shows 'Budget estimates are disabled for this demo' in its place. The scope, service checklist, file-preparation checklist, missing-information list, assumptions, and next-step recommendation are still produced. Verified by unit test (runPlanner disabled-budget-mode test) and by direct computeBudgetRange tests asserting enabled=false with min/max undefined.",
+  "whatsapp_behaviour": "Clicking 'WhatsApp Quote Request' opens an explicit-confirmation modal (role=dialog, aria-modal=true) showing the exact outgoing message. Only after clicking 'Confirm & Send' does the site open a wa.me deep link (window.open) with the phone number stripped to digits and the message URL-encoded via encodeURIComponent. Nothing is sent automatically. Verified live: a patched window.open recorded zero calls before confirmation and exactly one correctly-encoded wa.me URL after clicking Confirm & Send.",
+  "email_behaviour": "Clicking 'Email Quote Request' goes through the same explicit-confirmation modal, then navigates to a mailto: link built from the business email, a subject line, and the summary body, all URL-encoded via encodeURIComponent. This opens the visitor's own email client with a pre-filled draft; it does not send email automatically. A separate Quote Form (name/contact/service type/notes) also routes through the same confirm-before-WhatsApp-open flow.",
+  "print_download_copy_behaviour": {
+    "copy": "Uses navigator.clipboard.writeText when available, with a manual textarea-select fallback and a status message either way.",
+    "print": "Adds a body class that print CSS rules use to hide everything except the summary block, then calls window.print().",
+    "download": "Creates a Blob from the summary text and triggers a browser download of a .txt file named from the project name (sanitised to a safe filename) or a default name."
+  },
+  "data_storage_behaviour": "The site is entirely client-side with no backend and no server-side storage of any customer data. The only value persisted in the browser is the visitor's selected colour theme, stored in localStorage under the key 'plw-theme'. All planner inputs/outputs exist only in page memory until the visitor explicitly copies, prints, downloads, or confirms a WhatsApp/email handoff.",
+  "legal_disclaimers": {
+    "quote_disclaimer_text": "The planner provides preliminary guidance only. Final pricing depends on file quality, machine setup, material availability, job complexity, finishing, quantity, labour, delivery and final review.",
+    "pages": ["privacy.html", "terms.html", "disclaimer.html"],
+    "footer_disclaimer": "States all business names, contact details, statistics and workshop-safety statements are fictional sample content, and that the Quote Planner produces preliminary, non-binding estimates only.",
+    "legal_pages_are_starting_points": "terms.html and disclaimer.html explicitly tell the buyer to have them reviewed by a qualified professional for their jurisdiction before publishing."
+  },
+  "buyer_requirements": "Not yet finalised in this repo — buyer-facing packaging (START-HERE, buyer guide, licence, AI disclosure, support boundaries) is produced in Phase 6 of this release process, not yet present as of this fact-check.",
+  "support_limits": "Not yet finalised in this repo — to be defined in the Phase 6 buyer guide. No unlimited-support or free-custom-development claim should be made per commerce intake guidance.",
+  "test_results": {
+    "unit_tests": "38/38 passing (node --test tests/planner.test.js) — covers area calculation across all 4 units, quantity parsing, disabled-budget mode, unknown material, missing area/quantity, thickness-band and cut-complexity multiplier effects, engraving surcharge, file-readiness/design-support warning logic, missing-information logic, WhatsApp/email URL encoding, copy/print/download-compatible plain-text summaries, reset independence, and a sweep of invalid/zero/negative/very-large edge inputs asserting no NaN/Infinity/negative output",
+    "static_checks": "node -c syntax check pass on app.js/planner.js; htmlhint 0 errors across all 5 HTML pages",
+    "lighthouse_desktop_navigation": {
+      "accessibility": 100,
+      "best_practices": 100,
+      "seo": 100,
+      "agentic_browsing": 100,
+      "audits_passed": "56/57 (only Cumulative Layout Shift scored 0.99/1, displayValue 0.043, within the 'good' <0.1 threshold)"
+    },
+    "live_browser_verification": "Full planner flow driven end-to-end via Chrome DevTools; explicit-confirm gating verified for WhatsApp send; Reset verified to clear all fields and hide results; all 4 secondary pages loaded with zero console errors; mobile viewport (390x844) showed no horizontal overflow and a full-height (780px) hamburger menu"
+  },
+  "build_result": "Site built, unit-tested (38/38 passing), and live-browser-verified in a prior build pass (branch agent/claude-site, commit cfc84bc), then merged into release/precision-laser-template (merge commit 2949f80) and re-verified post-merge: tests still 38/38 passing, htmlhint 0 errors, Codex secret-scan/build-output validators passed when scoped to the template directory. Deployed to GitHub Pages and verified live (Phase 4).",
+  "live_demo_url": "https://iederees-create.github.io/precision-laser-works-template/",
+  "live_demo_url_status": "VERIFIED — HTTP 200, correct <title>, zero console errors, planner computes correctly, no mobile horizontal overflow, robots.txt/sitemap.xml/privacy.html all 200, unknown routes correctly serve the custom 404 (checked 2026-07-14 via curl and Chrome DevTools against the live deployment, not just localhost).",
+  "known_limitations": [
+    "Project gallery ships with labelled placeholder cards, not real project photography, by design",
+    "All contact details, addresses, and workshop-safety statements are fictional sample placeholders that must be replaced before real business use",
+    "Legal pages (terms, disclaimer) are starting points only and need professional review for the buyer's jurisdiction",
+    "No testimonials, team profiles, or statistics sections are included, by design, to avoid unverifiable customer-rating or completed-project-count claims"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "source": "All images are real, unmodified full-page or region screenshots captured live via Chrome DevTools from the deployed public demo (https://iederees-create.github.io/precision-laser-works-template/), except image 10 which is a screenshot of the actual rendered buyer-file 02-START-HERE.html included in this release's buyer package. No stock imagery, no mockups, no AI-generated UI. Video files are silent slideshows assembled with ffmpeg directly from these same real screenshots (no screen-recording tool was available in this environment) — each frame is a genuine, unaltered product screenshot, held for a fixed duration and concatenated; no synthetic/fabricated frames were used.",
+  "images": [
+    { "file": "images/01-cover.png", "width": 1600, "height": 1000, "description": "Cover — hero section, Graphite Laser theme (default)" },
+    { "file": "images/02-desktop-homepage.png", "width": 1600, "height": 1000, "description": "Desktop homepage, top of page" },
+    { "file": "images/03-mobile-homepage.png", "width": 780, "height": 1688, "description": "Mobile homepage (390x844 CSS viewport, 2x device pixel ratio)" },
+    { "file": "images/04-quote-planner.png", "width": 1600, "height": 1000, "description": "Laser Cut & Engraving Quote Planner — empty form" },
+    { "file": "images/05-material-measurement-inputs.png", "width": 1600, "height": 1000, "description": "Material, thickness, dimensions and quantity inputs" },
+    { "file": "images/06-file-prep-checklist.png", "width": 1600, "height": 1000, "description": "File-preparation checklist in a completed Planner result" },
+    { "file": "images/07-quote-summary.png", "width": 1600, "height": 1000, "description": "Full quote summary panel: area, quantity, complexity, budget range" },
+    { "file": "images/08-whatsapp-email-handoff.png", "width": 1600, "height": 1000, "description": "Explicit-confirmation modal shown before any WhatsApp/email send" },
+    { "file": "images/09-themes-configuration.png", "width": 1600, "height": 1000, "description": "Cyan Blueprint theme applied via the live theme selector" },
+    { "file": "images/10-included-files-buyer-guide.png", "width": 1600, "height": 1000, "description": "Rendered 02-START-HERE.html buyer guide, showing what's included and how to configure it" }
+  ],
+  "videos": [
+    {
+      "file": "etsy-video.mp4",
+      "purpose": "Etsy listing video",
+      "duration_seconds": 14.46,
+      "size_bytes": 279418,
+      "resolution": "1080x1080 (square)",
+      "codec": "H.264 / yuv420p, no audio",
+      "construction": "8 real screenshots (cover, desktop homepage, planner form, material inputs, file-prep checklist, quote summary, confirm modal, theme switch), each padded to a 1080x1080 canvas and shown for 1.8s, concatenated with ffmpeg. Silent, under Etsy's 100MB limit.",
+      "verify_before_upload": "Confirm current Etsy video requirements (format/length/size) at upload time, since platform requirements can change."
+    },
+    {
+      "file": "portfolio-preview.mp4",
+      "purpose": "3D Portfolio project preview (MP4)",
+      "duration_seconds": 36.04,
+      "size_bytes": 632813,
+      "resolution": "1920x1080",
+      "codec": "H.264 / yuv420p, no audio",
+      "construction": "All 9 homepage/planner screenshots (mobile included), each padded to a 1920x1080 canvas and shown for 4s, concatenated with ffmpeg."
+    },
+    {
+      "file": "portfolio-preview.webm",
+      "purpose": "3D Portfolio project preview (WebM, for broader browser support)",
+      "duration_seconds": 36.04,
+      "size_bytes": 4237900,
+      "resolution": "1920x1080",
+      "codec": "VP9, no audio",
+      "construction": "Same frame sequence and timing as portfolio-preview.mp4."
+    },
+    {
+      "file": "portfolio-poster.png",
+      "purpose": "Poster/thumbnail image for the portfolio video players",
+      "note": "Reuses images/01-cover.png unmodified."
+    }
+  ],
+  "validation": "node scripts/release/validate-media.mjs seller-pack/media — passed (ffprobe enabled)."
+}

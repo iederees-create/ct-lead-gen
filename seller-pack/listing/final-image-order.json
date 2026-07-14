@@ -1,0 +1,16 @@
+{
+  "note": "Order matches Etsy listing image slots 1-10. Image 1 is always the cover.",
+  "images": [
+    { "slot": 1, "file": "01-cover.png", "alt": "Precision Laser Website Template — hero section of the demo site" },
+    { "slot": 2, "file": "02-desktop-homepage.png", "alt": "Precision Laser Website Template — desktop homepage" },
+    { "slot": 3, "file": "03-mobile-homepage.png", "alt": "Precision Laser Website Template — mobile homepage view" },
+    { "slot": 4, "file": "04-quote-planner.png", "alt": "Laser Cut & Engraving Quote Planner form" },
+    { "slot": 5, "file": "05-material-measurement-inputs.png", "alt": "Material, thickness and measurement inputs in the Quote Planner" },
+    { "slot": 6, "file": "06-file-prep-checklist.png", "alt": "File-preparation checklist in the Quote Planner results" },
+    { "slot": 7, "file": "07-quote-summary.png", "alt": "Structured quote summary with budget range and next steps" },
+    { "slot": 8, "file": "08-whatsapp-email-handoff.png", "alt": "Explicit-confirmation step before WhatsApp or email handoff" },
+    { "slot": 9, "file": "09-themes-configuration.png", "alt": "Cyan Blueprint theme, one of 3 built-in colour themes" },
+    { "slot": 10, "file": "10-included-files-buyer-guide.png", "alt": "Start Here buyer guide showing what's included" }
+  ],
+  "source_directory": "seller-pack/media/images/"
+}

@@ -1,0 +1,91 @@
+LASER CUTTING WEBSITE TEMPLATE WITH ENGRAVING QUOTE PLANNER
+
+A conversion-focused website template for laser cutting businesses, engraving studios, signage shops, acrylic fabricators, wood engravers, trophy & awards makers, and branded gift workshops.
+
+THIS IS A DIGITAL DOWNLOAD. No physical item ships. Files are delivered instantly after purchase.
+
+CORE DIFFERENTIATOR
+An interactive Laser Cut & Engraving Quote Planner designed to help website visitors submit better job briefs before you quote:
+• Service type: laser cutting, laser engraving, cutting & engraving, signage, acrylic fabrication, trophy/award, branded gift, prototype, or other
+• Material selection: acrylic, plywood, MDF, paper/card, leather, glass (engraving), anodised aluminium (marking), stainless steel (marking), or other — fully editable
+• Material thickness, width/height with a unit selector (mm/cm/m/inches), and quantity
+• Cut complexity (simple outline to nested parts) and finish (raw edge, polished edge, painted, assembled, packaged)
+• File-readiness check and a file-preparation checklist (vector formats, resolution/DPI guidance, unit matching)
+• A structured, downloadable/printable/copyable quote summary
+• WhatsApp and email handoff — both open a pre-filled message for the visitor to review and send themselves; nothing sends automatically
+
+Every material rate, multiplier, and threshold is configured in one central file, so you can align the planner's guidance with your own pricing.
+
+IMPORTANT QUOTE DISCLAIMER
+The planner provides preliminary guidance only. Final pricing depends on file quality, machine setup, material availability, job complexity, finishing, quantity, labour, delivery and final review. It is not a binding quotation, a machine-time guarantee, or a material-availability confirmation.
+
+WHO IT'S FOR
+• Laser cutting and laser engraving businesses
+• Signage and display fabricators
+• Trophy, awards, and personalisation shops
+• Acrylic, wood, and small-run fabrication workshops
+• Freelance web designers building one end-business site for a maker client (see licence for terms)
+
+WHO IT'S NOT FOR
+• Medical, cosmetic, hair-removal, or surgical laser clinics
+• Buyers needing nesting software, ERP, CRM, payments, or inventory systems
+• Anyone expecting guaranteed leads or guaranteed job wins
+
+WHAT YOU GET (5 digital files)
+1. Complete static website source (HTML/CSS/JavaScript, no build tools required for ordinary use)
+2. Start Here guide
+3. Complete Buyer Guide (full configuration walkthrough)
+4. Licence
+5. AI disclosure & notices
+
+Inside the site source:
+• Central site-config.js for business name, contact, services, materials, planner rates, and themes
+• The interactive Laser Cut & Engraving Quote Planner described above
+• A separate Quote Form with validation and the same explicit-confirm WhatsApp handoff
+• 3 built-in colour themes: Graphite Laser, Cyan Blueprint, and Amber Workshop
+• Services, materials, file-preparation, process, gallery (placeholder cards, ready for your real photos), FAQ, and about sections
+• Mobile-first responsive layout with a working hamburger menu
+• Starting-point Privacy Policy, Terms of Service, and Quote Disclaimer pages, plus a custom 404 page
+• sitemap.xml and robots.txt
+
+HOW THE LASER CUT & ENGRAVING QUOTE PLANNER WORKS
+1. Visitor picks a service type and material.
+2. Visitor enters thickness, size (in their preferred unit), and quantity.
+3. Visitor answers cut complexity, file readiness, and finish.
+4. The planner shows the approximate material area, a service checklist, a file-preparation checklist, any missing information, a complexity indicator, and — if enabled — a preliminary budget range.
+5. The visitor copies, prints, or downloads the summary, or sends it via WhatsApp/email after reviewing the exact message in an on-screen confirmation step.
+
+CUSTOMISATION
+Ordinary rebranding — business name, phone, WhatsApp, email, address, hours, services, materials, planner rates, FAQ, and theme — lives entirely in site-config.js. You should not need to edit the HTML, CSS, or JavaScript logic files for day-to-day changes. Advanced design changes (new sections, layout changes) require HTML/CSS/JS editing skills.
+
+DEPLOYMENT
+1. Purchase and download the ZIP.
+2. Unzip — no installers or package managers required for ordinary use.
+3. Open site-config.js and replace the fictional demo details with your real business information.
+4. Preview locally in a modern browser.
+5. Upload to GitHub Pages, Netlify, Vercel, Cloudflare Pages, or any static host.
+6. Point your domain at the host and test the planner and handoff links on mobile.
+
+Hosting and a domain name are NOT included — you will need to arrange these separately.
+
+FICTIONAL DEMO CONTENT
+The demo business ("Precision Laser Works"), its contact details, and its workshop-safety statement are entirely fictional sample content for layout demonstration only. This listing does not include or claim any customer ratings, review counts, completed-project statistics, or safety/regulatory certifications. Replace all placeholder content with your own accurate, verifiable information before publishing.
+
+DIGITAL PRODUCT NOTICE
+This listing is for digital files only. Nothing is shipped. By purchasing you receive downloadable website template files for use under the included licence.
+
+AI DISCLOSURE
+This template's code and copy were developed with the assistance of AI coding tools. See the included AI-DISCLOSURE-AND-NOTICES.txt for full details.
+
+TECHNICAL REQUIREMENTS
+• A modern web browser to preview
+• A text editor to edit the configuration file
+• A static web host (or local preview only)
+• Optional: a WhatsApp number if you use the WhatsApp handoff
+• Basic comfort editing a JavaScript config file and uploading a folder to a host
+
+SUPPORT POLICY
+Support covers reasonable questions about setup and the configuration fields documented in the buyer guide. Support does not include unlimited custom development, free redesigns, hosting account management, or guaranteeing third-party host behaviour.
+
+REFUND WORDING (SUBJECT TO APPLICABLE LAW)
+Because this is a digital download, refunds are limited once files have been accessed or downloaded, except where required by applicable consumer law. If files are defective or not as described, contact us via Etsy messages with your order details.

@@ -1,0 +1,64 @@
+PRECISION LASER WEBSITE TEMPLATE — AI DISCLOSURE AND NOTICES
+
+AI DISCLOSURE
+
+This website template — including its HTML structure, CSS design system,
+JavaScript logic (the Laser Cut & Engraving Quote Planner and site
+interactivity), and the demo copy shown on the fictional "Precision Laser
+Works" sample business — was created with the assistance of AI tools
+(an AI coding assistant). A human reviewed, tested, and approved the
+final product before listing it for sale.
+
+No AI-generated stock imagery, AI-generated "fake" customer photos, or
+AI-generated fake reviews/ratings are included in this product. The
+project gallery on the demo site uses clearly labelled placeholder
+cards, not photography, specifically so no image is misrepresented as a
+real completed project.
+
+DEMO CONTENT NOTICE
+
+"Precision Laser Works," its business name, tagline, contact details,
+address, workshop-safety statement, and all other business-identity
+content shown in the template are entirely FICTIONAL and provided for
+demonstration purposes only. None of it refers to a real business. You
+must replace this content with your own accurate, verifiable
+information (via site-config.js) before publishing a live site.
+
+The template does not claim, and you should not represent, any of the
+following unless you can independently verify them for your own
+business:
+  - Safety certifications or regulatory compliance (e.g. ISO, CE, SABS)
+  - Specific machine wattage or equipment specifications
+  - Customer ratings, review counts, or completed-project counts
+  - Guaranteed turnaround times (e.g. "same-day")
+  - Guaranteed pricing accuracy from the Quote Planner
+
+THIRD-PARTY ASSETS
+
+- Fonts: Space Grotesk, Inter, and JetBrains Mono, loaded from Google
+  Fonts under the SIL Open Font License. No separate license file is
+  required for standard use via the Google Fonts CDN link included in
+  the template.
+- Map embed: an iframe pointing to a public Google Maps embed URL for
+  the demo address; replace with your own business location.
+- No other third-party stock photography, icon packs, or paid assets
+  are bundled in this template.
+
+PRIVACY POSTURE
+
+This template is entirely client-side. It does not include a backend
+server or database. The Quote Planner and quote form process all input
+locally in the visitor's browser; the only data persisted anywhere is
+the visitor's selected colour theme, stored in their own browser's
+local storage. No customer data is transmitted to or stored by the
+template itself — see privacy.html in the template for the full text
+you should review and adapt for your business's actual data practices.
+
+QUOTE PLANNER ACCURACY NOTICE
+
+The Laser Cut & Engraving Quote Planner performs area, complexity, and
+budget calculations based entirely on the rates and multipliers you
+configure in site-config.js. It has been tested (38 automated unit
+tests) to never produce NaN, Infinity, or negative figures, but it
+cannot verify that your configured rates are commercially accurate —
+that responsibility remains yours.

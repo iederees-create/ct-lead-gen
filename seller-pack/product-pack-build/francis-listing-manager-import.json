@@ -1,0 +1,88 @@
+{
+  "internal_product_name": "Precision Laser Website Template",
+  "sku": "PRECISION-LASER-WEB-001",
+  "category": "Website Templates",
+  "target_customer": "Laser cutting, engraving, signage, acrylic fabrication and custom fabrication businesses",
+  "target_price": 49,
+  "quantity": 999,
+  "live_demo_url": "https://iederees-create.github.io/precision-laser-works-template/",
+  "materials": "HTML5, CSS3, JavaScript",
+  "keywords": "laser cutting site, engraving website, signage website, quote planner, fabrication site, maker business web, acrylic laser site, website template, html css template, digital download, small business web, lead capture form, responsive website",
+  "ai_tools_used": "Claude Code (Anthropic) for site build, Grok (xAI) for marketing copy drafts (fact-checked before use)",
+  "features": [
+    "Interactive Laser Cut & Engraving Quote Planner (service type, material, thickness, dimensions with unit conversion, quantity, cut complexity, file readiness, finish)",
+    "Configurable budget-range engine with a pure, unit-tested calculation core (38 automated tests)",
+    "Explicit-confirmation modal before any WhatsApp or email message is sent",
+    "Three switchable colour themes: Graphite Laser, Cyan Blueprint, Amber Workshop",
+    "Central site-config.js configuration — rebrand without touching HTML/CSS/JS",
+    "Accessible: skip link, visible focus states, reduced-motion support",
+    "Structured data, Open Graph tags, sitemap and robots.txt for local SEO"
+  ],
+  "included_files": [
+    "Complete static website source (HTML, CSS, JavaScript)",
+    "site-config.js central business configuration",
+    "Laser Cut & Engraving Quote Planner with automated test suite",
+    "Privacy Policy, Terms of Service, Quote Disclaimer starter pages",
+    "START-HERE guide",
+    "Complete Buyer Guide",
+    "Licence",
+    "AI Disclosure & Notices"
+  ],
+  "how_it_works": [
+    "Visitor picks a service type and material",
+    "Visitor enters thickness, size (mm/cm/m/inches) and quantity",
+    "Visitor answers cut complexity, file readiness and finish",
+    "Planner shows area, service checklist, file-prep checklist, complexity indicator and a preliminary budget range",
+    "Visitor copies, prints, downloads, or sends the summary via WhatsApp/email after an on-screen confirmation step"
+  ],
+  "customer_benefits": [
+    "Turns vague laser enquiries into structured, production-ready quote briefs",
+    "No hosting or coding-framework knowledge required for ordinary rebranding",
+    "Preliminary budget guidance builds trust before the first reply",
+    "Non-binding disclaimer language protects the buyer's business from overcommitting on price"
+  ],
+  "content_fields": {
+    "title_options": [
+      "Laser Cutting Website Template with Engraving Quote Planner, Signage and Fabrication Business Website, Responsive Digital Download",
+      "Laser Engraving Website Template — Cut & Engrave Quote Planner for Signage Shops | HTML CSS Digital Download",
+      "Precision Laser Website Template — Laser Cut & Engraving Quote Planner for Fabrication Shops"
+    ],
+    "short_summary": "A responsive website template for laser cutting, engraving, signage and fabrication shops with an interactive Laser Cut & Engraving Quote Planner that turns vague enquiries into structured, production-ready quote briefs. Preliminary guidance only, not a final price. Digital download.",
+    "description": "SEE seller-pack/listing/final-description.txt (identical content, kept as a single source file to avoid duplication)."
+  },
+  "tags": [
+    "laser cutting site",
+    "engraving website",
+    "signage website",
+    "quote planner",
+    "fabrication site",
+    "maker business web",
+    "acrylic laser site",
+    "website template",
+    "html css template",
+    "digital download",
+    "small business web",
+    "lead capture form",
+    "responsive website"
+  ],
+  "listing_image_paths": [
+    "images/01-cover.png",
+    "images/02-desktop-homepage.png",
+    "images/03-mobile-homepage.png",
+    "images/04-quote-planner.png",
+    "images/05-material-measurement-inputs.png",
+    "images/06-file-prep-checklist.png",
+    "images/07-quote-summary.png",
+    "images/08-whatsapp-email-handoff.png",
+    "images/09-themes-configuration.png",
+    "images/10-included-files-buyer-guide.png"
+  ],
+  "buyer_file_paths": [
+    "buyer-files/01-PRECISION-LASER-WEBSITE-TEMPLATE.zip",
+    "buyer-files/02-START-HERE.html",
+    "buyer-files/03-COMPLETE-BUYER-GUIDE.html",
+    "buyer-files/04-LICENSE.txt",
+    "buyer-files/05-AI-DISCLOSURE-AND-NOTICES.txt"
+  ],
+  "video_path": "etsy-video.mp4"
+}

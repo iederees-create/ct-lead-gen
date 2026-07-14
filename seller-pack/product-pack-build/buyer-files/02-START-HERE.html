@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Start Here — Precision Laser Website Template</title>
+<style>
+  body { font-family: -apple-system, system-ui, sans-serif; max-width: 760px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; line-height: 1.65; color: #1c1c1c; }
+  h1 { font-size: 1.9rem; margin-bottom: 0.4rem; }
+  h2 { font-size: 1.2rem; margin-top: 2.2rem; border-bottom: 2px solid #eee; padding-bottom: 0.3rem; }
+  code { background: #f2f2f2; padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.92em; }
+  .callout { background: #fff8e1; border: 1px solid #f0dfa0; border-radius: 8px; padding: 1rem 1.25rem; margin: 1.25rem 0; }
+  ul { padding-left: 1.3rem; }
+</style>
+</head>
+<body>
+<h1>Start Here</h1>
+<p>Thanks for downloading the <strong>Precision Laser Website Template</strong>. This page is your quick-start map — read this first before opening any other file.</p>
+
+<div class="callout"><strong>What you purchased:</strong> a static HTML/CSS/JavaScript website template for laser cutting, engraving, signage, acrylic fabrication and small fabrication businesses, built around an interactive <strong>Laser Cut &amp; Engraving Quote Planner</strong>. This is a digital download only — no physical item, no hosting, and no domain name are included.</p>
+
+<h2>What's in this ZIP</h2>
+<ul>
+  <li><code>index.html</code> — the site (all sections, single page)</li>
+  <li><code>style.css</code> — the design system and 3 colour themes</li>
+  <li><code>site-config.js</code> — <strong>edit this file to rebrand the site</strong> (see below)</li>
+  <li><code>planner.js</code> / <code>app.js</code> — the Quote Planner logic and site interactivity (you generally never need to edit these)</li>
+  <li><code>privacy.html</code>, <code>terms.html</code>, <code>disclaimer.html</code>, <code>404.html</code> — legal/starter pages</li>
+  <li><code>favicon.svg</code>, <code>og-image.svg</code>, <code>robots.txt</code>, <code>sitemap.xml</code> — SEO/social basics</li>
+  <li><code>package.json</code> + <code>tests/</code> — an optional test suite (38 automated tests) for the planner's calculations, useful if you or a developer modify <code>planner.js</code></li>
+</ul>
+
+<h2>How to preview it locally</h2>
+<p>No build step is required. The simplest way to preview:</p>
+<ol>
+  <li>Unzip this package into its own folder.</li>
+  <li>Double-click <code>index.html</code> to open it directly in a browser, <em>or</em> for the most accurate preview, serve the folder with any static file server (for example, Python's built-in server: <code>python3 -m http.server 8080</code>, then visit <code>http://localhost:8080</code>).</li>
+</ol>
+
+<h2>How to change your business details</h2>
+<p>Open <code>site-config.js</code> in any text editor. Every business-identity field lives under the <code>business</code>, <code>contact</code>, <code>hours</code>, <code>social</code>, and <code>serviceAreas</code> sections at the top: name, tagline, phone, WhatsApp number, email, address, working hours, and social links. You should not need to touch <code>index.html</code>, <code>style.css</code>, <code>app.js</code>, or <code>planner.js</code> for ordinary rebranding.</p>
+
+<h2>How to configure your materials</h2>
+<p>The <code>planner.materials</code> object in <code>site-config.js</code> lists every material shown in the Materials section and offered in the Quote Planner. Each entry has a <code>label</code>, <code>icon</code>, <code>description</code>, and the three pricing fields explained below. Add, remove, rename, or reprice materials by editing this object — the Materials section on the page and the Planner's material dropdown both read from the same list automatically.</p>
+
+<h2>How to configure the Quote Planner</h2>
+<p>All Planner behaviour is controlled from the <code>planner</code> section of <code>site-config.js</code>:</p>
+<ul>
+  <li><code>materials</code> — per-material rate range (<code>rateMinPerCm2</code> / <code>rateMaxPerCm2</code>) and engraving surcharge (<code>engraveRatePerCm2</code>)</li>
+  <li><code>serviceTypes</code> — each service's label and its default service checklist</li>
+  <li><code>cutComplexityMultiplier</code>, <code>finishMultiplier</code>, <code>thicknessBands</code> — the multipliers that shape the budget range</li>
+  <li><code>filePrepChecklists</code> — the checklist shown for each file-readiness answer</li>
+  <li><code>currency</code>, <code>contingencyPercent</code>, <code>roundTo</code> — currency symbol/locale and how the final range is rounded</li>
+</ul>
+<p>Every number in this section is a sample illustrative rate. Replace them with your own researched pricing before publishing your site.</p>
+
+<h2>How to disable price estimates</h2>
+<p>Set <code>planner.budgetEnabled</code> to <code>false</code> in <code>site-config.js</code>. The Planner will still produce the full scope, service checklist, file-preparation checklist, missing-information list, assumptions and next-step recommendation — it simply stops showing a numeric budget range, and shows a message directing the visitor to contact you for a custom quotation instead.</p>
+
+<h2>How to update WhatsApp</h2>
+<p>Edit <code>contact.whatsappNumber</code> (digits only, with country code, e.g. <code>27821234567</code>) and <code>contact.whatsappDisplay</code> (the human-readable number shown on the page) in <code>site-config.js</code>. Every WhatsApp button on the site reads from these two fields.</p>
+
+<h2>How to update email</h2>
+<p>Edit <code>contact.email</code> in <code>site-config.js</code>. Every "Email Quote Request" action and mailto link on the site reads from this one field.</p>
+
+<h2>How to deploy</h2>
+<p>This is a static site — it can be hosted anywhere that serves plain HTML/CSS/JS files: GitHub Pages, Netlify, Vercel, Cloudflare Pages, or traditional shared hosting. Upload the contents of this folder (not the ZIP itself) to your host of choice. There is no server-side code and no database to configure.</p>
+
+<h2>What "hosting" and "domain" mean (if you're new to this)</h2>
+<p><strong>Hosting</strong> is the service that actually serves your website files to visitors' browsers — this template does not include hosting; you'll need to choose and set up a host (many of the options above have free tiers). A <strong>domain name</strong> (like <code>yourbusiness.com</code>) is a separate purchase from a domain registrar that points visitors to your hosted site — this template does not include a domain.</p>
+
+<h2>What is NOT included</h2>
+<ul>
+  <li>Hosting or a domain name</li>
+  <li>A backend server, database, or customer/order management system</li>
+  <li>Payment processing</li>
+  <li>Real business content — all names, contact details, and copy are fictional placeholders you must replace</li>
+  <li>Real project photography — the gallery ships with clearly labelled placeholder cards</li>
+  <li>Ongoing custom development or design work beyond the included template</li>
+</ul>
+
+<h2>Quote disclaimer</h2>
+<p>The Laser Cut &amp; Engraving Quote Planner included in this template provides <strong>preliminary quote guidance only</strong>. Final pricing depends on file quality, machine setup, material availability, job complexity, quantity, setup, labour, finishing, delivery and final review. It does not produce a binding quotation. See <code>disclaimer.html</code> in the template for the full wording, and have it reviewed by a qualified professional for your jurisdiction before publishing.</p>
+
+<h2>Support boundaries</h2>
+<p>This is a self-serve digital template. Support covers questions about using and configuring the template as documented in this guide (e.g. "how do I change X in site-config.js"). Support does not include custom design work, custom feature development, hosting/domain setup on your behalf, or debugging of changes you or a third party made to the code beyond the documented configuration. See <code>05-AI-DISCLOSURE-AND-NOTICES.txt</code> and <code>04-LICENSE.txt</code> for the full terms of use.</p>
+
+<p style="margin-top:2.5rem;color:#777;font-size:0.85rem;">See <code>03-COMPLETE-BUYER-GUIDE.html</code> for a more detailed walkthrough of every configuration option.</p>
+</body>
+</html>

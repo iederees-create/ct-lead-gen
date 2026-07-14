@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Complete Buyer Guide — Precision Laser Website Template</title>
+<style>
+  body { font-family: -apple-system, system-ui, sans-serif; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; line-height: 1.65; color: #1c1c1c; }
+  h1 { font-size: 2rem; margin-bottom: 0.4rem; }
+  h2 { font-size: 1.35rem; margin-top: 2.5rem; border-bottom: 2px solid #eee; padding-bottom: 0.3rem; }
+  h3 { font-size: 1.05rem; margin-top: 1.5rem; }
+  code, pre { background: #f2f2f2; border-radius: 4px; font-size: 0.88em; }
+  code { padding: 0.1rem 0.4rem; }
+  pre { padding: 1rem; overflow-x: auto; }
+  .callout { background: #fff8e1; border: 1px solid #f0dfa0; border-radius: 8px; padding: 1rem 1.25rem; margin: 1.25rem 0; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+  th, td { border: 1px solid #ddd; padding: 0.5rem 0.7rem; text-align: left; font-size: 0.92em; }
+  th { background: #f7f7f7; }
+</style>
+</head>
+<body>
+<h1>Complete Buyer Guide</h1>
+<p>This guide expands on <code>02-START-HERE.html</code> with a full walkthrough of every configuration option in the Precision Laser Website Template.</p>
+
+<h2>1. Site architecture</h2>
+<p>The template is a single-page site (<code>index.html</code>) with anchored sections — Services, Materials, Gallery, Process, File Preparation, About, Service Areas, the Quote Planner, the Quote Form, FAQ, and Contact — plus four standalone pages: <code>privacy.html</code>, <code>terms.html</code>, <code>disclaimer.html</code>, and <code>404.html</code>.</p>
+<table>
+<tr><th>File</th><th>Purpose</th><th>Edit for rebranding?</th></tr>
+<tr><td><code>site-config.js</code></td><td>All business content, contact details, services, materials, planner rates, themes, legal text</td><td><strong>Yes — this is the file you edit</strong></td></tr>
+<tr><td><code>index.html</code></td><td>Page structure/markup</td><td>No, not for ordinary rebranding</td></tr>
+<tr><td><code>style.css</code></td><td>Design system + 3 themes</td><td>Only if you want to change the visual design itself, beyond the built-in themes</td></tr>
+<tr><td><code>app.js</code></td><td>Renders config-driven content, wires up navigation/forms</td><td>No</td></tr>
+<tr><td><code>planner.js</code></td><td>Pure calculation engine for the Quote Planner</td><td>No, unless you are a developer changing the underlying formula</td></tr>
+</table>
+
+<h2>2. Rebranding your business identity</h2>
+<p>In <code>site-config.js</code>, edit the <code>business</code> object:</p>
+<pre>business: {
+  name: "Your Business Name",
+  logoText: "Your Business Name",
+  logoMark: "[YBN]",
+  tagline: "Your one-line tagline.",
+  foundedYear: "2019",
+  description: "A short paragraph about your real business."
+}</pre>
+<p>Then edit <code>contact</code> for phone, WhatsApp, email and address; <code>hours</code> for your working hours; <code>social</code> for your social links; and <code>serviceAreas</code> for the list of areas you serve.</p>
+
+<h2>3. Configuring materials</h2>
+<p>Each entry in <code>planner.materials</code> looks like this:</p>
+<pre>"acrylic": {
+  label: "Acrylic",
+  icon: "🔷",
+  description: "Cast and extruded acrylic sheet, clear and coloured.",
+  rateMinPerCm2: 0.90,
+  rateMaxPerCm2: 1.80,
+  engraveRatePerCm2: 0.35
+}</pre>
+<p><code>rateMinPerCm2</code> / <code>rateMaxPerCm2</code> set the low/high price band per square centimetre of material processed (used for cutting). <code>engraveRatePerCm2</code> is an additional per-square-centimetre surcharge applied when a job involves engraving. Add a new material by copying an existing entry and giving it a new key; remove one by deleting its entry (and its key from <code>materialOrder</code>).</p>
+
+<h2>4. Configuring services</h2>
+<p>The 7 services shown on the homepage (Laser Cutting, Laser Engraving, Signage, Acrylic Fabrication, Wood Engraving, Metal Marking, Corporate Gifts) live in the top-level <code>services</code> array, each with an <code>id</code>, <code>icon</code>, <code>name</code>, <code>summary</code>, <code>details</code>, and <code>startingPrice</code> string. Separately, <code>planner.serviceTypes</code> defines the service options offered inside the Quote Planner itself, each with a <code>label</code> and a <code>defaultChecklist</code> array shown in the results.</p>
+
+<h2>5. Quote Planner pricing logic (advanced)</h2>
+<p>The preliminary budget range is calculated as:</p>
+<pre>area(cm²) × material rate × thickness-band multiplier × cut-complexity multiplier × finish multiplier
+  + (engraving area × material engrave rate, if engraving applies)
+  × quantity
+  + contingency % applied to the upper figure only
+  → rounded to the nearest `roundTo` increment</pre>
+<p>You can tune every part of this from <code>site-config.js</code>:</p>
+<table>
+<tr><th>Config key</th><th>Controls</th></tr>
+<tr><td><code>thicknessBands</code></td><td>Multiplier bands by material thickness (mm)</td></tr>
+<tr><td><code>cutComplexityMultiplier</code></td><td>Multiplier for simple outline / moderate detail / intricate detail / nested parts</td></tr>
+<tr><td><code>finishMultiplier</code></td><td>Multiplier for raw edge / polished edge / painted / assembled / packaged</td></tr>
+<tr><td><code>contingencyPercent</code></td><td>Percentage buffer added to the top of the range</td></tr>
+<tr><td><code>roundTo</code></td><td>Rounds the final min/max to the nearest multiple of this number</td></tr>
+<tr><td><code>currency</code></td><td><code>{ code, symbol, locale }</code> — controls the currency symbol shown</td></tr>
+</table>
+
+<h2>6. Disabling price estimates</h2>
+<p>Set <code>planner.budgetEnabled: false</code>. Every other Planner output (scope, checklists, missing information, assumptions, next-step recommendation) keeps working; only the numeric budget range is hidden and replaced with a message pointing the visitor to contact you directly.</p>
+
+<h2>7. Themes</h2>
+<p>Three built-in themes are defined under <code>themes</code> in <code>site-config.js</code>: <strong>Graphite Laser</strong> (deep graphite/matte black with electric cyan and laser-red accents), <strong>Cyan Blueprint</strong> (deep navy blueprint tones with cyan and amber accents), and <strong>Amber Workshop</strong> (warm graphite/bronze tones with amber accents). Set <code>activeTheme</code> to the key of the theme you want as the default. Visitors can also switch themes live using the theme selector in the navigation bar; their choice is remembered in their browser.</p>
+
+<h2>8. FAQ, testimonials, and gallery content</h2>
+<p>The <code>faqs</code> array controls the FAQ accordion. The <code>gallery</code> array controls the project gallery — each entry ships with <code>image: null</code>, which renders a labelled placeholder card; set <code>image</code> to a real photo path once you have real project photography. This template intentionally does not include fabricated testimonials, ratings, or statistics — add your own only if you can back them with real, verifiable data.</p>
+
+<h2>9. Deployment options</h2>
+<p>Any static host works. A few common free/low-cost options:</p>
+<ul>
+  <li><strong>GitHub Pages</strong> — push the folder to a GitHub repository and enable Pages in the repository settings.</li>
+  <li><strong>Netlify / Vercel / Cloudflare Pages</strong> — drag-and-drop or connect a repository; each offers a generous free tier for static sites.</li>
+  <li><strong>Traditional web hosting</strong> — upload the files via FTP/SFTP or your host's file manager.</li>
+</ul>
+<p>None of these are included with your purchase — you will need to sign up for a hosting service and, separately, register a domain name if you want a custom web address instead of the host's default subdomain.</p>
+
+<h2>10. Troubleshooting</h2>
+<table>
+<tr><th>Symptom</th><th>Likely cause</th></tr>
+<tr><td>My changes to site-config.js aren't showing up</td><td>Hard-refresh your browser (the file may be cached), and confirm you saved the file and are viewing the deployed/served copy, not a stale local one</td></tr>
+<tr><td>WhatsApp button doesn't open the right number</td><td>Check <code>contact.whatsappNumber</code> is digits only, including country code, with no spaces or symbols</td></tr>
+<tr><td>Budget range looks wrong</td><td>Double-check the material's <code>rateMinPerCm2</code>/<code>rateMaxPerCm2</code> and your chosen <code>roundTo</code>/<code>contingencyPercent</code> — the calculation is deterministic from these inputs</td></tr>
+<tr><td>Planner tests fail after I edited planner.js</td><td>Run <code>npm test</code> to see which specific assertion failed, and compare against the original file if you're unsure — most buyers never need to touch this file</td></tr>
+</table>
+
+<div class="callout"><strong>Quote disclaimer:</strong> The Laser Cut &amp; Engraving Quote Planner provides preliminary quote guidance only. Final pricing depends on file quality, machine setup, material availability, job complexity, quantity, setup, labour, finishing, delivery and final review. It is not a binding quotation.</div>
+
+<h2>11. Support boundaries</h2>
+<p>Support covers configuration questions about this template as documented in this guide. It does not include: custom design or feature development, hosting/domain setup on your behalf, debugging of third-party modifications, or guarantees about business outcomes (leads, sales, or search ranking). See <code>04-LICENSE.txt</code> for the full terms.</p>
+</body>
+</html>
