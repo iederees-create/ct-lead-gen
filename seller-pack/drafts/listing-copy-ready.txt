@@ -1,75 +1,28 @@
 TITLE (recommended)
-Construction Website Template with Renovation Cost Planner, Builder and Contractor Quote Website, Responsive Digital Download
+Laser Cutting Website Template with Engraving Quote Planner, Signage and Fabrication Business Website, Responsive Digital Download
 
 SHORT SUMMARY
-A responsive construction website template for builders, renovation contractors, and remodelers. Includes an interactive Renovation Scope & Budget Planner that helps visitors define their project, estimate preliminary scope and budget ranges, identify required trades, prepare a photo checklist, and create a structured quote request. Instant digital download — rebrand via central business configuration. Planner guidance is preliminary only and not a binding quotation. (Final feature list: verify after build.)
+A responsive website template for laser cutting, engraving, signage and fabrication shops. Includes an interactive Laser Cut & Engraving Quote Planner that collects material, thickness, size, quantity, process type and file-readiness notes, then produces a structured quote brief with WhatsApp and email handoff. Instant digital download — rebrand via central configuration. Planner output is preliminary guidance only, not a final price. (Final feature list: verify after build.)
 
-FULL DESCRIPTION
-CONSTRUCTION WEBSITE TEMPLATE WITH RENOVATION SCOPE & BUDGET PLANNER
+FIRST 160 CHARS
+Laser cutting website template with Engraving Quote Planner — turn vague “how much to laser this?” messages into production-ready quote briefs. Digital download.
 
-A conversion-focused website template built for builders, renovation contractors, remodelers, and construction businesses that want professional lead capture — not a generic brochure page.
+PRICE
+CONFIRMED_PRICE_PENDING CONFIRMED_CURRENCY_PENDING
 
-THIS IS A DIGITAL DOWNLOAD. No physical item ships. Files are delivered instantly after purchase.
+MEDIA
+FINAL_SCREENSHOTS_PENDING
+FINAL_VIDEO_PENDING
 
-CORE DIFFERENTIATOR
-An interactive Renovation Scope & Budget Planner that helps website visitors:
-• Define their renovation or construction project
-• Estimate preliminary scope and budget ranges
-• Identify required trades (educational guidance)
-• Prepare a photo checklist for quote readiness
-• Create a structured quote request / summary your team can act on
+PRODUCT URL
+EXACT_ETSY_PRODUCT_URL_PENDING_PUBLICATION
 
-Configurable calculator assumptions are intended so the business owner can align guidance with their market (verify after build).
+DEMO
+LIVE_DEMO_URL_PENDING_VERIFICATION
 
-IMPORTANT: The planner is preliminary guidance only. It is NOT a binding quotation, fixed price, professional cost estimate, or legal/financial advice. Real quotations depend on site inspection, drawings, specifications, materials, labour, approvals and site conditions.
-
-WHO IT’S FOR
-• Builders and general contractors
-• Home renovation and remodel businesses
-• Extensions / alterations specialists (adapt services to your trade)
-• Agencies setting up one end-business construction website under a single licence
-
-WHAT YOU GET (confirm against final package)
-• Complete static website source (HTML / CSS / JavaScript)
-• Central business configuration file for rebranding
-• Interactive Renovation Scope & Budget Planner + structured quote-request handoff
-• WhatsApp and email handoff paths (as shipped)
-• Three visual themes (as shipped)
-• Services and gallery/project showcase sections (as shipped)
-• Mobile-first responsive layout
-• Buyer guides, licence, and AI disclosure files
-• Starting-point legal pages (generic starters — not legal advice)
-
-HOW IT WORKS
-1. Purchase and download the ZIP.
-2. Unzip — no installers required for ordinary use.
-3. Edit the configuration file with your real business details.
-4. Preview locally, test the planner, then upload to a static host.
-
-CUSTOMISATION
-Ordinary rebranding is intended via one configuration surface. Advanced design or planner logic changes may require HTML/CSS/JS edits.
-
-FICTIONAL DEMO CONTENT
-Demo business names, contact details, ratings, statistics, testimonials, and project examples are SAMPLE / FICTIONAL content. Replace them before publishing. Do not publish “fully insured,” “certified,” or “guaranteed” claims unless true for your business.
-
-ESTIMATE DISCLAIMER
-Any budget ranges, complexity scores, or scope summaries from the planner are illustrative preliminary guidance only. Actual costs depend on site conditions, materials, labour, permits, structural requirements, finish level, location, and other factors. Always provide your own professional assessment before quoting.
-
-DIGITAL PRODUCT DISCLAIMER
-Digital files only. Nothing is shipped.
-
-AI DISCLOSURE
-Code and commerce materials were developed with AI assistance (including Claude Code / Anthropic and Grok / xAI for commerce). See AI-DISCLOSURE.txt in the buyer package.
-
-SUPPORT
-Setup/configuration questions and genuine template defects only. No custom development, hosting/DNS full-service setup, legal review, or estimating methodology consulting. Contact via Etsy Messages with your order number.
-
-REFUNDS (SUBJECT TO APPLICABLE LAW)
-Instantly delivered digital item. Refunds handled subject to Etsy’s digital-item policies and applicable consumer-protection law. Generally considered only for a genuine defect in the template files, not change-of-mind or dissatisfaction with fictional sample content designed to be replaced.
-
-LIVE DEMO
-https://iederees-create.github.io/southern-suburbs-builders-ct/
-
-SEO BLOG (portfolio — not a buyer file)
-/blog/construction-website-quote-planner/
-Purchase CTA on blog remains ETSY_PRODUCT_URL_PENDING_PUBLICATION until public listing exists.
+NOTES
+- Digital download only — no physical product
+- Fictional demo content must be replaced by buyer
+- Not for medical/cosmetic/treatment lasers
+- Full description + 15 FAQs: handoff/grok/ETSY-CONVERSION-PACK.md
+- Tags: seller-pack/drafts/tags-13.txt and handoff/grok/ETSY-TAGS.json

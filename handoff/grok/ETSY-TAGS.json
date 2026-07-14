@@ -1,0 +1,36 @@
+{
+  "product": "Precision Laser Website Template",
+  "platform": "Etsy",
+  "tag_count": 13,
+  "rules": {
+    "max_length": 20,
+    "unique": true,
+    "avoid": [
+      "unsupported claims",
+      "trademark stuffing",
+      "fake bestseller language",
+      "medical laser terms"
+    ]
+  },
+  "tags": [
+    "laser cutting site",
+    "engraving website",
+    "signage website",
+    "quote planner",
+    "fabrication site",
+    "maker business web",
+    "acrylic laser site",
+    "website template",
+    "html css template",
+    "digital download",
+    "small business web",
+    "lead capture form",
+    "responsive website"
+  ],
+  "notes": [
+    "Every tag is ≤20 characters and unique.",
+    "Reflects buyer intent for laser cutting/engraving/signage shops and designers.",
+    "No brand-name stuffing (machine OEMs, competitors).",
+    "Re-validate against final Etsy tag rules at draft time."
+  ]
+}
