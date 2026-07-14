@@ -1,0 +1,162 @@
+{
+  "shop": "NextGenWebs",
+  "rules": {
+    "tag_count": 13,
+    "max_length": 20,
+    "unique_per_listing": true,
+    "avoid": [
+      "guaranteed sales language",
+      "fake bestseller",
+      "trademark stuffing",
+      "medical treatment claims",
+      "exact quote price promises"
+    ]
+  },
+  "listings": {
+    "L01": {
+      "product": "Construction Website Template",
+      "tags": [
+        "construction site",
+        "builder website",
+        "contractor website",
+        "renovation website",
+        "quote planner",
+        "budget planner",
+        "website template",
+        "html css template",
+        "responsive website",
+        "digital download",
+        "small business web",
+        "home remodel site",
+        "lead capture form"
+      ]
+    },
+    "L02": {
+      "product": "Bank Desert Analysis Project",
+      "tags": [
+        "python project",
+        "data analysis lab",
+        "pandas project",
+        "geospatial data",
+        "student lab",
+        "jupyter project",
+        "census data",
+        "data visualization",
+        "python tutorial",
+        "digital download",
+        "analytics project",
+        "map dashboard",
+        "education download"
+      ]
+    },
+    "L03": {
+      "product": "Small Business Analytics Dashboard",
+      "tags": [
+        "business dashboard",
+        "csv analytics",
+        "sales dashboard",
+        "data dashboard",
+        "analytics tool",
+        "small business bi",
+        "chart dashboard",
+        "data visualization",
+        "react dashboard",
+        "digital download",
+        "csv upload tool",
+        "business charts",
+        "privacy dashboard"
+      ]
+    },
+    "L04": {
+      "product": "Tiling Contractor Website Template",
+      "tags": [
+        "tiling website",
+        "tile calculator",
+        "contractor site",
+        "flooring website",
+        "renovation site",
+        "website template",
+        "html css template",
+        "responsive website",
+        "digital download",
+        "small business web",
+        "quote form website",
+        "bathroom tile site",
+        "lead capture form"
+      ]
+    },
+    "L05": {
+      "product": "Wellness Website Template",
+      "tags": [
+        "wellness website",
+        "spa website",
+        "skincare website",
+        "beauty salon site",
+        "wellness studio",
+        "salon website",
+        "website template",
+        "react website",
+        "digital download",
+        "small business web",
+        "responsive website",
+        "beauty business",
+        "spa landing page"
+      ]
+    },
+    "L06": {
+      "product": "Pest Control Website Template",
+      "tags": [
+        "pest control site",
+        "exterminator site",
+        "termite website",
+        "rodent control web",
+        "fumigation site",
+        "local service site",
+        "website template",
+        "html css template",
+        "responsive website",
+        "digital download",
+        "small business web",
+        "quote form website",
+        "lead capture form"
+      ]
+    },
+    "L07": {
+      "product": "Zen Skin Studio Website Template",
+      "tags": [
+        "skincare website",
+        "beauty salon site",
+        "aesthetic website",
+        "spa website",
+        "beauty studio web",
+        "salon website",
+        "website template",
+        "html css template",
+        "responsive website",
+        "digital download",
+        "small business web",
+        "beauty business",
+        "clinic marketing"
+      ]
+    },
+    "L08": {
+      "product": "Solar Website Template",
+      "tags": [
+        "solar website",
+        "solar installer",
+        "renewable energy",
+        "contractor website",
+        "electrician site",
+        "green energy web",
+        "website template",
+        "html css template",
+        "responsive website",
+        "digital download",
+        "small business web",
+        "lead capture form",
+        "savings calculator"
+      ]
+    }
+  },
+  "validation_note": "All tags intentionally ≤20 characters. Re-check uniqueness inside each listing before paste. Do not copy medical or guaranteed-rank tags."
+}
