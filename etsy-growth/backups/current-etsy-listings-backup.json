@@ -1,0 +1,28 @@
+{
+  "exported_at": "2026-07-14T11:21:17.670Z",
+  "source": "export-active-listings-backup.mjs",
+  "francis_root": "/home/iedrees/Workspace/francis-listing-manager",
+  "etsy_api_enabled": false,
+  "etsy_api_reachable": false,
+  "shop_connected": false,
+  "shop_name": null,
+  "shop_id": null,
+  "active_listings_found": 0,
+  "listings": [],
+  "fetch_errors": [
+    "ETSY_API_ENABLED is not true in Francis. Enable API + OAuth connect, then re-run export."
+  ],
+  "status_masked": {
+    "apiEnabled": false,
+    "connected": false,
+    "mode": "mock",
+    "shopName": "Mock Craft Shop (sample data)",
+    "shopId": "",
+    "authorizedUser": "",
+    "tokenExpiryStatus": "mock",
+    "lastSyncedAt": null,
+    "lastRequestAt": null,
+    "lastRequestStatus": ""
+  },
+  "schema_version": 1
+}
