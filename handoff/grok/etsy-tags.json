@@ -1,0 +1,54 @@
+{
+  "product": "Southern Suburbs Builders Website Template",
+  "tag_count": 13,
+  "max_characters_per_tag": 20,
+  "rules": [
+    "unique",
+    "<=20 characters",
+    "realistic buyer intent",
+    "no unsupported claims",
+    "no invented trademarks"
+  ],
+  "tags": [
+    "construction site",
+    "builder website",
+    "contractor website",
+    "renovation website",
+    "quote website",
+    "budget planner",
+    "cost estimator",
+    "website template",
+    "html css template",
+    "responsive website",
+    "digital download",
+    "small business site",
+    "home remodel site"
+  ],
+  "character_counts": {
+    "construction site": 17,
+    "builder website": 15,
+    "contractor website": 18,
+    "renovation website": 18,
+    "quote website": 13,
+    "budget planner": 14,
+    "cost estimator": 14,
+    "website template": 16,
+    "html css template": 17,
+    "responsive website": 18,
+    "digital download": 16,
+    "small business site": 19,
+    "home remodel site": 17
+  },
+  "notes": [
+    "Avoid trademarked platform names and brand names.",
+    "Avoid claim words like 'guaranteed leads' or 'insured'.",
+    "If Etsy rejects a tag for policy reasons, replace with another <=20 char buyer-intent tag from the alternates list below."
+  ],
+  "alternate_tags_if_needed": [
+    "lead gen website",
+    "static html site",
+    "whatsapp website",
+    "local service site",
+    "remodeler website"
+  ]
+}

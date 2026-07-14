@@ -1,0 +1,309 @@
+{
+  "slug": "construction-website-quote-planner",
+  "slugPath": "/blog/construction-website-quote-planner/",
+  "canonicalPath": "/blog/construction-website-quote-planner/",
+  "recommendedUrlPath": "/blog/construction-website-quote-planner/",
+  "workingTitle": "How to Build a Construction Website That Generates Better Quote Requests",
+  "recommendedH1": "How to Build a Construction Website That Generates Better Quote Requests",
+  "pageTitle": "Construction Website Quote Planner: Better Builder Lead Forms",
+  "metaDescription": "Learn how construction websites capture better quote requests with structured project planners, preliminary budget ranges, trade checklists and clear non-binding estimate language.",
+  "excerpt": "Builders and renovation contractors do not need more one-line price messages. This guide explains how a structured construction quote planner improves lead quality — and how the Southern Suburbs Builders template demonstrates the pattern.",
+  "category": "Web Design for Trades",
+  "tags": [
+    "construction website template",
+    "builder website",
+    "contractor website design",
+    "construction quote form",
+    "renovation quote calculator",
+    "builder lead generation",
+    "WhatsApp quote form",
+    "local service SEO"
+  ],
+  "primaryKeyword": "construction website template",
+  "secondaryKeywords": [
+    "builder website template",
+    "contractor website design",
+    "construction quote form",
+    "renovation quote calculator",
+    "builder lead generation",
+    "construction website design",
+    "contractor quote request form",
+    "website for building company",
+    "renovation contractor website",
+    "construction company website",
+    "home builder website template",
+    "interactive quote calculator",
+    "contractor lead generation website",
+    "construction project enquiry form",
+    "builder WhatsApp quote form"
+  ],
+  "keywordVolumeNote": "No fabricated keyword volumes. Directions only.",
+  "author": {
+    "name": "iederees-create",
+    "role": "Web developer / template publisher",
+    "type": "Person"
+  },
+  "estimatedReadingTime": "10 min",
+  "estimatedWordCountRange": "1800-2500",
+  "datePublished": "DATE_PUBLISHED_PLACEHOLDER",
+  "dateModified": "DATE_MODIFIED_PLACEHOLDER",
+  "locale": "en",
+  "openGraph": {
+    "title": "How to Build a Construction Website That Generates Better Quote Requests",
+    "description": "A practical guide to construction quote forms, preliminary budget ranges and structured renovation project planners for builders and contractors.",
+    "type": "article",
+    "urlPath": "/blog/construction-website-quote-planner/",
+    "image": {
+      "pathPlaceholder": "/blog/images/construction-website-quote-planner-og.png",
+      "brief": "1200×630 social image: UI collage of Renovation Scope & Budget Planner + headline about better quote requests. No fake project photography. Include small ‘preliminary guidance only’ note."
+    }
+  },
+  "twitter": {
+    "card": "summary_large_image",
+    "title": "Construction websites that generate better quote requests",
+    "description": "Structured planners beat one-line ‘how much?’ messages. Preliminary ranges ≠ binding quotes."
+  },
+  "articleImageAltText": [
+    {
+      "id": "hero",
+      "alt": "Illustration of a construction website quote planner interface helping builders collect structured renovation enquiries"
+    },
+    {
+      "id": "planner",
+      "alt": "Screenshot of the Renovation Scope and Budget Planner on the Southern Suburbs Builders website template demo"
+    },
+    {
+      "id": "budget",
+      "alt": "Preliminary renovation budget range screen with non-binding estimate disclaimer"
+    },
+    {
+      "id": "quote-summary",
+      "alt": "Structured construction quote request summary ready for WhatsApp or email handoff"
+    },
+    {
+      "id": "mobile",
+      "alt": "Mobile layout of a responsive builder website template showing quote planner call to action"
+    }
+  ],
+  "ctaRules": {
+    "soft": {
+      "label": "Try the live Renovation Scope & Budget Planner demo",
+      "url": "https://iederees-create.github.io/southern-suburbs-builders-ct/",
+      "placeholderKey": "LIVE_DEMO_URL",
+      "enabled": true
+    },
+    "mid": {
+      "label": "View the complete Southern Suburbs Builders Website Template case study",
+      "url": "PORTFOLIO_PROJECT_URL",
+      "placeholderKey": "PORTFOLIO_PROJECT_URL",
+      "enabled": false,
+      "note": "Enable when portfolio project route is confirmed"
+    },
+    "purchase": {
+      "label": "Buy the template on Etsy",
+      "url": "ETSY_PRODUCT_URL_PENDING_PUBLICATION",
+      "placeholderKey": "ETSY_PRODUCT_URL_PENDING_PUBLICATION",
+      "enabled": false,
+      "rules": [
+        "Do not use generic shop homepage as product page",
+        "Hide or disable until exact public product URL exists",
+        "Replace once with exact active Etsy product listing URL only after human publication"
+      ]
+    }
+  },
+  "internalLinkPlan": [
+    {
+      "anchor": "live demo",
+      "href": "https://iederees-create.github.io/southern-suburbs-builders-ct/"
+    },
+    {
+      "anchor": "portfolio case study",
+      "href": "PORTFOLIO_PROJECT_URL"
+    },
+    {
+      "anchor": "Tiling Contractor Website Template",
+      "href": "RELATED_TILING_TEMPLATE_URL"
+    },
+    {
+      "anchor": "Pest Control Website Template",
+      "href": "RELATED_PEST_CONTROL_TEMPLATE_URL"
+    },
+    {
+      "anchor": "Solar Lead Generation Template",
+      "href": "RELATED_SOLAR_TEMPLATE_URL"
+    },
+    {
+      "anchor": "web development services",
+      "href": "SERVICES_PAGE_URL"
+    },
+    {
+      "anchor": "related local-service website articles",
+      "href": "/blog/"
+    }
+  ],
+  "externalSourcePlan": [
+    "Jurisdiction-specific building authority pages on approvals/drawings (link only when article is localised)",
+    "Official workplace/site safety guidance relevant to renovations",
+    "WCAG overview for accessible web forms",
+    "Static hosting docs the buyer might use (GitHub Pages / similar) — informational only"
+  ],
+  "robots": {
+    "index": true,
+    "follow": true,
+    "note": "Only index after human publish of the portfolio blog post"
+  },
+  "jsonLd": {
+    "blogPosting": {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "How to Build a Construction Website That Generates Better Quote Requests",
+      "description": "Practical guide to construction quote forms, renovation planners and lead quality for builders and contractors.",
+      "alternativeHeadline": "Construction Website Quote Planner: Better Builder Lead Forms",
+      "image": [
+        "CANONICAL_SITE_ORIGIN/blog/images/construction-website-quote-planner-og.png"
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "iederees-create"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "iederees-create",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "CANONICAL_SITE_ORIGIN/logo.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "CANONICAL_SITE_ORIGIN/blog/construction-website-quote-planner/"
+      },
+      "datePublished": "DATE_PUBLISHED_PLACEHOLDER",
+      "dateModified": "DATE_MODIFIED_PLACEHOLDER",
+      "keywords": [
+        "construction website template",
+        "construction quote form",
+        "builder lead generation",
+        "renovation quote calculator"
+      ],
+      "articleSection": "Web Design for Trades",
+      "inLanguage": "en",
+      "about": {
+        "@type": "Thing",
+        "name": "Southern Suburbs Builders Website Template"
+      }
+    },
+    "breadcrumbList": {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "CANONICAL_SITE_ORIGIN/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "CANONICAL_SITE_ORIGIN/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Construction Website Quote Planner",
+          "item": "CANONICAL_SITE_ORIGIN/blog/construction-website-quote-planner/"
+        }
+      ]
+    },
+    "faqPage": {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is an online renovation budget range a real quotation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Online ranges should be treated as preliminary guidance only. A binding quotation depends on site inspection, drawings, specifications, materials, labour, approvals and site conditions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should a construction quote form include at minimum?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Identity and contact method, project type, approximate area or scale, property location, condition and access notes, finish intent, likely trades, timeline, and a way to prepare or attach photos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can WhatsApp replace a website form?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "WhatsApp works well as a delivery channel for a structured summary. Without structure first, it often creates chaotic threads. Best practice is planner or form first, WhatsApp second."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should a construction website say fully insured or guaranteed results?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Only if those statements are true for the business and can be supported. Demo placeholders and marketing clichés should not be published as facts."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this guide or template guarantee search rankings or lead volume?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Results depend on market, content, reputation, follow-up and competition. The guide focuses on enquiry structure, not ranking promises."
+          }
+        }
+      ]
+    }
+  },
+  "hierarchy": {
+    "h1": "How to Build a Construction Website That Generates Better Quote Requests",
+    "h2": [
+      "Why most construction websites produce poor enquiries",
+      "What information a builder actually needs before preparing a quote",
+      "Why “How much will this cost?” cannot be answered from one sentence",
+      "How a structured project-planning tool improves lead quality",
+      "Important fields in a construction quote request",
+      "Project type, area and finish-level considerations",
+      "Demolition, plumbing, electrical and structural requirements",
+      "Why site access and property condition affect project scope",
+      "Preliminary budget range vs binding quotation",
+      "Using WhatsApp without creating chaotic enquiries",
+      "Mobile website requirements for construction businesses",
+      "Local SEO essentials for builders and renovation companies",
+      "Common construction website mistakes",
+      "How the Southern Suburbs Builders template addresses these problems",
+      "Try the live demo",
+      "Template availability",
+      "FAQ"
+    ],
+    "h3Examples": [
+      "Minimum useful field set",
+      "Project type",
+      "Area / scale",
+      "Finish level",
+      "Access examples that change cost and programme",
+      "Condition examples",
+      "Preliminary budget range",
+      "Binding quotation",
+      "Chaotic pattern",
+      "Structured pattern",
+      "Product intent",
+      "Compliance stance baked into the product story",
+      "Purchase CTA rules"
+    ]
+  },
+  "verification": {
+    "productClaimsRequire": "VERIFY_AFTER_BUILD against Claude final build summary",
+    "etsyCta": "disabled until exact public product URL",
+    "noRankPromises": true
+  }
+}

@@ -1,0 +1,28 @@
+TITLE (recommended)
+Laser Cutting Website Template with Engraving Quote Planner, Signage and Fabrication Business Website, Responsive Digital Download
+
+SHORT SUMMARY
+A responsive website template for laser cutting, engraving, signage and fabrication shops. Includes an interactive Laser Cut & Engraving Quote Planner that collects material, thickness, size, quantity, process type and file-readiness notes, then produces a structured quote brief with WhatsApp and email handoff. Instant digital download — rebrand via central configuration. Planner output is preliminary guidance only, not a final price. (Final feature list: verify after build.)
+
+FIRST 160 CHARS
+Laser cutting website template with Engraving Quote Planner — turn vague “how much to laser this?” messages into production-ready quote briefs. Digital download.
+
+PRICE
+CONFIRMED_PRICE_PENDING CONFIRMED_CURRENCY_PENDING
+
+MEDIA
+FINAL_SCREENSHOTS_PENDING
+FINAL_VIDEO_PENDING
+
+PRODUCT URL
+EXACT_ETSY_PRODUCT_URL_PENDING_PUBLICATION
+
+DEMO
+LIVE_DEMO_URL_PENDING_VERIFICATION
+
+NOTES
+- Digital download only — no physical product
+- Fictional demo content must be replaced by buyer
+- Not for medical/cosmetic/treatment lasers
+- Full description + 15 FAQs: handoff/grok/ETSY-CONVERSION-PACK.md
+- Tags: seller-pack/drafts/tags-13.txt and handoff/grok/ETSY-TAGS.json
