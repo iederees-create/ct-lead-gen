@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#1a1917"/>
+  <defs>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#c6a05c" stroke-opacity="0.12" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="g" cx="80%" cy="15%" r="60%">
+      <stop offset="0%" stop-color="#c6a05c" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#1a1917" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <path d="M60 240 L150 160 L240 240" fill="none" stroke="#c6a05c" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="90" y="240" width="120" height="90" fill="none" stroke="#c6a05c" stroke-width="8"/>
+  <rect x="135" y="285" width="30" height="45" fill="#c6a05c"/>
+  <text x="380" y="290" font-family="Georgia, 'Fraunces', serif" font-size="58" font-weight="700" fill="#f2ede4">Southern Suburbs Builders</text>
+  <text x="380" y="340" font-family="Arial, sans-serif" font-size="27" fill="#b3a99a">Construction Website Template — Digital Download</text>
+  <text x="380" y="390" font-family="Arial, sans-serif" font-size="22" fill="#c6a05c">Renovation Scope &amp; Budget Planner Included</text>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#161616"/>
+  <defs>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="rgba(0,229,255,0.14)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <path d="M120 380 L280 200 L560 200" fill="none" stroke="#00e5ff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="220" y1="300" x2="700" y2="300" stroke="#ff3b30" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="700" cy="300" r="10" fill="#ff3b30"/>
+  <text x="120" y="470" font-family="Arial, sans-serif" font-size="56" font-weight="700" fill="#f2f2f0">Precision Laser Works</text>
+  <text x="120" y="520" font-family="Arial, sans-serif" font-size="28" fill="#a8a8a4">Laser Cutting &amp; Engraving Website Template</text>
+</svg>

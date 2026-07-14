@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /privacy.html
+Disallow: /terms.html
+Disallow: /disclaimer.html
+
+Sitemap: https://iederees-create.github.io/precision-laser-works-template/sitemap.xml

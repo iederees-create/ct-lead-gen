@@ -1,0 +1,9 @@
+{
+  "name": "precision-laser-works-template",
+  "version": "1.0.0",
+  "description": "Precision Laser Works — laser cutting and engraving website template with a Laser Cut & Engraving Quote Planner. Static HTML/CSS/JS, no build step.",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/planner.test.js"
+  }
+}

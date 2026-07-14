@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Precision Laser Works | Laser Cutting, Engraving &amp; Fabrication Website Template</title>
+<meta name="description" content="Precision Laser Works — a fictional demo laser cutting and engraving business showcasing a premium, conversion-focused website template with a working Laser Cut &amp; Engraving Quote Planner for fabricators, signage makers and gift businesses.">
+<link rel="canonical" href="https://iederees-create.github.io/precision-laser-works-template/">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Precision Laser Works | Laser Cutting &amp; Engraving Website Template">
+<meta property="og:description" content="A premium, conversion-focused website template for laser cutting, engraving, signage and small fabrication businesses, with a working Laser Cut &amp; Engraving Quote Planner.">
+<meta property="og:image" content="og-image.svg">
+<meta property="og:url" content="https://iederees-create.github.io/precision-laser-works-template/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Precision Laser Works",
+  "description": "Fictional demonstration laser cutting and engraving business used to showcase a website template. Not a real company.",
+  "areaServed": ["Paarden Eiland", "Woodstock", "Salt River", "Observatory", "Epping", "Maitland", "Milnerton", "Montague Gardens", "Ndabeni", "Airport Industria"],
+  "telephone": "+27-21-555-0187",
+  "email": "hello@example.com",
+  "url": "https://iederees-create.github.io/precision-laser-works-template/",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "8 Example Industrial Way, Paarden Eiland",
+    "addressLocality": "Cape Town",
+    "addressRegion": "Western Cape",
+    "postalCode": "7405",
+    "addressCountry": "ZA"
+  },
+  "disclaimer": "All business details in this structured data are fictional sample content for template demonstration purposes only."
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<div class="announcement-bar" id="announcement-bar">
+  <span id="announcement-label">Try our free Laser Cut &amp; Engraving Quote Planner</span>
+  <a href="#planner" id="announcement-cta">Open the Planner</a>
+</div>
+
+<header class="site-nav">
+  <div class="container">
+    <a href="#top" class="logo"><span class="logo-mark">[PLW]</span> <span data-bind="business.logoText">Precision Laser Works</span></a>
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+    </button>
+    <ul class="nav-menu" id="nav-menu">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#materials">Materials</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#planner">Quote Planner</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li class="theme-picker"><label for="theme-selector" class="visually-hidden">Colour theme</label><select id="theme-selector"></select></li>
+      <li><a href="#quote" class="nav-cta">Get a Quote</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="main-content">
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="blueprint-overlay" aria-hidden="true"></div>
+    <div class="container hero-grid">
+      <div>
+        <span class="hero-eyebrow">Demo Website Template</span>
+        <h1>Cut precisely. <span class="accent-text">Engrave perfectly.</span></h1>
+        <p class="hero-subtitle" data-bind="business.tagline">Precision laser cutting, engraving and small fabrication for makers, signage and gift businesses in Cape Town.</p>
+        <div class="hero-ctas">
+          <a href="#planner" class="btn-hero">Try the Quote Planner</a>
+          <a href="#quote" class="btn-secondary">Request a Quote</a>
+          <a data-whatsapp-link data-whatsapp-default href="#" class="btn-whatsapp">WhatsApp Us</a>
+        </div>
+        <p class="hero-note">Serving <span data-bind="contact.addressLine2">Cape Town, 7405</span> and surrounding industrial areas.</p>
+      </div>
+      <div class="hero-trust-card">
+        <h2>How we work (sample)</h2>
+        <ul class="trust-list">
+          <li><span class="trust-icon" aria-hidden="true">&#10003;</span> Free preliminary quote planner tool</li>
+          <li><span class="trust-icon" aria-hidden="true">&#10003;</span> File review before every job</li>
+          <li><span class="trust-icon" aria-hidden="true">&#10003;</span> Itemised quotes, no surprises</li>
+        </ul>
+        <p class="demo-flag">This card, and all process claims on this page, are editable sample demo content — see site-config.js.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST INDICATORS -->
+  <div class="trust-bar">
+    <div class="container">
+      <div class="trust-bar-grid" id="trust-indicators-grid"></div>
+    </div>
+  </div>
+
+  <!-- SERVICES OVERVIEW: Laser Cutting / Engraving / Signage / Acrylic
+       Fabrication / Wood Engraving / Metal Marking / Corporate Gifts -->
+  <section id="services" class="section" aria-labelledby="services-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Services</span>
+        <h2 id="services-heading">Laser Cutting, Engraving, Signage &amp; More</h2>
+        <p>Covers laser cutting, laser engraving, signage, acrylic fabrication, wood engraving, metal marking and corporate gifts.</p>
+      </div>
+      <div class="services-jump" id="services-jump"></div>
+      <div class="services-grid" id="services-grid"></div>
+    </div>
+  </section>
+
+  <!-- MATERIALS -->
+  <section id="materials" class="section section-alt" aria-labelledby="materials-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Materials</span>
+        <h2 id="materials-heading">Materials We Work With</h2>
+        <p>Sample material list — edit the planner.materials object in site-config.js to add, remove or reprice materials.</p>
+      </div>
+      <div class="materials-grid" id="materials-grid"></div>
+    </div>
+  </section>
+
+  <!-- PROJECT GALLERY -->
+  <section id="gallery" class="section" aria-labelledby="gallery-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Project Gallery</span>
+        <h2 id="gallery-heading">Recent Work (Replaceable Demo Media)</h2>
+        <p>These are placeholder cards, not real project photography — replace the <code>gallery</code> array in site-config.js with your own photos once available.</p>
+      </div>
+      <div class="gallery-grid" id="gallery-grid"></div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process" class="section section-alt" aria-labelledby="process-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">How It Works</span>
+        <h2 id="process-heading">Our Project Process</h2>
+      </div>
+      <div class="process-steps" id="process-steps"></div>
+    </div>
+  </section>
+
+  <!-- FILE PREPARATION -->
+  <section id="file-prep" class="section" aria-labelledby="file-prep-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">File Preparation</span>
+        <h2 id="file-prep-heading">Preparing Your Artwork</h2>
+        <p>Not sure your file is ready? The <a href="#planner">Quote Planner</a> below will flag what's missing based on your answers.</p>
+      </div>
+      <div class="file-prep-grid" id="file-prep-grid"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section section-alt" aria-labelledby="about-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">About Us</span>
+        <h2 id="about-heading">About <span data-bind="business.name">Precision Laser Works</span></h2>
+      </div>
+      <div class="about-grid">
+        <div>
+          <p data-bind="business.description">Fictional demo description.</p>
+          <p>Founded: <span data-bind="business.foundedYear">[Year] (sample)</span></p>
+          <p class="demo-flag" data-bind="legal.disclaimerSummary"></p>
+        </div>
+        <div>
+          <h3>Workshop Safety (Sample)</h3>
+          <p data-bind="legal.workshopSafetyStatement"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE AREAS -->
+  <section id="areas" class="section" aria-labelledby="areas-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Coverage</span>
+        <h2 id="areas-heading">Service Area Coverage</h2>
+        <p>Sample coverage list — edit serviceAreas in site-config.js.</p>
+      </div>
+      <ul class="areas-list" id="service-areas-list"></ul>
+      <iframe class="map-frame" id="map-embed" title="Service area map placeholder" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+  <!-- LASER CUT & ENGRAVING QUOTE PLANNER -->
+  <section id="planner" class="section section-alt planner-section" aria-labelledby="planner-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Interactive Tool</span>
+        <h2 id="planner-heading">Laser Cut &amp; Engraving Quote Planner</h2>
+        <p>Answer a few questions about your project for a preliminary scope, checklist and configurable budget range. This is not a binding quotation — see the <a href="disclaimer.html">Quote Disclaimer</a>.</p>
+      </div>
+
+      <form class="planner-form" id="planner-form" novalidate>
+        <div class="planner-grid">
+
+          <fieldset class="planner-fieldset">
+            <legend>Your Details</legend>
+            <div class="form-row">
+              <label for="planner-customer-name">Your name</label>
+              <input type="text" id="planner-customer-name" name="customerName" autocomplete="name">
+            </div>
+            <div class="form-row form-row-split">
+              <div>
+                <label for="planner-email">Email</label>
+                <input type="email" id="planner-email" name="email" autocomplete="email">
+              </div>
+              <div>
+                <label for="planner-phone">Phone</label>
+                <input type="tel" id="planner-phone" name="phone" autocomplete="tel">
+              </div>
+            </div>
+            <div class="form-row">
+              <label for="planner-suburb">Suburb / city</label>
+              <input type="text" id="planner-suburb" name="suburb" list="planner-suburb-list" autocomplete="off">
+              <datalist id="planner-suburb-list"></datalist>
+            </div>
+            <div class="form-row">
+              <label for="planner-project-name">Project name</label>
+              <input type="text" id="planner-project-name" name="projectName" autocomplete="off" placeholder="e.g. Retail Window Signage">
+            </div>
+          </fieldset>
+
+          <fieldset class="planner-fieldset">
+            <legend>Service &amp; Material</legend>
+            <div class="form-row">
+              <label for="planner-service-type">Service type</label>
+              <select id="planner-service-type" name="serviceType" aria-describedby="planner-service-type-error">
+                <option value="">Select a service type&hellip;</option>
+              </select>
+              <p class="field-error" id="planner-service-type-error"></p>
+            </div>
+            <div class="form-row">
+              <label for="planner-material">Material</label>
+              <select id="planner-material" name="material">
+                <option value="">Select a material&hellip;</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="planner-thickness">Material thickness (mm)</label>
+              <input type="number" id="planner-thickness" name="materialThickness" min="0" step="0.1" inputmode="decimal">
+            </div>
+          </fieldset>
+
+          <fieldset class="planner-fieldset">
+            <legend>Dimensions &amp; Quantity</legend>
+            <div class="form-row form-row-split">
+              <div>
+                <label for="planner-width">Width</label>
+                <input type="number" id="planner-width" name="width" min="0" step="0.1" inputmode="decimal">
+              </div>
+              <div>
+                <label for="planner-height">Height</label>
+                <input type="number" id="planner-height" name="height" min="0" step="0.1" inputmode="decimal">
+              </div>
+            </div>
+            <div class="form-row">
+              <label for="planner-units">Units</label>
+              <select id="planner-units" name="units">
+                <option value="mm">mm</option>
+                <option value="cm">cm</option>
+                <option value="m">m</option>
+                <option value="inches">inches</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="planner-quantity">Quantity</label>
+              <input type="number" id="planner-quantity" name="quantity" min="1" step="1" inputmode="numeric" value="1">
+            </div>
+            <div class="form-row">
+              <label for="planner-engraving-area">Engraving area (optional, same units² as above)</label>
+              <input type="number" id="planner-engraving-area" name="engravingArea" min="0" step="0.1" inputmode="decimal">
+            </div>
+          </fieldset>
+
+          <fieldset class="planner-fieldset">
+            <legend>Complexity &amp; File Readiness</legend>
+            <div class="form-row">
+              <label for="planner-cut-complexity">Cut complexity</label>
+              <select id="planner-cut-complexity" name="cutComplexity">
+                <option value="">Select complexity&hellip;</option>
+                <option value="simple-outline">Simple outline</option>
+                <option value="moderate-detail">Moderate detail</option>
+                <option value="intricate-detail">Intricate detail</option>
+                <option value="nested-parts">Nested parts</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="planner-file-readiness">File readiness</label>
+              <select id="planner-file-readiness" name="fileReadiness">
+                <option value="">Select file readiness&hellip;</option>
+                <option value="vector-ready">Vector file ready (SVG/DXF/AI/PDF)</option>
+                <option value="image-only">Image file only (PNG/JPG)</option>
+                <option value="design-help-needed">Design help needed</option>
+                <option value="no-file-yet">No file yet</option>
+              </select>
+            </div>
+            <p class="fieldset-hint">File types available (select all that apply)</p>
+            <div class="planner-checkbox-grid">
+              <label class="planner-checkbox"><input type="checkbox" name="fileTypeSvg"> SVG</label>
+              <label class="planner-checkbox"><input type="checkbox" name="fileTypeDxf"> DXF</label>
+              <label class="planner-checkbox"><input type="checkbox" name="fileTypeAi"> AI</label>
+              <label class="planner-checkbox"><input type="checkbox" name="fileTypePdf"> PDF</label>
+              <label class="planner-checkbox"><input type="checkbox" name="fileTypePng"> PNG</label>
+              <label class="planner-checkbox"><input type="checkbox" name="fileTypeJpg"> JPG</label>
+              <label class="planner-checkbox"><input type="checkbox" name="fileTypeNone"> None yet</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="planner-fieldset">
+            <legend>Finish, Timing &amp; Delivery</legend>
+            <div class="form-row">
+              <label for="planner-finish">Finish</label>
+              <select id="planner-finish" name="finish">
+                <option value="">Select a finish&hellip;</option>
+                <option value="raw-edge">Raw edge</option>
+                <option value="polished-edge">Polished edge</option>
+                <option value="painted">Painted</option>
+                <option value="assembled">Assembled</option>
+                <option value="packaged">Packaged</option>
+              </select>
+            </div>
+            <div class="form-row form-row-split">
+              <div>
+                <label for="planner-deadline">Deadline</label>
+                <input type="date" id="planner-deadline" name="deadline">
+              </div>
+              <div>
+                <label for="planner-delivery">Delivery preference</label>
+                <select id="planner-delivery" name="delivery">
+                  <option value="">Select&hellip;</option>
+                  <option value="collection">Workshop collection</option>
+                  <option value="delivery">Delivery (quoted separately)</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <label for="planner-notes">Additional notes (optional)</label>
+              <textarea id="planner-notes" name="notes" rows="3"></textarea>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="planner-actions-row">
+          <button type="submit" class="btn-primary">Calculate Quote</button>
+          <button type="button" class="btn-secondary" id="planner-reset">Reset</button>
+        </div>
+        <p class="form-status" id="planner-form-status" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="planner-results" id="planner-results" hidden aria-live="polite">
+        <h3>Your Preliminary Quote Summary</h3>
+
+        <div class="planner-result-grid">
+          <div class="planner-result-card">
+            <h4>Approximate Material Area</h4>
+            <p id="result-area">—</p>
+          </div>
+          <div class="planner-result-card">
+            <h4>Quantity</h4>
+            <p id="result-quantity">—</p>
+          </div>
+          <div class="planner-result-card">
+            <h4>Complexity Indicator</h4>
+            <p id="result-complexity">—</p>
+          </div>
+          <div class="planner-result-card planner-result-card-budget">
+            <h4>Configurable Budget Range</h4>
+            <p id="result-budget">—</p>
+            <p class="planner-result-note">Preliminary estimate only — not a binding quotation.</p>
+          </div>
+        </div>
+
+        <div class="planner-design-warning" id="planner-design-warning" hidden></div>
+
+        <div class="planner-result-lists">
+          <div>
+            <h4>Service Checklist</h4>
+            <ul id="result-service-checklist"></ul>
+          </div>
+          <div>
+            <h4>File Preparation Checklist</h4>
+            <ul id="result-file-checklist"></ul>
+          </div>
+          <div>
+            <h4>Missing Information</h4>
+            <ul id="result-missing"></ul>
+          </div>
+          <div>
+            <h4>Assumptions</h4>
+            <ul id="result-assumptions"></ul>
+          </div>
+          <div>
+            <h4>Next Step</h4>
+            <p id="result-next-step">—</p>
+          </div>
+        </div>
+
+        <div class="planner-summary-block">
+          <h4>Project Summary</h4>
+          <textarea id="result-summary-text" readonly rows="14"></textarea>
+        </div>
+
+        <div class="planner-actions-row planner-actions-final">
+          <button type="button" class="btn-secondary" id="action-copy">Copy Summary</button>
+          <button type="button" class="btn-secondary" id="action-print">Print Summary</button>
+          <button type="button" class="btn-secondary" id="action-download">Download Summary</button>
+          <button type="button" class="btn-whatsapp" id="action-whatsapp">WhatsApp Quote Request</button>
+          <button type="button" class="btn-secondary" id="action-email">Email Quote Request</button>
+        </div>
+        <p class="form-status" id="planner-action-status" role="status" aria-live="polite"></p>
+      </div>
+
+      <!-- Explicit-confirmation panel — no message is ever sent without this -->
+      <div class="planner-confirm-panel" id="planner-confirm-panel" hidden role="dialog" aria-modal="true" aria-labelledby="planner-confirm-heading">
+        <div class="planner-confirm-inner">
+          <h4 id="planner-confirm-heading">Review before sending</h4>
+          <p>Nothing is sent until you confirm. Review the exact message below.</p>
+          <textarea id="planner-confirm-message" readonly rows="8"></textarea>
+          <div class="planner-actions-row">
+            <button type="button" class="btn-primary" id="planner-confirm-send">Confirm &amp; Send</button>
+            <button type="button" class="btn-secondary" id="planner-confirm-cancel">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE FORM -->
+  <section id="quote" class="section" aria-labelledby="quote-heading">
+    <div class="container quote-grid">
+      <div>
+        <span class="section-eyebrow">Request a Quote</span>
+        <h2 id="quote-heading">Get a Free Quote</h2>
+        <p>Fill out the form and we'll get back to you, use the <a href="#planner">Laser Cut &amp; Engraving Quote Planner</a> for an instant estimate, or reach us directly using the details below.</p>
+        <ul class="quote-info-list">
+          <li>Call: <a data-tel-link href="tel:" data-bind="contact.phoneDisplay">(021) 555 0187</a></li>
+          <li>WhatsApp: <a data-whatsapp-link data-whatsapp-default href="#" data-bind="contact.whatsappDisplay">083 555 0164</a></li>
+          <li>Email: <a data-email-link href="mailto:" data-bind="contact.email">hello@example.com</a></li>
+        </ul>
+      </div>
+      <form class="quote-form" id="quote-form" novalidate>
+        <div class="form-row">
+          <label for="quote-name">Full name</label>
+          <input type="text" id="quote-name" name="name" autocomplete="name" aria-describedby="quote-name-error">
+          <p class="field-error" id="quote-name-error"></p>
+        </div>
+        <div class="form-row">
+          <label for="quote-contact">Phone or email</label>
+          <input type="text" id="quote-contact" name="contact" autocomplete="tel" aria-describedby="quote-contact-error">
+          <p class="field-error" id="quote-contact-error"></p>
+        </div>
+        <div class="form-row">
+          <label for="quote-service-type">Service type</label>
+          <select id="quote-service-type" name="serviceType" aria-describedby="quote-service-type-error">
+            <option value="">Select a service type&hellip;</option>
+          </select>
+          <p class="field-error" id="quote-service-type-error"></p>
+        </div>
+        <div class="form-row">
+          <label for="quote-notes">Additional details (optional)</label>
+          <textarea id="quote-notes" name="notes" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn-primary">Review Quote Request</button>
+        <p class="form-status" id="quote-form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section section-alt" aria-labelledby="faq-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">FAQ</span>
+        <h2 id="faq-heading">Frequently Asked Questions</h2>
+      </div>
+      <div class="faq-list" id="faq-list"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT / HOURS -->
+  <section id="contact" class="section" aria-labelledby="contact-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Contact</span>
+        <h2 id="contact-heading">Contact &amp; Workshop Hours</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Contact Details</h3>
+          <p><span data-bind="contact.addressLine1">8 Example Industrial Way, Paarden Eiland</span><br><span data-bind="contact.addressLine2">Cape Town, 7405</span></p>
+          <p>Phone: <a data-tel-link href="tel:" data-bind="contact.phoneDisplay"></a></p>
+          <p>WhatsApp: <a data-whatsapp-link data-whatsapp-default href="#" data-bind="contact.whatsappDisplay"></a></p>
+          <p>Email: <a data-email-link href="mailto:" data-bind="contact.email"></a></p>
+        </div>
+        <div class="contact-card">
+          <h3>Workshop Hours</h3>
+          <div id="hours-list"></div>
+        </div>
+        <div class="contact-card">
+          <h3>Workshop Safety (Sample)</h3>
+          <p data-bind="legal.workshopSafetyStatement"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#top" class="logo"><span class="logo-mark">[PLW]</span> <span data-bind="business.logoText"></span></a>
+        <p style="margin-top:0.75rem;color:var(--text-secondary);font-size:0.85rem;" data-bind="business.tagline"></p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#planner">Quote Planner</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="disclaimer.html">Quote Disclaimer</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <ul>
+          <li><a data-bind-href="social.facebook" href="#">Facebook</a></li>
+          <li><a data-bind-href="social.instagram" href="#">Instagram</a></li>
+          <li><a data-bind-href="social.x" href="#">X</a></li>
+          <li><a data-bind-href="social.linkedin" href="#">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="current-year"></span> <span data-bind="business.name"></span>. Fictional demo business.</span>
+      <span>Website template by iederees-create</span>
+    </div>
+    <p class="footer-disclaimer">This is a demonstration website template. All business names, contact details, statistics and workshop-safety statements shown are fictional sample content and must be replaced with accurate information before this site is used for a real business. The Laser Cut &amp; Engraving Quote Planner produces preliminary, non-binding estimates only — see the <a href="disclaimer.html">Quote Disclaimer</a>.</p>
+  </div>
+</footer>
+
+<div class="mobile-cta-bar">
+  <a data-tel-link href="tel:">Call <span data-bind="contact.phoneDisplay"></span></a>
+  <a href="#planner">Get a Quote</a>
+</div>
+
+<script src="site-config.js"></script>
+<script src="planner.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
