@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://iederees-create.github.io/hydro-clean-ct-ct/sitemap.xml

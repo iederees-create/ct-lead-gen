@@ -1,0 +1,38 @@
+AI DISCLOSURE — TILING CONTRACTOR WEBSITE TEMPLATE
+========================================================
+
+This product was developed with the assistance of an AI coding tool,
+Claude Code (Anthropic).
+
+WHAT AI WAS USED FOR
+- Generating the HTML, CSS, and JavaScript code for this template,
+  including the Surface Cleaning Estimate Planner's calculation engine and wizard UI.
+- Drafting sample/placeholder demo copy (business description, service
+  descriptions, FAQ answers, sample testimonials, legal-page starting text).
+- Drafting this listing's marketing copy, tags, and supporting documents.
+
+WHAT THIS MEANS FOR YOU AS A BUYER
+- All code has been tested locally for functionality (navigation, forms,
+  the 8-step Surface Cleaning Estimate Planner wizard, calculations, WhatsApp/email
+  handoff, accordions, responsive layout, links) before listing.
+- The planner's calculation engine has an automated test suite (31 tests
+  covering unit conversion, multiple areas, wastage, tile/box counts,
+  missing/invalid input, and summary generation) that passed before
+  release.
+- All sample content (names, statistics, testimonials, licence and
+  insurance statements) is fictional placeholder text and is clearly
+  marked as such throughout the site and in site-config.js. You must
+  replace it with your own accurate, verifiable business information.
+- The legal pages (Privacy Policy, Terms of Service, Measurement &
+  Estimate Disclaimer) included are generic AI-assisted starting points,
+  not legal advice. Have them reviewed by a qualified professional for
+  your jurisdiction before publishing a live business site.
+- The Surface Cleaning Estimate Planner's material-guidance coverage rates (adhesive,
+  grout, levelling, waterproofing) are indicative defaults, not verified
+  product specifications. Confirm real coverage rates from your chosen
+  product's technical data sheet before configuring your own values.
+- This is a digital download. No physical item is shipped, and delivery is
+  via digital file download only.
+
+This disclosure is provided for transparency and to help you make an
+informed purchase decision.

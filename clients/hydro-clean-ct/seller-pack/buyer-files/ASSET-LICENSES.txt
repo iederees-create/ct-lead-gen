@@ -1,0 +1,45 @@
+TILING CONTRACTOR WEBSITE TEMPLATE — ASSET LICENSES
+=========================================================
+
+This file records the origin and licence of every non-code asset used
+in this template, as required for commercial resale.
+
+1. FONTS
+   - System font stack only: ui-serif/Georgia/"Times New Roman" for
+     headings, system-ui/-apple-system/"Segoe UI"/Roboto for body text,
+     ui-monospace/"SFMono-Regular"/Menlo/Consolas for code.
+   - No external font files, Google Fonts, or other font CDN are loaded.
+     This removes an external dependency present in earlier template
+     iterations and improves load performance and offline reliability.
+
+2. ICONS / GRAPHICS
+   - favicon.svg — originally created for this template using basic SVG
+     shapes (no external asset). Free to use/modify/resell as part of
+     this template.
+   - og-image.svg — originally created for this template using basic SVG
+     shapes and typography (no external asset). Free to use/modify/resell.
+   - Unicode glyph icons used for services and process steps (e.g. ▦ ▤ ◈)
+     are rendered via the end-user's operating system / browser font and
+     are not bundled image files.
+   - Project-gallery "layout pattern" swatches (straight lay, brick bond,
+     diagonal, herringbone, chevron, large format) are CSS-drawn gradient
+     patterns, not photographs or bundled image files.
+
+3. IMAGES
+   - No third-party photographs are bundled with this template.
+   - Etsy listing screenshots (in seller-pack/images/) are original
+     screenshots and compositions of this template's own rendered pages,
+     captured for this listing. No competitor or stock photography is
+     included.
+
+4. THIRD-PARTY RUNTIME LINKS (not bundled assets)
+   - wa.me (WhatsApp) — used only as an outbound link target when a
+     visitor clicks a WhatsApp button or the Surface Cleaning Estimate Planner's
+     "Send via WhatsApp" action; no WhatsApp code or image is bundled.
+   - Google Maps embed — the Service Area section links to an embeddable
+     Google Maps URL as a placeholder; replace with your own map/location
+     details. No Google code is bundled beyond the standard iframe embed.
+
+If you replace any placeholder content (e.g. team photos, real logo)
+with your own images, you are responsible for ensuring you hold the
+appropriate rights or licence for those replacement assets.
