@@ -1,89 +1,106 @@
 {
-  "internal_product_name": "Exterior Cleaning Business Website Template",
-  "internal_name": "Exterior Cleaning Business Website Template",
-  "product_type": "digital",
-  "digital_product_type": "website_template",
-  "target_customer": "exterior cleaning contractors, flooring installers, bathroom renovators, waterproofing businesses and local home-improvement companies",
+  "internal_product_name": "Exterior Cleaning Website Template for Pressure Washing Businesses",
+  "target_customer": "pressure washing businesses, roof cleaners, gutter cleaners, paving cleaners, solar panel cleaners and exterior property maintenance businesses",
   "category": "Website Templates",
-  "subcategory": "Templates > Website Templates",
-  "sku": "TILING-WEB-001",
+  "subcategory": "Website Templates",
+  "sku": "HYDRO-CLEAN-WEB-001",
   "quantity": 999,
-  "target_price": 49,
-  "price": 49,
-  "target_price_currency_note": "Confirm against the connected Etsy shop currency before draft creation.",
-  "live_demo_url": "https://iederees-create.github.io/hydro-clean-ct-ct/",
-  "materials": "HTML5, CSS3, JavaScript",
-  "style": "Architectural, Professional, Responsive, Lead Generation",
-  "ai_tools_used": "Claude Code (Anthropic)",
-  "renewal_setting": "manual",
-  "notes": "Digital download; no physical item ships. Demo business (\"Hydro Clean\") and all contact details, statistics and testimonials are fictional sample content. The Surface Cleaning Estimate Planner produces preliminary planning estimates only, not a binding quote. Refunds subject to Etsy's digital-item policies and applicable consumer-protection law. Confirm target price of 49 against the shop's actual default currency before publishing.",
-
-  "main_features": "Mobile-first responsive layout with a functional hamburger navigation menu, Premium architectural design system (limestone/charcoal/clay/muted brass) with three switchable colour themes, Original interactive Surface Cleaning Estimate Planner and Quote Builder: an 8-step wizard covering project type, measurements (m/cm/ft/in, single/multiple/wall/floor-plus-wall modes), area dimensions, layout pattern, site conditions, wastage presets, instant area/tile/box/cost estimate with indicative material guidance, and copy/print/download/WhatsApp/email quote handoff, Unit-tested calculation engine (31 automated Node tests covering unit conversion, multiple areas, wastage, tile/box counts, missing/invalid input, decimals, and summary generation), Service sections for floor, wall, bathroom, kitchen, waterproofing, pool surrounds, feature walls, grouting and repairs, residential and commercial projects, Project gallery of CSS-drawn layout-pattern previews (straight lay, brick bond, diagonal, herringbone, chevron, large format), exterior cleaning process timeline, surface-preparation explainer, service-area coverage list with map embed, About/team section and why-choose-us section, Sample testimonials clearly labelled as demo content, Accessible keyboard-operable FAQ accordion, Client-side quote-form validation with automatic WhatsApp message construction and a print-friendly summary, Privacy Policy/Terms of Service/Measurement & Estimate Disclaimer pages plus a custom 404 page, Local SEO metadata/Open Graph tags/structured data, robots.txt/sitemap.xml/favicon/Open Graph image, No external CSS/JS/font/image dependencies, Central site-config.js file for rebranding without editing HTML/CSS/JS, Visible keyboard focus states and prefers-reduced-motion support",
-  "whats_included": "hydro-clean-template.zip, START-HERE.html, COMPLETE-BUYER-GUIDE.html, LICENSE.txt, AI-DISCLOSURE.txt",
-  "how_it_works": "Buyer downloads the files after purchase, Buyer unzips the downloaded folder, Buyer opens START-HERE.html for a guided orientation, Buyer edits site-config.js with their own business name, contact details, services, prices, colours, testimonials and Surface Cleaning Estimate Planner settings, Buyer previews changes locally by opening index.html in a browser and testing the planner, Buyer deploys the finished site to GitHub Pages or another static host",
-  "customer_benefits": "No coding experience required for a standard rebrand, A genuinely useful lead-generation tool built in, not just a contact form, Launch a professional exterior cleaning business website in hours not weeks, Free hosting options available (GitHub Pages, Netlify, Vercel), Fully documented with a start-here guide and complete buyer guide, Accessible, SEO-ready and mobile-responsive out of the box, Reusable for a single client project under the included commercial licence",
-
-  "title_options": [
-    "Exterior Cleaning Business Website Template with Tile Calculator, Flooring & Renovation Quote Site, Digital Download",
-    "Exterior Cleaning Website Template | Tile Calculator, Flooring & Bathroom Renovation Quote Builder | HTML Digital Download",
-    "Responsive Exterior Cleaning Business Website Template for Flooring & Renovation Businesses | Tile Calculator Included"
+  "target_price": 1049,
+  "etsy_taxonomy_id": null,
+  "materials": [
+    "HTML5",
+    "CSS3",
+    "JavaScript"
   ],
-  "title_option_1": "Exterior Cleaning Business Website Template with Tile Calculator, Flooring & Renovation Quote Site, Digital Download",
-  "title_option_2": "Exterior Cleaning Website Template | Tile Calculator, Flooring & Bathroom Renovation Quote Builder | HTML Digital Download",
-  "title_option_3": "Responsive Exterior Cleaning Business Website Template for Flooring & Renovation Businesses | Tile Calculator Included",
-  "recommended_title_index": 0,
-
-  "description": "Hydro Clean is a premium, responsive website template built for exterior cleaning businesss, flooring installers, bathroom renovators, waterproofing specialists, and other home-improvement businesses. It includes an original, interactive Surface Cleaning Estimate Planner that calculates area, surface area, boxes and wastage. This is a DIGITAL DOWNLOAD delivered as files — NO PHYSICAL ITEM IS SHIPPED. All business information shown in the live demo (business name, contact details, statistics, and testimonials) is FICTIONAL SAMPLE CONTENT created to showcase the template's layout and features; buyers replace it with their own real business details via a single site-config.js configuration file before publishing. The Surface Cleaning Estimate Planner produces preliminary planning estimates only, not a binding quote. This product's code and copy were developed with the assistance of Claude Code (Anthropic), an AI coding tool (see AI-DISCLOSURE.txt). As a non-returnable digital product delivered instantly on purchase, refunds are handled subject to Etsy's digital-item policies and applicable consumer-protection law, and are generally only considered for a genuine defect in the template itself. Live demo: https://iederees-create.github.io/hydro-clean-ct-ct/",
-  "short_summary": "A premium, responsive HTML/CSS/JS website template for exterior cleaning businesss and flooring businesses with an original interactive Surface Cleaning Estimate Planner — no coding required to rebrand, just edit one configuration file and deploy.",
-
-  "keywords": "exterior cleaning website, tile calculator, contractor site, flooring website, renovation site, website template, html css template, responsive website, small business site, local service site, digital download, quote form website, bathroom renovation",
-  "tags": [
+  "style": [
+    "Responsive",
+    "Professional",
+    "Lead Generation"
+  ],
+  "ai_tools_used": [
+    "OpenAI Codex",
+    "Claude Code"
+  ],
+  "features": [
+    "Responsive exterior cleaning website",
+    "Configurable business details and services",
+    "Six-step surface cleaning estimate and request planner",
+    "Surface type, measurements, soiling, access, timing and contact capture",
+    "WhatsApp, email, copy and print handoff",
+    "SEO and accessibility basics",
+    "Privacy, terms, disclaimer and 404 starter pages"
+  ],
+  "included_files": [
+    "Website template ZIP",
+    "START-HERE guide",
+    "Complete buyer guide",
+    "Licence",
+    "AI disclosure"
+  ],
+  "how_it_works": [
+    "Download the digital files",
+    "Unzip the buyer package",
+    "Open START-HERE",
+    "Customise site-config.js",
+    "Test the planner and contact links",
+    "Deploy to your chosen static host"
+  ],
+  "customer_benefits": [
+    "Collect more structured quote requests",
+    "Rebrand through one configuration file",
+    "Use without a build system",
+    "Adapt service and pricing assumptions to the business"
+  ],
+  "keywords": [
     "exterior cleaning website",
-    "tile calculator",
-    "contractor site",
-    "flooring website",
-    "renovation site",
+    "pressure washing website",
+    "cleaning quote planner",
     "website template",
+    "digital download"
+  ],
+  "tags": [
+    "pressure wash site",
+    "cleaning website",
+    "website template",
+    "quote planner",
+    "service business",
+    "pressure washing",
+    "roof cleaning",
+    "gutter cleaning",
+    "solar panel clean",
+    "paving cleaning",
     "html css template",
-    "responsive website",
-    "small business site",
-    "local service site",
     "digital download",
-    "quote form website",
-    "bathroom renovation"
+    "responsive website"
   ],
-
+  "content_fields": {
+    "title_options": [
+      "Exterior Cleaning Website Template for Pressure Washing Businesses",
+      "Pressure Washing Website Template with Cleaning Quote Request Planner",
+      "Exterior Cleaning Business Website Template Digital Download"
+    ],
+    "description": "# Exterior Cleaning Website Template for Pressure Washing Businesses\n\n**Digital download — no physical item will be shipped.**\n\nBuild a clearer online enquiry experience for a pressure washing or exterior property cleaning business. This responsive HTML, CSS and JavaScript website template includes a configurable surface cleaning estimate and request planner, service sections, quote form, WhatsApp and email handoff, FAQ, SEO starter metadata and editable legal starter pages.\n\n## What you receive\n\n- Complete responsive website template\n- Surface cleaning estimate/request planner\n- Pressure washing, roof cleaning, gutter cleaning, paving, solar panel cleaning and related configurable service content\n- WhatsApp, email, copy and print summary actions\n- Privacy, terms, disclaimer and 404 starter pages\n- START-HERE and rebranding guides\n- Single-end-business licence and AI disclosure\n\n## Customise it for your business\n\nEdit `site-config.js` to replace the sample branding, contact details, service areas, services, colours, pricing assumptions, coverage assumptions, FAQs and other business content. All demo details and sample placeholders must be reviewed before publishing.\n\n## Important notes\n\n- This is a website template, not a hosted website.\n- Hosting and domain registration are not included.\n- No booking platform, payment gateway or server-side form service is included.\n- Planner results are preliminary and are not binding quotes.\n- Surface suitability, methods, scope and pricing must be confirmed by the business.\n- No leads, search rankings, enquiries or sales are guaranteed.\n- Legal pages are general starters, not legal advice.\n- AI-assisted tools were used during code and copy development; see the included disclosure.\n\nThe download works on static hosting such as GitHub Pages, Netlify, Vercel or a conventional web host. Buyers are responsible for configuration, deployment and compliance with local requirements.\n",
+    "short_summary": "Responsive exterior cleaning website template with a configurable surface cleaning quote and request planner."
+  },
   "listing_image_paths": [
-    "images/01-cover.png",
-    "images/02-desktop.png",
-    "images/03-mobile.png",
-    "images/04-planner.png",
-    "images/05-results.png",
-    "images/06-quote-whatsapp.png",
-    "images/07-services-gallery.png",
-    "images/08-site-config.png",
-    "images/09-themes.png",
-    "images/10-included-files.png"
+    "media/images/01-homepage.png",
+    "media/images/02-services.png",
+    "media/images/03-gallery.png",
+    "media/images/04-process.png",
+    "media/images/05-planner-start.png",
+    "media/images/06-responsive-tablet.png",
+    "media/images/07-responsive-mobile.png",
+    "media/images/08-faq.png",
+    "media/images/09-quote.png",
+    "media/images/10-contact.png"
   ],
-  "cover_image_path": "images/01-cover.png",
-  "image_alt_texts": [
-    "exterior cleaning contractor website template cover image showing the interactive tile calculator, responsive design, and digital download",
-    "Desktop homepage view of the exterior cleaning business website template with hero, services grid, and premium architectural design",
-    "Mobile homepage and open hamburger navigation menu on the exterior cleaning business website template",
-    "Surface Cleaning Estimate Planner interactive tool showing the project-type selection step of the 8-step wizard",
-    "Surface Cleaning Estimate Planner results step showing measured area, wastage, tile count, box count, and material cost",
-    "Surface Cleaning Estimate Planner structured quote summary with copy, print, download, and WhatsApp send options",
-    "Exterior cleaning services grid and project gallery of layout patterns including herringbone and chevron",
-    "site-config.js configuration file used to rebrand the exterior cleaning website template without editing HTML",
-    "Three colour theme presets: Limestone Studio, Charcoal Brass, and Coastal Clay",
-    "List of included files, buyer guide, and support documentation in the exterior cleaning website template package"
-  ],
-
+  "buyer_package_dir": "buyer-files",
   "buyer_file_paths": [
-    "buyer-files/hydro-clean-template.zip",
-    "buyer-files/START-HERE.html",
-    "buyer-files/COMPLETE-BUYER-GUIDE.html",
-    "buyer-files/LICENSE.txt",
-    "buyer-files/AI-DISCLOSURE.txt"
-  ]
+    "hydro-clean-exterior-cleaning-template.zip",
+    "START-HERE.html",
+    "COMPLETE-BUYER-GUIDE.html",
+    "LICENSE.txt",
+    "AI-DISCLOSURE.txt"
+  ],
+  "notes": "Digital download website template. Buyer customises branding, contact details, services and pricing assumptions. No hosting or domain included. No guaranteed leads or sales. Planner output is preliminary and non-binding."
 }

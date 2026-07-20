@@ -1,19 +1,19 @@
 /**
  * HYDRO CLEAN — SITE CONFIGURATION
  * ============================================================
- * Edit the values below to rebrand this template for a real exterior cleaning,
- * flooring, or renovation business. You should NOT need to touch
- * index.html, style.css, app.js or planner.js for ordinary business
- * changes (name, contact details, services, prices, testimonials,
- * FAQs, colours, wastage presets, etc).
+ * Edit the values below to rebrand this template for a real exterior
+ * cleaning business. You should NOT need to touch index.html,
+ * style.css, app.js or planner.js for ordinary business changes
+ * (name, contact details, services, prices, testimonials, FAQs,
+ * colours, surface/condition/access presets, etc).
  *
  * IMPORTANT: All contact details, ratings, stats, testimonials, project
  * photos, and licence/insurance statements below are FICTIONAL SAMPLE
  * CONTENT for demonstration purposes only. Replace every field with
  * your real, verifiable business information before publishing this
  * site. See the measurement disclaimer at the bottom of this file
- * before configuring the Surface Cleaning Estimate Planner's pricing/material
- * guidance fields.
+ * before configuring the Surface Cleaning Estimate Planner's pricing
+ * fields.
  * ============================================================
  */
 window.SITE_CONFIG = {
@@ -129,35 +129,35 @@ window.SITE_CONFIG = {
   // ---- PROJECT TYPES (used by both the Services grid and the Planner) --
   projectTypes: ["Driveway or paving", "Exterior wall", "Roof", "Gutters", "Windows", "Solar panels", "Commercial exterior", "Other"],
 
-  // ---- SAMPLE LAYOUT GALLERY (CSS-drawn pattern previews, not photos) --
+  // ---- SAMPLE SURFACE GALLERY (CSS-drawn pattern previews, not photos) --
   // No fabricated "before and after" job photography is used in this
-  // template. The gallery below renders illustrative layout-pattern
-  // previews (straight lay, brick bond, herringbone, etc.) that double
-  // as a visual reference for the Surface Cleaning Estimate Planner's Layout step.
-  layoutGallery: [
-    { id: "straight-lay", name: "Straight Lay", note: "Classic grid layout — lowest cutting waste, fastest install." },
-    { id: "brick-bond", name: "Brick Bond", note: "Offset joints for a running-bond look — moderate cutting waste." },
-    { id: "diagonal", name: "Diagonal", note: "45° lay that visually widens a room — higher cutting waste." },
-    { id: "herringbone", name: "Herringbone", note: "Interlocking zig-zag pattern — higher labour and cutting waste." },
-    { id: "chevron", name: "Chevron", note: "Angle-cut V pattern — highest precision and material waste." },
-    { id: "large-format", name: "Large Format", note: "Fewer, bigger tiles — fewer grout lines, careful substrate flatness required." }
+  // template. The gallery below renders illustrative pattern swatches
+  // for each surface type this business cleans — replace with your own
+  // permission-cleared project photography when you have it.
+  surfaceGallery: [
+    { id: "concrete-paving", name: "Concrete & Paving", note: "Driveways, patios and walkways — pressure-washed to remove grime and staining." },
+    { id: "siding", name: "Siding & Exterior Walls", note: "Vinyl, aluminium and rendered walls — soft-washed to protect the finish." },
+    { id: "roof", name: "Roofs", note: "Tile and shingle roofs — cleaned with method and pressure matched to the material." },
+    { id: "decking", name: "Wood Decking", note: "Timber decks and boardwalks — cleaned to lift grime without damaging the surface." },
+    { id: "gutters", name: "Gutters & Downpipes", note: "Debris removal and a downpipe flow check." },
+    { id: "solar", name: "Solar Panels", note: "Cleaned using methods compatible with manufacturer guidance." }
   ],
 
   process: [
-    { step: 1, title: "Plan Your Project", text: "Use the Surface Cleaning Estimate Planner to estimate area, surface area, and boxes, or submit the quote form directly." },
-    { step: 2, title: "Site Visit", text: "A tiler reviews the space in person to confirm measurements, substrate condition, and any preparation work needed." },
-    { step: 3, title: "Written Quote", text: "You receive a written quote covering materials, preparation, labour, and estimated timeline before any work begins." },
-    { step: 4, title: "Preparation", text: "Existing tile removal, levelling, and waterproofing (where required) are completed ahead of exterior cleaning." },
-    { step: 5, title: "exterior cleaning & Finishing", text: "Tiles are laid to the agreed pattern, followed by grouting, sealing, and a final walkthrough." }
+    { step: 1, title: "Plan Your Project", text: "Use the Surface Cleaning Estimate Planner to estimate area and cleaning time, or submit the quote form directly." },
+    { step: 2, title: "Site Assessment", text: "Our team reviews the space (in person or via your photos) to confirm measurements, surface condition, and access requirements." },
+    { step: 3, title: "Written Quote", text: "You receive a written quote covering method, access, labour, and estimated timeline before any work begins." },
+    { step: 4, title: "Preparation", text: "Plants, fixtures, and fragile surfaces near the work area are protected, and the chosen method is tested on an inconspicuous area first." },
+    { step: 5, title: "Cleaning & Walkthrough", text: "The surface is cleaned using the agreed method, followed by a rinse, debris removal, and a final walkthrough." }
   ],
 
   surfacePreparation: {
-    heading: "Why Surface Preparation Matters",
-    text: "Tile life and finish quality depend heavily on what happens before the first tile goes down: removing failed existing tile, levelling an uneven substrate, and waterproofing wet areas. Replace this section with your own surface-preparation process, products, and standards."
+    heading: "Why Surface Assessment Matters",
+    text: "Cleaning results and surface safety depend heavily on matching the method to the material: pressure level, chemical use, and technique all vary by surface type and condition. Replace this section with your own surface-assessment process, equipment, and standards."
   },
 
   team: [
-    { name: "Sample Contractor Name", role: "Lead Tiler (sample placeholder)", bio: "Replace with your real name, trade licence/certification numbers (if applicable in your jurisdiction), and years of experience." },
+    { name: "Sample Contractor Name", role: "Lead Technician (sample placeholder)", bio: "Replace with your real name, trade licence/certification numbers (if applicable in your jurisdiction), and years of experience." },
     { name: "Sample Contractor Name", role: "Site Supervisor (sample placeholder)", bio: "Replace with your real staff information." },
     { name: "Sample Office Contact", role: "Client Coordinator (sample placeholder)", bio: "Replace with your real staff information." }
   ],
@@ -179,14 +179,14 @@ window.SITE_CONFIG = {
   faqs: [
     { q: "Is Hydro Clean a real company?", a: "No. \"Hydro Clean\" is a fictional demonstration business used to showcase this website template. Replace all business details with your own before publishing." },
     { q: "How do I request a quote?", a: "Use the quote form, the Surface Cleaning Estimate Planner's \"Request Site Visit\" action, call the listed phone number, or message on WhatsApp. All contact details shown are placeholders until you configure your own." },
-    { q: "How accurate is the Surface Cleaning Estimate Planner?", a: "The planner gives a preliminary planning estimate based on the measurements and settings you enter. Actual material needs vary by tile type, layout, cuts, breakage, and site conditions — it is not a binding quote. See the measurement disclaimer for details." },
-    { q: "Do I need to know exact area dimensionss to use the planner?", a: "No — you can enter approximate dimensions and adjust later. The planner clearly lists what additional information is still needed for a firm quote." },
-    { q: "Are your tilers licensed and insured?", a: "This is a placeholder question. Do not publish claims about licensing, certification, or insurance unless you can verify them for your business, and check your local regulatory requirements." },
+    { q: "How accurate is the Surface Cleaning Estimate Planner?", a: "The planner gives a preliminary planning estimate based on the measurements and settings you enter. Actual time and cost vary by surface condition, access, equipment, and site conditions — it is not a binding quote. See the measurement disclaimer for details." },
+    { q: "Do I need to know exact area dimensions to use the planner?", a: "No — you can enter approximate dimensions and adjust later. The planner clearly lists what additional information is still needed for a firm quote." },
+    { q: "Are your technicians licensed and insured?", a: "This is a placeholder question. Do not publish claims about licensing, certification, or insurance unless you can verify them for your business, and check your local regulatory requirements." },
     { q: "What exterior cleaning services do you offer?", a: "See the Services section on this page. Edit the services list in site-config.js to match what you actually offer." },
-    { q: "Do you handle waterproofing?", a: "The demo lists waterproofing as a sample service. Replace the details with your real waterproofing systems, certifications, and warranty terms, if any." },
+    { q: "Do you clean gutters and downpipes?", a: "The demo lists gutter cleaning as a sample service. Replace the details with your real scope, exclusions, and equipment, if any." },
     { q: "What areas do you service?", a: "See the Service Areas section. Edit the serviceAreas list in site-config.js to reflect your real coverage." },
-    { q: "How much does exterior cleaning cost?", a: "Sample starting prices are shown next to each service as placeholders. Replace them with your real, current pricing, and configure real per-tile or per-box pricing in the planner if you want cost estimates shown." },
-    { q: "Can I use my own tiles that I already purchased?", a: "Yes — select \"material already purchased\" in the planner's project-conditions step so your quote request reflects that." },
+    { q: "How much does exterior cleaning cost?", a: "Sample starting prices are shown next to each service as placeholders. Replace them with your real, current pricing, and configure your real hourly or per-m² rate in the planner if you want cost estimates shown." },
+    { q: "Do I need to be home during the cleaning?", a: "This is a placeholder question. Describe your real access, entry, and communication requirements for occupied vs. unoccupied properties here." },
     { q: "How do I customise this template?", a: "Open site-config.js and edit the business, contact, services, pricing, testimonials, FAQ, theme, and planner values. See the buyer guide included with this template for full instructions." }
   ],
 
@@ -195,45 +195,50 @@ window.SITE_CONFIG = {
     unitDefault: "m", // one of: m, cm, ft, in
     currencySymbol: "$",
 
-    wastagePresets: [
-      { id: "standard", label: "10% — Standard", value: 10, note: "Typical starting point for straight-lay rectangular rooms." },
-      { id: "larger-cuts", label: "12% — Larger tiles or more cuts", value: 12, note: "Rooms with more corners, niches, or larger-format tile." },
-      { id: "complex", label: "15% — Diagonal or complex layout", value: 15, note: "Diagonal, herringbone, chevron, or heavily cut layouts." },
-      { id: "custom", label: "Custom percentage", value: null, note: "Enter your own wastage allowance." }
+    // Surface type drives the estimated cleaning time via an indicative
+    // m²-per-hour coverage rate. These rates vary enormously by
+    // equipment, technician experience, and site conditions — treat
+    // them as a starting point and adjust to match your real business.
+    surfaceTypes: [
+      { id: "concrete-paving", label: "Concrete / Paving", coverageRatePerHourM2: 40 },
+      { id: "siding", label: "Vinyl / Aluminium Siding", coverageRatePerHourM2: 30 },
+      { id: "roof", label: "Roof Tiles / Shingles", coverageRatePerHourM2: 20 },
+      { id: "decking", label: "Wood Decking", coverageRatePerHourM2: 25 },
+      { id: "glass", label: "Glass / Windows", coverageRatePerHourM2: 15 },
+      { id: "solar", label: "Solar Panels", coverageRatePerHourM2: 20 },
+      { id: "masonry", label: "Brick / Masonry", coverageRatePerHourM2: 20 },
+      { id: "other", label: "Other / Not Listed", coverageRatePerHourM2: null }
     ],
-    wastageDisclaimer: "These wastage percentages are general planning starting points, not universally exact figures. Actual breakage and cutting waste vary by tile type, layout, installer skill, and room geometry.",
 
-    // Material guidance is OPTIONAL, INDICATIVE ONLY, and fully
-    // configurable/disableable by the buyer. Coverage rates for
-    // adhesive, grout, levelling compound, and waterproofing vary
-    // enormously by brand, trowel notch size, area dimensions, and substrate —
-    // do not present these as universally correct.
-    materialGuidance: {
-      enabled: true,
-      disclaimer: "Adhesive, grout, levelling, and waterproofing guidance below is indicative planning guidance only, not a purchasing specification. Always confirm actual coverage rates from your chosen product's technical data sheet.",
-      adhesiveCoveragePerBagM2: 4.5,
-      groutCoveragePerKgM2: 3.5,
-      levellingCompoundCoveragePerBagM2: 2.5,
-      waterproofingCoveragePerLM2: 1.8
-    },
+    conditionLevels: [
+      { id: "light", label: "Light — routine maintenance clean", timeMultiplier: 0 },
+      { id: "moderate", label: "Moderate — visible dirt or grime", timeMultiplier: 10 },
+      { id: "heavy", label: "Heavy — algae, mould or heavy buildup", timeMultiplier: 25 },
+      { id: "severe", label: "Severe — neglected for years / heavy staining", timeMultiplier: 45 }
+    ],
+
+    accessLevels: [
+      { id: "ground", label: "Ground level — easy access", timeMultiplier: 0 },
+      { id: "ladder", label: "Requires a ladder", timeMultiplier: 15 },
+      { id: "multi-storey", label: "Multi-storey or scaffold/rope access needed", timeMultiplier: 30 },
+      { id: "restricted", label: "Restricted or hard-to-reach area", timeMultiplier: 15 }
+    ],
 
     features: {
       enablePricing: true,
-      enableMaterialGuidance: true,
       enableSaveProgress: true,
       enablePhotoPreview: true
     },
 
-    whatsappMessageIntro: "Hi Hydro Clean, I'd like a quote for a exterior cleaning project. Here is my Surface Cleaning Estimate Planner summary:",
+    whatsappMessageIntro: "Hi Hydro Clean, I'd like a quote for an exterior cleaning project. Here is my Surface Cleaning Estimate Planner summary:",
 
     photoChecklist: [
-      "Full room / area (wide shot)",
-      "Floor or wall surface close-up",
-      "Corners and edges",
-      "Doorways and thresholds",
-      "Any damaged or uneven areas",
-      "Existing tiles (if being replaced)",
-      "Plumbing fixtures or shower area (if applicable)"
+      "Full area to be cleaned (wide shot)",
+      "Close-up of soiling, staining or algae",
+      "Access points (gates, ladders, restricted areas)",
+      "Any fragile or delicate surfaces nearby",
+      "Gutters or drainage (if relevant to your request)",
+      "Plants, pets, or fixtures near the work area"
     ],
 
     privacyNote: "Measurements and project details you enter stay in your browser and are not sent anywhere unless you explicitly choose a contact action (WhatsApp, email, or Request Site Visit). Contact details are not saved automatically — saving your progress is optional and only happens if you turn it on."
@@ -244,6 +249,6 @@ window.SITE_CONFIG = {
     licenceStatement: "Sample placeholder — insert your real trade licence/registration number(s) here if applicable in your jurisdiction, or remove this line if not applicable.",
     insuranceStatement: "Sample placeholder — insert your real insurance details here only if verified and accurate, or remove this line.",
     disclaimerSummary: "All business information, contact details, statistics, ratings, testimonials, and licensing statements on this demonstration site are fictional sample content and must be replaced with accurate, verifiable information before this site is used for a real business.",
-    measurementDisclaimer: "Surface Cleaning Estimate Planner results are preliminary planning estimates only. Actual tile, adhesive, grout, and material quantities vary by tile type, layout, cuts, breakage, and site conditions. This tool does not provide a binding quote, and a professional site inspection is typically required before a firm price can be given. Business owners must configure accurate local pricing and only publish business claims (licensing, insurance, certification, guarantees) that they can verify."
+    measurementDisclaimer: "Surface Cleaning Estimate Planner results are preliminary planning estimates only. Actual time and cost vary by surface condition, access, equipment, weather, and site conditions. This tool does not provide a binding quote, and a professional site assessment is typically required before a firm price can be given. Business owners must configure accurate local pricing and only publish business claims (licensing, insurance, certification, guarantees) that they can verify."
   }
 };

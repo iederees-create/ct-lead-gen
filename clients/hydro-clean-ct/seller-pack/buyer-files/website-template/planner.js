@@ -5,19 +5,19 @@
  *
  * Exposes two things on window.SurfacePlanner:
  *   - calc: pure, dependency-free calculation functions (unit
- *     conversion, area, allowance, surface/box counts, material
- *     guidance, summary text). These are unit-tested directly
- *     from Node — see tests/planner.test.js — and are also
- *     usable via `require()` in a CommonJS test runner because of
- *     the export shim at the bottom of this file.
+ *     conversion, area, complexity adjustment, time estimate,
+ *     summary text). These are unit-tested directly from Node —
+ *     see tests/planner.test.js — and are also usable via
+ *     `require()` in a CommonJS test runner because of the export
+ *     shim at the bottom of this file.
  *   - ui: the accessible multi-step wizard that mounts into
  *     #surface-planner-app and calls into `calc`.
  *
  * IMPORTANT: this tool produces PRELIMINARY PLANNING ESTIMATES
  * ONLY. It does not calculate a binding labour quote, and it does
- * not claim cleaning input/solution/access review coverage rates are
- * universally exact. See site-config.js `planner.materialGuidance`
- * and `legal.measurementDisclaimer`.
+ * not claim time/coverage rates are universally exact. See
+ * site-config.js `planner.surfaceTypes` and
+ * `legal.measurementDisclaimer`.
  * ============================================================
  */
 (function (root) {
@@ -106,56 +106,63 @@
     return { total: total, perEntry: perEntry, hasErrors: hasErrors };
   }
 
-  /** Applies a allowance percentage (e.g. 10 for 10%) to an area. Never negative. */
-  function applyAllowance(areaM2, allowancePercent) {
+  /** Applies a complexity adjustment percentage (e.g. 15 for +15%) to an area. Never negative. */
+  function applyAdjustment(areaM2, adjustmentPercent) {
     if (!isFiniteNumber(areaM2) || areaM2 < 0) return 0;
-    var pct = isFiniteNumber(allowancePercent) && allowancePercent >= 0 ? allowancePercent : 0;
+    var pct = isFiniteNumber(adjustmentPercent) && adjustmentPercent >= 0 ? adjustmentPercent : 0;
     var result = areaM2 * (1 + pct / 100);
     return isFiniteNumber(result) && result >= 0 ? result : areaM2;
   }
 
-  /** Area of a single surface in m², from length/width given in centimetres. */
-  function surfaceAreaM2(surfaceLengthCm, surfaceWidthCm) {
-    var l = validateDimension(surfaceLengthCm, "Surface length");
-    var w = validateDimension(surfaceWidthCm, "Surface width");
-    if (l.value === null || w.value === null) return null;
-    var area = (l.value / 100) * (w.value / 100);
-    return isFiniteNumber(area) && area > 0 ? area : null;
-  }
-
-  /** Number of estimated surface units, rounded up. Never negative/NaN/Infinity. */
-  function calcSurfaceCount(adjustedAreaM2, surfaceAreaSqM) {
-    if (!isFiniteNumber(adjustedAreaM2) || adjustedAreaM2 <= 0) return 0;
-    if (!isFiniteNumber(surfaceAreaSqM) || surfaceAreaSqM <= 0) return null;
-    var count = Math.ceil(adjustedAreaM2 / surfaceAreaSqM);
-    return isFiniteNumber(count) && count >= 0 ? count : null;
-  }
-
-  /**
-   * Rate units required. Prefers surfacesPerBox; falls back to sqmPerBox.
-   * Returns null when neither is supplied (unknown, not zero).
-   */
-  function calcBoxCount(surfaceCount, sqmTotal, surfacesPerBox, sqmPerBox) {
-    var perBox = validateDimension(surfacesPerBox, "Rate units");
-    if (perBox.value !== null && isFiniteNumber(surfaceCount) && surfaceCount >= 0) {
-      return Math.ceil(surfaceCount / perBox.value);
-    }
-    var perBoxArea = validateDimension(sqmPerBox, "Area per box");
-    if (perBoxArea.value !== null && isFiniteNumber(sqmTotal) && sqmTotal >= 0) {
-      return Math.ceil(sqmTotal / perBoxArea.value);
+  /** Looks up a named option (by id) in a config array of {id, ...}. Returns null if not found/configured. */
+  function findOption(list, id) {
+    if (!Array.isArray(list) || !id) return null;
+    for (var i = 0; i < list.length; i++) {
+      if (list[i].id === id) return list[i];
     }
     return null;
   }
 
-  /** Estimated material cost. Returns null when no pricing was supplied. */
-  function calcMaterialCost(surfaceCount, boxCount, pricePerSurface, pricePerBox) {
-    var boxPrice = validateDimension(pricePerBox, "Price per box");
-    if (boxPrice.value !== null && isFiniteNumber(boxCount) && boxCount >= 0) {
-      return round2(boxPrice.value * boxCount);
+  /**
+   * Combined complexity adjustment (%) from the selected condition level
+   * and access level. Each contributes its configured timeMultiplier;
+   * unrecognised/unselected levels contribute 0. Never negative.
+   */
+  function calcComplexityPercent(conditionLevelId, accessLevelId, cfg) {
+    var conditionOpt = findOption(cfg && cfg.conditionLevels, conditionLevelId);
+    var accessOpt = findOption(cfg && cfg.accessLevels, accessLevelId);
+    var conditionPct = conditionOpt && isFiniteNumber(conditionOpt.timeMultiplier) ? conditionOpt.timeMultiplier : 0;
+    var accessPct = accessOpt && isFiniteNumber(accessOpt.timeMultiplier) ? accessOpt.timeMultiplier : 0;
+    var total = conditionPct + accessPct;
+    return total >= 0 ? total : 0;
+  }
+
+  /**
+   * Estimated cleaning time in hours, rounded up to the nearest half
+   * hour with a sensible minimum. Returns null when no coverage rate
+   * is configured for the selected surface type (unknown, not zero).
+   */
+  function calcTimeEstimateHours(adjustedAreaM2, coverageRatePerHourM2) {
+    if (!isFiniteNumber(adjustedAreaM2) || adjustedAreaM2 <= 0) return 0;
+    if (!isFiniteNumber(coverageRatePerHourM2) || coverageRatePerHourM2 <= 0) return null;
+    var hours = adjustedAreaM2 / coverageRatePerHourM2;
+    var rounded = Math.ceil(hours * 2) / 2;
+    return isFiniteNumber(rounded) && rounded > 0 ? Math.max(rounded, 0.5) : 0.5;
+  }
+
+  /**
+   * Estimated cost. Prefers an hourly rate (rate × estimated hours),
+   * falls back to a per-m² rate. Returns null when no pricing was
+   * supplied or the time estimate is unavailable.
+   */
+  function calcCostEstimate(estimatedHours, adjustedAreaM2, pricePerHour, pricePerSqm) {
+    var hourRate = validateDimension(pricePerHour, "Price per hour");
+    if (hourRate.value !== null && isFiniteNumber(estimatedHours) && estimatedHours > 0) {
+      return round2(hourRate.value * estimatedHours);
     }
-    var surfacePrice = validateDimension(pricePerSurface, "Price per surface");
-    if (surfacePrice.value !== null && isFiniteNumber(surfaceCount) && surfaceCount >= 0) {
-      return round2(surfacePrice.value * surfaceCount);
+    var sqmRate = validateDimension(pricePerSqm, "Price per m²");
+    if (sqmRate.value !== null && isFiniteNumber(adjustedAreaM2) && adjustedAreaM2 >= 0) {
+      return round2(sqmRate.value * adjustedAreaM2);
     }
     return null;
   }
@@ -164,52 +171,26 @@
     return isFiniteNumber(n) ? Math.round(n * 100) / 100 : null;
   }
 
-  /**
-   * Indicative-only material guidance (cleaning input/solution/levelling/
-   * access review). Returns nulls for anything not applicable or
-   * not configured with a positive coverage rate. Never negative.
-   */
-  function calcMaterialGuidance(adjustedAreaM2, conditions, guidanceCfg) {
-    var out = { cleaning inputBags: null, solutionKg: null, levellingBags: null, access reviewLiters: null };
-    if (!guidanceCfg || !guidanceCfg.enabled || !isFiniteNumber(adjustedAreaM2) || adjustedAreaM2 <= 0) {
-      return out;
-    }
-    var cleaning inputCov = guidanceCfg.cleaning inputCoveragePerBagM2;
-    if (isFiniteNumber(cleaning inputCov) && cleaning inputCov > 0) {
-      out.cleaning inputBags = Math.ceil(adjustedAreaM2 / cleaning inputCov);
-    }
-    var solutionCov = guidanceCfg.solutionCoveragePerKgM2;
-    if (isFiniteNumber(solutionCov) && solutionCov > 0) {
-      out.solutionKg = Math.ceil((adjustedAreaM2 / solutionCov) * 2) / 2; // nearest 0.5kg
-    }
-    if (conditions && conditions.levelling) {
-      var levelCov = guidanceCfg.levellingCompoundCoveragePerBagM2;
-      if (isFiniteNumber(levelCov) && levelCov > 0) {
-        out.levellingBags = Math.ceil(adjustedAreaM2 / levelCov);
-      }
-    }
-    if (conditions && conditions.access review) {
-      var waterCov = guidanceCfg.access reviewCoveragePerLM2;
-      if (isFiniteNumber(waterCov) && waterCov > 0) {
-        out.access reviewLiters = Math.ceil((adjustedAreaM2 / waterCov) * 2) / 2; // nearest 0.5L
-      }
-    }
-    return out;
-  }
-
   /** Human-readable list of what's still missing for an accurate quote. */
-  function calcMissingInfo(state, results) {
+  function calcMissingInfo(state, results, cfg) {
     var missing = [];
     if (!state.projectType) missing.push("Project type not selected.");
     if (results.totalAreaM2 <= 0) missing.push("No valid area measurements entered yet.");
-    if (!state.surface || !isFiniteNumber(results.surfaceAreaSqM)) missing.push("Area dimensions (length × width) not provided.");
-    if (results.boxCount === null) missing.push("Surfaces-per-box or coverage-per-box not provided — box estimate unavailable.");
-    if (results.materialCost === null) missing.push("No pricing provided — material cost estimate unavailable.");
-    if (state.conditions && (state.conditions.access review || state.conditions.underfloorHeating)) {
-      missing.push("Access review/underfloor heating present — a site inspection is recommended before a firm quote.");
+    if (!state.surfaceType) missing.push("Surface type not selected.");
+    if (!state.conditionLevel) missing.push("Soiling/condition level not selected.");
+    if (!state.accessLevel) missing.push("Access difficulty not selected.");
+    if (state.surfaceType && results.estimatedHours === null) {
+      missing.push("No time-per-m² rate configured for this surface type — estimated duration unavailable.");
     }
-    if (state.conditions && state.conditions.complexCuts) {
-      missing.push("Complex cuts/corners noted — final allowance may exceed the selected preset.");
+    if (results.costEstimate === null) missing.push("No pricing provided — cost estimate unavailable.");
+    if (state.accessLevel === "restricted" || state.accessLevel === "multi-storey") {
+      missing.push("Access is limited or elevated — a site visit is recommended before a firm quote.");
+    }
+    if (state.conditionLevel === "severe") {
+      missing.push("Severe soiling noted — method and time may need on-site confirmation.");
+    }
+    if (state.conditions && state.conditions.fragileSurface) {
+      missing.push("Fragile/delicate surface flagged — cleaning method needs confirming before work begins.");
     }
     return missing;
   }
@@ -218,33 +199,23 @@
   function computeResults(state, cfg) {
     var areaSum = sumAreas(state.areas);
     var totalAreaM2 = areaSum.total;
-    var allowancePercent = state.allowancePreset === "custom"
-      ? (isFiniteNumber(state.customAllowance) ? state.customAllowance : 0)
-      : (state.allowanceValue !== undefined ? state.allowanceValue : 10);
-    var adjustedAreaM2 = applyAllowance(totalAreaM2, allowancePercent);
-    var surfaceAreaSqM = state.surface ? surfaceAreaM2(state.surface.length, state.surface.width) : null;
-    var surfaceCount = surfaceAreaSqM ? calcSurfaceCount(adjustedAreaM2, surfaceAreaSqM) : 0;
-    var boxCount = state.surface
-      ? calcBoxCount(surfaceCount, adjustedAreaM2, state.surface.surfacesPerBox, state.surface.sqmPerBox)
-      : null;
-    var materialCost = state.surface
-      ? calcMaterialCost(surfaceCount, boxCount, state.surface.pricePerSurface, state.surface.pricePerBox)
-      : null;
-    var guidance = calcMaterialGuidance(adjustedAreaM2, state.conditions, cfg && cfg.materialGuidance);
+    var adjustmentPercent = calcComplexityPercent(state.conditionLevel, state.accessLevel, cfg);
+    var adjustedAreaM2 = applyAdjustment(totalAreaM2, adjustmentPercent);
+    var surfaceOpt = findOption(cfg && cfg.surfaceTypes, state.surfaceType);
+    var coverageRate = surfaceOpt && isFiniteNumber(surfaceOpt.coverageRatePerHourM2) ? surfaceOpt.coverageRatePerHourM2 : null;
+    var estimatedHours = coverageRate !== null ? calcTimeEstimateHours(adjustedAreaM2, coverageRate) : null;
+    var costEstimate = calcCostEstimate(estimatedHours, adjustedAreaM2, state.pricePerHour, state.pricePerSqm);
 
     var results = {
       totalAreaM2: round2(totalAreaM2),
-      allowancePercent: allowancePercent,
+      adjustmentPercent: adjustmentPercent,
       adjustedAreaM2: round2(adjustedAreaM2),
-      surfaceAreaSqM: surfaceAreaSqM,
-      surfaceCount: surfaceCount,
-      boxCount: boxCount,
-      materialCost: materialCost,
-      guidance: guidance,
+      estimatedHours: estimatedHours,
+      costEstimate: costEstimate,
       areaErrors: areaSum.hasErrors,
       perEntry: areaSum.perEntry
     };
-    results.missing = calcMissingInfo(state, results);
+    results.missing = calcMissingInfo(state, results, cfg);
     return results;
   }
 
@@ -255,7 +226,6 @@
     lines.push("SURFACE CLEANING ESTIMATE PLANNER SUMMARY");
     lines.push("Project type: " + (state.projectType || "Not specified"));
     lines.push("Area mode: " + (state.areaMode || "Not specified"));
-    lines.push("Layout: " + (state.layout || "Not specified"));
     lines.push("");
     lines.push("Measurements (" + state.unit + "):");
     (state.areas || []).forEach(function (a, i) {
@@ -263,34 +233,35 @@
     });
     lines.push("");
     lines.push("Total measured area: " + (results.totalAreaM2 || 0) + " m2");
-    lines.push("Allowance allowance: " + results.allowancePercent + "%");
-    lines.push("Adjusted coverage required: " + (results.adjustedAreaM2 || 0) + " m2");
-    if (state.surface) {
-      lines.push("Area dimensions: " + state.surface.length + "cm x " + state.surface.width + "cm");
-      lines.push("Estimated surfaces needed: " + (results.surfaceCount || "Unknown"));
-      lines.push("Estimated rate units needed: " + (results.boxCount === null ? "Unknown (add box coverage)" : results.boxCount));
-      if (results.materialCost !== null) lines.push("Estimated material cost: " + currency + results.materialCost);
-    }
+
+    var surfaceOpt = findOption(cfg && cfg.surfaceTypes, state.surfaceType);
+    var conditionOpt = findOption(cfg && cfg.conditionLevels, state.conditionLevel);
+    var accessOpt = findOption(cfg && cfg.accessLevels, state.accessLevel);
+    lines.push("Surface type: " + (surfaceOpt ? surfaceOpt.label : "Not specified"));
+    lines.push("Soiling/condition: " + (conditionOpt ? conditionOpt.label : "Not specified"));
+    lines.push("Access: " + (accessOpt ? accessOpt.label : "Not specified"));
+    lines.push("Complexity adjustment: " + results.adjustmentPercent + "%");
+    lines.push("Adjusted coverage area: " + (results.adjustedAreaM2 || 0) + " m2");
+    lines.push("Estimated cleaning time: " + (results.estimatedHours === null ? "Unknown (site assessment recommended)" : results.estimatedHours + " hour(s)"));
+    if (results.costEstimate !== null) lines.push("Estimated cost: " + currency + results.costEstimate);
+
     var conditionLabels = [];
     var CONDITION_TEXT = {
-      removeExisting: "Existing surfaces must be removed", levelling: "Surface requires levelling",
-      access review: "Access review required", skirting: "Skirting estimated surface units", steps: "Stairs or steps",
-      niches: "Niches", complexCuts: "Corners / complex cuts", outdoor: "Outdoor exposure",
-      underfloorHeating: "Underfloor heating", occupied: "Occupied property",
-      materialPurchased: "Material already purchased", helpChoosing: "Help choosing surfaces requested"
+      fragileSurface: "Fragile/delicate surface — low-pressure method needed",
+      heavyMoldAlgae: "Heavy mould/algae growth",
+      petsOrPlantsNearby: "Pets or plants nearby — chemical sensitivity",
+      gutterDebris: "Gutters have heavy debris",
+      gatedAccess: "Gated/secure property — access code or key needed",
+      occupied: "Property occupied during service",
+      biohazard: "Biohazard or pet waste present",
+      photosAvailable: "Photos available to share",
+      helpChoosingMethod: "Help choosing a cleaning method requested"
     };
     Object.keys(state.conditions || {}).forEach(function (key) {
       if (state.conditions[key] && CONDITION_TEXT[key]) conditionLabels.push(CONDITION_TEXT[key]);
     });
     if (conditionLabels.length) { lines.push(""); lines.push("Site conditions: " + conditionLabels.join(", ")); }
-    if (results.guidance && (results.guidance.cleaning inputBags || results.guidance.solutionKg)) {
-      lines.push("");
-      lines.push("Indicative material guidance (not a purchasing spec):");
-      if (results.guidance.cleaning inputBags) lines.push("  Cleaning input: ~" + results.guidance.cleaning inputBags + " bag(s)");
-      if (results.guidance.solutionKg) lines.push("  Solution: ~" + results.guidance.solutionKg + " kg");
-      if (results.guidance.levellingBags) lines.push("  Levelling compound: ~" + results.guidance.levellingBags + " bag(s)");
-      if (results.guidance.access reviewLiters) lines.push("  Access review membrane: ~" + results.guidance.access reviewLiters + " L");
-    }
+
     if (state.contact) {
       lines.push("");
       lines.push("Contact: " + (state.contact.name || "-"));
@@ -306,7 +277,7 @@
       results.missing.forEach(function (m) { lines.push("  - " + m); });
     }
     lines.push("");
-    lines.push("This is a preliminary planning estimate only, not a binding quote. Actual quantities vary by surface type, layout, cuts, breakage and site conditions.");
+    lines.push("This is a preliminary planning estimate only, not a binding quote. Actual time and cost vary by surface condition, access, weather and site conditions.");
     return lines.join("\n");
   }
 
@@ -316,12 +287,11 @@
     toMeters: toMeters,
     calcEntryArea: calcEntryArea,
     sumAreas: sumAreas,
-    applyAllowance: applyAllowance,
-    surfaceAreaM2: surfaceAreaM2,
-    calcSurfaceCount: calcSurfaceCount,
-    calcBoxCount: calcBoxCount,
-    calcMaterialCost: calcMaterialCost,
-    calcMaterialGuidance: calcMaterialGuidance,
+    applyAdjustment: applyAdjustment,
+    findOption: findOption,
+    calcComplexityPercent: calcComplexityPercent,
+    calcTimeEstimateHours: calcTimeEstimateHours,
+    calcCostEstimate: calcCostEstimate,
     calcMissingInfo: calcMissingInfo,
     computeResults: computeResults,
     buildSummaryText: buildSummaryText,
@@ -336,9 +306,9 @@
     var mount = document.getElementById("surface-planner-app");
     if (!mount || !CFG) return;
 
-    var STEPS = ["type", "areas", "surface", "layout", "conditions", "allowance", "results", "contact"];
-    var STEP_LABELS = { type: "Project", areas: "Measure", surface: "Surface", layout: "Layout", conditions: "Site", allowance: "Allowance", results: "Estimate", contact: "Send" };
-    var STORAGE_KEY = "ttc-planner-state-v1";
+    var STEPS = ["type", "areas", "surface", "conditions", "estimate", "contact"];
+    var STEP_LABELS = { type: "Project", areas: "Measure", surface: "Surface", conditions: "Site", estimate: "Estimate", contact: "Send" };
+    var STORAGE_KEY = "hydroclean-planner-state-v1";
 
     function defaultState() {
       return {
@@ -347,16 +317,16 @@
         areaMode: "single",
         unit: (CFG.planner && CFG.planner.unitDefault) || "m",
         areas: [{ id: 1, label: "Area 1", length: "", width: "", count: 1, unit: (CFG.planner && CFG.planner.unitDefault) || "m" }],
-        surface: { length: "", width: "", surfacesPerBox: "", sqmPerBox: "", pricePerSurface: "", pricePerBox: "" },
-        layout: "straight-lay",
+        surfaceType: "",
+        conditionLevel: "",
+        accessLevel: "",
+        pricePerHour: "",
+        pricePerSqm: "",
         conditions: {
-          removeExisting: false, levelling: false, access review: false, skirting: false, steps: false,
-          niches: false, complexCuts: false, outdoor: false, underfloorHeating: false, occupied: false,
-          materialPurchased: false, helpChoosing: false
+          fragileSurface: false, heavyMoldAlgae: false, petsOrPlantsNearby: false,
+          gutterDebris: false, gatedAccess: false, occupied: false,
+          biohazard: false, photosAvailable: false, helpChoosingMethod: false
         },
-        allowancePreset: "standard",
-        allowanceValue: 10,
-        customAllowance: 10,
         contact: { name: "", phone: "", email: "", suburb: "", method: "whatsapp", notes: "", timeframe: "" },
         saveProgress: false,
         nextAreaId: 2
@@ -434,8 +404,8 @@
     function renderType() {
       var types = CFG.projectTypes || [];
       panel.innerHTML =
-        '<h3 id="planner-panel-heading">Step 1 of 8 — Project Type</h3>' +
-        '<p class="planner-panel-intro">What are you exterior cleaning?</p>' +
+        '<h3 id="planner-panel-heading">Step 1 of 6 — Project Type</h3>' +
+        '<p class="planner-panel-intro">What are you having cleaned?</p>' +
         '<div class="planner-option-grid" role="group" aria-labelledby="planner-panel-heading">' +
         types.map(function (t) {
           return '<button type="button" class="planner-option-card' + (state.projectType === t ? " is-selected" : "") +
@@ -446,15 +416,15 @@
 
     function renderAreas() {
       var modes = [
-        { id: "single", label: "Single rectangular area" }, { id: "multiple", label: "Multiple areas" },
-        { id: "walls", label: "Individual walls" }, { id: "floor-plus-walls", label: "Floor plus walls" }
+        { id: "single", label: "Single area" }, { id: "multiple", label: "Multiple areas" },
+        { id: "walls", label: "Vertical surfaces (siding/walls)" }, { id: "floor-plus-walls", label: "Ground + vertical combined" }
       ];
       var isWallMode = state.areaMode === "walls";
       var secondDimLabel = isWallMode ? "Height" : "Width";
       var html =
-        '<h3 id="planner-panel-heading">Step 2 of 8 — Measurements</h3>' +
+        '<h3 id="planner-panel-heading">Step 2 of 6 — Measurements</h3>' +
         '<p class="planner-panel-intro">Choose how you want to measure, then enter each area.' +
-        (state.areaMode === "floor-plus-walls" ? ' For wall entries, enter the wall height in the second dimension field.' : '') + '</p>' +
+        (state.areaMode === "floor-plus-walls" ? ' For vertical entries, enter the height in the second dimension field.' : '') + '</p>' +
         '<div class="planner-option-grid" role="group" aria-label="Area mode" style="margin-bottom:1.5rem;">' +
         modes.map(function (m) {
           return '<button type="button" class="planner-option-card' + (state.areaMode === m.id ? " is-selected" : "") +
@@ -484,49 +454,57 @@
     }
 
     function renderSurface() {
-      var t = state.surface;
+      var surfaceTypes = (CFG.planner && CFG.planner.surfaceTypes) || [];
+      var conditionLevels = (CFG.planner && CFG.planner.conditionLevels) || [];
+      var accessLevels = (CFG.planner && CFG.planner.accessLevels) || [];
       panel.innerHTML =
-        '<h3 id="planner-panel-heading">Step 3 of 8 — Surface Details</h3>' +
-        '<p class="planner-panel-intro">Enter the surface you plan to use. Pricing fields are optional.</p>' +
+        '<h3 id="planner-panel-heading">Step 3 of 6 — Surface &amp; Access</h3>' +
+        '<p class="planner-panel-intro">Tell us what surface it is, how soiled it is, and how easy it is to reach. Pricing fields are optional.</p>' +
+        '<h4>Surface type</h4>' +
+        '<div class="planner-option-grid" role="group" aria-label="Surface type">' +
+        surfaceTypes.map(function (s) {
+          return '<button type="button" class="planner-option-card' + (state.surfaceType === s.id ? " is-selected" : "") +
+            '" data-action="set-surface-type" data-value="' + s.id + '" aria-pressed="' + (state.surfaceType === s.id) + '">' + escapeHtml(s.label) + "</button>";
+        }).join("") + "</div>" +
+        '<h4 style="margin-top:1.5rem;">Soiling / condition</h4>' +
+        '<div class="planner-option-grid" role="group" aria-label="Soiling or condition level">' +
+        conditionLevels.map(function (c) {
+          return '<button type="button" class="planner-option-card' + (state.conditionLevel === c.id ? " is-selected" : "") +
+            '" data-action="set-condition-level" data-value="' + c.id + '" aria-pressed="' + (state.conditionLevel === c.id) + '">' + escapeHtml(c.label) + "</button>";
+        }).join("") + "</div>" +
+        '<h4 style="margin-top:1.5rem;">Access</h4>' +
+        '<div class="planner-option-grid" role="group" aria-label="Access difficulty">' +
+        accessLevels.map(function (a) {
+          return '<button type="button" class="planner-option-card' + (state.accessLevel === a.id ? " is-selected" : "") +
+            '" data-action="set-access-level" data-value="' + a.id + '" aria-pressed="' + (state.accessLevel === a.id) + '">' + escapeHtml(a.label) + "</button>";
+        }).join("") + "</div>" +
+        '<h4 style="margin-top:1.5rem;">Pricing (optional)</h4>' +
         '<div class="planner-field-grid">' +
-        field("surface-length", "Surface length (cm)", t.length, "surface", "length") +
-        field("surface-width", "Surface width (cm)", t.width, "surface", "width") +
-        field("surface-surfacesPerBox", "Rate units (optional)", t.surfacesPerBox, "surface", "surfacesPerBox") +
-        field("surface-sqmPerBox", "m² per box (optional)", t.sqmPerBox, "surface", "sqmPerBox") +
-        field("surface-pricePerSurface", "Price per surface (optional)", t.pricePerSurface, "surface", "pricePerSurface") +
-        field("surface-pricePerBox", "Price per box (optional)", t.pricePerBox, "surface", "pricePerBox") +
+        field("price-per-hour", "Your price per hour", state.pricePerHour, "pricePerHour") +
+        field("price-per-sqm", "Your price per m² (optional)", state.pricePerSqm, "pricePerSqm") +
         "</div>" +
-        '<p class="planner-field-hint">Only one of "rate units" or "m² per box" is needed. Leave pricing blank to skip a cost estimate.</p>';
+        '<p class="planner-field-hint">Leave pricing blank to skip a cost estimate — only your quote is binding.</p>';
     }
 
-    function field(id, label, value, group, key) {
+    function field(id, label, value, key) {
       return '<div class="planner-field"><label for="' + id + '">' + label + '</label>' +
-        '<input type="number" min="0" step="any" id="' + id + '" data-action="obj-field" data-group="' + group + '" data-field="' + key + '" value="' + escapeHtml(value) + '"></div>';
-    }
-
-    function renderLayout() {
-      var gallery = CFG.layoutGallery || [];
-      panel.innerHTML =
-        '<h3 id="planner-panel-heading">Step 4 of 8 — Layout</h3>' +
-        '<p class="planner-panel-intro">Layout affects cutting waste — see the allowance step for guidance.</p>' +
-        '<div class="planner-option-grid" role="group" aria-labelledby="planner-panel-heading">' +
-        gallery.map(function (g) {
-          return '<button type="button" class="planner-option-card' + (state.layout === g.id ? " is-selected" : "") +
-            '" data-action="set-layout" data-value="' + g.id + '" aria-pressed="' + (state.layout === g.id) + '">' + escapeHtml(g.name) + '<br><span style="font-weight:400;color:var(--text-secondary);font-size:0.78rem;">' + escapeHtml(g.note) + "</span></button>";
-        }).join("") + "</div>";
+        '<input type="number" min="0" step="any" id="' + id + '" data-action="set-field" data-field="' + key + '" value="' + escapeHtml(value) + '"></div>';
     }
 
     function renderConditions() {
       var CONDITION_LABELS = [
-        ["removeExisting", "Existing surfaces must be removed"], ["levelling", "Surface requires levelling"],
-        ["access review", "Access review required"], ["skirting", "Skirting estimated surface units"],
-        ["steps", "Stairs or steps"], ["niches", "Niches"], ["complexCuts", "Corners or complex cuts"],
-        ["outdoor", "Outdoor exposure"], ["underfloorHeating", "Underfloor heating"],
-        ["occupied", "Occupied property"], ["materialPurchased", "Material already purchased"],
-        ["helpChoosing", "Help choosing estimated surface units"]
+        ["fragileSurface", "Fragile or delicate surface (needs a low-pressure/soft-wash method)"],
+        ["heavyMoldAlgae", "Heavy mould, algae or moss growth"],
+        ["petsOrPlantsNearby", "Pets or plants nearby (chemical sensitivity)"],
+        ["gutterDebris", "Gutters have heavy debris"],
+        ["gatedAccess", "Gated/secure property — access code or key needed"],
+        ["occupied", "Property occupied during the service"],
+        ["biohazard", "Biohazard or pet waste present"],
+        ["photosAvailable", "I have photos I can share"],
+        ["helpChoosingMethod", "I'd like help choosing a cleaning method"]
       ];
       panel.innerHTML =
-        '<h3 id="planner-panel-heading">Step 5 of 8 — Project Conditions</h3>' +
+        '<h3 id="planner-panel-heading">Step 4 of 6 — Site Conditions</h3>' +
         '<p class="planner-panel-intro">Select anything that applies. This helps flag what a firm quote will need to account for.</p>' +
         '<div class="planner-condition-grid" role="group" aria-labelledby="planner-panel-heading">' +
         CONDITION_LABELS.map(function (pair) {
@@ -536,47 +514,25 @@
         }).join("") + "</div>";
     }
 
-    function renderAllowance() {
-      var presets = (CFG.planner && CFG.planner.allowancePresets) || [];
-      panel.innerHTML =
-        '<h3 id="planner-panel-heading">Step 6 of 8 — Allowance Allowance</h3>' +
-        '<p class="planner-panel-intro">' + escapeHtml((CFG.planner && CFG.planner.allowanceDisclaimer) || "") + '</p>' +
-        '<div class="planner-option-grid" role="group" aria-labelledby="planner-panel-heading">' +
-        presets.map(function (p) {
-          return '<button type="button" class="planner-option-card' + (state.allowancePreset === p.id ? " is-selected" : "") +
-            '" data-action="set-allowance-preset" data-id="' + p.id + '" data-value="' + (p.value === null ? "" : p.value) + '" aria-pressed="' + (state.allowancePreset === p.id) + '">' + p.label + '<br><span style="font-weight:400;color:var(--text-secondary);font-size:0.78rem;">' + escapeHtml(p.note) + "</span></button>";
-        }).join("") + "</div>" +
-        (state.allowancePreset === "custom" ?
-          '<div class="planner-field" style="max-width:200px;margin-top:1rem;"><label for="custom-allowance">Custom allowance %</label><input type="number" min="0" step="0.5" id="custom-allowance" data-action="set-custom-allowance" value="' + escapeHtml(state.customAllowance) + '"></div>' : "");
-    }
-
-    function renderResults() {
+    function renderEstimate() {
       var results = computeResults(state, CFG.planner);
       state._lastResults = results;
       var currency = (CFG.planner && CFG.planner.currencySymbol) || "$";
       panel.innerHTML =
-        '<h3 id="planner-panel-heading">Step 7 of 8 — Estimate</h3>' +
+        '<h3 id="planner-panel-heading">Step 5 of 6 — Estimate</h3>' +
         '<p class="planner-panel-intro">Preliminary planning estimate only — not a binding quote.</p>' +
         '<div class="planner-summary-grid">' +
         resultCard(results.totalAreaM2 + " m²", "Measured area") +
-        resultCard(results.allowancePercent + "%", "Allowance allowance") +
+        resultCard(results.adjustmentPercent + "%", "Complexity adjustment") +
         resultCard(results.adjustedAreaM2 + " m²", "Adjusted coverage") +
-        resultCard(results.surfaceCount === null ? "—" : results.surfaceCount, "Surfaces needed (approx.)") +
-        resultCard(results.boxCount === null ? "Unknown" : results.boxCount, "Rate units needed (approx.)") +
-        resultCard(results.materialCost === null ? "Not provided" : currency + results.materialCost, "Material cost (approx.)") +
+        resultCard(results.estimatedHours === null ? "Unknown" : results.estimatedHours + " hr", "Estimated time (approx.)") +
+        resultCard(results.costEstimate === null ? "Not provided" : currency + results.costEstimate, "Cost estimate (approx.)") +
         "</div>" +
-        (results.guidance.cleaning inputBags || results.guidance.solutionKg || results.guidance.levellingBags || results.guidance.access reviewLiters ?
-          '<div class="planner-explain"><strong>Indicative material guidance (not a purchasing spec):</strong><ul>' +
-          (results.guidance.cleaning inputBags ? "<li>Cleaning input: ~" + results.guidance.cleaning inputBags + " bag(s)</li>" : "") +
-          (results.guidance.solutionKg ? "<li>Solution: ~" + results.guidance.solutionKg + " kg</li>" : "") +
-          (results.guidance.levellingBags ? "<li>Levelling compound: ~" + results.guidance.levellingBags + " bag(s)</li>" : "") +
-          (results.guidance.access reviewLiters ? "<li>Access review membrane: ~" + results.guidance.access reviewLiters + " L</li>" : "") +
-          "</ul>" + escapeHtml((CFG.planner.materialGuidance && CFG.planner.materialGuidance.disclaimer) || "") + "</div>" : "") +
         '<details class="planner-explain"><summary>How this is calculated</summary><ul>' +
         "<li>Area = length × width × quantity, converted to m², summed across all entries.</li>" +
-        "<li>Adjusted coverage = measured area × (1 + allowance %).</li>" +
-        "<li>Surfaces needed = adjusted coverage ÷ single-surface area, rounded up.</li>" +
-        "<li>Rate units needed = surfaces ÷ rate configuration, or coverage ÷ m² per box, rounded up.</li>" +
+        "<li>Complexity adjustment = soiling-level % + access-difficulty %, from your selections in Step 3.</li>" +
+        "<li>Adjusted coverage = measured area × (1 + complexity adjustment %).</li>" +
+        "<li>Estimated time = adjusted coverage ÷ the configured m²-per-hour rate for the selected surface type, rounded up to the nearest half hour.</li>" +
         "</ul></details>" +
         (results.missing.length ? '<ul class="planner-missing-list">' + results.missing.map(function (m) { return "<li>⚠ " + escapeHtml(m) + "</li>"; }).join("") + "</ul>" : "") +
         '<p class="planner-field-hint">' + escapeHtml((CFG.legal && CFG.legal.measurementDisclaimer) || "") + "</p>";
@@ -590,7 +546,7 @@
       var summary = buildSummaryText(state, results, CFG.planner);
       var checklist = (CFG.planner && CFG.planner.photoChecklist) || [];
       panel.innerHTML =
-        '<h3 id="planner-panel-heading">Step 8 of 8 — Your Details &amp; Send</h3>' +
+        '<h3 id="planner-panel-heading">Step 6 of 6 — Your Details &amp; Send</h3>' +
         '<p class="planner-panel-intro">' + escapeHtml((CFG.planner && CFG.planner.privacyNote) || "") + '</p>' +
         '<div class="planner-field-grid">' +
         textField("contact-name", "Full name", state.contact.name, "name") +
@@ -634,7 +590,7 @@
       return '<div class="planner-field"><label for="' + id + '">' + label + '</label><input type="text" id="' + id + '" data-action="contact-field" data-field="' + key + '" value="' + escapeHtml(value) + '"></div>';
     }
 
-    var RENDERERS = { type: renderType, areas: renderAreas, surface: renderSurface, layout: renderLayout, conditions: renderConditions, allowance: renderAllowance, results: renderResults, contact: renderContact };
+    var RENDERERS = { type: renderType, areas: renderAreas, surface: renderSurface, conditions: renderConditions, estimate: renderEstimate, contact: renderContact };
 
     function renderStep() {
       renderStepIndicator();
@@ -699,13 +655,9 @@
       var action = t.getAttribute("data-action");
       if (action === "set-type") { state.projectType = t.getAttribute("data-value"); refreshPanel(); announce("Project type set to " + state.projectType); }
       else if (action === "set-area-mode") { state.areaMode = t.getAttribute("data-value"); refreshPanel(); }
-      else if (action === "set-layout") { state.layout = t.getAttribute("data-value"); refreshPanel(); }
-      else if (action === "set-allowance-preset") {
-        state.allowancePreset = t.getAttribute("data-id");
-        var v = t.getAttribute("data-value");
-        state.allowanceValue = v === "" ? state.customAllowance : parseFloat(v);
-        refreshPanel();
-      }
+      else if (action === "set-surface-type") { state.surfaceType = t.getAttribute("data-value"); refreshPanel(); }
+      else if (action === "set-condition-level") { state.conditionLevel = t.getAttribute("data-value"); refreshPanel(); }
+      else if (action === "set-access-level") { state.accessLevel = t.getAttribute("data-value"); refreshPanel(); }
       else if (action === "add-area") {
         state.areas.push({ id: state.nextAreaId, label: "Area " + state.nextAreaId, length: "", width: "", count: 1, unit: state.unit });
         state.nextAreaId += 1;
@@ -736,7 +688,7 @@
         var blob = new Blob([panel.querySelector("#summary-text").value], { type: "text/plain" });
         var url = URL.createObjectURL(blob);
         var a = document.createElement("a");
-        a.href = url; a.download = "surface-project-summary.txt";
+        a.href = url; a.download = "surface-cleaning-project-summary.txt";
         document.body.appendChild(a); a.click(); document.body.removeChild(a);
         URL.revokeObjectURL(url);
       }
@@ -773,14 +725,10 @@
         var f = t.getAttribute("data-field");
         var area = state.areas.filter(function (a) { return a.id === id; })[0];
         if (area) area[f] = t.value;
-      } else if (action === "obj-field") {
-        var group = t.getAttribute("data-group");
-        state[group][t.getAttribute("data-field")] = t.value;
+      } else if (action === "set-field") {
+        state[t.getAttribute("data-field")] = t.value;
       } else if (action === "contact-field") {
         state.contact[t.getAttribute("data-field")] = t.value;
-      } else if (action === "set-custom-allowance") {
-        state.customAllowance = parseFloat(t.value) || 0;
-        state.allowanceValue = state.customAllowance;
       } else if (action === "set-unit") {
         state.unit = t.value;
         state.areas.forEach(function (a) { a.unit = t.value; });

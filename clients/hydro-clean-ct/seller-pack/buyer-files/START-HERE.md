@@ -1,7 +1,7 @@
 # Hydro Clean — Exterior Cleaning Business Website Template
 
-A premium, responsive website template for exterior cleaning businesss, flooring
-installers, bathroom renovators, and waterproofing businesses — built
+A premium, responsive website template for pressure-washing, soft-washing,
+roof, gutter, window, solar-panel, and driveway cleaning businesses — built
 around an original **Surface Cleaning Estimate Planner & Quote Builder** interactive
 tool.
 
@@ -17,11 +17,11 @@ tool.
 - Premium architectural design system (limestone/charcoal/clay/brass) with
   three switchable colour themes: Limestone Studio, Charcoal Brass, Coastal Clay
 - Interactive **Surface Cleaning Estimate Planner & Quote Builder** — see below
-- Service sections: floor, wall, bathroom, kitchen, waterproofing, pool
-  surrounds, feature walls, grouting & repairs, residential & commercial
-- Project gallery of illustrative layout patterns (straight lay, brick
-  bond, diagonal, herringbone, chevron, large format)
-- exterior cleaning process timeline, surface-preparation explainer, service-area
+- Service sections: pressure washing, soft washing, roof, gutter, window,
+  solar panel, driveway/paving, and commercial exterior cleaning
+- Surface-type gallery (concrete/paving, siding, roofs, decking, gutters,
+  solar panels) as illustrative pattern swatches
+- Cleaning process timeline, surface-assessment explainer, service-area
   coverage list with map embed
 - About/team, why-choose-us, fictional sample testimonials
 - Accessible FAQ accordion, quote-request form with WhatsApp handoff
@@ -35,16 +35,16 @@ tool.
 
 ## The Surface Cleaning Estimate Planner
 
-An 8-step accessible wizard (Project Type → Measurements → Tile Details →
-Layout → Site Conditions → Wastage → Estimate → Send) that:
+A 6-step accessible wizard (Project Type → Measurements → Surface & Access →
+Site Conditions → Estimate → Send) that:
 
-- Converts between m / cm / ft / in and supports single, multiple, wall,
-  or floor-plus-wall measurement modes
-- Calculates total area, wastage-adjusted coverage, tile count, and box
-  count (rounded up, never fractional)
-- Optionally estimates material cost and indicative adhesive/grout/
-  levelling/waterproofing quantities (clearly labelled as non-binding
-  guidance)
+- Converts between m / cm / ft / in and supports single, multiple,
+  vertical-surface, or combined measurement modes
+- Calculates total area, a complexity adjustment from soiling condition
+  and access difficulty, and an estimated cleaning time (rounded to the
+  nearest half hour, never fractional)
+- Optionally estimates cost from a buyer-configured hourly or per-m² rate
+  (clearly labelled as non-binding guidance)
 - Flags what information is still missing for a firm quote
 - Produces a structured project summary that can be copied, printed,
   downloaded, sent via WhatsApp or email, or handed off to the quote form
@@ -86,14 +86,15 @@ Open `site-config.js` and edit:
 - `business` — name, tagline, description
 - `contact` — phone, WhatsApp number, email, address, map URL
 - `hours`, `serviceAreas`, `social`
-- `services`, `projectTypes`, `layoutGallery`, `process`
+- `services`, `projectTypes`, `surfaceGallery`, `process`
 - `team`, `whyChooseUs`, `testimonials` (replace fictional sample content)
 - `faqs`
 - `trustIndicators` — replace or remove unverifiable placeholder stats
 - `themes` / `activeTheme` — pick or customise a colour theme
-- `planner` — unit default, currency symbol, wastage presets, material
-  guidance coverage rates (indicative only), WhatsApp message intro,
-  photo checklist, feature toggles
+- `planner` — unit default, currency symbol, surface types with
+  m²-per-hour coverage rates (indicative only), soiling-condition and
+  access-difficulty presets, WhatsApp message intro, photo checklist,
+  feature toggles
 - `legal` — licence/insurance statements, measurement disclaimer
 
 You should not need to edit `index.html`, `style.css`, `planner.js`, or

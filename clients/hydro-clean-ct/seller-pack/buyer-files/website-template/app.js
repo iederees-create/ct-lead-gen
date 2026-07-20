@@ -137,7 +137,7 @@
     var grid = $("#gallery-grid");
     if (!grid) return;
     grid.innerHTML = "";
-    (CFG.layoutGallery || []).forEach(function (g) {
+    (CFG.surfaceGallery || []).forEach(function (g) {
       var card = el("article", "gallery-card");
       card.innerHTML =
         '<div class="gallery-swatch swatch-' + g.id + '" aria-hidden="true"></div>' +

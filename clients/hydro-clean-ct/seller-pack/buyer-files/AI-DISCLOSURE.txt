@@ -16,7 +16,7 @@ WHAT THIS MEANS FOR YOU AS A BUYER
   the 8-step Surface Cleaning Estimate Planner wizard, calculations, WhatsApp/email
   handoff, accordions, responsive layout, links) before listing.
 - The planner's calculation engine has an automated test suite (31 tests
-  covering unit conversion, multiple areas, wastage, tile/box counts,
+  covering unit conversion, multiple areas, surface condition, access complexity, time and cost estimates,
   missing/invalid input, and summary generation) that passed before
   release.
 - All sample content (names, statistics, testimonials, licence and
