@@ -1,0 +1,62 @@
+{
+  "project": "Hydro Clean CT",
+  "voiceProvider": null,
+  "voiceOverGenerated": false,
+  "note": "No local voice engine or approved NextGenWebs voice ID was available. Scripts, transcripts, and caption files are supplied; replace silent cuts with approved narration before publishing.",
+  "assets": [
+    {
+      "file": "hydro-clean-blog-teaser.mp4",
+      "format": "1920x1080",
+      "durationTargetSeconds": 35,
+      "voiceOverGenerated": false,
+      "audioStatus": "silent narration-pending",
+      "captions": "hydro-clean-blog-teaser.srt",
+      "captionsBurnedIn": true
+    },
+    {
+      "file": "hydro-clean-etsy-listing-video.mp4",
+      "format": "1080x1080",
+      "durationTargetSeconds": 50,
+      "voiceOverGenerated": false,
+      "audioStatus": "silent narration-pending",
+      "captions": "hydro-clean-etsy-listing-video.srt",
+      "captionsBurnedIn": true
+    },
+    {
+      "file": "hydro-clean-instagram-story.mp4",
+      "format": "1080x1920",
+      "durationTargetSeconds": 25,
+      "voiceOverGenerated": false,
+      "audioStatus": "silent narration-pending",
+      "captions": "hydro-clean-instagram-story.srt",
+      "captionsBurnedIn": true
+    },
+    {
+      "file": "hydro-clean-linkedin-facebook-promo.mp4",
+      "format": "1920x1080",
+      "durationTargetSeconds": 75,
+      "voiceOverGenerated": false,
+      "audioStatus": "silent narration-pending",
+      "captions": "hydro-clean-linkedin-facebook-promo.srt",
+      "captionsBurnedIn": true
+    },
+    {
+      "file": "hydro-clean-portfolio-case-study.mp4",
+      "format": "1920x1080",
+      "durationTargetSeconds": 75,
+      "voiceOverGenerated": false,
+      "audioStatus": "silent narration-pending",
+      "captions": "hydro-clean-portfolio-case-study.srt",
+      "captionsBurnedIn": true
+    },
+    {
+      "file": "hydro-clean-youtube-short.mp4",
+      "format": "1080x1920",
+      "durationTargetSeconds": 25,
+      "voiceOverGenerated": false,
+      "audioStatus": "silent narration-pending",
+      "captions": "hydro-clean-youtube-short.srt",
+      "captionsBurnedIn": true
+    }
+  ]
+}
