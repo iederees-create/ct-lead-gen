@@ -7,11 +7,11 @@
  * (name, contact details, services, prices, testimonials, FAQs,
  * colours, surface/condition/access presets, etc).
  *
- * IMPORTANT: All contact details, ratings, stats, testimonials, project
- * photos, and licence/insurance statements below are FICTIONAL SAMPLE
- * CONTENT for demonstration purposes only. Replace every field with
- * your real, verifiable business information before publishing this
- * site. See the measurement disclaimer at the bottom of this file
+ * IMPORTANT: All example values are explicitly labelled for editing.
+ * No ratings, testimonials, project proof, staff identities, licence or
+ * insurance claims ship with this template. Replace every example value
+ * with accurate business information before deployment. See the
+ * measurement disclaimer at the bottom of this file
  * before configuring the Surface Cleaning Estimate Planner's pricing
  * fields.
  * ============================================================
@@ -66,11 +66,11 @@ window.SITE_CONFIG = {
 
   // ---- BUSINESS IDENTITY (SAMPLE / DEMO DATA) ------------------------
   business: {
-    name: "Hydro Clean",
-    logoText: "Hydro Clean",
-    tagline: "Thoughtful exterior cleaning, planned around your property.",
-    foundedYear: "[Year] (sample placeholder)",
-    description: "Hydro Clean is a fictional demonstration business created to showcase this exterior cleaning website template. Replace this description with your real company profile and verified services."
+    name: "Your Exterior Cleaning Company",
+    logoText: "Your Exterior Cleaning Company",
+    tagline: "Editable example tagline — replace this with your verified customer promise.",
+    foundedYear: "",
+    description: "Editable example company description — replace this with accurate information about your business, services and approach."
   },
 
   // ---- CONTACT (SAMPLE / DEMO DATA — REPLACE BEFORE USE) -------------
@@ -80,9 +80,9 @@ window.SITE_CONFIG = {
     whatsappDisplay: "+27 00 000 0000",
     whatsappNumber: "27000000000",
     email: "quotes@example.com",
-    addressLine1: "YOUR STREET ADDRESS",
-    addressLine2: "YOUR SERVICE AREA",
-    mapEmbedUrl: "https://www.google.com/maps?q=Cape+Town&output=embed",
+    addressLine1: "EDIT: YOUR BUSINESS ADDRESS",
+    addressLine2: "EDIT: YOUR SERVICE AREA",
+    mapEmbedUrl: "https://www.google.com/maps?q=Your+Service+Area&output=embed",
     quoteUrl: "#quote"
   },
 
@@ -102,17 +102,8 @@ window.SITE_CONFIG = {
 
   serviceAreas: ["Your primary area", "Neighbouring area", "Nearby suburb", "Extended service area"],
 
-  // ---- TRUST INDICATORS (CLEARLY LABELLED SAMPLE PLACEHOLDERS) -------
-  // These are fictional examples only. Do not publish unverifiable
-  // claims (ratings, job counts, "fully insured", "certified",
-  // "guaranteed") — replace with your real, evidence-backed figures,
-  // or remove the item entirely.
-  trustIndicators: [
-    { value: "[X]+", label: "Sample stat — years in business (edit or remove)" },
-    { value: "[X]+", label: "Sample stat — projects completed (edit or remove)" },
-    { value: "[X]", label: "Sample stat — average quote turnaround (edit or remove)" },
-    { value: "[Licence / Insurance #]", label: "Sample placeholder — insert your real, verifiable licence or insurance reference, or remove" }
-  ],
+  // No proof/statistic placeholders are shipped. Add only verified values.
+  trustIndicators: [],
 
   // ---- SERVICES -------------------------------------------------------
   services: [
@@ -156,28 +147,20 @@ window.SITE_CONFIG = {
     text: "Cleaning results and surface safety depend heavily on matching the method to the material: pressure level, chemical use, and technique all vary by surface type and condition. Replace this section with your own surface-assessment process, equipment, and standards."
   },
 
-  team: [
-    { name: "Sample Contractor Name", role: "Lead Technician (sample placeholder)", bio: "Replace with your real name, trade licence/certification numbers (if applicable in your jurisdiction), and years of experience." },
-    { name: "Sample Contractor Name", role: "Site Supervisor (sample placeholder)", bio: "Replace with your real staff information." },
-    { name: "Sample Office Contact", role: "Client Coordinator (sample placeholder)", bio: "Replace with your real staff information." }
-  ],
+  team: [],
 
   whyChooseUs: [
     { title: "Transparent, Written Quotes (sample)", text: "Sample copy — describe your real quoting process." },
     { title: "Planner-Backed Estimates (sample)", text: "Sample copy — describe how you turn planner submissions into firm quotes." },
-    { title: "Local Project Experience (sample)", text: "Sample copy — describe your real service-area experience." },
+    { title: "Defined Service Area (sample)", text: "Sample copy — describe the locations you actually serve." },
     { title: "Clear Site Communication (sample)", text: "Sample copy — describe how you actually communicate with clients during a project." }
   ],
 
-  // ---- TESTIMONIALS (FICTIONAL DEMO CONTENT) --------------------------
-  testimonials: [
-    { quote: "This is a sample fictional testimonial included for template demonstration purposes only. Replace with a real, permission-cleared customer review.", name: "Sample Customer A", location: "Your Service Area (fictional)" },
-    { quote: "This is a sample fictional testimonial included for template demonstration purposes only. Replace with a real, permission-cleared customer review.", name: "Sample Customer B", location: "North Ridge (fictional)" },
-    { quote: "This is a sample fictional testimonial included for template demonstration purposes only. Replace with a real, permission-cleared customer review.", name: "Sample Customer C", location: "Millbrook (fictional)" }
-  ],
+  // No fictional reviews are included. Add permission-cleared reviews only.
+  testimonials: [],
 
   faqs: [
-    { q: "Is Hydro Clean a real company?", a: "No. \"Hydro Clean\" is a fictional demonstration business used to showcase this website template. Replace all business details with your own before publishing." },
+    { q: "Is this page a real cleaning company?", a: "No. This is an editable website-template demonstration. Replace all clearly labelled example content with accurate business information before deployment." },
     { q: "How do I request a quote?", a: "Use the quote form, the Surface Cleaning Estimate Planner's \"Request Site Visit\" action, call the listed phone number, or message on WhatsApp. All contact details shown are placeholders until you configure your own." },
     { q: "How accurate is the Surface Cleaning Estimate Planner?", a: "The planner gives a preliminary planning estimate based on the measurements and settings you enter. Actual time and cost vary by surface condition, access, equipment, and site conditions — it is not a binding quote. See the measurement disclaimer for details." },
     { q: "Do I need to know exact area dimensions to use the planner?", a: "No — you can enter approximate dimensions and adjust later. The planner clearly lists what additional information is still needed for a firm quote." },
@@ -230,7 +213,7 @@ window.SITE_CONFIG = {
       enablePhotoPreview: true
     },
 
-    whatsappMessageIntro: "Hi Hydro Clean, I'd like a quote for an exterior cleaning project. Here is my Surface Cleaning Estimate Planner summary:",
+    whatsappMessageIntro: "Hello, I'd like a quote for an exterior cleaning project. Here is my Surface Cleaning Estimate Planner summary:",
 
     photoChecklist: [
       "Full area to be cleaned (wide shot)",
@@ -245,10 +228,10 @@ window.SITE_CONFIG = {
   },
 
   legal: {
-    businessLegalName: "Hydro Clean (fictional demo business)",
-    licenceStatement: "Sample placeholder — insert your real trade licence/registration number(s) here if applicable in your jurisdiction, or remove this line if not applicable.",
-    insuranceStatement: "Sample placeholder — insert your real insurance details here only if verified and accurate, or remove this line.",
-    disclaimerSummary: "All business information, contact details, statistics, ratings, testimonials, and licensing statements on this demonstration site are fictional sample content and must be replaced with accurate, verifiable information before this site is used for a real business.",
+    businessLegalName: "EDIT: YOUR REGISTERED BUSINESS NAME",
+    licenceStatement: "",
+    insuranceStatement: "",
+    disclaimerSummary: "Template demonstration only. Replace all clearly labelled editable examples with accurate, verifiable business information before deployment.",
     measurementDisclaimer: "Surface Cleaning Estimate Planner results are preliminary planning estimates only. Actual time and cost vary by surface condition, access, equipment, weather, and site conditions. This tool does not provide a binding quote, and a professional site assessment is typically required before a firm price can be given. Business owners must configure accurate local pricing and only publish business claims (licensing, insurance, certification, guarantees) that they can verify."
   }
 };
